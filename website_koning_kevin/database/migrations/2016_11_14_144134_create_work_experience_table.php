@@ -16,6 +16,7 @@ class CreateWorkExperienceTable extends Migration
         Schema::create('work_experience', function (Blueprint $table) {
             $table->increments('id');
             $table->string('experience');
+            $table->integer('user_id')->index();
             $table->timestamps();
 
         });
