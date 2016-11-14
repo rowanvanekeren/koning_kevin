@@ -18,6 +18,7 @@ class CreateWorkPhoneNumbersTable extends Migration
             $table->string('type');
             $table->string('number');
             $table->integer('user_id')->index();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

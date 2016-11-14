@@ -15,7 +15,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','last_name','address','city',
+        'country','job','job_function',
+        'email','gender','is_active','birth_date','birth_place',
+        'password','is_admin','administrative_details_id'
     ];
 
     /**
@@ -27,3 +30,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 }
+
+
+
+
+
+
+
+
+
+
+
