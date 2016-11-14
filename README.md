@@ -1,1 +1,2 @@
-# koning_kevin
+# Koning Kevin - vrijwilligersapplicatie
+	Koning Kevin vroeg ons een webapplicatie te maken waarop vrijwilligers zich makkelijk kunnen aanmelden voor projecten en de bijhorende docementen voor die projecten bekijken.
