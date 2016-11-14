@@ -14,7 +14,9 @@ class CreateDocumentUserTable extends Migration
     public function up()
     {
         Schema::table('document_user', function (Blueprint $table) {
-            //
+            $table->increments('id');
+            $table->integer('user_id')->index();
+            $table->integer('document_id')->index();
         });
     }
 

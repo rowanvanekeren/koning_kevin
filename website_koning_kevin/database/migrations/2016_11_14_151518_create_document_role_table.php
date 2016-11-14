@@ -14,7 +14,9 @@ class CreateDocumentRoleTable extends Migration
     public function up()
     {
         Schema::table('document_role', function (Blueprint $table) {
-            //
+            $table->increments('id');
+            $table->integer('document_id')->index();
+            $table->integer('role_id')->index();
         });
     }
 
