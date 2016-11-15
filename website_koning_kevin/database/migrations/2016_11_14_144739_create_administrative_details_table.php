@@ -15,9 +15,9 @@ class CreateAdministrativeDetailsTable extends Migration
     {
         Schema::create('administrative_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('bank_account_number');
-            $table->string('national_insurance_number');
-            $table->string('identity_number');
+            $table->string('bank_account_number')->nullable();
+            $table->string('national_insurance_number')->nullable();
+            $table->string('identity_number')->nullable();
             $table->integer('user_id')->index();
             $table->softDeletes();
             $table->timestamps();
