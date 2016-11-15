@@ -18,6 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('url');
+            $table->tinyInteger('priority');
             $table->softDeletes();
             $table->timestamps();
         });
