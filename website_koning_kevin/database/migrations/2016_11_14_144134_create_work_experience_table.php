@@ -17,6 +17,7 @@ class CreateWorkExperienceTable extends Migration
             $table->increments('id');
             $table->string('experience');
             $table->integer('user_id')->index();
+            $table->softDeletes();
             $table->timestamps();
 
         });
