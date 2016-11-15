@@ -62,11 +62,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        $new_file_name = "";
+        
+        //allowed extensions
+        $allowed_extensions = ["jpeg", "png"];
+        
+        if (isset($data['url'])) {
+            
+            //check whether file extension is valid
+            if (in_array($data['url']->guessClientExtension(), $allowed_extensions)) {
+                
+                //create new file name
+                $new_file_name = time() . $data['url']->getClientOriginalName();
+                
+                $data['url']->move(base_path() . '/public/images/profile_pictures/', $new_file_name);
+            }
+            else {
+                // not ok return to add project view with error
+            }
+        }
+        
+        
+        
+        
         return User::create([
             'first_name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'last_name'=>$data['last_name'],
+            'url'=>$new_file_name,
             'address'=>$data['address'],
             'city'=>$data['city'],
             'country'=>$data['country'],

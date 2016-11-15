@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->date('birth_date');
             $table->string('birth_place');
+            $table->string('url')->nullable();
             $table->tinyInteger('is_active')->default(0);
             $table->tinyInteger('is_admin')->default(0);
             $table->integer('administrative_details_id')->index()->nullable();
