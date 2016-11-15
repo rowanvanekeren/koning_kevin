@@ -15,10 +15,10 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->longText('description');
-            $table->integer('priority');
-            $table->tinyInteger('soft_delete');
+            $table->string('title');
+            $table->string('description');
+            $table->string('url');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

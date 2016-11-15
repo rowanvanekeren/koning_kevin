@@ -16,16 +16,12 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->longText('description');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->string('address');
-            $table->string('city');
-            $table->string('country');
-            $table->integer('max_volunteers');
+            $table->string('description');
+            $table->date('start');
+            $table->date('end');
+            $table->boolean('active');
             $table->string('image');
-            $table->tinyInteger('is_active');
-            $table->tinyInteger('soft_delete');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
