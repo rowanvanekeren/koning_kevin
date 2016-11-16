@@ -17,16 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Sarah routes
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel', 'HomeController@profile_info');
 
 
-Route::get('/bestanden', 'Managing_files@add_file');
 
 
 
-
-
+//Anton Routes
+Route::get('/add_file', 'Managing_files@add_file');
+Route::get('/bestanden','Managing_files@show_file');
 //deze route gebruik ik om te experementeren
 Route::get('/test', function () {
     return 'test';
