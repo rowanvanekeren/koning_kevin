@@ -59,13 +59,16 @@
                             <a href="{{ url('/dashboard') }}">Dashboard</a>
                         </li>
                         @if(Auth::user()->is_active)
-                        <li class="{{ Request::is('profiel') ? 'active' : '' }}">
-                            <a href="{{ url('/profiel') }}">Profiel</a>
-                        </li>
-                        @endif
-                        @if(Auth::user()->is_admin)
+                            <li class="{{ Request::is('profiel') ? 'active' : '' }}">
+                                <a href="{{ url('/profiel') }}">Profiel</a>
+                            </li>
                             <li class="{{ Request::is('bestanden') ? 'active' : '' }}">
                                 <a href="{{ url('/bestanden') }}">Bestanden</a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->is_admin)
+                            <li class="{{ Request::is('add_file') ? 'active' : '' }}">
+                                <a href="{{ url('/add_file') }}">Bestand toevoegen</a>
                             </li>
                         @endif
                         <li class="dropdown">

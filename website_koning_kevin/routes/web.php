@@ -26,8 +26,13 @@ Route::get('/profiel', 'HomeController@profile_info');
 
 
 //Anton Routes
-Route::get('/add_file', 'Managing_files@add_file');
+//get
+Route::get('/add_file', 'Managing_files@show_add_file');
 Route::get('/bestanden','Managing_files@show_file');
+
+//post
+Route::post('/add_file','Managing_files@add_file');
+
 //deze route gebruik ik om te experementeren
 Route::get('/test', function () {
     return 'test';
