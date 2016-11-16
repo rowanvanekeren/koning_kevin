@@ -9,7 +9,6 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -23,7 +22,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -54,7 +52,7 @@
                             <label for="url" class="col-md-4 control-label">Profielfoto:</label>
 
                             <div class="col-md-6">
-                                <input id="url" type="file" class="form-control" name="url" value="{{ old('url') }}" required>
+                                <input id="url" type="file" class="form-control" name="url" value="{{ old('url') }}">
 
                                 @if ($errors->has('url'))
                                     <span class="help-block">
@@ -119,7 +117,7 @@
                             <label for="job" class="col-md-4 control-label">Werk</label>
 
                             <div class="col-md-6">
-                                <input id="job" type="text" class="form-control" name="job" value="{{ old('job') }}" required>
+                                <input id="job" type="text" class="form-control" name="job" value="{{ old('job') }}">
                                 @if ($errors->has('job'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('job') }}</strong>
@@ -131,7 +129,7 @@
                             <label for="job_function" class="col-md-4 control-label">Wekr functie</label>
 
                             <div class="col-md-6">
-                                <input id="job_function" type="text" class="form-control" name="job_function" value="{{ old('job_function') }}" required>
+                                <input id="job_function" type="text" class="form-control" name="job_function" value="{{ old('job_function') }}">
                                 @if ($errors->has('job_function'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('job_function') }}</strong>
@@ -155,7 +153,7 @@
                             <label for="birth_date" class="col-md-4 control-label">Geborte datum</label>
 
                             <div class="col-md-6">
-                                <input id="birth_date" type="text" class="form-control" name="birth_date" value="{{ old('birth_date') }}" required>
+                                {{Form::date('birth_date', old('birth_date'),array('class'=>'form-control'))}}
                                 @if ($errors->has('birth_date'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('birth_date') }}</strong>
@@ -178,10 +176,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password_confirmation" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 

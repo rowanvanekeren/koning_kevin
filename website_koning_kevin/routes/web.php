@@ -18,4 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index');
-//testvanSarah :)
+Route::get('/profiel', 'HomeController@profile_info');
+
+
+Route::get('/bestanden', 'Managing_files@add_file');
+
+
+
+
+
+//deze route gebruik ik om te experementeren
+Route::get('/test', function () {
+    return 'test';
+});

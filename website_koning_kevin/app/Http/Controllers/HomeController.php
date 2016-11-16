@@ -14,6 +14,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //except => name_function  voor uitzonderingen
+        $this->middleware('is_active',['except' => 'index']);
     }
 
     /**
@@ -24,5 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         return view('dashboard');
+    }
+    public function profile_info()
+    {
+        return view('profile_info');
     }
 }
