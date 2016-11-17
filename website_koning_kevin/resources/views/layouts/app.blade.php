@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
     <script src="{{url('/js/angular.js')}}"></script>
     <script src="{{url('/js/managing_file.js')}}"></script>
+    <script src="{{url('/js/managing_users.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),

@@ -19,8 +19,11 @@ Auth::routes();
 
 //Sarah routes
 Route::get('/dashboard', 'HomeController@index');
-Route::get('/profiel', 'HomeController@profile_info');
+Route::get('/profiel/{id?}', 'HomeController@profile_info');
+Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 
+//Posts
+Route::post('/api/accept_user', 'ApiController@activate_user');
 
 
 

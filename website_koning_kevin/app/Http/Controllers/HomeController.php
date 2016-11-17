@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -25,10 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $inactive_users = User::where('is_active', 0)->get();
+        
+        return view('dashboard', ['inactive_users' => $inactive_users]);
     }
-    public function profile_info()
+    
+    public function profile_info($id = null)
     {
-        return view('profile_info');
+        if(!$id) {
+            $id = Auth::user()->id;
+        }
+        
+        $user = User::find($id);
+        return view('profile_info', ['user' => $user]);
     }
 }
