@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '0' => 'Animator',
+    '0' => '--Selecteer rol--',
     '1' => 'kok',
     '3' => 'renner',
     '4' => 'hacker',

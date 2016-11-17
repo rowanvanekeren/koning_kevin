@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <h1>Landings Page</h1>
+                    <h3>@{{title}}</h3>
                     <h1>Zo Rowan deze pagina is voor jouw</h1>
                 </div>
                 @if (Auth::guest())

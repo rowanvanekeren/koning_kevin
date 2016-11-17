@@ -5,7 +5,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'koning kevin') }}</title>
+    <title>Koning kevin</title>
 
     <!-- Styles -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -13,18 +13,20 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
     <script src="{{url('/js/app.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="{{url('/js/angular.js')}}"></script>
+    <script src="{{url('/js/managing_file.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
-<body>
+<body ng-app="myapp">
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#app-navbar-collapse">
@@ -33,13 +35,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
-
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
@@ -97,8 +97,10 @@
             </div>
         </div>
     </nav>
+    <div ng-controller="PrimeController">
 
-    @yield('content')
+        @yield('content')
+    </div>
 </div>
 </body>
 </html>

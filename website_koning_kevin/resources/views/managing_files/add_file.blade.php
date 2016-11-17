@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Show projects</h1>
+    <div class="container" ng-controller="Managing_file">
+        <h1>@{{ title }}</h1>
         <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>
         <div class="row">
             <div class="col-md-12">
@@ -60,7 +60,8 @@
             <div class="form-group{{ $errors->has('category') ? 'has-error' : '' }}">
                 <div class="col-md-6">
                     {{ Form::label('category', 'Kiez een categorie', array('class' => 'control-label col-md-12'))}}
-                    {{Form::select('category', array('L' => 'Large', 'S' => 'Small'), 'S',array('class'=>'form-control'))}}
+                    {{Form::select('category', $categorys, '0',array('multiple'=>'multiple','name'=>'sports[]','class'=>'form-control','ng-model'=>'category','ng-change'=>'CategoryChange()'))}}
+                    @{{category}}
                     @if ($errors->has('category'))
                         <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
@@ -68,13 +69,13 @@
                     @endif
                 </div>
             </div>
-            <div class="form-group{{ $errors->has('category') ? 'has-error' : '' }}">
+            <div class="form-group{{ $errors->has('role') ? 'has-error' : '' }}">
                 <div class="col-md-6">
-                    {{ Form::label('category', 'Kiez een categorie', array('class' => 'control-label col-md-12'))}}
-                    {{Form::select('category', $categorys, '4',array('class'=>'form-control'))}}
-                    @if ($errors->has('category'))
+                    {{ Form::label('role', 'Kiez een rol', array('class' => 'control-label col-md-12'))}}
+                    {{Form::select('role', $roles, '0',array('class'=>'form-control'))}}
+                    @if ($errors->has('role'))
                         <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
+                                        <strong>{{ $errors->first('role') }}</strong>
                                     </span>
                     @endif
                 </div>
@@ -101,7 +102,10 @@
                     </label>
                 </div>
             </fieldset>
-            {{Form::submit('Bestand toevoegen')}}
+            <div class="col-md-12">
+                {{Form::submit('Bestand toevoegen')}}
+            </div>
+
             {{Form::close()}}
         </div>
     </div>

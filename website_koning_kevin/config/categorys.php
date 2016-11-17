@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '0' => 'Reizen',
+    '0' => '---Selecteer categorie---',
     '1' => 'Knutselen',
     '3' => 'en zo verder',
     '4' => 'als je',
