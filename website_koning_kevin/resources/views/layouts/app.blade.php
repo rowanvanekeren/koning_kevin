@@ -57,7 +57,7 @@
                         </li>
                     @else
                         <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
-                            <a href="{{ url('/dashboard') }}">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}">123456</a>
                         </li>
                         @if(Auth::user()->is_active)
                             <li class="{{ Request::is('profiel') ? 'active' : '' }}">

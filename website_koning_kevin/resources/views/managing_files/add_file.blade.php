@@ -56,19 +56,34 @@
                         @endif
                     </div>
                 </fieldset>
+                <fieldset class="form-group col-md-6">
+                    <legend>Categorieen</legend>
+                    @foreach($categorys as $key=>$category)
+                    <div class="form-check col-md-4">
+                        <label class="form-check-label">
+                            {{ Form::checkbox('category[]',$category ,($key == '0'? true:null) , ['class' => 'field']) }}
+                            {{$category}}
+                        </label>
+                    </div>
+                     @endforeach
+                </fieldset>
             </div>
-            <div class="form-group{{ $errors->has('category') ? 'has-error' : '' }}">
-                <div class="col-md-6">
-                    {{ Form::label('category', 'Kiez een categorie', array('class' => 'control-label col-md-12'))}}
-                    {{Form::select('category', $categorys, '0',array('multiple'=>'multiple','name'=>'sports[]','class'=>'form-control','ng-model'=>'category','ng-change'=>'CategoryChange()'))}}
-                    @{{category}}
-                    @if ($errors->has('category'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
-                                    </span>
-                    @endif
-                </div>
-            </div>
+
+
+
+            {{--<div class="form-group{{ $errors->has('category') ? 'has-error' : '' }}">--}}
+                {{--<div class="col-md-6">--}}
+                    {{--{{ Form::label('category', 'Kiez een categorie', array('class' => 'control-label col-md-12'))}}--}}
+                    {{--{{ Form::checkbox('agree', 1, null, ['class' => 'field']) }}--}}
+                    {{--{{Form::select('category', $categorys, '0',array('multiple'=>'multiple','name'=>'sports[]','class'=>'form-control','ng-model'=>'category','ng-change'=>'CategoryChange()'))}}--}}
+                    {{--@{{category}}--}}
+                    {{--@if ($errors->has('category'))--}}
+                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('description') }}</strong>--}}
+                                    {{--</span>--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <div class="form-group{{ $errors->has('role') ? 'has-error' : '' }}">
                 <div class="col-md-6">
                     {{ Form::label('role', 'Kiez een rol', array('class' => 'control-label col-md-12'))}}
