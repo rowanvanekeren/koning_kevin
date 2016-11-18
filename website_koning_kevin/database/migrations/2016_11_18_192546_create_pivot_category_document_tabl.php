@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePivotDocumentRoleTable extends Migration
+class CreatePivotCategoryDocumentTabl extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePivotDocumentRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('document_role', function (Blueprint $table) {
+        Schema::create('category_document', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id')->unsigned()->index();
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->integer('document_id')->unsigned()->index();
             $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
+            $table->integer('category_id')->unsigned()->index();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreatePivotDocumentRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('document_role');
+        Schema::dropIfExists('category_document');
     }
 }

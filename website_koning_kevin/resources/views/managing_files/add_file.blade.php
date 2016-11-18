@@ -43,20 +43,20 @@
                     <div class="col-md-6">
                         {{ Form::label('file', 'Kies een bestand', array('class' => 'control-label col-md-12'))}}
                         {{Form::file('file',array('class' => 'form-control'))}}
-                        @if ($errors->has('url'))
+                        @if ($errors->has('file'))
                             <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('file') }}</strong>
                                     </span>
                         @endif
                     </div>
                 </fieldset>
                 <fieldset class="form-group col-md-6">
                     <legend>Categorieen</legend>
-                    @foreach($categorys as $key=>$category)
+                    @foreach($categories as $key=>$category)
                     <div class="form-check col-md-12">
                         <label class="form-check-label">
-                            {{ Form::checkbox('category[]',$category ,($key == '0'? true:null) , ['class' => 'field']) }}
-                            {{$category}}
+                            {{ Form::checkbox('categories[]',$category->id ,($key == '0'? true:null) , ['class' => 'field']) }}
+                            {{$category->type}}
                         </label>
                     </div>
                      @endforeach
@@ -64,10 +64,10 @@
                 <fieldset class="form-group col-md-6">
                     <legend>Rol</legend>
                     @foreach($roles as $key=>$role)
-                        <div class="form-check col-md-4">
+                        <div class="form-check col-md-12">
                             <label class="form-check-label">
-                                {{ Form::checkbox('$role[]',$role ,($key == '0'? true:null) , ['class' => 'field']) }}
-                                {{$role}}
+                                {{ Form::checkbox('roles[]',$role->id,($key == '0'? true:null) , ['class' => 'field']) }}
+                                {{$role->type}}
                             </label>
                         </div>
                     @endforeach

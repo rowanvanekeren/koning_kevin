@@ -3,7 +3,13 @@
 
 Documentatie-------------------------------------
 
-Constants --------------------------------
+Seeder --------------------
+php artisan db:seed
+--> maakt enekele relevente categorieen en rolen van koning kevin zelf
+
+
+
+Constants --------------------------------//niet meer van belng 
 Voor categoien
  	$alle_categorien = config('categorys');
 	$een_category_onder_index = config('categorys.0'); of $alle_categorien[$index];
