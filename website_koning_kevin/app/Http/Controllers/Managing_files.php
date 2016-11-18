@@ -21,6 +21,6 @@ class Managing_files extends Controller
         return view('managing_files/show_file');
     }
     public function add_file(Request $request){
-        return $request;
+        return $request->input('category');
     }
 }

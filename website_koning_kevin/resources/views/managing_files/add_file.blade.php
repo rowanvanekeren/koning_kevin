@@ -6,12 +6,9 @@
         <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>
         <div class="row">
             <div class="col-md-12">
-
                 {{Form::open(array('url'=>'/add_file','files' => true))}}
-
-
                 <div class="form-group{{ $errors->has('title') ? 'has-error' : '' }}">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         {{ Form::label('title', 'Titel van het bestand', array('class' => 'control-label col-md-12'))}}
                         {{Form::text('title', old('title'),array('class'=>'form-control'))}}
                         @if ($errors->has('title'))
@@ -21,12 +18,10 @@
                         @endif
                     </div>
                 </div>
-
-
                 <div class="form-group{{ $errors->has('description') ? 'has-error' : '' }}">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         {{ Form::label('description', 'Beschrijving', array('class' => 'control-label col-md-12'))}}
-                        {{Form::text('description', old('description'),array('class'=>'form-control'))}}
+                        {{Form::textarea('description', old('description'),array('class'=>'form-control','size' => '30x5'))}}
                         @if ($errors->has('description'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
@@ -34,7 +29,6 @@
                         @endif
                     </div>
                 </div>
-
                 <fieldset class="form-group col-md-12">
                     <legend>Kies een bestand of voeg een link toe</legend>
                     <div class="col-md-6">
@@ -59,13 +53,24 @@
                 <fieldset class="form-group col-md-6">
                     <legend>Categorieen</legend>
                     @foreach($categorys as $key=>$category)
-                    <div class="form-check col-md-4">
+                    <div class="form-check col-md-12">
                         <label class="form-check-label">
                             {{ Form::checkbox('category[]',$category ,($key == '0'? true:null) , ['class' => 'field']) }}
                             {{$category}}
                         </label>
                     </div>
                      @endforeach
+                </fieldset>
+                <fieldset class="form-group col-md-6">
+                    <legend>Rol</legend>
+                    @foreach($roles as $key=>$role)
+                        <div class="form-check col-md-4">
+                            <label class="form-check-label">
+                                {{ Form::checkbox('$role[]',$role ,($key == '0'? true:null) , ['class' => 'field']) }}
+                                {{$role}}
+                            </label>
+                        </div>
+                    @endforeach
                 </fieldset>
             </div>
 
@@ -84,17 +89,17 @@
                     {{--@endif--}}
                 {{--</div>--}}
             {{--</div>--}}
-            <div class="form-group{{ $errors->has('role') ? 'has-error' : '' }}">
-                <div class="col-md-6">
-                    {{ Form::label('role', 'Kiez een rol', array('class' => 'control-label col-md-12'))}}
-                    {{Form::select('role', $roles, '0',array('class'=>'form-control'))}}
-                    @if ($errors->has('role'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('role') }}</strong>
-                                    </span>
-                    @endif
-                </div>
-            </div>
+            {{--<div class="form-group{{ $errors->has('role') ? 'has-error' : '' }}">--}}
+                {{--<div class="col-md-6">--}}
+                    {{--{{ Form::label('role', 'Kiez een rol', array('class' => 'control-label col-md-12'))}}--}}
+                    {{--{{Form::select('role', $roles, '0',array('class'=>'form-control'))}}--}}
+                    {{--@if ($errors->has('role'))--}}
+                        {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('role') }}</strong>--}}
+                                    {{--</span>--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
             <fieldset class="form-group col-md-12">
                 <legend>Hoe belangerijk is het bestand?</legend>
