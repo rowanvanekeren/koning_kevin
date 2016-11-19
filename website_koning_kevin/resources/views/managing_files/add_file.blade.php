@@ -4,6 +4,12 @@
     <div class="container" ng-controller="Managing_file">
         <h1>@{{ title }}</h1>
         <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>
+
+        @if(Session::has('success'))
+            <h1>
+                {{ Session::get('success')}}
+            </h1>
+        @endif
         <div class="row">
             <div class="col-md-12">
                 {{Form::open(array('url'=>'/add_file','files' => true))}}
@@ -52,21 +58,33 @@
                 </fieldset>
                 <fieldset class="form-group col-md-6">
                     <legend>Categorieen</legend>
+                    @if ($errors->has('categories'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('categories') }}</strong>
+                                    </span>
+                    @endif
                     @foreach($categories as $key=>$category)
-                    <div class="form-check col-md-12">
-                        <label class="form-check-label">
-                            {{ Form::checkbox('categories[]',$category->id ,($key == '0'? true:null) , ['class' => 'field']) }}
-                            {{$category->type}}
-                        </label>
-                    </div>
-                     @endforeach
+                        <div class="form-check col-md-12">
+                            <label class="form-check-label">
+                                {{--($key == '0'? true:null)--}}
+                                {{ Form::checkbox('categories[]',$category->id ,0 , ['class' => 'field']) }}
+                                {{$category->type}}
+                            </label>
+                        </div>
+                    @endforeach
                 </fieldset>
                 <fieldset class="form-group col-md-6">
                     <legend>Rol</legend>
+                    @if ($errors->has('roles'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('roles') }}</strong>
+                                    </span>
+                    @endif
                     @foreach($roles as $key=>$role)
                         <div class="form-check col-md-12">
                             <label class="form-check-label">
-                                {{ Form::checkbox('roles[]',$role->id,($key == '0'? true:null) , ['class' => 'field']) }}
+                                {{--($key == '0'? true:null)--}}
+                                {{ Form::checkbox('roles[]',$role->id,0, ['class' => 'field']) }}
                                 {{$role->type}}
                             </label>
                         </div>
@@ -75,30 +93,29 @@
             </div>
 
 
-
             {{--<div class="form-group{{ $errors->has('category') ? 'has-error' : '' }}">--}}
-                {{--<div class="col-md-6">--}}
-                    {{--{{ Form::label('category', 'Kiez een categorie', array('class' => 'control-label col-md-12'))}}--}}
-                    {{--{{ Form::checkbox('agree', 1, null, ['class' => 'field']) }}--}}
-                    {{--{{Form::select('category', $categorys, '0',array('multiple'=>'multiple','name'=>'sports[]','class'=>'form-control','ng-model'=>'category','ng-change'=>'CategoryChange()'))}}--}}
-                    {{--@{{category}}--}}
-                    {{--@if ($errors->has('category'))--}}
-                        {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('description') }}</strong>--}}
-                                    {{--</span>--}}
-                    {{--@endif--}}
-                {{--</div>--}}
+            {{--<div class="col-md-6">--}}
+            {{--{{ Form::label('category', 'Kiez een categorie', array('class' => 'control-label col-md-12'))}}--}}
+            {{--{{ Form::checkbox('agree', 1, null, ['class' => 'field']) }}--}}
+            {{--{{Form::select('category', $categorys, '0',array('multiple'=>'multiple','name'=>'sports[]','class'=>'form-control','ng-model'=>'category','ng-change'=>'CategoryChange()'))}}--}}
+            {{--@{{category}}--}}
+            {{--@if ($errors->has('category'))--}}
+            {{--<span class="help-block">--}}
+            {{--<strong>{{ $errors->first('description') }}</strong>--}}
+            {{--</span>--}}
+            {{--@endif--}}
+            {{--</div>--}}
             {{--</div>--}}
             {{--<div class="form-group{{ $errors->has('role') ? 'has-error' : '' }}">--}}
-                {{--<div class="col-md-6">--}}
-                    {{--{{ Form::label('role', 'Kiez een rol', array('class' => 'control-label col-md-12'))}}--}}
-                    {{--{{Form::select('role', $roles, '0',array('class'=>'form-control'))}}--}}
-                    {{--@if ($errors->has('role'))--}}
-                        {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('role') }}</strong>--}}
-                                    {{--</span>--}}
-                    {{--@endif--}}
-                {{--</div>--}}
+            {{--<div class="col-md-6">--}}
+            {{--{{ Form::label('role', 'Kiez een rol', array('class' => 'control-label col-md-12'))}}--}}
+            {{--{{Form::select('role', $roles, '0',array('class'=>'form-control'))}}--}}
+            {{--@if ($errors->has('role'))--}}
+            {{--<span class="help-block">--}}
+            {{--<strong>{{ $errors->first('role') }}</strong>--}}
+            {{--</span>--}}
+            {{--@endif--}}
+            {{--</div>--}}
             {{--</div>--}}
 
             <fieldset class="form-group col-md-12">
@@ -122,6 +139,16 @@
                     </label>
                 </div>
             </fieldset>
+            <div class="col-md-6">
+                {{ Form::label('tags', 'Voeg hiet enkele tags', array('class' => 'control-label col-md-12'))}}
+                {{Form::text('tags', old('tags'),array('class'=>'form-control','ng-model'=>'tags','ng-keypress'=>'(($event.keyCode === 32)?tags_enter(tags):"0")'))}}
+                @if ($errors->has('tags'))
+                    <span class="help-block">
+                                        <strong>{{ $errors->first('tags') }}</strong>
+                    </span>
+                @endif
+            </div>
+
             <div class="col-md-12">
                 {{Form::submit('Bestand toevoegen')}}
             </div>

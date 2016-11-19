@@ -17,4 +17,8 @@ class Document extends Model
     {
         return $this->belongsToMany('App\Role');
     }
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }
