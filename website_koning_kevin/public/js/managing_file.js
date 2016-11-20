@@ -15,10 +15,31 @@ angular.module("myapp").controller("Managing_file", function ($scope, $http) {
 
 angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.files;
+    $scope.message;
+    get_all_files();
+    $scope.delete_document = function (document_id) {
+        $http.post('/api/delete_file',
+            {
+                id: document_id,
+            })
+            .success(function (data) {
+                console.log(data);
+                if (data.success) {
+                    get_all_files();
+                }
+                $scope.message =data;
+            })
+            .error(function (response) {
+                var error = [];
+                error["error"]="Er ging iets fout, probeer later nog eens";
+                $scope.message =error;
+            });
+    }
 
-    $.getJSON("/api/get_all_files", function (data) {
-        console.log(data);
-        $scope.files = data;
-        $scope.$apply();
-    });
+    function get_all_files() {
+        $.getJSON("/api/get_all_files", function (data) {
+            $scope.files = data;
+            $scope.$apply();
+        });
+    }
 });
