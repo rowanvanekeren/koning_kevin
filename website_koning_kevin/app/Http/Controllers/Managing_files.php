@@ -75,7 +75,6 @@ class Managing_files extends Controller
                 $tag_row->type = $tag;
                 $tag_row->save();
                 array_push($indexs_of_tags, $tag_row->id);
-
             }
         }
 

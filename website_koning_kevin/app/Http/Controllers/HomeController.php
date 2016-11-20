@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
         //except => name_function  voor uitzonderingen
-        $this->middleware('is_active',['except' => 'index']);
+        $this->middleware('is_active', ['except' => 'index']);
     }
 
     /**
@@ -28,16 +28,14 @@ class HomeController extends Controller
     public function index()
     {
         $inactive_users = User::where('is_active', 0)->get();
-        
         return view('dashboard', ['inactive_users' => $inactive_users]);
     }
-    
+
     public function profile_info($id = null)
     {
-        if(!$id) {
+        if (!$id) {
             $id = Auth::user()->id;
         }
-        
         $user = User::find($id);
         return view('profile_info', ['user' => $user]);
     }

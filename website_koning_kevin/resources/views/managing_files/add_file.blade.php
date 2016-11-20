@@ -91,33 +91,6 @@
                     @endforeach
                 </fieldset>
             </div>
-
-
-            {{--<div class="form-group{{ $errors->has('category') ? 'has-error' : '' }}">--}}
-            {{--<div class="col-md-6">--}}
-            {{--{{ Form::label('category', 'Kiez een categorie', array('class' => 'control-label col-md-12'))}}--}}
-            {{--{{ Form::checkbox('agree', 1, null, ['class' => 'field']) }}--}}
-            {{--{{Form::select('category', $categorys, '0',array('multiple'=>'multiple','name'=>'sports[]','class'=>'form-control','ng-model'=>'category','ng-change'=>'CategoryChange()'))}}--}}
-            {{--@{{category}}--}}
-            {{--@if ($errors->has('category'))--}}
-            {{--<span class="help-block">--}}
-            {{--<strong>{{ $errors->first('description') }}</strong>--}}
-            {{--</span>--}}
-            {{--@endif--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="form-group{{ $errors->has('role') ? 'has-error' : '' }}">--}}
-            {{--<div class="col-md-6">--}}
-            {{--{{ Form::label('role', 'Kiez een rol', array('class' => 'control-label col-md-12'))}}--}}
-            {{--{{Form::select('role', $roles, '0',array('class'=>'form-control'))}}--}}
-            {{--@if ($errors->has('role'))--}}
-            {{--<span class="help-block">--}}
-            {{--<strong>{{ $errors->first('role') }}</strong>--}}
-            {{--</span>--}}
-            {{--@endif--}}
-            {{--</div>--}}
-            {{--</div>--}}
-
             <fieldset class="form-group col-md-12">
                 <legend>Hoe belangerijk is het bestand?</legend>
                 <div class="form-check col-md-4">
