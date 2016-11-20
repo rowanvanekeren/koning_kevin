@@ -16,7 +16,7 @@ class CreatDocumentSeeder extends Seeder
             array(
                 'title' => 'Test document',
                 'description' => 'Er is url maar geen echte bestand ',
-                'url' => 'feck_url.com',
+                'url' => 'https://docs.google.com/document/d/1rKZYXqCj2xa8fAmCuro91epDrQNcofLdglfs0lsBSFs/edit?usp=sharing',
                 'priority'=>1,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),

@@ -21,7 +21,7 @@ class Managing_files extends Controller
 
     public function show_add_file()
     {
-        return view('managing_files/add_file', ['roles' => Category::all(), 'categories' => Role::all()]);
+        return view('managing_files/add_file', ['roles' =>  Role::all(), 'categories' =>Category::all()]);
     }
 
     public function show_file()
@@ -60,7 +60,7 @@ class Managing_files extends Controller
             $new_file_name = time() . $request->file->getClientOriginalName();
             $destinationPath = base_path() . '/public/files'; // upload path
             $request->file->move($destinationPath, $new_file_name); // uploading file to given path
-            $request->url = $destinationPath . $new_file_name;
+            $request->url = '/download/'. $new_file_name;
         }
 
 
@@ -69,7 +69,7 @@ class Managing_files extends Controller
 
 
             if (sizeof(Tag::where('type', $tag)->get())) {
-                array_push($indexs_of_tags, Tag::where('type', 'anton')->first()->id);
+                array_push($indexs_of_tags, Tag::where('type', $tag)->first()->id);
             } else {
                 $tag_row = new Tag;
                 $tag_row->type = $tag;
@@ -94,7 +94,10 @@ class Managing_files extends Controller
 
         //keer terug naar file add pagina om nieuw bestand te laden
         return redirect('/add_file');
-
-
+    }
+    public function download($file_name){
+        $base_path = base_path();
+        $full_patch_and_name = $base_path.'\public\files\\'.$file_name;
+        return response()->download($full_patch_and_name);
     }
 }

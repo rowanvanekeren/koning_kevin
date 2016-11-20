@@ -32,9 +32,12 @@ Route::post('/api/accept_user', 'ApiController@activate_user');
 //get
 Route::get('/add_file', 'Managing_files@show_add_file');
 Route::get('/bestanden','Managing_files@show_file');
+Route::get('/download/{path}','Managing_files@download');
+
 
 //get api
 Route::get('/api/get_all_files','Api_file_Controller@get_all_files');
+
 
 //post
 Route::post('/add_file','Managing_files@add_file');

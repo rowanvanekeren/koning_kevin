@@ -17,10 +17,8 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.files;
 
     $.getJSON("/api/get_all_files", function (data) {
-
         console.log(data);
-        $scope.inactive_users = data;
-        // $scope.$apply();
+        $scope.files = data;
+        $scope.$apply();
     });
-    console.log('ready');
 });

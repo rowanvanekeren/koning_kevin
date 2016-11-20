@@ -19,16 +19,22 @@ class Api_file_Controller extends Controller
 //        ['except' => 'get_all_files']
     }
 
-    public function get_all_files(){
-        $file =[];
-
-        foreach (Document::all() as $key=>$document){
-            $file[$key]['file']=$document;
-            $file[$key]['categories']=$document->categories()->get();
-            $file[$key]['roles']=$document->roles()->get();
-            $file[$key]['tags']=$document->tags()->get();
+    public function get_all_files()
+    {
+        $file = [];
+        $get_all_categories = Category::all();
+        foreach ($get_all_categories as $key => $category) {
+            $files = $category->documents()->get();
+            if (count($files)) {
+                $file[$key]['category'] = $category;
+                $file[$key]['files']['all'] = $files;
+                foreach ($files as $index => $value) {
+                    $file[$key]['files']['roles'] = $value->roles()->get();
+                    $file[$key]['files']['tags'] = $value->tags()->get();
+                }
+            }
         }
         return $file;
-        return 'succes';
     }
+    
 }

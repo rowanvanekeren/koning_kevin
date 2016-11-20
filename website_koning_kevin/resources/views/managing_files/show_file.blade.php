@@ -11,6 +11,24 @@
                     </div>
                 </div>
                 @if(Auth::user()->is_admin)
+                    <div class="row" ng-repeat="category in files">
+                        <div class="col-md-12">
+                            {{--@{{ file.type }}--}}
+                            <button class="btn btn-primary col-md-12" type="button" data-toggle="collapse"
+                                    data-target="#@{{ $index }}" aria-expanded="false"
+                                    aria-controls="@{{ $index }}">
+                                @{{ category.category.type }}
+                            </button>
+
+                            <div class="collapse col-md-12" id="@{{ $index }}">
+                                <div class="card card-block">
+                                    <div class="col-md-12" ng-repeat="file in category.files.all">
+                                        <a href="@{{ file.url}}">@{{ file.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @else
                 @endif
             </div>
