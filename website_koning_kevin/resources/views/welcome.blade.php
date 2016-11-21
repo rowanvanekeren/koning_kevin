@@ -1,23 +1,27 @@
 @extends('layouts.app')
-
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{url('/css/home.css')}}">
+@stop
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="home-bg-image"></div>
+    <div class="container-fluid ">
+
+        <div class="row  ">
+            <div class="col-md-12 home-margin-header home-header-gradient">
                 <img class="img-responsive center-block" src="{{url('/images/kk/logo.png')}}">
             </div>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <h3>@{{title}}</h3>
+            <div class="row home-margin-content">
+                <div class="col-md-6 " >
+                    {{--<h3>@{{title}}</h3>--}}
                     <h1>Zo Rowan deze pagina is voor jouw</h1>
                 </div>
                 @if (Auth::guest())
-                    <div class="col-md-5 col-md-offset-2">
+                    <div class="col-md-4 col-md-offset-2">
                         <div class="col-md-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Login</div>
+                                <div class="panel-heading text-center"><strong>INLOGGEN</strong></div>
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" method="POST"
                                           action="{{ url('/login') }}">

@@ -1,0 +1,15 @@
+*{
+
+    font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif;
+}
+.panel{
+    border-radius: 0;
+    border: 0;
+}
+.panel-heading{
+    background-color: #D42E12 !important;
+    color: white !important;
+    border-radius: 0;
+
+}
+

@@ -11,7 +11,10 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url('/css/custom.css')}}">
+    @yield('styles')
     <script src="{{url('/js/app.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
     <script src="{{url('/js/angular.js')}}"></script>
