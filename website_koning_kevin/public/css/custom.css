@@ -13,3 +13,21 @@
 
 }
 
+input{
+    border-radius: 0 !important;
+}
+
+.btn-primary{
+    border-radius: 0 !important;
+    background-color:#542657 ;
+
+}
+
+.btn-primary:hover{
+    background-color: #381a3b;
+}
+
+.btn-link{
+    color:#542657;
+}
+
