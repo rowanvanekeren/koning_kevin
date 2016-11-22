@@ -20,6 +20,8 @@ Auth::routes();
 //Sarah routes
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel/{id?}', 'HomeController@profile_info');
+Route::get('/add_project', 'ProjectController@show_add_project');
+Route::post('/add_project','ProjectController@add_project');
 Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 
 //Posts

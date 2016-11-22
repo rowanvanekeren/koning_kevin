@@ -74,6 +74,9 @@
                             <li class="{{ Request::is('add_file') ? 'active' : '' }}">
                                 <a href="{{ url('/add_file') }}">Bestand toevoegen</a>
                             </li>
+                            <li class="{{ Request::is('add_project') ? 'active' : '' }}">
+                                <a href="{{ url('/add_project') }}">Project aanmaken</a>
+                            </li>
                         @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
