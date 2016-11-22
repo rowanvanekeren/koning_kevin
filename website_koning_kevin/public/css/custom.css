@@ -1,10 +1,5 @@
 *{
-<<<<<<< HEAD
-
     font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif ;
-=======
-    font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif;
->>>>>>> 2d072fad16262986abb1c24047103b9c553994e6
 }
 .panel{
     border-radius: 0;
@@ -69,11 +64,17 @@ nav a:hover{
     background-color:#542657 !important;
 }
 
-.dropdown a{
+.custom-dropdown a{
+    padding-right: 50px !important;
     background-color:#D42E12 !important;
 }
-
-.dropdown-menu {
+.custom-dropdown a{
+    background-color:#D42E12 !important;
+}
+.custom-dropdown-menu  {
+    background-color:#D42E12 !important;
+}
+.custom-dropdown-menu a:hover{
     background-color:#D42E12 !important;
 }
 
@@ -81,7 +82,7 @@ nav a:hover{
     position:absolute;
     height: 40px;
     top: 50%;
-    left: 100%;
+    left: calc(100% - 45px);
     margin-top: -20px;
     -webkit-clip-path: circle(40% at 50% 50%);
     overflow:hidden;

@@ -78,7 +78,7 @@
                                 <a href="{{ url('/add_file') }}">Bestand toevoegen</a>
                             </li>
                         @endif
-                        <li class="dropdown">
+                        <li class="dropdown custom-dropdown">
 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
@@ -87,7 +87,7 @@
                                 <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu custom-dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
