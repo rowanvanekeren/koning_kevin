@@ -38,6 +38,8 @@ Route::get('/download/{path}','Managing_files@download');
 //get api
 Route::get('/api/get_all_files','Api_file_Controller@get_all_files');
 Route::post('/api/delete_file','Api_file_Controller@delete_file');
+Route::get('/api/get_all_files_search','Api_file_Controller@get_all_files_search');
+Route::get('/api/file_info/{id}','Api_file_Controller@file_info');
 
 
 //post
