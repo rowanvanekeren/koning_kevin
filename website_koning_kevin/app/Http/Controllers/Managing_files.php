@@ -33,7 +33,7 @@ class Managing_files extends Controller
     {
 
 
-        $request->tags = explode(',', $request->tags);
+
         //controlle op url of file upload
         if (isset($request->url) && strlen($request->url) != "") {
             $this->validate($request, [
@@ -41,7 +41,7 @@ class Managing_files extends Controller
                 'description' => 'required|max:255',
                 'url' => 'required|max:1000',
                 'roles' => 'required|max:6',
-                'tags' => 'required',
+                'tags' => 'max:255',
                 'categories' => 'required|max:6',
                 'priority' => 'required|max:1',
             ]);
@@ -53,7 +53,7 @@ class Managing_files extends Controller
                 'file' => 'required|max:1000|mimes:doc,pdf,zip,docx',
                 //'file' => 'required|mimes:application/pdf,application/msword,application/zip',
                 'roles' => 'required|max:6',
-                'tags' => 'required',
+                'tags' => 'max:255',
                 'categories' => 'required|max:6',
                 'priority' => 'required|max:1',
             ]);
@@ -62,7 +62,7 @@ class Managing_files extends Controller
             $request->file->move($destinationPath, $new_file_name); // uploading file to given path
             $request->url = '/download/'. $new_file_name;
         }
-
+        $request->tags = explode(',', $request->tags);
 
         $indexs_of_tags = [];
         foreach ($request->tags as $tag) {

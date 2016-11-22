@@ -16,7 +16,9 @@
     <link rel="stylesheet" type="text/css" href="{{url('/css/custom.css')}}">
     @yield('styles')
     <script src="{{url('/js/app.js')}}"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="{{url('/js/ui-bootstrap-tpls-2.2.0.min.js')}}"></script>
     <script src="{{url('/js/angular.js')}}"></script>
     <script src="{{url('/js/managing_file.js')}}"></script>
     <script src="{{url('/js/managing_users.js')}}"></script>
@@ -41,7 +43,8 @@
                 </button>
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img id="layout-brand-image" src="{{asset('images/kk/logo.png')}}">
+                    {{--{{ config('app.name', 'Laravel') }}--}}
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -79,9 +82,12 @@
                             </li>
                         @endif
                         <li class="dropdown">
+
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->first_name }} <span class="caret"></span>
+                                {{ Auth::user()->first_name }}
+                                <img id="nav-profile-picture" src="{{asset('images/profile_pictures/1479223331profile_pic2.jpg' ) }}">
+                                <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

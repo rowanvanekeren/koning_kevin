@@ -26,7 +26,7 @@ class CreatUserSeeder extends Seeder
                 'gender' => 'man',
                 'birth_date' => \Carbon\Carbon::now(),
                 'birth_place' => 'Oezbekistan',
-                'url' => 'cleverArt.be',
+                'url' => 'profielfoto.jpg',
                 'is_active' => 1,
                 'is_admin' => 1,
                 'email' => 'paraplu@list.ru',

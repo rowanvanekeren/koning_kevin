@@ -28,19 +28,50 @@ class Api_file_Controller extends Controller
             if (count($files)) {
                 $file[$key]['category'] = $category;
                 $file[$key]['files']['all'] = $files;
-                foreach ($files as $index => $value) {
-                    $file[$key]['files']['roles'] = $value->roles()->get();
-                    $file[$key]['files']['tags'] = $value->tags()->get();
-                }
+//                foreach ($files as $index => $value) {
+//                    $file[$key]['files']['roles'] = $value->roles()->get();
+//                    $file[$key]['files']['tags'] = $value->tags()->get();
+//                }
             }
         }
         return $file;
     }
+
+
+
     public  function delete_file(Request $request){
         if(Document::find($request->id)->delete()){
             return array('success'=>"Document gewist");
         };
         return array('error'=>"Er ging iets fout, probeer later nog eens");
+    }
+
+    public function file_info($id){
+        if(Document::find($id)){
+            $file = [];
+            $find_file= Document::find($id);
+            $file['file']=$find_file;
+            $file['categories']=$find_file->categories()->get();
+            $file['roles']=$find_file->roles()->get();
+            $file['tags']=$find_file->tags()->get();
+            return $file;
+        }
+        else{
+            array('error'=>"Er ging iets fout, probeer later nog eens");
+        }
+    }
+
+    public function get_all_files_search(){
+        $file = [];
+        $get_all_documents = Document::all();
+        foreach ($get_all_documents as $key => $document) {
+            $file['files']['file'] = $document;
+            $file['files']['categories']= $document->categories()->get();
+            $file['files']['roles']= $document->roles()->get();
+            $file['files']['tags']= $document->tags()->get();
+
+        }
+        return $file;
     }
     
 }
