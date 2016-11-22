@@ -21,7 +21,9 @@
             <h1>Admindashboard</h1>
             <div class="row">
                 <div class="col-md-6">
-                    <p>hierin komt iets, ik weet nog niet wat??</p>
+                    @foreach($projects as $project)
+                    <p>{{ $project->name }}</p>
+                    @endforeach
                 </div>
                 <div class="col-md-6" ng-init="get_inactive_users()">
                     hierin komt een lijst met alle personen die zich geregistreerd hebben, maar nog niet active zijn

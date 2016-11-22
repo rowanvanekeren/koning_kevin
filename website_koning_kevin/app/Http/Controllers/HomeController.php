@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Project;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $projects = Project::where('active', 1)->get();
         $inactive_users = User::where('is_active', 0)->get();
-        return view('dashboard', ['inactive_users' => $inactive_users]);
+        return view('dashboard', ['projects' => $projects, 'inactive_users' => $inactive_users]);
     }
 
     public function profile_info($id = null)
