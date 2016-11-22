@@ -41,7 +41,8 @@
                 </button>
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img id="layout-brand-image" src="{{asset('images/kk/logo.png')}}">
+                    {{--{{ config('app.name', 'Laravel') }}--}}
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -76,9 +77,12 @@
                             </li>
                         @endif
                         <li class="dropdown">
+
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->first_name }} <span class="caret"></span>
+                                {{ Auth::user()->first_name }}
+                                <img id="nav-profile-picture" src="{{asset('images/profile_pictures/1479223331profile_pic2.jpg' ) }}">
+                                <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

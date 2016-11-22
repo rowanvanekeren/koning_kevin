@@ -1,6 +1,6 @@
 *{
 
-    font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif;
+    font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif ;
 }
 .panel{
     border-radius: 0;
@@ -31,3 +31,54 @@ input{
     color:#542657;
 }
 
+
+
+
+.navbar-default{
+    background-color: #D42E12 ;
+
+}
+
+.navbar-brand{
+    margin: 0;
+    padding: 0;
+}
+
+#layout-brand-image{
+    position:relative;
+    height: 40px;
+    top: 50%;
+    left: -5px;
+    margin-top: -20px;
+}
+
+nav .active a{
+    background-color:#542657 !important;
+    color:white !important;
+}
+
+nav a{
+    color:white !important;
+}
+
+nav a:hover{
+    background-color:#542657 !important;
+}
+
+.dropdown a{
+    background-color:#D42E12 !important;
+}
+
+.dropdown-menu {
+    background-color:#D42E12 !important;
+}
+
+#nav-profile-picture{
+    position:absolute;
+    height: 40px;
+    top: 50%;
+    left: 100%;
+    margin-top: -20px;
+    -webkit-clip-path: circle(40% at 50% 50%);
+    overflow:hidden;
+}
