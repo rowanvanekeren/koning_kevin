@@ -113,6 +113,10 @@
                 </div>
             </fieldset>
             <div class="col-md-6">
+
+                {{--even aude validatie variabele doorgeven aan angularjs voord niet getoond in vieuw --}}
+                <?php echo "<div ng-init='init(" . '"' . old('tags') . '"' . ")'>blabla</div>";?>
+
                 {{ Form::label('tags', 'Voeg hiet enkele tags', array('class' => 'control-label col-md-12'))}}
                 {{Form::text('tags', old('tags'),array('class'=>'form-control','ng-model'=>'tags','ng-keypress'=>'(($event.keyCode === 32)?tags_enter(tags):"0")'))}}
                 @if ($errors->has('tags'))

@@ -16,7 +16,9 @@
     <link rel="stylesheet" type="text/css" href="{{url('/css/custom.css')}}">
     @yield('styles')
     <script src="{{url('/js/app.js')}}"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="{{url('/js/ui-bootstrap-tpls-2.2.0.min.js')}}"></script>
     <script src="{{url('/js/angular.js')}}"></script>
     <script src="{{url('/js/managing_file.js')}}"></script>
     <script src="{{url('/js/managing_users.js')}}"></script>

@@ -3,6 +3,11 @@ angular.module("myapp").controller("Managing_file", function ($scope, $http) {
     $scope.title = "maneging file titel by angularjs";
     $scope.category = '0';
     $scope.tags = "";
+
+    $scope.init =function (tag_string) {
+        $scope.tags= tag_string;
+        console.log("geinitialiseerd",tag_string);
+    }
     $scope.CategoryChange = function () {
         console.log('changed');
     }
@@ -16,7 +21,16 @@ angular.module("myapp").controller("Managing_file", function ($scope, $http) {
 angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.files;
     $scope.message;
+    $scope.file;
     get_all_files();
+    $scope.show_more_info = function show_more_info($id) {
+
+        $.getJSON("/api/file_info/"+$id, function (data) {
+            $scope.file = data;
+            console.log($scope.file );
+            $scope.$apply();
+        });
+    }
     $scope.delete_document = function (document_id) {
         $http.post('/api/delete_file',
             {
@@ -42,4 +56,5 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
             $scope.$apply();
         });
     }
+
 });

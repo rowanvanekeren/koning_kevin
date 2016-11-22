@@ -1,6 +1,10 @@
 *{
+<<<<<<< HEAD
 
     font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif ;
+=======
+    font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif;
+>>>>>>> 2d072fad16262986abb1c24047103b9c553994e6
 }
 .panel{
     border-radius: 0;
