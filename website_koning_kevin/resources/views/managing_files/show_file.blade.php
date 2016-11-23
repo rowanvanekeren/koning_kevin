@@ -6,6 +6,7 @@
         <div class="row">
             <h1 class="col-md-12">Documenten</h1>
 <h3 class="col-md-12">Bij het zoeken: getypte woord wordt gezocht op categorieen, tags, rollen, ook als woord in beschrijving voorkomt: verwijder mij na het stylen (-:</h3>
+            <h3 class="col-md-12">bij categorie: background worden weergegeven in bepalde kleur -> priority-> daar moet nog iets op gevonden worden </h3>
             @if(Auth::user()->is_admin)
                 <div class="col-md-6 ">
                     <div class="panel panel-default">
