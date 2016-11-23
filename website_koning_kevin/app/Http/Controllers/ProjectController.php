@@ -39,7 +39,10 @@ class ProjectController extends Controller
         
         $this->validate($request, [
                 'name' => 'required|max:255',
-                'description' => 'required|max:255',
+                'description' => 'required|max:500',
+                'address' => 'required|max:255',
+                'city' => 'required|max:255',
+                'country' => 'required|max:255',
                 'image' => 'required|max:1000|mimes:jpeg,bmp,png',
                 'startdate' => 'required|date|after:today',
                 'enddate' => 'required|date|after:startdate',
@@ -53,6 +56,9 @@ class ProjectController extends Controller
         $project = new Project([
             'name' => $request->name,
             'description' => $request->description,
+            'address' => $request->address,
+            'city' => $request->city,
+            'country' => $request->country,
             'image' => $new_file_name,
             'start' => $request->startdate,
             'end' => $request->enddate,

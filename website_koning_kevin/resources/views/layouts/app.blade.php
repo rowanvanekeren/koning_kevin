@@ -86,7 +86,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
                                 {{ Auth::user()->first_name }}
-                                <img id="nav-profile-picture" src="{{asset('images/profile_pictures/1479223331profile_pic2.jpg' ) }}">
+                                <img id="nav-profile-picture" src="{{asset('images/profile_pictures/' . Auth::user()->url ) }}">
                                 <span class="caret"></span>
                             </a>
 
