@@ -27,7 +27,7 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     get_all_files_search();
 
     $scope.delete_document = function (document_id) {
-        $http.post('/api/delete_file',
+        $http.post('./api/delete_file',
             {
                 id: document_id,
             })
@@ -47,7 +47,7 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     }
 
     function get_all_files() {
-        $.getJSON("/api/get_all_files", function (data) {
+        $.getJSON("./api/get_all_files", function (data) {
             $scope.files = data;
             $scope.$apply();
         });
@@ -55,7 +55,7 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
 
 
     function get_all_files_search() {
-        $.getJSON("/api/get_all_files_search", function (data) {
+        $.getJSON("./api/get_all_files_search", function (data) {
             $scope.search_files = data;
             $scope.$apply();
             console.log($scope.search_files);
