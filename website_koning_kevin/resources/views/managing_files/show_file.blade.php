@@ -20,7 +20,7 @@
                                     </div>
                                 </div>
                                 {{--| filter:searchText--}}
-                                <div class="row" ng-repeat="category in files  ">
+                                <div class="row" ng-repeat="category in files">
                                     <div class="">
                                         {{--@{{ file.type }}--}}
                                         <a class="btn btn-primary col-md-12 col-xs-12" type="button"

@@ -64,3 +64,18 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
 
 
 });
+
+
+angular.module("myapp").controller("Dashboard", function ($scope, $http) {
+
+$scope.rol_files;
+    console.log($scope.rol_files);
+        $.getJSON("./api/get_files_belongs_to_user", function (data) {
+            $scope.rol_files = data;
+            $scope.$apply();
+            console.log($scope.rol_files);
+        });
+
+
+
+});
