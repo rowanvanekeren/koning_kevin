@@ -78,10 +78,10 @@
                     <div class="panel-heading">
 
 
-                        {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"searchText"))}}
-
+Zoeken
                     </div>
                     <div class="panel-body">
+                        {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"searchText"))}}
 
                     </div>
                 </div>
