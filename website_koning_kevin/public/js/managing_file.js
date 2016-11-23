@@ -22,15 +22,10 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.files;
     $scope.message;
     $scope.file;
+    $scope.search_files;
     get_all_files();
-    $scope.show_more_info = function show_more_info($id) {
+    get_all_files_search();
 
-        $.getJSON("/api/file_info/"+$id, function (data) {
-            $scope.file = data;
-            console.log($scope.file );
-            $scope.$apply();
-        });
-    }
     $scope.delete_document = function (document_id) {
         $http.post('/api/delete_file',
             {
@@ -40,6 +35,7 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
                 console.log(data);
                 if (data.success) {
                     get_all_files();
+                    get_all_files_search();
                 }
                 $scope.message =data;
             })
@@ -56,5 +52,15 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
             $scope.$apply();
         });
     }
+
+
+    function get_all_files_search() {
+        $.getJSON("/api/get_all_files_search", function (data) {
+            $scope.search_files = data;
+            $scope.$apply();
+            console.log($scope.search_files);
+        });
+    }
+
 
 });

@@ -62,16 +62,7 @@ class Api_file_Controller extends Controller
     }
 
     public function get_all_files_search(){
-        $file = [];
-        $get_all_documents = Document::all();
-        foreach ($get_all_documents as $key => $document) {
-            $file['files']['file'] = $document;
-            $file['files']['categories']= $document->categories()->get();
-            $file['files']['roles']= $document->roles()->get();
-            $file['files']['tags']= $document->tags()->get();
-
-        }
-        return $file;
+        return Document::with('categories','roles','tags')->get();
     }
     
 }
