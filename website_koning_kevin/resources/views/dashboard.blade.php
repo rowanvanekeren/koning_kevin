@@ -22,11 +22,11 @@
             <div class="row">
                 <div class="col-md-6">
                     @foreach($projects as $project)
-                    <p>{{ $project->name }}</p>
+                    <p>{{ $project->name }} op {{ $project->start }}</p>
                     @endforeach
                 </div>
                 <div class="col-md-6" ng-init="get_inactive_users()">
-                    hierin komt een lijst met alle personen die zich geregistreerd hebben, maar nog niet active zijn
+                    <h3>Overzicht met nieuwe vrijwilligers</h3>
                     {{--
                     @foreach($inactive_users as $inactive_user)
                     <div class="row user" ng-init="get_inactive_users()">
@@ -39,6 +39,10 @@
                     </div>
                     @endforeach
                     --}}
+                    
+                    <div ng-if="inactive_users.length == 0">
+                      Er hebben zich momenteel geen nieuwe vrijwilligers aangemeld.
+                    </div>
                     
                     <div class="row user" ng-repeat="user in inactive_users">
                         <div class="row">
