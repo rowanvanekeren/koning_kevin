@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Project;
+use App\Role;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,8 @@ class HomeController extends Controller
     {
         $projects = Project::where('active', 1)->get();
         $inactive_users = User::where('is_active', 0)->get();
-        return view('dashboard', ['projects' => $projects, 'inactive_users' => $inactive_users]);
+        $roles = Role::all();
+        return view('dashboard', ['projects' => $projects, 'inactive_users' => $inactive_users, 'roles' => $roles]);
     }
 
     public function profile_info($id = null)

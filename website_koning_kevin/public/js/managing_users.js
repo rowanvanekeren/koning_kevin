@@ -2,8 +2,8 @@
 
 angular.module("myapp").controller("Managing_users", function ($scope, $http) {
 
-    $scope.title = "Sarah Test!!!";
-    
+    $scope.selected;
+    $scope.testje;
     
     
     $scope.get_inactive_users = function() {
@@ -21,11 +21,11 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     
     
     
-    $scope.accept_user = function ($event, user_id) {
+    $scope.accept_user = function ($event, user_id, selected) {
         //console.log('user accepted ' + user_id);
         //console.log($event.currentTarget.parentElement.parentElement);
         
-        
+        console.log(selected);
         //get selected user
         var selected_user = $event.currentTarget.parentElement.parentElement;
         //turn element green
@@ -37,7 +37,7 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             active: 1
             })
             .success(function(response) {
-                console.log("gelukt");
+                console.log(response.user_id);
             })
             .error(function(response) {
             console.log(response);
@@ -47,6 +47,23 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         setTimeout(function(){ 
             $scope.get_inactive_users(); 
         }, 500);
+        
+        //connect each selected role to volunteer
+        
+        angular.forEach(selected, function(value, key) {
+          console.log(key);
+            $http.post('./api/add_role_to_user', 
+            {
+            id: user_id,
+            role_id: key
+            })
+            .success(function(response) {
+                console.log(response);
+            })
+            .error(function(response) {
+            console.log(response);
+            }); 
+        });
         
         /*var myElement = document.querySelector(".user");
         myElement.style.backgroundColor = "#D93600";*/

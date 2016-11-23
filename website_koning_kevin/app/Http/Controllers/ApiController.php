@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Role;
+use App\RoleUser;
 
 class ApiController extends Controller
 {
@@ -29,11 +31,21 @@ class ApiController extends Controller
         $user->is_active = 1;
         $user->save();
         
-        //geen redirect, want dit is gewoon iets dat uitgevoerd moet worden op de achtergrond
-        return response()->json(['status' => "success"]);
+        //return response succesfull
+        return response()->json(['status' => "success", 'user_id' => $user->id]);
         
     }
     
+    public function add_role_to_user(Request $request) {
+        
+        $role_user = new RoleUser([
+            'role_id' => $request->role_id,
+            'user_id' => $request->id
+        ]);
+        $role_user->save();
+        return response()->json(['status' => "success"]);
+        
+    }
     
     
     

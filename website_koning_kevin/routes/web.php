@@ -26,6 +26,7 @@ Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 
 //Posts
 Route::post('/api/accept_user', 'ApiController@activate_user');
+Route::post('/api/add_role_to_user', 'ApiController@add_role_to_user');
 
 
 

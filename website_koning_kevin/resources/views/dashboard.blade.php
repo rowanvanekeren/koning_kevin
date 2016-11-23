@@ -41,13 +41,24 @@
                     --}}
                     
                     <div class="row user" ng-repeat="user in inactive_users">
-                        <div class="col-md-8">
-                            <a href="{{url('/profiel/')}}/@{{user.id}}">@{{user.first_name}} @{{user.last_name}}</a>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <a href="{{url('/profiel/')}}/@{{user.id}}">@{{user.first_name}} @{{user.last_name}}</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-primary" type="button" data-toggle="collapse" data-target="#add_roles@{{user.id}}">accepteer</a>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <a href="#" ng-click="accept_user($event, user.id)">accepteer</a>
+                        <div id="add_roles@{{user.id}}" class="collapse">
+                            <div class="col-md-12">
+                                @foreach($roles as $role)
+                                <input id="role{{$role->id}}" type="checkbox" ng-model="selected[{{$role->id}}]" value="test"><label for="role{{$role->id}}">{{$role->type}}</label>
+                                @endforeach
+                                <a href="#" ng-click="accept_user($event, user.id, selected)">accepteer</a>
+                            </div>
                         </div>
                     </div>
+                    
                     
                 </div>
             </div>
