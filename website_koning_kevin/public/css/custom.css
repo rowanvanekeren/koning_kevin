@@ -87,3 +87,11 @@ nav a:hover{
     -webkit-clip-path: circle(40% at 50% 50%);
     overflow:hidden;
 }
+
+.btn-margin-custom{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    float: right;
+}
+
