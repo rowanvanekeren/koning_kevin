@@ -4,9 +4,9 @@ angular.module("myapp").controller("Managing_file", function ($scope, $http) {
     $scope.category = '0';
     $scope.tags = "";
 
-    $scope.init =function (tag_string) {
-        $scope.tags= tag_string;
-        console.log("geinitialiseerd",tag_string);
+    $scope.init = function (tag_string) {
+        $scope.tags = tag_string;
+        console.log("geinitialiseerd", tag_string);
     }
     $scope.CategoryChange = function () {
         console.log('changed');
@@ -37,12 +37,12 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
                     get_all_files();
                     get_all_files_search();
                 }
-                $scope.message =data;
+                $scope.message = data;
             })
             .error(function (response) {
                 var error = [];
-                error["error"]="Er ging iets fout, probeer later nog eens";
-                $scope.message =error;
+                error["error"] = "Er ging iets fout, probeer later nog eens";
+                $scope.message = error;
             });
     }
 
@@ -67,15 +67,27 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
 
 
 angular.module("myapp").controller("Dashboard", function ($scope, $http) {
+    $scope.open = false;
+    $scope.oneAtATime = true;
+    $scope.rol_files;
+    $scope.file_info;
+    $.getJSON("./api/get_files_belongs_to_user", function (data) {
+        $scope.rol_files = data;
+        $scope.$apply();
+        console.log($scope.rol_files);
+    });
 
-$scope.rol_files;
-    console.log($scope.rol_files);
-        $.getJSON("./api/get_files_belongs_to_user", function (data) {
-            $scope.rol_files = data;
+
+    $scope.ang_modal = function ($id) {
+        console.log($id);
+
+        $.getJSON("./api/file_info/"+$id, function (data) {
+            $scope.file_info = data;
             $scope.$apply();
-            console.log($scope.rol_files);
+            console.log($scope.file_info);
         });
 
+    }
 
 
 });
