@@ -1,0 +1,33 @@
+{{--| filter:searchText--}}
+<div class="row" ng-repeat="category in files">
+    <div class="">
+        {{--@{{ file.type }}--}}
+        <a class="btn btn-primary col-md-12 col-xs-12" type="button"
+           data-toggle="collapse"
+           data-target="#@{{ $index }}" aria-expanded="false"
+           aria-controls="@{{ $index }}">
+            @{{ category.category.type }}
+            <span></span>
+        </a>
+        <div class="collapse col-md-12" id="@{{ $index }}">
+            <div class="card card-block">
+                <div ng-repeat="file in category.files.all"
+                     class="row file_row_background@{{file.priority}}">
+                    <p uib-popover="@{{file.description}}"
+                       popover-trigger="'mouseenter'"
+                       popover-placement="bottom-left" class="col-md-9">
+                        @{{file.title}}
+                    </p>
+                    <a href="@{{ file.url}}"><span
+                            class="col-md-1 glyphicon glyphicon-download-alt"></span>
+                    </a>
+                    <a href="#"><span
+                            class="col-md-1 glyphicon glyphicon-pencil"></span></a>
+                    <a href="#"><span ng-click="delete_document(file.id)"
+                                      class="col-md-1 glyphicon glyphicon-trash"></span></a>
+                </div>
+                <div class="col-md-10"><p>@{{file.description}}</p></div>
+            </div>
+        </div>
+    </div>
+</div>

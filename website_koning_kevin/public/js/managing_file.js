@@ -23,6 +23,7 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.message;
     $scope.file;
     $scope.search_files;
+    $scope.file_info;
     get_all_files();
     get_all_files_search();
 
@@ -60,6 +61,17 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
             $scope.$apply();
             console.log($scope.search_files);
         });
+    }
+
+    $scope.ang_modal = function ($id) {
+        console.log($id);
+    
+        $.getJSON("./api/file_info/"+$id, function (data) {
+            $scope.file_info = data;
+            $scope.$apply();
+            console.log($scope.file_info);
+        });
+
     }
 
 
