@@ -28,6 +28,15 @@
                 <h1>Dashboard</h1>
             </div>
         </div>
+        @if(!Auth::user()->is_active)
+        <div class="row">
+            <div class="col-md-12 col-md-offset-2">
+                Dankjewel voor je registratie!<br>
+                Vanaf dat de administrator je geaccepteerd heeft, krijg je een bevestigingsmailtje.
+            </div>
+        </div>
+        @endif
+        @if(Auth::user()->is_active)
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-default">
@@ -161,11 +170,14 @@
                                 {{--
                                 @foreach($inactive_users as $inactive_user)
                                 <div class="row user" ng-init="get_inactive_users()">
-                                    <div class="col-md-8">
+                                    <div class="col-md-6">
                                         <a href="{{url('/profiel/'.$inactive_user->id)}}">{{$inactive_user->first_name}} {{$inactive_user->last_name}}</a>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <a href="#" ng-click="accept_user()">accepteer</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">Verwijder</a>
                                     </div>
                                 </div>
                                 @endforeach
@@ -182,7 +194,9 @@
                                         </div>
                                         <div class="col-md-4">
                                             <a class="btn btn-primary" type="button" data-toggle="collapse"
-                                               data-target="#add_roles@{{user.id}}">accepteer</a>
+                                               data-target="#add_roles@{{user.id}}">Accepteer</a>
+                                            <a class="btn btn-primary" type="button" data-toggle="collapse"
+                                               data-target="#confirmation@{{user.id}}">Weiger</a>
                                         </div>
                                     </div>
                                     <div id="add_roles@{{user.id}}" class="collapse">
@@ -193,7 +207,13 @@
                                                        value="test"><label
                                                         for="role{{$role->id}}">{{$role->type}}</label>
                                             @endforeach
-                                            <a href="#" ng-click="accept_user($event, user.id, selected)">accepteer</a>
+                                            <a href="#" ng-click="accept_user($event, user.id, selected)">Toevoegen</a>
+                                        </div>
+                                    </div>
+                                    <div id="confirmation@{{user.id}}" class="collapse">
+                                        <div class="col-md-12">
+                                            Zeker dat je deze vrijwilliger wil weigeren?
+                                            <a href="#" ng-click="decline_user($event, user.id)">Ja, weiger</a>
                                         </div>
                                     </div>
                                 </div>
@@ -203,6 +223,7 @@
                 @endif
             </div>
         </div>
+        @endif
     </div>
 
 @endsection

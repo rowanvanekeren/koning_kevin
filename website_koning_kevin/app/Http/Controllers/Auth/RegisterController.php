@@ -84,7 +84,7 @@ class RegisterController extends Controller
             if (in_array($data['url']->guessClientExtension(), $allowed_extensions)) {
                 
                 //create new file name
-                $new_file_name = time() . $data['url']->getClientOriginalName();
+                $new_file_name = time() . $data['name']."_".$data['last_name'];
                 
                 $data['url']->move(base_path() . '/public/images/profile_pictures/', $new_file_name);
             }
