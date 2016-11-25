@@ -99,7 +99,7 @@ class Managing_files extends Controller
     public function download($file_name){
 
         $filename = $file_name;
-        $path =base_path().'\public\files\\'.$filename;
+        $path =base_path().'/public/files/'.$filename;
 
         return Response::make(file_get_contents($path), 200, [
             'Content-Type' => 'application/pdf',
