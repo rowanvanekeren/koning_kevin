@@ -146,8 +146,14 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6">
                 @if(Auth::user()->is_admin)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Overzicht met nieuwe vrijwilligers
+                        </div>
+                        <div class="panel-body" ng-controller="Dashboard">
                     <div class="container col-md-12" ng-controller="Managing_users">
 
                         <div class="row">
@@ -157,8 +163,7 @@
                                 @endforeach
                             </div>
                             <div class="col-md-12" ng-init="get_inactive_users()">
-                                <h3>Overzicht met nieuwe vrijwilligers</h3>
-                                {{--
+                                                                {{--
                                 @foreach($inactive_users as $inactive_user)
                                 <div class="row user" ng-init="get_inactive_users()">
                                     <div class="col-md-8">
@@ -187,13 +192,17 @@
                                     </div>
                                     <div id="add_roles@{{user.id}}" class="collapse">
                                         <div class="col-md-12">
-                                            @foreach($roles as $role)
-                                                <input id="role{{$role->id}}" type="checkbox"
-                                                       ng-model="selected[{{$role->id}}]"
-                                                       value="test"><label
-                                                        for="role{{$role->id}}">{{$role->type}}</label>
-                                            @endforeach
-                                            <a href="#" ng-click="accept_user($event, user.id, selected)">accepteer</a>
+                                            <div  class="col-md-12">   @foreach($roles as $role)
+                                                    <input id="role{{$role->id}}" type="checkbox"
+                                                           ng-model="selected[{{$role->id}}]"
+                                                           value="test"><label
+                                                            for="role{{$role->id}}">{{$role->type}}</label>
+                                                @endforeach </div>
+                                            <div  class="col-md-12">
+                                                <a href="#" ng-click="accept_user($event, user.id, selected)">accepteer</a>
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -201,6 +210,9 @@
                         </div>
                     </div>
                 @endif
+            </div>
+        </div>
+                    </div>
             </div>
         </div>
     </div>
