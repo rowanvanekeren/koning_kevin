@@ -93,10 +93,12 @@
                         <div class="panel-body">
                             {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"searchText"))}}
                             {{--er voord gelimiteerde antaal bestanden getond maar als je zoekt gaan andere getoond worden--}}
-                            <div class="row " ng-repeat="file in search_files|filter:searchText | limitTo:10">
+                            <div class="row carr-document " ng-repeat="file in search_files|filter:searchText | limitTo:10">
+
                                 <p  uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"
                                    popover-placement="bottom-left" class="col-md-9" ng-click="ang_modal(file.id)" data-toggle="modal"
                                     data-target="#myModal">@{{file.title}}</p>
+
                                 <div class="col-md-3">
                                     <div class="pull-right">
                                         <a href="@{{ file.url}}"><span
