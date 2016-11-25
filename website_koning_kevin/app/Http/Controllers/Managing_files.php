@@ -97,7 +97,7 @@ class Managing_files extends Controller
     }
     public function download($file_name){
         $base_path = base_path();
-        $full_patch_and_name = $base_path.'\public\files\\'.$file_name;
+        $full_patch_and_name = $base_path.'/public/files/'.$file_name;
         return response()->download($full_patch_and_name);
     }
 }
