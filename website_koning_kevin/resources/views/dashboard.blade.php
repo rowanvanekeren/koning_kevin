@@ -51,7 +51,7 @@
                                        data-target="#myModal" ng-click="ang_modal(file.id)">
                                         @{{file.title}}
                                     </p>
-                                    <a   href="@{{ file.url}}"><span
+                                    <a href="@{{ file.url}}"><span
                                                 class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                     </a>
                                     <a href="#"><span
@@ -75,23 +75,27 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5>Beschrijving</h5>
+
                                                 <p>@{{ file_info.file.title }}</p>
                                             </div>
                                             <div class="col-md-6">
                                                 <h5>Categorieen</h5>
+
                                                 <p ng-repeat="category in file_info.categories">
                                                     @{{ category.type }}
                                                 </p>
                                             </div>
                                             <div class="col-md-6">
                                                 <h5>Rollen</h5>
-                                                <p ng-repeat="rol in file_info.roles" >
+
+                                                <p ng-repeat="rol in file_info.roles">
                                                     @{{ rol.type }}
                                                 </p>
                                             </div>
                                             <div class="col-md-12">
                                                 <h5>Tags</h5>
-                                                <p ng-repeat="tag in file_info.tags" >
+
+                                                <p ng-repeat="tag in file_info.tags">
                                                     <span ng-if="tag.type">#</span>@{{ tag.type }}
                                                 </p>
                                             </div>
@@ -154,67 +158,68 @@
                             Overzicht met nieuwe vrijwilligers
                         </div>
                         <div class="panel-body" ng-controller="Dashboard">
-                    <div class="container col-md-12" ng-controller="Managing_users">
+                            <div class="container col-md-12" ng-controller="Managing_users">
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                @foreach($projects as $project)
-                                    <p>{{ $project->name }} op {{ $project->start }}</p>
-                                @endforeach
-                            </div>
-                            <div class="col-md-12" ng-init="get_inactive_users()">
-                                                                {{--
-                                @foreach($inactive_users as $inactive_user)
-                                <div class="row user" ng-init="get_inactive_users()">
-                                    <div class="col-md-8">
-                                        <a href="{{url('/profiel/'.$inactive_user->id)}}">{{$inactive_user->first_name}} {{$inactive_user->last_name}}</a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @foreach($projects as $project)
+                                            <p>{{ $project->name }} op {{ $project->start }}</p>
+                                        @endforeach
                                     </div>
-                                    <div class="col-md-4">
-                                        <a href="#" ng-click="accept_user()">accepteer</a>
-                                    </div>
-                                </div>
-                                @endforeach
-                                --}}
+                                    <div class="col-md-12" ng-init="get_inactive_users()">
+                                        {{--
+        @foreach($inactive_users as $inactive_user)
+        <div class="row user" ng-init="get_inactive_users()">
+            <div class="col-md-8">
+                <a href="{{url('/profiel/'.$inactive_user->id)}}">{{$inactive_user->first_name}} {{$inactive_user->last_name}}</a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" ng-click="accept_user()">accepteer</a>
+            </div>
+        </div>
+        @endforeach
+        --}}
 
-                                <div ng-if="inactive_users.length == 0">
-                                    Er hebben zich momenteel geen nieuwe vrijwilligers aangemeld.
-                                </div>
-
-                                <div class="row user" ng-repeat="user in inactive_users">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <a href="{{url('/profiel/')}}/@{{user.id}}">@{{user.first_name}} @{{user.last_name}}</a>
+                                        <div ng-if="inactive_users.length == 0">
+                                            Er hebben zich momenteel geen nieuwe vrijwilligers aangemeld.
                                         </div>
-                                        <div class="col-md-4">
-                                            <a class="btn btn-primary" type="button" data-toggle="collapse"
-                                               data-target="#add_roles@{{user.id}}">accepteer</a>
-                                        </div>
-                                    </div>
-                                    <div id="add_roles@{{user.id}}" class="collapse">
-                                        <div class="col-md-12">
-                                            <div  class="col-md-12">   @foreach($roles as $role)
-                                                    <input id="role{{$role->id}}" type="checkbox"
-                                                           ng-model="selected[{{$role->id}}]"
-                                                           value="test"><label
-                                                            for="role{{$role->id}}">{{$role->type}}</label>
-                                                @endforeach </div>
-                                            <div  class="col-md-12">
-                                                <a href="#" ng-click="accept_user($event, user.id, selected)">accepteer</a>
+
+                                        <div class="row user" ng-repeat="user in inactive_users">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <a href="{{url('/profiel/')}}/@{{user.id}}">@{{user.first_name}} @{{user.last_name}}</a>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a class="btn btn-primary btn-margin-custom" type="button"
+                                                       data-toggle="collapse"
+                                                       data-target="#add_roles@{{user.id}}">accepteer</a>
+                                                </div>
                                             </div>
+                                            <div id="add_roles@{{user.id}}" class="collapse">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-12">   @foreach($roles as $role)
+                                                            <input id="role{{$role->id}}" type="checkbox"
+                                                                   ng-model="selected[{{$role->id}}]"
+                                                                   value="test"><label
+                                                                    for="role{{$role->id}}">{{$role->type}}</label>
+                                                        @endforeach </div>
+                                                    <div class="col-md-12 text-right">
+                                                        <a href="#" ng-click="accept_user($event, user.id, selected)">accepteer</a>
+                                                    </div>
 
 
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
-                @endif
             </div>
         </div>
-                    </div>
-            </div>
-        </div>
+    </div>
     </div>
 
 @endsection
