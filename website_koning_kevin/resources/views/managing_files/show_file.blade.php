@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="col-md-12 carr-glyph">
 
-                                        <a href="@{{ file.url}}"><span
+                                        <a href="{{url('/')}}@{{ file.url}}"><span
                                                     class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                         </a>
                                         <a href="#"><span
@@ -101,7 +101,7 @@
 
                                 <div class="col-md-3">
                                     <div class="pull-right">
-                                        <a href="@{{ file.url}}"><span
+                                        <a href="{{url('/')}}@{{ file.url}}"><span
                                                     class=" glyphicon glyphicon-download-alt"></span>
                                         </a>
                                         <a href="#"><span
