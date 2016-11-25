@@ -1,0 +1,17 @@
+.profile-info-image {
+    width: 150px;
+    position: relative;
+    left: 50%;
+    margin-left: -75px;
+    -webkit-clip-path: circle(40% at 50% 50%);
+}
+
+.profile-info-header h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.profile-info-header {
+
+    height: 150px;
+}

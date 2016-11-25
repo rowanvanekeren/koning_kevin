@@ -68,5 +68,11 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         /*var myElement = document.querySelector(".user");
         myElement.style.backgroundColor = "#D93600";*/
     }
+    
+    
+    $scope.accept_user = function ($event, user_id, selected) {
+        
+        //
+    }
 
 });

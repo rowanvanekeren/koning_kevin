@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('/css/managing-files.css')}}">
 @stop
 @section('content')
-    <div style="margin-top: 80px;" class="container" ng-controller="Managing_file">
+    <div {{--style="margin-top: 80px;"--}} class="container" ng-controller="Managing_file">
         <div class="panel panel-default">
             <div class="panel-heading text-center"><strong>@{{ title }}</strong></div>
 

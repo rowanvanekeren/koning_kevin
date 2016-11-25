@@ -1,6 +1,14 @@
 *{
     font-family: "Myriad Pro", "tahoma","century gothic","Arial","verdana",sans-serif ;
 }
+
+/*content{
+    background-image: url('../images/home_bg/jeugdkamp-bg.jpg') ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}*/
 .panel{
     border-radius: 0;
     border: 0;
@@ -87,3 +95,11 @@ nav a:hover{
     -webkit-clip-path: circle(40% at 50% 50%);
     overflow:hidden;
 }
+
+.btn-margin-custom{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    float: right;
+}
+

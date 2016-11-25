@@ -6,11 +6,13 @@
         <div class="row">
             
             <div class="col-md-12">
-                
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><strong>INLOGGEN</strong></div>
+                    <div class="panel-body">
                 
                 {{Form::open(array('url'=>'/add_project','files' => true))}}
                 <div class="col-md-6">
-                    
+
                     <div class="form-group{{ $errors->has('name') ? 'has-error' : '' }}">
                         <div class="col-md-12">
                             {{ Form::label('name', 'Projectnaam:', array('class' => 'control-label col-md-12'))}}
@@ -162,13 +164,16 @@
                 
 
             <div class="col-md-12">
-                {{Form::submit('Project toevoegen')}}
+                {{Form::submit('Project toevoegen', array('class' => 'btn btn-primary btn-margin-custom'))}}
             </div>
 
             {{Form::close()}}
-                
+    </div>
+                    </div>
+                </div>
+
             </div>
-            
+
         </div>
         
     </div>

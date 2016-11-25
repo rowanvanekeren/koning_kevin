@@ -12,11 +12,11 @@ class ApiController extends Controller
 {
     //
     
-    
-    
-    public function test() {
-        return response()->json(['name' => 'Abigail', 'state' => 'CA']);
-        //Response::json($result)->setCallback(Input::get('callback'));
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('is_active');
+        $this->middleware('is_admin');
     }
     
     public function get_inactive_users() {
