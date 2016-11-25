@@ -58,10 +58,10 @@
                                         <a   href="@{{ file.url}}"><span
                                                     class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                         </a>
-                                        <a href="#"><span
+                                {{--        <a href="#"><span
                                                     class="col-md-1 glyphicon glyphicon-pencil"></span></a>
                                         <a href="#"><span ng-click="delete_document(file.id)"
-                                                          class="col-md-1 glyphicon glyphicon-trash"></span></a>
+                                                          class="col-md-1 glyphicon glyphicon-trash"></span></a>--}}
                                     </div>
                                 </div>
                             </uib-accordion>
