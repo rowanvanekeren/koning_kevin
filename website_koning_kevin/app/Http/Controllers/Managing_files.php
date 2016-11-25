@@ -8,6 +8,7 @@ Use App\Document;
 Use App\Role;
 use Illuminate\Support\Facades\Session;
 use App\Tag;
+use Response;
 
 
 class Managing_files extends Controller
@@ -96,8 +97,18 @@ class Managing_files extends Controller
         return redirect('/add_file');
     }
     public function download($file_name){
-        $base_path = base_path();
-        $full_patch_and_name = $base_path.'/public/files/'.$file_name;
-        return response()->download($full_patch_and_name);
+
+        $filename = $file_name;
+        $path =base_path().'\public\files\\'.$filename;
+
+        return Response::make(file_get_contents($path), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$filename.'"'
+        ]);
+
+
+//        $base_path = base_path();
+//        $full_patch_and_name = $base_path.'/public/files/'.$file_name;
+//        return response()->download($full_patch_and_name);
     }
 }
