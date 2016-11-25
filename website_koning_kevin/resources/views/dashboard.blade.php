@@ -148,7 +148,7 @@
             </div>
             <div class="col-md-6">
                 @if(Auth::user()->is_admin)
-                    <div class="container" ng-controller="Managing_users">
+                    <div class="container col-md-12" ng-controller="Managing_users">
 
                         <div class="row">
                             <div class="col-md-12">
