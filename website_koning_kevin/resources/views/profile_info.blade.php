@@ -8,10 +8,8 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading text-center"><strong>INLOGGEN</strong></div>
+                <div class="panel-heading text-center"><strong>Gebruikers informatie</strong></div>
                 <div class="panel-body">
-            <h1>Dashboard</h1>
-            <p>Profiel info</p>
             <div class="col-md-12  ">
                 <div class="col-md-12">
                     <img class="profile-info-image" src="{{asset('images/profile_pictures/1479247671anton CV foto.jpg' /*. Auth::user()->url*/ ) }}">
@@ -21,18 +19,30 @@
                 </div>
             </div>
             <div class="col-md-6">
+                <legend> Basis informatie</legend>
+                <div class="col-md-6 text-right">
+                    E-mail:<br>
+                    Adres:<br>
+                    Land:<br>
+                    Geboorte datum:<br>
+                    Geboorte plaats:<br>
+                    Werk:<br>
+                    functie<br>
 
-                {{$user->first_name}}
-                {{$user->last_name}}<br>
-                {{$user->email}}<br>
-                {{$user->address}}<br>
-                {{$user->country}}<br>
-                {{$user->birth_date}}<br>
-                {{$user->birth_place}}<br>
-                {{$user->job}}<br>
-                {{$user->job_function}}<br>
+                </div>
+                <div class="col-md-6">
+
+                        <strong> {{$user->email}}</strong><br>
+                            <strong>{{$user->address}}</strong><br>
+                                <strong>{{$user->country}}</strong><br>
+                                    <strong>{{$user->birth_date}}</strong><br>
+                                        <strong>{{$user->birth_place}}</strong><br>
+                                            <strong> {{$user->job}}</strong><br>
+                                                <strong>{{$user->job_function}}</strong><br>
+                </div>
             </div>
             <div class="col-md-6">
+                <legend> Administratieve gegevens</legend>
                 Adminstratieve gegevens -> checken of er al administratieve gegevens aan deze user gelinkt zijn
             </div>
             </div>
