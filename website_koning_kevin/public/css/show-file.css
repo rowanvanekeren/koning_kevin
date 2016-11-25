@@ -1,0 +1,41 @@
+@media only screen and (max-width : 767px) {
+
+
+
+.carr-glyph a {
+ font-size: 2em;
+
+
+}
+
+.carr-glyph span {
+
+    width: 32%;
+    text-align: center;
+}
+
+.carr-glyph{
+margin-bottom: 15px;
+}
+
+.carr-document{
+    width: 100%;
+    margin-bottom: 15px;
+    border: 0px solid #542657;
+
+
+
+}
+
+.carr-document p{
+    color:black;
+    font-size: 1.5em;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding: 15px;
+    text-align: center;
+
+}
+
+}

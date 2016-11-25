@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{url('/css/show-file.css')}}">
+@stop
 @section('content')
 
 
@@ -54,12 +57,17 @@
                                     </uib-accordion-heading>
                                     <div ng-repeat="file in category.files.all"
                                          class="row file_row_background@{{file.priority}}">
+
+                                       <div class="col-md-12 carr-document">
                                         <p uib-popover="@{{file.description}}"
                                            popover-trigger="'mouseenter'"
                                            popover-placement="bottom-left" class="col-md-9" data-toggle="modal"
                                            data-target="#myModal" ng-click="ang_modal(file.id)">
                                             @{{file.title}}
                                         </p>
+                                        </div>
+                                        <div class="col-md-12 carr-glyph">
+
                                         <a href="@{{ file.url}}"><span
                                                     class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                         </a>
@@ -67,6 +75,9 @@
                                                     class="col-md-1 glyphicon glyphicon-pencil"></span></a>
                                         <a href="#"><span ng-click="delete_document(file.id)"
                                                           class="col-md-1 glyphicon glyphicon-trash"></span></a>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </uib-accordion>
