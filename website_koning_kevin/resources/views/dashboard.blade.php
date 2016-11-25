@@ -155,8 +155,14 @@
                     </div>
                 </div>
             </div>
+@endif
             <div class="col-md-6">
                 @if(Auth::user()->is_admin)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Overzicht met nieuwe vrijwilligers
+                        </div>
+                        <div class="panel-body" ng-controller="Dashboard">
                     <div class="container col-md-12" ng-controller="Managing_users">
 
                         <div class="row">
@@ -166,8 +172,7 @@
                                 @endforeach
                             </div>
                             <div class="col-md-12" ng-init="get_inactive_users()">
-                                <h3>Overzicht met nieuwe vrijwilligers</h3>
-                                {{--
+                                                                {{--
                                 @foreach($inactive_users as $inactive_user)
                                 <div class="row user" ng-init="get_inactive_users()">
                                     <div class="col-md-6">
@@ -193,14 +198,15 @@
                                             <a href="{{url('/profiel/')}}/@{{user.id}}">@{{user.first_name}} @{{user.last_name}}</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <a class="btn btn-primary" type="button" data-toggle="collapse"
+                                            <a class="btn btn-primary btn-margin-custom" type="button" data-toggle="collapse"
                                                data-target="#add_roles@{{user.id}}">Accepteer</a>
-                                            <a class="btn btn-primary" type="button" data-toggle="collapse"
+                                            <a class="btn btn-primary btn-margin-custom" type="button" data-toggle="collapse"
                                                data-target="#confirmation@{{user.id}}">Weiger</a>
                                         </div>
                                     </div>
                                     <div id="add_roles@{{user.id}}" class="collapse">
                                         <div class="col-md-12">
+
                                             @foreach($roles as $role)
                                                 <input id="role{{$role->id}}" type="checkbox"
                                                        ng-model="selected[{{$role->id}}]"
@@ -214,6 +220,7 @@
                                         <div class="col-md-12">
                                             Zeker dat je deze vrijwilliger wil weigeren?
                                             <a href="#" ng-click="decline_user($event, user.id)">Ja, weiger</a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -223,7 +230,10 @@
                 @endif
             </div>
         </div>
-        @endif
+
+                    </div>
+            </div>
+        </div>
     </div>
 
 @endsection
