@@ -55,7 +55,7 @@
                                            data-target="#myModal" ng-click="ang_modal(file.id)">
                                             @{{file.title}}
                                         </p>
-                                        <a   href="./@{{ file.url}}"><span
+                                        <a   href="{{url('/')}}@{{file.url}}"><span
                                                     class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                         </a>
                                 {{--        <a href="#"><span
