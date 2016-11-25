@@ -12,7 +12,7 @@
                 <div class="panel-body">
             <div class="col-md-12  ">
                 <div class="col-md-12">
-                    <img class="profile-info-image" src="{{asset('images/profile_pictures/1479247671anton CV foto.jpg' /*. Auth::user()->url*/ ) }}">
+                    <img class="profile-info-image" src="{{asset('images/profile_pictures/'. $user->url ) }}">
                 </div>
                 <div class="col-md-12 profile-info-header">
                     <h1 class="">{{$user->first_name}} {{$user->last_name}}</h1>
