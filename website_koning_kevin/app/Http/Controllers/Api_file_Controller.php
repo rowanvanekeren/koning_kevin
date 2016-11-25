@@ -16,7 +16,7 @@ class Api_file_Controller extends Controller
     {
         $this->middleware('auth');
         $this->middleware('is_active');
-        $this->middleware('is_admin');
+        $this->middleware('is_admin',['only' => 'delete_file']);
 //        ['except' => 'get_all_files']
     }
 
