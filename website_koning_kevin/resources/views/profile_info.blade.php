@@ -4,6 +4,7 @@
 @stop
 @section('content')
 
+
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -13,7 +14,7 @@
                         <div class="col-md-12  ">
                             <div class="col-md-12">
                                 <img class="profile-info-image"
-                                     src="{{asset('images/profile_pictures/1479247671anton CV foto.jpg' /*. Auth::user()->url*/ ) }}">
+                                     src="{{asset('images/profile_pictures/'. Auth::user()->url ) }}">
                             </div>
                             <div class="col-md-12 profile-info-header">
                                 <h1 class="">{{$user->first_name}} {{$user->last_name}}</h1>
@@ -105,28 +106,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{--            <div class="col-md-6">
 
-                                        <div class="col-md-6 text-right">
-                                            E-mail:<br>
-                                            Adres:<br>
-                                            Land:<br>
-                                            Geboorte datum:<br>
-                                            Geboorte plaats:<br>
-                                            Werk:<br>
-                                            functie<br>
-
-                                        </div>
-
-                                                <strong> {{$user->email}}</strong><br>
-                                                <strong>{{$user->address}}</strong><br>
-                                                <strong>{{$user->country}}</strong><br>
-                                                <strong>{{$user->birth_date}}</strong><br>
-                                                <strong>{{$user->birth_place}}</strong><br>
-                                                <strong> {{$user->job}}</strong><br>
-                                                <strong>{{$user->job_function}}</strong><br>
-                                        </div>
-                                    </div>--}}
                         <div class="col-md-6">
                             <legend> Administratieve gegevens</legend>
                             <div class="col-md-12">
