@@ -70,9 +70,30 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     }
     
     
-    $scope.accept_user = function ($event, user_id, selected) {
+    $scope.decline_user = function ($event, user_id) {
         
-        //
+        var selected_user = $event.currentTarget;
+        console.log(selected_user);
+        //turn element red
+        selected_user.style.backgroundColor = "#dda399";
+        /*
+        $http.post('./api/decline_user', 
+            {
+            id: user_id,
+            active: 1
+            })
+            .success(function(response) {
+                console.log(response.user_id);
+            })
+            .error(function(response) {
+            console.log(response);
+            }); 
+        
+        //after 0.5 second, remove user from inactive list
+        setTimeout(function(){ 
+            $scope.get_inactive_users(); 
+        }, 500);
+        */
     }
 
 });
