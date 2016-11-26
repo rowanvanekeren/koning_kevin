@@ -25,10 +25,12 @@
                                     padding-top: 3%;
                                     background-color: #fff;
                                 }
+
                                 .file_row_background1 {
                                     padding-top: 3%;
                                     background-color: lightcyan;
                                 }
+
                                 .file_row_background2 {
                                     padding-top: 3%;
                                     background-color: lightsalmon;
@@ -56,10 +58,13 @@
                                     <div ng-repeat="file in files"
                                          class="row file_row_background@{{file.priority}}">
 
+
+                                        {{--uib-popover="@{{file.description}}"--}}
+                                        {{--popover-trigger="'mouseenter'"--}}
+                                        {{--popover-placement="bottom-left"--}}
+
                                         <div class="col-md-12 carr-document">
-                                            <p uib-popover="@{{file.description}}"
-                                               popover-trigger="'mouseenter'"
-                                               popover-placement="bottom-left" class="col-md-9" data-toggle="modal"
+                                            <p  class="col-md-9" data-toggle="modal"
                                                data-target="#myModal" ng-click="ang_modal(file.id)">
                                                 @{{file.title}}
                                             </p>
@@ -87,16 +92,46 @@
                             Zoeken
                         </div>
                         <div class="panel-body">
-                            {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"query[queryBy]"))}}
-                            {{Form::select('category', array('$'=>'alles','title'=>'Titel','description'=>'Beschrijving','roles.type'=>'Rollen',
-                            'categories.type'=>'Categorieen','tags.type'=>'Tag'),
-                            '0',array('class' => 'form-control','ng-model'=>'queryBy','ng-click'=>'query=""'))}}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group" ng-click="query=''">
+                                        {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"query[queryBy]"))}}
+                                        <span class="input-group-btn">
+                               <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+                                   Uitgebreid zoeken
+                               </button>
+                            </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div uib-collapse="isCollapsed" ng-click="query=''">
+                                    <div class="col-md-6">
+                                        {{Form::text('category', old('category'),array('class'=>'form-control', 'placeholder'=>'Categorieen', 'ng-model'=>"query.categories.type"))}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{Form::text('role', old('role'),array('class'=>'form-control', 'placeholder'=>'Rollen', 'ng-model'=>"query.roles.type"))}}
+                                    </div>
+                                    {{--<div class="col-md-4">--}}
+                                        {{--{{Form::text('tags', old('tags'),array('class'=>'form-control', 'placeholder'=>'tags', 'ng-model'=>"query.tags.type"))}}--}}
+                                    {{--</div>--}}
+
+                                </div>
+                            </div>
+
+
+                            {{--{{Form::select('category', array('$'=>'alles','title'=>'Titel','description'=>'Beschrijving','roles.type'=>'Rollen',--}}
+                            {{--'categories.type'=>'Categorieen','tags.type'=>'Tag'),--}}
+                            {{--'0',array('class' => 'form-control','ng-model'=>'queryBy','ng-click'=>'query=""'))}}--}}
                             {{--er voord gelimiteerde antaal bestanden getond maar als je zoekt gaan andere getoond worden--}}
                             <div class="row carr-document "
                                  ng-repeat="file in search_files|filter:query ">
 
-                                <p uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"
-                                   popover-placement="bottom-left" class="col-md-9" ng-click="ang_modal(file.id)"
+                                {{--uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"--}}
+                                {{--popover-placement="bottom-left"--}}
+                                <p  class="col-md-9" ng-click="ang_modal(file.id)"
                                    data-toggle="modal"
                                    data-target="#myModal">@{{file.title}}</p>
 
