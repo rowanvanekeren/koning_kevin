@@ -19,6 +19,7 @@ angular.module("myapp").controller("Managing_file", function ($scope, $http) {
 });
 
 angular.module("myapp").controller("Show_file", function ($scope, $http) {
+    $scope.queryBy='$';
     $scope.files;
     $scope.message;
     $scope.file;

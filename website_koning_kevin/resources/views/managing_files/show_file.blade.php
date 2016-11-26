@@ -87,10 +87,13 @@
                             Zoeken
                         </div>
                         <div class="panel-body">
-                            {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"searchText"))}}
+                            {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"query[queryBy]"))}}
+                            {{Form::select('category', array('$'=>'alles','title'=>'Titel','description'=>'Beschrijving','roles.type'=>'Rollen',
+                            'categories.type'=>'Categorieen','tags.type'=>'Tag'),
+                            '0',array('class' => 'form-control','ng-model'=>'queryBy','ng-click'=>'query=""'))}}
                             {{--er voord gelimiteerde antaal bestanden getond maar als je zoekt gaan andere getoond worden--}}
                             <div class="row carr-document "
-                                 ng-repeat="file in search_files|filter:searchText | limitTo:10">
+                                 ng-repeat="file in search_files|filter:query ">
 
                                 <p uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"
                                    popover-placement="bottom-left" class="col-md-9" ng-click="ang_modal(file.id)"
