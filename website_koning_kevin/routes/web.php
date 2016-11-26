@@ -48,6 +48,8 @@ Route::post('/api/delete_file','Api_file_Controller@delete_file');
 Route::get('/api/get_all_files_search','Api_file_Controller@get_all_files_search');
 Route::get('/api/file_info/{id}','Api_file_Controller@file_info');
 Route::get('/api/get_files_belongs_to_user','Api_file_Controller@get_files_belongs_to_user');
+Route::get('/api/get_categories','Api_file_Controller@get_categories');
+Route::get('/api/get_all_files_for_category/{id}','Api_file_Controller@get_all_files_for_category');
 
 
 //post

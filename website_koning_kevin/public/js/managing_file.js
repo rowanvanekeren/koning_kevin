@@ -24,7 +24,10 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.file;
     $scope.search_files;
     $scope.file_info;
-    get_all_files();
+    $scope.categories;
+    $scope.open = false;
+    $scope.oneAtATime = true;
+    get_categories();
     get_all_files_search();
 
     $scope.delete_document = function (document_id) {
@@ -49,7 +52,16 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
 
     function get_all_files() {
         $.getJSON("./api/get_all_files", function (data) {
+            console.log('get_all_files',data);
             $scope.files = data;
+            $scope.$apply();
+        });
+    }
+    function get_categories() {
+        $.getJSON("./api/get_categories", function (data) {
+            console.log('get_categories',data);
+
+            $scope.categories = data;
             $scope.$apply();
         });
     }
@@ -58,8 +70,16 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     function get_all_files_search() {
         $.getJSON("./api/get_all_files_search", function (data) {
             $scope.search_files = data;
+            console.log('get_all_files_search',data);
             $scope.$apply();
-            console.log($scope.search_files);
+        });
+    }
+
+    function get_all_files_for_category($id) {
+        $.getJSON("./api/get_all_files_for_category/"+$id, function (data) {
+            $scope.files = data;
+            console.log('get_all_files_for_category',data);
+            $scope.$apply();
         });
     }
 
@@ -73,6 +93,12 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
         });
 
     }
+    $scope.get_file_for_category = function ($id) {
+        $scope.files="";
+        get_all_files_for_category($id);
+    }
+
+
 
 
 });

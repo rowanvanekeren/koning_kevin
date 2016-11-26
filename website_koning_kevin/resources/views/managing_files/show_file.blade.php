@@ -7,11 +7,11 @@
 
     <div class="container-fluid" ng-controller="Show_file">
         <div class="row">
-         {{--   <h1 class="col-md-12">Documenten</h1>
-            <h3 class="col-md-12">Bij het zoeken: getypte woord wordt gezocht op categorieen, tags, rollen, ook als
-                woord in beschrijving voorkomt: verwijder mij na het stylen (-:</h3>
-            <h3 class="col-md-12">bij categorie: background worden weergegeven in bepalde kleur -> priority-> daar moet
-                nog iets op gevonden worden </h3>--}}
+            {{--   <h1 class="col-md-12">Documenten</h1>
+               <h3 class="col-md-12">Bij het zoeken: getypte woord wordt gezocht op categorieen, tags, rollen, ook als
+                   woord in beschrijving voorkomt: verwijder mij na het stylen (-:</h3>
+               <h3 class="col-md-12">bij categorie: background worden weergegeven in bepalde kleur -> priority-> daar moet
+                   nog iets op gevonden worden </h3>--}}
             @if(Auth::user()->is_admin)
                 <div class="col-md-6 ">
                     <div class="panel panel-default">
@@ -20,18 +20,15 @@
                             {{--Rowan -> om een prioriteid toe te voegen gebruik volgede code file_row_background@{{file.priority}}
                                         binnen het ng-repeat functie van angularjs 0->laag1 1->Gemiddelde 2->Hoog
                                         --}}
-
                             <style>
                                 .file_row_background0 {
                                     padding-top: 3%;
                                     background-color: #fff;
                                 }
-
                                 .file_row_background1 {
                                     padding-top: 3%;
                                     background-color: lightcyan;
                                 }
-
                                 .file_row_background2 {
                                     padding-top: 3%;
                                     background-color: lightsalmon;
@@ -50,32 +47,31 @@
                             </div>
                             <uib-accordion close-others="oneAtATime">
                                 <div uib-accordion-group class="panel-default" is-open="status.open"
-                                     ng-repeat="category in files">
+                                     ng-repeat="category in categories">
                                     <uib-accordion-heading>
-                                        @{{category.category.type}} <i class="pull-right glyphicon"
-                                                                       ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                        <span ng-click="get_file_for_category(category.id)">@{{category.type}}</span><i
+                                                class="pull-right glyphicon"
+                                                ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                                     </uib-accordion-heading>
-                                    <div ng-repeat="file in category.files.all"
+                                    <div ng-repeat="file in files"
                                          class="row file_row_background@{{file.priority}}">
 
-                                       <div class="col-md-12 carr-document">
-                                        <p uib-popover="@{{file.description}}"
-                                           popover-trigger="'mouseenter'"
-                                           popover-placement="bottom-left" class="col-md-9" data-toggle="modal"
-                                           data-target="#myModal" ng-click="ang_modal(file.id)">
-                                            @{{file.title}}
-                                        </p>
+                                        <div class="col-md-12 carr-document">
+                                            <p uib-popover="@{{file.description}}"
+                                               popover-trigger="'mouseenter'"
+                                               popover-placement="bottom-left" class="col-md-9" data-toggle="modal"
+                                               data-target="#myModal" ng-click="ang_modal(file.id)">
+                                                @{{file.title}}
+                                            </p>
                                         </div>
                                         <div class="col-md-12 carr-glyph">
-
-                                        <a href="{{url('/')}}@{{ file.url}}"><span
-                                                    class="col-md-1 glyphicon glyphicon-download-alt"></span>
-                                        </a>
-                                        <a href="#"><span
-                                                    class="col-md-1 glyphicon glyphicon-pencil"></span></a>
-                                        <a href="#"><span ng-click="delete_document(file.id)"
-                                                          class="col-md-1 glyphicon glyphicon-trash"></span></a>
-
+                                            <a href="{{url('/')}}@{{ file.url}}"><span
+                                                        class="col-md-1 glyphicon glyphicon-download-alt"></span>
+                                            </a>
+                                            <a href="#"><span
+                                                        class="col-md-1 glyphicon glyphicon-pencil"></span></a>
+                                            <a href="#"><span ng-click="delete_document(file.id)"
+                                                              class="col-md-1 glyphicon glyphicon-trash"></span></a>
                                         </div>
 
                                     </div>
@@ -93,11 +89,13 @@
                         <div class="panel-body">
                             {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"searchText"))}}
                             {{--er voord gelimiteerde antaal bestanden getond maar als je zoekt gaan andere getoond worden--}}
-                            <div class="row carr-document " ng-repeat="file in search_files|filter:searchText | limitTo:10">
+                            <div class="row carr-document "
+                                 ng-repeat="file in search_files|filter:searchText | limitTo:10">
 
-                                <p  uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"
-                                   popover-placement="bottom-left" class="col-md-9" ng-click="ang_modal(file.id)" data-toggle="modal"
-                                    data-target="#myModal">@{{file.title}}</p>
+                                <p uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"
+                                   popover-placement="bottom-left" class="col-md-9" ng-click="ang_modal(file.id)"
+                                   data-toggle="modal"
+                                   data-target="#myModal">@{{file.title}}</p>
 
                                 <div class="col-md-3">
                                     <div class="pull-right">
@@ -129,7 +127,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h5>Beschrijving</h5>
-                                    <p>@{{ file_info.file.title }}</p>
+                                    <p>@{{ file_info.file.description }}</p>
                                 </div>
                                 <div class="col-md-6">
                                     <h5>Categorieen</h5>
