@@ -58,7 +58,6 @@
                                     <div ng-repeat="file in files"
                                          class="row file_row_background@{{file.priority}}">
 
-
                                         {{--uib-popover="@{{file.description}}"--}}
                                         {{--popover-trigger="'mouseenter'"--}}
                                         {{--popover-placement="bottom-left"--}}
