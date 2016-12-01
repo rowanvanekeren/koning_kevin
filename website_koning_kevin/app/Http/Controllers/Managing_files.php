@@ -36,6 +36,7 @@ class Managing_files extends Controller
         return view('managing_files/add_file', ['roles' => $put_roles, 'categories' => $put_categories]);
     }
 
+
     public function show_file()
     {
         return view('managing_files/show_file');

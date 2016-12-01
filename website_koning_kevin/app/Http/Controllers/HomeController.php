@@ -8,6 +8,7 @@ use App\User;
 use App\Project;
 use App\Role;
 
+
 class HomeController extends Controller
 {
     /**
@@ -27,6 +28,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $projects = Project::where('active', 1)->get();

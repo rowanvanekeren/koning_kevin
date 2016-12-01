@@ -30,6 +30,7 @@ class CreatUserSeeder extends Seeder
                 'is_active' => 1,
                 'is_admin' => 1,
                 'email' => 'paraplu@list.ru',
+                'readme' => 1,
                 'password' => Hash::make(123456),
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),

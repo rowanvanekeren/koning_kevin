@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('is_admin')->default(0);
             $table->integer('administrative_details_id')->index()->nullable();
             $table->string('email')->unique();
+            $table->boolean('readme');
             $table->string('password');
             $table->softDeletes();
             $table->rememberToken();

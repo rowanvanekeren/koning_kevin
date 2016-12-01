@@ -77,14 +77,12 @@
                                             <a href="#"><span ng-click="delete_document(file.id)"
                                                               class="col-md-1 glyphicon glyphicon-trash"></span></a>
                                         </div>
-
                                     </div>
                                 </div>
                             </uib-accordion>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-6 ">
                     <div class="panel panel-default">
                         <div class="panel-heading">
