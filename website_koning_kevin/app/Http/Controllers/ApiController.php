@@ -47,13 +47,14 @@ class ApiController extends Controller
         
     }
     
+    /*
     public function activate_user(Request $request) {
         $user = User::find($request->id);
         $user->is_active = 2;
         $user->save();
         //return response succesfull
         return response()->json(['status' => "success", 'user_id' => $user->id]);
-    }
+    }*/
     
     
     
