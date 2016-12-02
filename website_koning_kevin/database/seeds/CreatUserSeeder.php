@@ -16,7 +16,7 @@ class CreatUserSeeder extends Seeder
 
         $user_row =
             array(
-                'first_name' => 'anotn',
+                'first_name' => 'Anton',
                 'last_name' => 'Patokin',
                 'address' => 'Amerecalei 7',
                 'city' => 'antwerpen',

@@ -27,6 +27,8 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.search_files;
     $scope.file_info;
     $scope.categories;
+    // $scope.query="";
+    // $scope.data.singleSelect="";
     $scope.open = false;
     $scope.oneAtATime = true;
     get_categories();
@@ -128,6 +130,21 @@ angular.module("myapp").controller("Dashboard", function ($scope, $http) {
         });
 
     }
+});
 
 
+angular.module("myapp").controller("Project_files", function ($scope, $http) {
+
+    $scope.files_project="";
+
+
+    $scope.ang_modal = function ($id) {
+        console.log($id);
+
+        $.getJSON("./api/file_info/"+$id, function (data) {
+            $scope.file_info = data;
+            $scope.$apply();
+            console.log($scope.file_info);
+        });
+    }
 });

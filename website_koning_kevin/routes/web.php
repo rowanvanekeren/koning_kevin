@@ -28,11 +28,14 @@ Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel/{id?}', 'HomeController@profile_info');
 Route::get('/add_project', 'ProjectController@show_add_project');
 Route::post('/add_project','ProjectController@add_project');
+Route::get('/edit_project/{id}', 'ProjectController@show_edit_project');
+Route::post('/edit_project/{id}', 'ProjectController@edit_project');
 Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 
 //Posts
 Route::post('/api/accept_user', 'ApiController@activate_user');
 Route::post('/api/add_role_to_user', 'ApiController@add_role_to_user');
+Route::post('/api/decline_user', 'ApiController@decline_user');
 
 
 
@@ -60,7 +63,7 @@ Route::get('/api/file_info/{id}','Api_file_Controller@file_info');
 Route::get('/api/get_files_belongs_to_user','Api_file_Controller@get_files_belongs_to_user');
 Route::get('/api/get_categories','Api_file_Controller@get_categories');
 Route::get('/api/get_all_files_for_category/{id}','Api_file_Controller@get_all_files_for_category');
-
+Route::get('/api/get_all_files_for_projects','Api_file_Controller@get_files_project');
 
 
 //post

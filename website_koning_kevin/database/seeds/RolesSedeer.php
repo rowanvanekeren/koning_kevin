@@ -13,9 +13,15 @@ class RolesSedeer extends Seeder
     {
         DB::table('roles')->delete();
 
-        $roles = array('Begeleiders trekvakanties', 'Beleidsvrijwilligers',
-            'Beschikbaar voor alle vrijwilligers', 'Coordinatoren',
-            'Instructeur', 'Koks', 'Nieuwe Vrijwilliger');
+        $roles = array('Algemene info','Begeleider', 'Coördinator',
+            'Koks', 'Stagiair animator',
+            'Stagiair hoofdanimator', 'Lid Algemene vergadering', 'Lid Stuurgroep',
+            'Lid Raad van bestuur','Instructeur Kadervorming','Instructeur Vorming op Aanvraag',
+            'Chauffeur','Logistiek','Promo','Projectvrijwilliger','Lid team internationaal',
+            'Lid vormingsteam','Lid eerstelijnsteam');
+
+
+
         foreach ($roles as $role) {
             $role_row =
                 array(

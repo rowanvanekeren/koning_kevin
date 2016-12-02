@@ -2,8 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd7164a9-b998-48cb-82e1-f812713f9927" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/public/files/1480668820ContractOpleidingsprogramma_2016_2017.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/public/files/1480675293ContractOpleidingsprogramma_2016_2017.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/projects/edit_project.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/database/migrations/2016_11_14_194453_create_project_user_table.php" afterPath="$PROJECT_DIR$/website_koning_kevin/database/migrations/2016_11_14_194453_create_project_user_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ApiController.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ApiController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/Api_file_Controller.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/Api_file_Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/database/seeds/CategorysSedeer.php" afterPath="$PROJECT_DIR$/website_koning_kevin/database/seeds/CategorysSedeer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/database/seeds/CreatUserSeeder.php" afterPath="$PROJECT_DIR$/website_koning_kevin/database/seeds/CreatUserSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/website_koning_kevin/database/seeds/DatabaseSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/Document.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/Document.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/Managing_files.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/Managing_files.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/database/seeds/RolesSedeer.php" afterPath="$PROJECT_DIR$/website_koning_kevin/database/seeds/RolesSedeer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/add_file.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/add_file.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/public/js/angular.js" afterPath="$PROJECT_DIR$/website_koning_kevin/public/js/angular.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/dashboard.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/dashboard.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/public/js/managing_file.js" afterPath="$PROJECT_DIR$/website_koning_kevin/public/js/managing_file.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/routes/web.php" afterPath="$PROJECT_DIR$/website_koning_kevin/routes/web.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="koning_kevin.iws" />
@@ -59,8 +77,8 @@
       <file leaf-file-name="angular.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website_koning_kevin/public/js/angular.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.352941">
-              <caret line="149" column="18" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="39" />
+            <state vertical-scroll-proportion="38.911766">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="27.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/dashboard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
-              <caret line="60" column="36" selection-start-line="60" selection-start-column="32" selection-end-line="63" selection-end-column="116" />
+              <caret line="64" column="36" selection-start-line="60" selection-start-column="32" selection-end-line="63" selection-end-column="116" />
               <folding />
             </state>
           </provider>
@@ -99,11 +117,11 @@
       <file leaf-file-name="add_project.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3">
-              <caret line="115" column="20" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
+            <state vertical-scroll-proportion="2.4333334">
+              <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
               <folding>
-                <marker date="1480675907200" expanded="true" signature="3722:4354" placeholder="..." />
-                <marker date="1480675907200" expanded="true" signature="3734:4269" placeholder="..." />
+                <marker date="1480676001239" expanded="true" signature="3722:4354" placeholder="..." />
+                <marker date="1480676001239" expanded="true" signature="3734:4269" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -113,7 +131,7 @@
         <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-24.75">
-              <caret line="135" column="58" selection-start-line="135" selection-start-column="58" selection-end-line="135" selection-end-column="58" />
+              <caret line="149" column="58" selection-start-line="149" selection-start-column="58" selection-end-line="149" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -187,8 +205,8 @@
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/profile_info.blade.php" />
-        <option value="$PROJECT_DIR$/website_koning_kevin/public/js/angular.js" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php" />
+        <option value="$PROJECT_DIR$/website_koning_kevin/public/js/angular.js" />
       </list>
     </option>
   </component>
@@ -1088,7 +1106,7 @@
     <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.75">
-          <caret line="135" column="58" selection-start-line="135" selection-start-column="58" selection-end-line="135" selection-end-column="58" />
+          <caret line="149" column="58" selection-start-line="149" selection-start-column="58" selection-end-line="149" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1103,8 +1121,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/dashboard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="36" selection-start-line="60" selection-start-column="32" selection-end-line="63" selection-end-column="116" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="64" column="36" selection-start-line="60" selection-start-column="32" selection-end-line="63" selection-end-column="116" />
           <folding />
         </state>
       </provider>
@@ -1128,26 +1146,26 @@
     <entry file="file://$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="27.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website_koning_kevin/public/js/angular.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.352941">
-          <caret line="149" column="18" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="39" />
+        <state vertical-scroll-proportion="38.911766">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3">
-          <caret line="115" column="20" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
+        <state vertical-scroll-proportion="2.4333334">
+          <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
           <folding>
-            <marker date="1480675907200" expanded="true" signature="3722:4354" placeholder="..." />
-            <marker date="1480675907200" expanded="true" signature="3734:4269" placeholder="..." />
+            <marker date="1480676001239" expanded="true" signature="3722:4354" placeholder="..." />
+            <marker date="1480676001239" expanded="true" signature="3734:4269" placeholder="..." />
           </folding>
         </state>
       </provider>
