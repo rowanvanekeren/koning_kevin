@@ -128,6 +128,21 @@ angular.module("myapp").controller("Dashboard", function ($scope, $http) {
         });
 
     }
+});
 
 
+angular.module("myapp").controller("Project_files", function ($scope, $http) {
+
+    $scope.files_project="";
+
+
+    $scope.ang_modal = function ($id) {
+        console.log($id);
+
+        $.getJSON("./api/file_info/"+$id, function (data) {
+            $scope.file_info = data;
+            $scope.$apply();
+            console.log($scope.file_info);
+        });
+    }
 });

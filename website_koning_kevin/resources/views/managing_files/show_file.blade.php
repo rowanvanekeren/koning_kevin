@@ -92,7 +92,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group" ng-click="query=''">
-                                        {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"query[queryBy]"))}}
+                                        {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"query"))}}
                                         <span class="input-group-btn">
                                <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
                                    Uitgebreid zoeken

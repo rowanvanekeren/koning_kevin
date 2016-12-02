@@ -82,7 +82,7 @@
                             @endif
                         </div>
                         <div class="col-md-6">
-                            {{ Form::label('role', 'Kies een categorie', array('class' => 'control-label col-md-12'))}}
+                            {{ Form::label('role', 'Kies een rol', array('class' => 'control-label col-md-12'))}}
                             {{Form::select('role', $roles, '0',array('class' => 'form-control'))}}
                             @if ($errors->has('role'))
                                 <span class="help-block">
