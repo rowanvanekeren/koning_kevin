@@ -11,7 +11,7 @@ class Readme extends Seeder
      */
     public function run()
     {
-        DB::table('readmes')->delete();
+        
 
             
 
