@@ -97,4 +97,8 @@ class Api_file_Controller extends Controller
         return $files;
     }
 
+    public function get_files_project(){
+        return array('success' => "get all file for projects");
+    }
+
 }

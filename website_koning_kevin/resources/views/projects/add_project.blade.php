@@ -157,6 +157,7 @@
                         Er zijn nog geen bestanden geselecteerd <br>
                         <a href="#">Kies bestanden</a>
                         @endif
+                        <button class="btn btn-primary">Bestanden toevoegen</button>
                     </div>
                     
                     
