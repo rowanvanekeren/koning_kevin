@@ -79,7 +79,7 @@
                     </div>
                     
                     
-                    <div class="col-md-6">
+          {{--          <div class="col-md-6">
                         <div class="form-group{{ $errors->has('startdate') ? 'has-error' : '' }}">
                             {{ Form::label('startdate', 'Startdatum:', array('class' => 'control-label col-md-12'))}}
                             {{Form::date('startdate', old('startdate'),array('class'=>'form-control col-md-3', 'required' => 'required'))}}
@@ -112,8 +112,43 @@
                                 </span>
                             @endif
                         </div>
-                    </div>
+                    </div>--}}
                     
+                    <div class="col-md-6" ng-controller="addProjectDateTimeStart">
+                        <div class="form-group">
+                            <label for="startdate" class="control-label col-md-12">Start datum:*</label>
+                        <p class="input-group">
+
+                            <input type="text" name="startdate" id="startdate" class="form-control" uib-datepicker-popup="@{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                 <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                        </p>
+
+                        <div class="col-md-6 col-md-offset-2">
+                            <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                            <input type="hidden" name="starttime" ng-model="mytime">
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" ng-controller="addProjectDateTimeEnd">
+
+                        <div class="form-group">
+                            <label for="enddate" class="control-label col-md-12">Eind datum:*</label>
+                        <p class="input-group">
+                            <input type="text" name="enddate" id="enddate" class="form-control" uib-datepicker-popup="@{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                 <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                        </p>
+
+                        <div class="col-md-6 col-md-offset-2">
+                            <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                            <input type="hidden" name="endtime" ng-model="mytime">
+                        </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group{{ $errors->has('active') ? 'has-error' : '' }}">
                             {{ Form::label('active', 'Zet dit project zichtbaar:', array('class' => 'control-label col-md-6'))}}
@@ -157,9 +192,10 @@
                         Er zijn nog geen bestanden geselecteerd <br>
                         <a href="#">Kies bestanden</a>
                         @endif
+
                     </div>
-                    
-                    
+
+
                 </div>
                 
 
