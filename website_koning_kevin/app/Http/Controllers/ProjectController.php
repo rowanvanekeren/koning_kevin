@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Project;
+use App\Document;
 
 class ProjectController extends Controller
 {
@@ -75,10 +76,23 @@ class ProjectController extends Controller
     }
     
     
-    public function show_edit_project($id) {
-        //
-        $project = Project::where('id', $id)->get();
-        
+    public function show_edit_project($id) {        
+        $project = Project::where('id', $id)->first();
+        return view('projects/edit_project', ['project' => $project]);
     }
     
+    public function edit_project($id) {
+        dd("Project to be edited : " . $id);
+    }
+    
+    
+    
 }
+
+
+
+
+
+
+
+
