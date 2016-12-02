@@ -39,7 +39,9 @@ class Managing_files extends Controller
 
     public function show_file()
     {
-        return view('managing_files/show_file');
+
+//        return Category::all()->pluck('type');
+        return view('managing_files/show_file')->with('roles',Role::all()->pluck('type'))->with('categories',Category::all()->pluck('type'));
     }
 
     public function add_file(Request $request)

@@ -27,6 +27,8 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.search_files;
     $scope.file_info;
     $scope.categories;
+    // $scope.query="";
+    // $scope.data.singleSelect="";
     $scope.open = false;
     $scope.oneAtATime = true;
     get_categories();

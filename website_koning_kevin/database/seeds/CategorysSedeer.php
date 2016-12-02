@@ -7,7 +7,20 @@ class CategorysSedeer extends Seeder
     public function run()
     {
         DB::table('categories')->delete();
-        $categorys = array('EHBT(Eerste hulp)','Voorbeeldbrieven','Lijst met eventuele locaties','av','RvB','Stuurgroep','Koken bij koning kevin');
+        $categorys = array('PRAKTISCH: Veiligheid en preventie',
+            'Voorbeeldbrieven',
+            'PRAKTISCH: Financiën en vergoeding',
+            'PRAKTISCH: Locaties en vervoer',
+            'PRAKTISCH: Materiaal',
+            'PRAKTISCH: Organisatie op het initiatief',
+            'INHOUDELIJK: Spel',
+            'INHOUDELIJK: Speelse Kunsteducatie',
+            'INHOUDELIJK: Begeleidershouding',
+            'INHOUDELIJK: Specifieke initiatieven',
+            'INHOUDELIJK: Organisatie op het initiatief',
+            'INHOUDELIJK: Cursusbundels', 'VRIJWILLIGERSINFO',
+            'BELEIDSINFO');
+
 
         foreach ($categorys as $category) {
             $category_rows =

@@ -63,7 +63,7 @@
                                         {{--popover-placement="bottom-left"--}}
 
                                         <div class="col-md-12 carr-document">
-                                            <p  class="col-md-9" data-toggle="modal"
+                                            <p class="col-md-9" data-toggle="modal"
                                                data-target="#myModal" ng-click="ang_modal(file.id)">
                                                 @{{file.title}}
                                             </p>
@@ -103,16 +103,30 @@
 
                             </div>
                             <div class="row">
-
-                                <div uib-collapse="isCollapsed" ng-click="query=''">
+                                {{--ng-click="query=''"--}}
+                                <div uib-collapse="isCollapsed">
                                     <div class="col-md-6">
-                                        {{Form::text('category', old('category'),array('class'=>'form-control', 'placeholder'=>'Categorieen', 'ng-model'=>"query.categories.type"))}}
+                                        {{--{{Form::select('role', $roles, '0',array('class' => 'form-control','ng-model'=>"query"))}}--}}
+                                        <select name="singleSelect" id="singleSelect" ng-model="query" class="form-control">
+                                            <option value="">---Selecteer je category---</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category}}">{{$category}}</option> <!-- interpolation -->
+                                            @endforeach
+                                        </select>
+                                        {{--{{Form::text('category', old('category'),array('class'=>'form-control', 'placeholder'=>'Categorieen', 'ng-model'=>"query.categories.type"))}}--}}
                                     </div>
                                     <div class="col-md-6">
-                                        {{Form::text('role', old('role'),array('class'=>'form-control', 'placeholder'=>'Rollen', 'ng-model'=>"query.roles.type"))}}
+                                        {{--{{Form::text('role', old('role'),array('class'=>'form-control', 'placeholder'=>'Rollen', 'ng-model'=>"query.roles.type"))}}--}}
+
+                                        <select name="singleSelect" id="singleSelect" ng-model="query" class="form-control">
+                                            <option value="">---Selecteer je category---</option>
+                                            @foreach($roles as $role)
+                                                <option value="{{$role}}">{{$role}}</option> <!-- interpolation -->
+                                            @endforeach
+                                        </select>
                                     </div>
                                     {{--<div class="col-md-4">--}}
-                                        {{--{{Form::text('tags', old('tags'),array('class'=>'form-control', 'placeholder'=>'tags', 'ng-model'=>"query.tags.type"))}}--}}
+                                    {{--{{Form::text('tags', old('tags'),array('class'=>'form-control', 'placeholder'=>'tags', 'ng-model'=>"query.tags.type"))}}--}}
                                     {{--</div>--}}
 
                                 </div>
@@ -128,7 +142,7 @@
 
                                 {{--uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"--}}
                                 {{--popover-placement="bottom-left"--}}
-                                <p  class="col-md-9" ng-click="ang_modal(file.id)"
+                                <p class="col-md-9" ng-click="ang_modal(file.id)"
                                    data-toggle="modal"
                                    data-target="#myModal">@{{file.title}}</p>
 
