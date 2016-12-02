@@ -16,7 +16,7 @@ class Api_file_Controller extends Controller
     {
         $this->middleware('auth');
         $this->middleware('is_active');
-        $this->middleware('is_admin',['only' => 'delete_file']);
+        $this->middleware('is_admin', ['only' => 'delete_file']);
 //        ['except' => 'get_all_files']
     }
 
@@ -36,6 +36,25 @@ class Api_file_Controller extends Controller
             }
         }
         return $file;
+    }
+
+    public function get_categories()
+    {
+        $file = [];
+        $get_all_categories = Category::all();
+        foreach ($get_all_categories as $key => $category) {
+            $files = $category->documents()->get();
+            if (count($files)) {
+                array_push($file, $category);
+            }
+        }
+        return $file;
+    }
+
+    public function get_all_files_for_category($id)
+    {
+        $category = Category::find($id);
+        return $category->documents()->get();
     }
 
 
@@ -69,11 +88,11 @@ class Api_file_Controller extends Controller
 
     public function get_files_belongs_to_user()
     {
-        $files=[];
+        $files = [];
         $get_roles = Auth::user()->roles()->get();
-        foreach($get_roles as $key=>$value){
-               $files[$key]['files']=$value->documents()->get() ;
-               $files[$key]['role']=$value;
+        foreach ($get_roles as $key => $value) {
+            $files[$key]['files'] = $value->documents()->get();
+            $files[$key]['role'] = $value;
         }
         return $files;
     }
