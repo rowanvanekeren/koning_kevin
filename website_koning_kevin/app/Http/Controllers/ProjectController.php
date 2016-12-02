@@ -74,4 +74,11 @@ class ProjectController extends Controller
         return redirect('/dashboard');
     }
     
+    
+    public function show_edit_project($id) {
+        //
+        $project = Project::where('id', $id)->get();
+        
+    }
+    
 }

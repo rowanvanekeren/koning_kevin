@@ -155,27 +155,8 @@
                             <div class="panel-body" ng-controller="Dashboard">
                                 <div class="container col-md-12" ng-controller="Managing_users">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            @foreach($projects as $project)
-                                                <p>{{ $project->name }} op {{ $project->start }}</p>
-                                            @endforeach
-                                        </div>
                                         <div class="col-md-12" ng-init="get_inactive_users()">
-                                            {{--
-            @foreach($inactive_users as $inactive_user)
-            <div class="row user" ng-init="get_inactive_users()">
-                <div class="col-md-6">
-                    <a href="{{url('/profiel/'.$inactive_user->id)}}">{{$inactive_user->first_name}} {{$inactive_user->last_name}}</a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" ng-click="accept_user()">accepteer</a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#">Verwijder</a>
-                </div>
-            </div>
-            @endforeach
-            --}}
+                                            
                                             <div ng-if="inactive_users.length == 0">
                                                 Er hebben zich momenteel geen nieuwe vrijwilligers aangemeld.
                                             </div>
@@ -215,6 +196,29 @@
                                 @endif
                             </div>
                         </div>
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Projectoverzicht
+                            </div>
+                            
+                            <div class="panel-body" ng-controller="Dashboard">
+                                <div class="row">
+                                        <div class="col-md-12">
+                                            @foreach($projects as $project)
+                                                <div class="col-md-8">{{ $project->name }} op {{ $project->start }}</div>
+                                                <div class="col-md-4">
+                                                    <a href="{{url('edit_project/'.$project->id)}}"><span class=" glyphicon glyphicon-pencil"></span></a>
+                                                    <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                                                </div>
+                                                
+                                            @endforeach
+                                        </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
                 </div>
             </div>
     </div>

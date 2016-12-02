@@ -28,11 +28,13 @@ Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel/{id?}', 'HomeController@profile_info');
 Route::get('/add_project', 'ProjectController@show_add_project');
 Route::post('/add_project','ProjectController@add_project');
+Route::get('/edit_project/{id}', 'ProjectController@show_edit_project');
 Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 
 //Posts
 Route::post('/api/accept_user', 'ApiController@activate_user');
 Route::post('/api/add_role_to_user', 'ApiController@add_role_to_user');
+Route::post('/api/decline_user', 'ApiController@decline_user');
 
 
 
