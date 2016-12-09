@@ -36,7 +36,7 @@ myApp.controller("addProjectDateTimeStart", function ($scope, $http) {
     };
 
     $scope.dateOptions = {
-        dateDisabled: disabled,
+        dateDisabled: ""/*disabled*/,
         formatYear: 'yy',
         maxDate: new Date(2020, 5, 22),
         minDate: new Date(),
@@ -70,8 +70,8 @@ myApp.controller("addProjectDateTimeStart", function ($scope, $http) {
         $scope.dt = "poep";
     };
 
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'MM/dd/yyyy'];
-    $scope.format = $scope.formats[4];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'MM/dd/yyyy','yyyy-MM-dd'];
+    $scope.format = $scope.formats[5];
     $scope.altInputFormats = ['M!/d!/yyyy'];
 
     $scope.popup1 = {
@@ -116,8 +116,8 @@ myApp.controller("addProjectDateTimeStart", function ($scope, $http) {
     }
 
 
-    $scope.mytime = new Date();
-
+    /*$scope.mytime = new Date();*/
+    $scope.startTime = "";
     $scope.hstep = 1;
     $scope.mstep = 1;
 
@@ -138,8 +138,22 @@ myApp.controller("addProjectDateTimeStart", function ($scope, $http) {
         $scope.mytime = d;
     };
 
-    $scope.changed = function () {
-        $log.log('Time changed to: ' + $scope.mytime);
+    $scope.changed = function (mytimesec) {
+    if(typeof mytimesec == 'undefined'){
+        mytimesec = new Date();
+    }
+
+
+        var hours = (mytimesec.getHours()<10?'0':'') + mytimesec.getHours();
+        var minutes = (mytimesec.getMinutes()<10?'0':'') + mytimesec.getMinutes();
+        var seconds = "00";
+
+        var combined = hours + ":" + minutes + ":" + seconds;
+
+        $scope.startTime = combined;
+
+        console.log(combined);
+     /*   $log.log('Time changed to: ' + $scope.mytime);*/
     };
 
     $scope.clear = function() {
@@ -165,7 +179,7 @@ myApp.controller("addProjectDateTimeEnd", function ($scope, $http) {
     };
 
     $scope.dateOptions = {
-        dateDisabled: disabled,
+        dateDisabled: ""/*disabled*/,
         formatYear: 'yy',
         maxDate: new Date(2020, 5, 22),
         minDate: new Date(),
@@ -199,8 +213,8 @@ myApp.controller("addProjectDateTimeEnd", function ($scope, $http) {
         $scope.dt = "poep";
     };
 
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'MM/dd/yyyy'];
-    $scope.format = $scope.formats[4];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'MM/dd/yyyy', 'yyyy-MM-dd'];
+    $scope.format = $scope.formats[5];
     $scope.altInputFormats = ['M!/d!/yyyy'];
 
     $scope.popup1 = {
@@ -245,8 +259,8 @@ myApp.controller("addProjectDateTimeEnd", function ($scope, $http) {
     }
 
 
-    $scope.mytime = new Date();
-
+    /*$scope.mytime = new Date();*/
+    $scope.endTime = "";
     $scope.hstep = 1;
     $scope.mstep = 1;
 
@@ -265,10 +279,26 @@ myApp.controller("addProjectDateTimeEnd", function ($scope, $http) {
         d.setHours( 14 );
         d.setMinutes( 0 );
         $scope.mytime = d;
+
     };
 
-    $scope.changed = function () {
-        $log.log('Time changed to: ' + $scope.mytime);
+    $scope.changed = function (mytimesec) {
+        if(typeof mytimesec == 'undefined'){
+            mytimesec = new Date();
+        }
+        var hours = (mytimesec.getHours()<10?'0':'') + mytimesec.getHours();
+        var minutes = (mytimesec.getMinutes()<10?'0':'') + mytimesec.getMinutes();
+        var seconds = "00";
+
+        var combined = hours + ":" + minutes + ":" + seconds;
+
+        $scope.endTime = combined;
+
+        console.log(combined);
+        /*   $log.log('Time changed to: ' + $scope.mytime);*/
+  /*      var str = $scope.mytime;
+        str.getMinutes();
+        console.log('Time changed to: ' + str);*/
     };
 
     $scope.clear = function() {
