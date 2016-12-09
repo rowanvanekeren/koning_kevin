@@ -23,5 +23,6 @@ class TagsSeeder extends Seeder
                 );
             DB::table('tags')->insert($tags_row);
         }
+        
     }
 }

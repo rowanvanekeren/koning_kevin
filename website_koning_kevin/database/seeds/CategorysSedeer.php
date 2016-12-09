@@ -8,7 +8,6 @@ class CategorysSedeer extends Seeder
     {
         DB::table('categories')->delete();
         $categorys = array('PRAKTISCH: Veiligheid en preventie',
-            'Voorbeeldbrieven',
             'PRAKTISCH: Financiën en vergoeding',
             'PRAKTISCH: Locaties en vervoer',
             'PRAKTISCH: Materiaal',
