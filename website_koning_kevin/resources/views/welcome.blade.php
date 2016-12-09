@@ -3,28 +3,61 @@
     <link rel="stylesheet" type="text/css" href="{{url('/css/home.css')}}">
 @stop
 @section('content')
+
+    <div ng-controller="Add_file_to_project">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+                ng-click="add_file()">Kies bestanden
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Kiez bestanden</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="home-bg-image"></div>
     <div class="container-fluid ">
 
-        <div  class="row  ">
+        <div class="row  ">
             <div class="col-md-12 home-margin-header home-header-gradient">
                 <img class="img-responsive center-block" src="{{url('/images/kk/logo.png')}}">
             </div>
         </div>
-{{--        <div id="home-login" class="container">
-            <div class="row home-margin-content">
-                <div class="col-md-12 col-md-offset-">
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading text-center"><strong>REGISTREREN</strong></div>
-                            <div class="panel-body">
-                            <h1>sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs</h1>
+        {{--        <div id="home-login" class="container">
+                    <div class="row home-margin-content">
+                        <div class="col-md-12 col-md-offset-">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center"><strong>REGISTREREN</strong></div>
+                                    <div class="panel-body">
+                                    <h1>sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs</h1>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>--}}
+                </div>--}}
         <div class="row home-margin-content">
             <div class="col-md-4 col-md-offset-1 text-center home-insp-text">
                 {{--<h3>@{{title}}</h3>--}}
