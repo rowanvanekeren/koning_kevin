@@ -116,7 +116,7 @@
                     
                     <div class="col-md-6" ng-controller="addProjectDateTimeStart">
                         <div class="form-group">
-                            <label for="startdate" class="control-label col-md-12">Start datum:*</label>
+                            <label for="startdate" class="control-label col-md-12">Start datum:</label>
                         <p class="input-group">
 
                             <input type="text" name="startdate" id="startdate" class="form-control" uib-datepicker-popup="@{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
@@ -126,15 +126,16 @@
                         </p>
 
                         <div class="col-md-6 col-md-offset-2">
-                            <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-                            <input type="hidden" name="starttime" ng-model="mytime">
+                            <div uib-timepicker ng-model="mytime" ng-change="changed(mytime)" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                            <input type="text" name="starttime" ng-model="startTime">
                         </div>
                         </div>
                     </div>
+
                     <div class="col-md-6" ng-controller="addProjectDateTimeEnd">
 
                         <div class="form-group">
-                            <label for="enddate" class="control-label col-md-12">Eind datum:*</label>
+                            <label for="enddate" class="control-label col-md-12">Eind datum:</label>
                         <p class="input-group">
                             <input type="text" name="enddate" id="enddate" class="form-control" uib-datepicker-popup="@{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                                  <span class="input-group-btn">
@@ -144,7 +145,7 @@
 
                         <div class="col-md-6 col-md-offset-2">
                             <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-                            <input type="hidden" name="endtime" ng-model="mytime">
+                            <input type="hidden" name="endtime" value="@{{ mytime }}">
                         </div>
                         </div>
                     </div>

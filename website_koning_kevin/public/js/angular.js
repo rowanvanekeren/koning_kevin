@@ -138,8 +138,17 @@ myApp.controller("addProjectDateTimeStart", function ($scope, $http) {
         $scope.mytime = d;
     };
 
-    $scope.changed = function () {
-        $log.log('Time changed to: ' + $scope.mytime);
+    $scope.changed = function (mytimesec) {
+        var hours = (mytimesec.getHours()<10?'0':'') + mytimesec.getHours();
+        var minutes = (mytimesec.getMinutes()<10?'0':'') + mytimesec.getMinutes();
+        var seconds = "00";
+
+        var combined = hours + ":" + minutes + ":" + seconds;
+
+        $scope.startTime = combined;
+
+        console.log(combined);
+     /*   $log.log('Time changed to: ' + $scope.mytime);*/
     };
 
     $scope.clear = function() {
@@ -265,10 +274,14 @@ myApp.controller("addProjectDateTimeEnd", function ($scope, $http) {
         d.setHours( 14 );
         d.setMinutes( 0 );
         $scope.mytime = d;
+
     };
 
-    $scope.changed = function () {
-        $log.log('Time changed to: ' + $scope.mytime);
+    $scope.changed = function (mytimesec) {
+        console.log(mytimesec);
+        var str = $scope.mytime;
+        str.getMinutes();
+        console.log('Time changed to: ' + str);
     };
 
     $scope.clear = function() {
