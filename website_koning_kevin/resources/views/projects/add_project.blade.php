@@ -196,11 +196,7 @@
                         <button class="btn btn-primary">Bestanden toevoegen</button>
 
                     </div>
-
-
                 </div>
-                
-
             <div class="col-md-12">
                 {{Form::submit('Project toevoegen', array('class' => 'btn btn-primary btn-margin-custom'))}}
             </div>
