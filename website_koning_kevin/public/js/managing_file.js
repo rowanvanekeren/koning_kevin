@@ -150,16 +150,21 @@ angular.module("myapp").controller("Project_files", function ($scope, $http) {
 angular.module("myapp").controller("Add_file_to_project", function ($scope, $http) {
  console.log("hhhh");
     $scope.files = "";
-
-
+    $scope.selected_file=[];
     $scope.add_file = function () {
-        get_all_files();
+        get_all_files_search();
     }
+    
+    
+    $scope.select_file =function (id) {
 
-    function get_all_files() {
-        $.getJSON("./api/get_all_files", function (data) {
-            console.log('get_all_files', data);
+        selected_file.push(id)
+        console.log(selected_diles);
+    }
+    function get_all_files_search() {
+        $.getJSON("./api/get_all_files_search", function (data) {
             $scope.files = data;
+            console.log('get_all_files_search', data);
             $scope.$apply();
         });
     }
