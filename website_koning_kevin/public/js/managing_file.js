@@ -148,18 +148,27 @@ angular.module("myapp").controller("Project_files", function ($scope, $http) {
 
 
 angular.module("myapp").controller("Add_file_to_project", function ($scope, $http) {
- console.log("hhhh");
+    console.log("hhhh");
     $scope.files = "";
-    $scope.selected_file=[];
+    $scope.selected_file = new Array();
     $scope.add_file = function () {
         get_all_files_search();
     }
-    
-    
-    $scope.select_file =function (id) {
 
-        selected_file.push(id)
-        console.log(selected_diles);
+
+    $scope.select_file = function (id) {
+
+        console.log($scope.selected_file.indexOf(id));
+        var index =$scope.selected_file.indexOf(id);
+        if ( index == -1 ) {
+            console.log('add');
+            $scope.selected_file.push(id)
+            console.log($scope.selected_file);
+        } else {
+            $scope.selected_file.splice(index, 1)
+        }
+
+        // $scope.$apply();
     }
     function get_all_files_search() {
         $.getJSON("./api/get_all_files_search", function (data) {

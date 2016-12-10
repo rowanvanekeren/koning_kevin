@@ -207,7 +207,12 @@
 
 
                                 <div ng-controller="Add_file_to_project">
-                                    {{--<input type="text" name="document_id[]" ng-value="selected_diles">--}}
+                                    <div ng-if="selected_file.length > 0">
+                                        <div>@{{ selected_file.length }} bestanden geselecteerd</div>
+                                        {{--<input type="text" name="selected_file[]" ng-moedel="selected">--}}
+                                    </div>
+
+
                                     <!-- Trigger the modal with a button -->
                                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                             data-target="#myModal"
@@ -227,7 +232,7 @@
                                                 <div class="modal-body">
                                                     <div class="row" ng-repeat="file in files">
                                                         <div class="col-md-12">
-                                                            <input type="checkbox" ng-click="select_file(file.id)" value="">@{{ file.title }}
+                                                            <input type="checkbox" name="selected_file[]" ng-click="select_file(file.id)" ng-checked="selected_file.indexOf(file.id)>-1" >@{{ file.title }}
                                                             <span class="pull-right">@{{ file.categories[0].type }}</span>
                                                         </div>
 
