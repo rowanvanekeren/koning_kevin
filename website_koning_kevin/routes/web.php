@@ -27,6 +27,8 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel/{id?}', 'HomeController@profile_info');
 Route::post('/edit_profile', 'HomeController@edit_profile');
+Route::get('/project_info/{id}', 'HomeController@project_info');
+Route::get('/volunteer/{id}', 'HomeController@volunteer');
 Route::get('/add_project', 'ProjectController@show_add_project');
 Route::post('/add_project','ProjectController@add_project');
 Route::get('/edit_project/{id}', 'ProjectController@show_edit_project');

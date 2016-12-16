@@ -72,4 +72,18 @@ class HomeController extends Controller
         
         return redirect('/dashboard');
     }
+    
+    
+    public function project_info($id) {
+        $project = Project::where('id', $id)->first();
+        return view('project_info', ['project' => $project]);
+    }
+    
+    public function volunteer($id) {
+        $user = Auth::user();
+        $user->projects()->attach($id);
+        return redirect('/dashboard');
+    }
+    
+    
 }
