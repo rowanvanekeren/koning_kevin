@@ -1,3 +1,16 @@
+<?php
+
+$user_role_ids = [];
+foreach($user->roles as $role) {
+    //
+    array_push($user_role_ids, $role->id);
+    //var_dump($user_role_ids);
+}
+
+
+?>
+
+
 @extends('layouts.app')
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{url('/css/profile-info.css')}}">
@@ -138,6 +151,30 @@
                                     </span>
                                 @endif
                             </div>
+                            
+                            <legend>Rollen</legend>
+                            <div class="col-md-12">
+                                @if(!$user->roles->isEmpty())
+                                @foreach($user->roles as $role)
+                                <div>{{$role->type}}</div>
+                                @endforeach
+                                @else
+                                <div>Je hebt nog geen rollen toegewezen gekregen</div>
+                                @endif
+                            </div>
+                            
+                            @if(Auth::user()->is_admin)
+                            <legend>Rollen toevoegen aan deze persoon</legend>
+                            <div class="col-md-12">
+                                @foreach($roles as $role)
+                                <div>
+                                    <input type="checkbox" name="new_roles[]" id="new_role{{$role->id}}" value="{{$role->id}}">
+                                    <label for="new_role{{$role->id}}">{{$role->type}}</label>
+                                </div>
+                                @endforeach
+                            </div>
+                            @endif
+                            
                         </div>
                         <div class="col-md-12">
                             {{Form::submit('Aanpassen',array('class'=>'btn btn-primary btn-margin-custom') )}}

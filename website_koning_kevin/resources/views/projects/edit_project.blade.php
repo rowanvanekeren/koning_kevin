@@ -163,20 +163,6 @@
                     </div>
                     
                     
-                    <div class="col-md-12">
-                        <div>
-                            Aangemelde vrijwilligers:
-                        </div>
-                        <div>
-                            @foreach($project->users as $user)
-                            <div>
-                                {{$user->first_name}} {{$user->last_name}}
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    
-                    
                 </div>
                 
 
@@ -194,8 +180,15 @@
                         <div class="panel-heading text-center"><strong>VRIJWILLIGERS TOEVOEGEN</strong></div>
                         <div class="panel-body">
                             @foreach($project->users as $volunteer)
-                            <div>
-                                {{$volunteer->first_name}}
+                            <div class="col-md-12">
+                                <div class="col-md-6"><a href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a></div>
+                                <div class="col-md-2">
+                                    <select>
+                                        @foreach($volunteer->roles as $role)
+                                        <option>{{$role->type}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             @endforeach
                         </div>

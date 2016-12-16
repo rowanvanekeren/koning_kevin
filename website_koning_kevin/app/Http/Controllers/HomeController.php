@@ -44,9 +44,10 @@ class HomeController extends Controller
             $id = Auth::user()->id;
         }
         $user = User::find($id);
-        //dd($user);
-        //dd($user->administrative_details);
-        return view('profile_info', ['user' => $user]);
+        
+        $roles = Role::all();
+        
+        return view('profile_info', ['user' => $user, 'roles' => $roles]);
     }
     
     public function edit_profile(Request $request) {
