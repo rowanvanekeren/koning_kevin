@@ -38,7 +38,7 @@ class ProjectController extends Controller
             $active = 0;
         }
 
-        
+
 
 
         $this->validate($request, [

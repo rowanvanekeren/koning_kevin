@@ -22,17 +22,17 @@
                                         --}}
                             <style>
                                 .file_row_background0 {
-                                    padding-top: 3%;
+
                                     background-color: #fff;
                                 }
 
                                 .file_row_background1 {
-                                    padding-top: 3%;
+
                                     background-color: lightcyan;
                                 }
 
                                 .file_row_background2 {
-                                    padding-top: 3%;
+
                                     background-color: lightsalmon;
                                 }
 
@@ -62,21 +62,22 @@
                                         {{--popover-trigger="'mouseenter'"--}}
                                         {{--popover-placement="bottom-left"--}}
 
-                                        <div class="col-md-12 carr-document">
-                                            <p class="col-md-9" data-toggle="modal"
+                                        <div class="col-md-12 carr-document ">
+                                            <p class="col-md-9" style="padding:0; margin:0;" data-toggle="modal"
                                                data-target="#myModal" ng-click="ang_modal(file.id)">
                                                 @{{file.title}}
                                             </p>
+                                            <div class="carr-glyph glyph-desktop">
+                                                <a href="{{url('/')}}@{{ file.url}}"><span
+                                                            class="col-md-1 glyphicon glyphicon-download-alt"></span>
+                                                </a>
+                                                <a href="#"><span
+                                                            class="col-md-1 glyphicon glyphicon-pencil"></span></a>
+                                                <a href="#"><span ng-click="delete_document(file.id)"
+                                                                  class="col-md-1 glyphicon glyphicon-trash"></span></a>
+                                            </div>
                                         </div>
-                                        <div class="col-md-12 carr-glyph">
-                                            <a href="{{url('/')}}@{{ file.url}}"><span
-                                                        class="col-md-1 glyphicon glyphicon-download-alt"></span>
-                                            </a>
-                                            <a href="#"><span
-                                                        class="col-md-1 glyphicon glyphicon-pencil"></span></a>
-                                            <a href="#"><span ng-click="delete_document(file.id)"
-                                                              class="col-md-1 glyphicon glyphicon-trash"></span></a>
-                                        </div>
+
                                     </div>
                                 </div>
                             </uib-accordion>
@@ -146,8 +147,8 @@
                                    data-toggle="modal"
                                    data-target="#myModal">@{{file.title}}</p>
 
-                                <div class="col-md-3">
-                                    <div class="pull-right">
+                                <div class="col-md-3 ">
+                                    <div class="carr-glyph ">
                                         <a href="{{url('/')}}@{{ file.url}}"><span
                                                     class=" glyphicon glyphicon-download-alt"></span>
                                         </a>

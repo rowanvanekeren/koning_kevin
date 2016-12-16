@@ -193,7 +193,7 @@
 
 
                             <div class="col-md-12">
-                                @include('managing_files.add_unic_file_to_project')
+                                {{--@include('managing_files.add_unic_file_to_project')--}}
                                   <div ng-controller="Add_file_to_project">
                                     <div ng-if="selected_file.length > 0">
                                         {{--toon aantal geselecteerde bestanden--}}
@@ -233,7 +233,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                        Close
+                                                        Selecteer
                                                     </button>
                                                 </div>
                                             </div>
