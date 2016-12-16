@@ -7,7 +7,7 @@
             
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center"><strong>INLOGGEN</strong></div>
+                    <div class="panel-heading text-center"><strong>PROJECT BEWERKEN</strong></div>
                     <div class="panel-body">
                 
                 {{Form::open(array('url'=>'/edit_project','files' => true))}}
@@ -132,7 +132,7 @@
                 <div class="col-md-6">
                     
                     <div class="col-md-12">
-                        <img src="{{url('/images/project_pictures/'.$project->image)}}">
+                        <img src="{{url('/images/project_pictures/'.$project->image)}}" width="100%;">
                     </div>
                     
                     <div class="col-md-12">
@@ -187,7 +187,24 @@
             {{Form::close()}}
     </div>
                     </div>
+                    
+                    
+                    @if(!$project->users->isEmpty())
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center"><strong>VRIJWILLIGERS TOEVOEGEN</strong></div>
+                        <div class="panel-body">
+                            @foreach($project->users as $volunteer)
+                            <div>
+                                {{$volunteer->first_name}}
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
+                    
                 </div>
+                
+                
 
             </div>
 

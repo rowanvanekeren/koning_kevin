@@ -197,6 +197,7 @@
                             </div>
                         </div>
                         
+                        @if(Auth::user()->is_active)
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Projectoverzicht
@@ -218,6 +219,7 @@
                             </div>
                             
                         </div>
+                        @endif
                         
                 </div>
             </div>

@@ -27,6 +27,8 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel/{id?}', 'HomeController@profile_info');
 Route::post('/edit_profile', 'HomeController@edit_profile');
+Route::get('/project_info/{id}', 'HomeController@project_info');
+Route::get('/volunteer/{id}', 'HomeController@volunteer');
 Route::get('/add_project', 'ProjectController@show_add_project');
 Route::post('/add_project','ProjectController@add_project');
 Route::get('/edit_project/{id}', 'ProjectController@show_edit_project');
@@ -67,8 +69,10 @@ Route::get('/api/get_all_files_for_category/{id}','Api_file_Controller@get_all_f
 Route::get('/api/get_all_files_for_projects','Api_file_Controller@get_files_project');
 
 
+
 //post
 Route::post('/add_file','Managing_files@add_file');
+ROute::post('/unique/bestand/toevoegen','Managing_files@add_unique_file');
 
 //deze route gebruik ik om te experementeren
 Route::get('/test', function () {

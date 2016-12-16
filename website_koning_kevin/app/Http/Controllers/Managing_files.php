@@ -20,6 +20,9 @@ class Managing_files extends Controller
         $this->middleware('is_admin', ['except' => 'show_file']);
     }
 
+    public function add_unique_file(){
+        return 'okey';
+    }
     public function show_add_file()
     {
         $put_categories = [];

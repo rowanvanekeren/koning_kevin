@@ -14,7 +14,7 @@
                         <div class="col-md-12  ">
                             <div class="col-md-12">
                                 <img class="profile-info-image"
-                                     src="{{asset('images/profile_pictures/'. Auth::user()->url ) }}">
+                                     src="{{asset('images/profile_pictures/'. $user->url ) }}">
                             </div>
                             <div class="col-md-12 profile-info-header">
                                 <h1 class="">{{$user->first_name}} {{$user->last_name}}</h1>
@@ -121,7 +121,7 @@
                                 @endif
                             </div>
                             <div class="col-md-12">
-                                {{ Form::label('text', 'Rijksregisternummer (00.00.00-000.0)', array('class' => 'control-label col-md-12'))}}
+                                {{ Form::label('text', 'Rijksregisternummer (00.00.00-000.00)', array('class' => 'control-label col-md-12'))}}
                                 {{Form::text('national_insurance', $user->administrative_details->national_insurance_number,array('placeholder'=>'00.00.00-000.00', 'class'=>'form-control', 'pattern'=>'\\d{2}\.\\d{2}\\.\\d{2}-\\d{3}\\.\\d{2}'))}}
                                 @if ($errors->has('url'))
                                     <span class="help-block">

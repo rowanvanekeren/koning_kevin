@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->hasOne('App\AdministrativeDetail');
     }
     
+    public function projects() {
+        return $this->belongsToMany('App\Project');
+    }
+    
 }
 
 
