@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a5138fb-97a1-4998-965d-728e2abd60ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/public/images/profile_pictures/1481273570Sarah_Jehin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/public/files/1481273728briefing Koning Kevin.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/public/files/148127378214800753341111 (1).pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/public/files/14812792251479674253test_file_upload (1).pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/public/files/14812793271479681880test_file_upload.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website_koning_kevin/app/AdministrativeDetail.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/website_koning_kevin/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/HomeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/app/User.php" afterPath="$PROJECT_DIR$/website_koning_kevin/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/public/js/managing_file.js" afterPath="$PROJECT_DIR$/website_koning_kevin/public/js/managing_file.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/profile_info.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/profile_info.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/routes/web.php" afterPath="$PROJECT_DIR$/website_koning_kevin/routes/web.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/welcome.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/public/css/show-file.css" afterPath="$PROJECT_DIR$/website_koning_kevin/public/css/show-file.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php" afterPath="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php" />
     </list>
     <ignored path="koning_kevin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,16 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ApiController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -94,11 +71,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41587678">
-              <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+            <state vertical-scroll-proportion="-17.25">
+              <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_file.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.6285715">
+              <caret line="64" column="75" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="75" />
+              <folding>
+                <element signature="e#3612#3640#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show-file.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website_koning_kevin/public/css/show-file.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6625">
+              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -119,16 +118,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-14.25">
               <caret line="31" column="20" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="managing_users.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website_koning_kevin/public/js/managing_users.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -197,15 +186,15 @@
         <option value="$PROJECT_DIR$/website_koning_kevin/public/css/profile-info.css" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/website_koning_kevin/public/css/custom.css" />
-        <option value="$PROJECT_DIR$/website_koning_kevin/public/css/show-file.css" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/profile_info.blade.php" />
         <option value="$PROJECT_DIR$/website_koning_kevin/public/js/angular.js" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/website_koning_kevin/public/js/managing_file.js" />
         <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/projects/add_project.blade.php" />
         <option value="$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php" />
+        <option value="$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php" />
+        <option value="$PROJECT_DIR$/website_koning_kevin/public/css/show-file.css" />
       </list>
     </option>
   </component>
@@ -353,6 +342,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="managing_files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koning_kevin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koning_kevin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_koning_kevin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -412,6 +427,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koning_kevin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koning_kevin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website_koning_kevin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -788,8 +825,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website_koning_kevin/app/Http/Controllers/ProjectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41587678">
-          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+        <state vertical-scroll-proportion="-17.25">
+          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website_koning_kevin/resources/views/managing_files/show_file.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6285715">
+          <caret line="64" column="75" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="75" />
+          <folding>
+            <element signature="e#3612#3640#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website_koning_kevin/public/css/show-file.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6625">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
           <folding />
         </state>
       </provider>

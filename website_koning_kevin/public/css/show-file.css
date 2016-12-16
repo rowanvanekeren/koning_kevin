@@ -21,6 +21,7 @@ margin-bottom: 15px;
 .carr-document{
     width: 100%;
     margin-bottom: 15px;
+
     border: 0px solid #542657;
 
 
@@ -32,10 +33,26 @@ margin-bottom: 15px;
     font-size: 1.5em;
     width: 100%;
     margin: 0;
-    padding: 0;
-    padding: 15px;
+
+    padding: 15px!important;
     text-align: center;
 
 }
 
+}
+@media only screen and (min-width : 768px) {
+    .glyph-desktop {
+
+        float:right;
+        margin: 0;
+        padding: 0;
+    }
+
+    .carr-document {
+        color: black;
+
+        margin: 0;
+
+        padding: 10px !important;
+    }
 }
