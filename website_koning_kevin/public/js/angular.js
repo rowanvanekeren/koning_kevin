@@ -294,7 +294,7 @@ myApp.controller("addProjectDateTimeEnd", function ($scope, $http) {
 
         $scope.endTime = combined;
 
-        console.log(combined);
+        /*console.log( "end time = " + combined);*/
         /*   $log.log('Time changed to: ' + $scope.mytime);*/
   /*      var str = $scope.mytime;
         str.getMinutes();

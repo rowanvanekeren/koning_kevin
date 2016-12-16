@@ -38,8 +38,8 @@ class ProjectController extends Controller
             $active = 0;
         }
 
-        dd($request->startdate . " en " . $request->starttime);
-        $startTime =  date("H:i:s",$request->endtime);
+        
+
 
         $this->validate($request, [
                 'name' => 'required|max:255',
@@ -48,15 +48,15 @@ class ProjectController extends Controller
                 'city' => 'required|max:255',
                 'country' => 'required|max:255',
                 'image' => 'required|max:1000|mimes:jpeg,bmp,png',
-                'startdate' => 'required|date|after:today',
+              /*  'startdate' => 'required|date|after:today',
                 'enddate' => 'required|date|after:startdate',
                 'starttime' => 'required',
-                'endtime' => 'required',
+                'endtime' => 'required',*/
             ]);
 
         $start = $request->startdate . " " . $request->starttime;
         $end = $request->enddate . " " . $request->endtime;
-        
+
         $new_file_name = time() . $request->image->getClientOriginalName();
         $request->image->move(base_path() . '/public/images/project_pictures/', $new_file_name);
         
