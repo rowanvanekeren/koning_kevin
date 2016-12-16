@@ -37,7 +37,10 @@ class ProjectController extends Controller
         else {
             $active = 0;
         }
-        
+
+        dd($request->startdate . " en " . $request->starttime);
+        $startTime =  date("H:i:s",$request->endtime);
+
         $this->validate($request, [
                 'name' => 'required|max:255',
                 'description' => 'required|max:500',
@@ -50,7 +53,7 @@ class ProjectController extends Controller
                 'starttime' => 'required',
                 'endtime' => 'required',
             ]);
-        
+
         $start = $request->startdate . " " . $request->starttime;
         $end = $request->enddate . " " . $request->endtime;
         
