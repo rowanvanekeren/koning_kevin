@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorysSedeer::class);
         $this->call(RolesSedeer::class);
         $this->call(CreatUserSeeder::class);
-//        $this->call(CreatDocumentSeeder::class);
+        $this->call(CreatDocumentSeeder::class);
         $this->call(TagsSeeder::class);
       
     }

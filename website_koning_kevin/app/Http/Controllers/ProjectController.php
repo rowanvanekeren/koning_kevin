@@ -38,7 +38,7 @@ class ProjectController extends Controller
             $active = 0;
         }
 
-        dd($request->enddate . " en " . $request->endtime);
+        
 
 
         $this->validate($request, [

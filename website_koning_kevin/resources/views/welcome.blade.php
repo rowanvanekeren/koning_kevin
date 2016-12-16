@@ -3,28 +3,31 @@
     <link rel="stylesheet" type="text/css" href="{{url('/css/home.css')}}">
 @stop
 @section('content')
+
+
+
     <div class="home-bg-image"></div>
     <div class="container-fluid ">
 
-        <div  class="row  ">
+        <div class="row  ">
             <div class="col-md-12 home-margin-header home-header-gradient">
                 <img class="img-responsive center-block" src="{{url('/images/kk/logo.png')}}">
             </div>
         </div>
-{{--        <div id="home-login" class="container">
-            <div class="row home-margin-content">
-                <div class="col-md-12 col-md-offset-">
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading text-center"><strong>REGISTREREN</strong></div>
-                            <div class="panel-body">
-                            <h1>sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs</h1>
+        {{--        <div id="home-login" class="container">
+                    <div class="row home-margin-content">
+                        <div class="col-md-12 col-md-offset-">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center"><strong>REGISTREREN</strong></div>
+                                    <div class="panel-body">
+                                    <h1>sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafssdfasasdfasdfafs sdfasasdfasdfafs sdfasasdfasdfafs</h1>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>--}}
+                </div>--}}
         <div class="row home-margin-content">
             <div class="col-md-4 col-md-offset-1 text-center home-insp-text">
                 {{--<h3>@{{title}}</h3>--}}
