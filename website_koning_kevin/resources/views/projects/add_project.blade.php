@@ -127,7 +127,7 @@
 
                         <div class="col-md-6 col-md-offset-2">
                             <div uib-timepicker ng-model="startTime" ng-change="changed(startTime)" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-                            <input type="text" name="starttime" ng-model="startTime">
+                            <input type="hidden" name="starttime" ng-value="startTime">
                         </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
 
                         <div class="col-md-6 col-md-offset-2">
                             <div uib-timepicker ng-model="endTime" ng-change="changed(endTime)" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-                            <input type="hidden" name="endtime" ng-model="endTime">
+                            <input type="hidden" name="endtime" ng-value="endTime">
                         </div>
                         </div>
                     </div>
