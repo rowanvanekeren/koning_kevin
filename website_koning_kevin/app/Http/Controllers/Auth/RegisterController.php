@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\AdministrativeDetail;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -85,8 +86,7 @@ class RegisterController extends Controller
             if (in_array($data['url']->guessClientExtension(), $allowed_extensions)) {
                 
                 //create new file name
-                $new_file_name = time() . $data['name']."_".$data['last_name'];
-                
+                $new_file_name = time() . $data['name']."_".$data['last_name'] . "." . $data['url']->guessClientExtension();
                 $data['url']->move(base_path() . '/public/images/profile_pictures/', $new_file_name);
             }
             else {
@@ -96,8 +96,37 @@ class RegisterController extends Controller
         }
         
         
+        $user = new User([
+            'first_name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'last_name'=>$data['last_name'],
+            'url'=>$new_file_name,
+            'address'=>$data['address'],
+            'city'=>$data['city'],
+            'country'=>$data['country'],
+            'job'=>$data['job'],
+            'job_function'=>$data['job_function'],
+            'gender'=>$data['gender'],
+            'birth_date'=>$data['birth_date'],
+            'birth_place'=>$data['birth_place'],
+            'readme'=>$data['readme'],
+        ]);
         
+        $user->save();
         
+        $administrative_details = new AdministrativeDetail([
+            'bank_account_number' => null,
+            'national_insurance_number' => null,
+            'identity_number' => null,
+            'user_id'=> $user->id,
+        ]);
+        
+        $administrative_details->save();
+        
+        //return redirect('/home');
+        
+        /*
         return User::create([
             'first_name' => $data['name'],
             'email' => $data['email'],
@@ -114,7 +143,9 @@ class RegisterController extends Controller
             'birth_place'=>$data['birth_place'],
             'readme'=>$data['readme'],
             
-        ]);
+        ]);*/
+        
+        return $user;
 
 
 

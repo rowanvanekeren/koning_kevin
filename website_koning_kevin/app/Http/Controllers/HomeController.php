@@ -44,12 +44,13 @@ class HomeController extends Controller
             $id = Auth::user()->id;
         }
         $user = User::find($id);
+        //dd($user);
         //dd($user->administrative_details);
         return view('profile_info', ['user' => $user]);
     }
     
     public function edit_profile(Request $request) {
-        dd($request);
+        //dd($request);
         $user = User::find($request->user_id);
         
         $user->first_name = $request->first_name;
@@ -66,6 +67,9 @@ class HomeController extends Controller
         $user->administrative_details->national_insurance_number = $request->national_insurance;
         $user->administrative_details->identity_number = $request->identity;
         
+        $user->save();
+        $user->administrative_details->save();
         
+        return redirect('/dashboard');
     }
 }
