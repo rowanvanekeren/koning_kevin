@@ -37,5 +37,20 @@ class CreatUserSeeder extends Seeder
             );
         DB::table('users')->insert($user_row);
 
+        $pivot_tabele = array(
+            array(
+                'role_id' => DB::table('roles')
+                    ->where('type', '=', 'Algemene info')
+                    ->select('id')->first()->id,
+
+                'user_id' => DB::table('users')
+                    ->where('first_name', '=', 'Anton')
+                    ->select('id')->first()->id,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            )
+        );
+        DB::table('role_user')->insert($pivot_tabele);
+
     }
 }

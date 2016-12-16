@@ -69,8 +69,10 @@ Route::get('/api/get_all_files_for_category/{id}','Api_file_Controller@get_all_f
 Route::get('/api/get_all_files_for_projects','Api_file_Controller@get_files_project');
 
 
+
 //post
 Route::post('/add_file','Managing_files@add_file');
+ROute::post('/unique/bestand/toevoegen','Managing_files@add_unique_file');
 
 //deze route gebruik ik om te experementeren
 Route::get('/test', function () {
