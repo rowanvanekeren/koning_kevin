@@ -95,5 +95,35 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         }, 500);
         */
     }
+    
+    
+    /* edit project */
+    $scope.add_remove_user_to_project = function ($event, $id) {
+        $clicked = $($event.currentTarget);
+        $class = $clicked.attr('class');
+        console.log($id);
+        
+        //check which role was selected
+        console.log($(".role" + $id + " select option:selected").val());
+        //accept volunteer with the selected role (send project_id, role_id and user_id to api)
+        $http.post('../api/accept_user_for_project', 
+            {
+            project_id: '1',
+            user_id: $id,
+            role_id: 1
+            })
+            .success(function(response) {
+                console.log(response.user_id);
+            })
+            .error(function(response) {
+            console.log("error");
+            });
+        
+        
+    }
+    
+    
+    
+    
 
 });

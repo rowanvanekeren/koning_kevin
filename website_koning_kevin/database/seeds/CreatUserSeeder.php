@@ -63,7 +63,7 @@ class CreatUserSeeder extends Seeder
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
         );
-        DB::table('admninistrative_details')->insert($administrative_details);
+        DB::table('administrative_details')->insert($administrative_details);
 
     }
 }

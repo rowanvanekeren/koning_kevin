@@ -39,6 +39,7 @@ Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 Route::post('/api/accept_user', 'ApiController@activate_user');
 Route::post('/api/add_role_to_user', 'ApiController@add_role_to_user');
 Route::post('/api/decline_user', 'ApiController@decline_user');
+Route::post('/api/accept_user_for_project', 'ApiController@accept_user_for_project');
 
 
 

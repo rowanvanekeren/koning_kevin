@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" ng-controller="Managing_users">
         
         <div class="row">
             
@@ -182,13 +182,16 @@
                             @foreach($project->users as $volunteer)
                             <div class="col-md-12">
                                 <div class="col-md-6"><a href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a></div>
-                                <div class="col-md-2">
-                                    <select>
+                                <div class="col-md-2 role{{$volunteer->id}}">
+                                    <select name="role{{$volunteer->id}}">
                                         @foreach($volunteer->roles as $role)
-                                        <option>{{$role->type}}</option>
+                                        <option value="{{$role->id}}">{{$role->type}}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                    <div class="status{{$volunteer->id}}" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}})">Accepteer</div>
+                                </div
                             </div>
                             @endforeach
                         </div>
@@ -204,4 +207,7 @@
         </div>
         
     </div>
+@endsection
+@section('custom_js')
+<script src="{{url('/js/managing_users.js')}}"></script>
 @endsection

@@ -57,5 +57,13 @@ class ApiController extends Controller
     }
     
     
+    public function accept_user_for_project(Request $request) {
+        //
+        //$project = Project::find($request->project_id);
+        //dd($project);
+        return response()->json(['status' => "success", 'user_id' => $request->project_id]);
+    }
+    
+    
     
 }
