@@ -51,6 +51,19 @@ class CreatUserSeeder extends Seeder
             )
         );
         DB::table('role_user')->insert($pivot_tabele);
+        
+        $administrative_details = 
+            array(
+            'bank_account_number' => null,
+            'national_insurance_number' => null,
+            'identity_number' => null,
+            'user_id' => DB::table('users')
+                    ->where('first_name', '=', 'Anton')
+                    ->select('id')->first()->id,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+        );
+        DB::table('admninistrative_details')->insert($administrative_details);
 
     }
 }

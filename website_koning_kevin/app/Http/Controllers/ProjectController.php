@@ -30,16 +30,12 @@ class ProjectController extends Controller
     
     public function add_project(Request $request) {
         
-        
         if($request->active == "on") {
             $active = 1;
         }
         else {
             $active = 0;
         }
-
-
-
 
         $this->validate($request, [
                 'name' => 'required|max:255',
@@ -84,8 +80,42 @@ class ProjectController extends Controller
         return view('projects/edit_project', ['project' => $project]);
     }
     
-    public function edit_project($id) {
-        dd("Project to be edited : " . $id);
+    public function edit_project($id, Request $request) {
+        $project = Project::find($id);
+        
+        $allowed_extensions = ["jpeg", "png"];
+        if (isset($request['image'])) {
+            if (in_array($request['image']->guessClientExtension(), $allowed_extensions)) {
+                
+                //create new file name
+                $new_file_name = time() . $request->image->getClientOriginalName();
+                //$request->image->move(base_path() . '/public/images/project_pictures/', $new_file_name);
+                $project->image = $new_file_name;
+            }
+        }
+        $start = $request->startdate . " " . $request->starttime;
+        $end = $request->enddate . " " . $request->endtime;
+        
+        if($request->active == "on") {
+            $active = 1;
+        }
+        else {
+            $active = 0;
+        }
+        
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->address = $request->address;
+        $project->city = $request->city;
+        $project->country = $request->country;
+        $project->start = $start;
+        $project->end = $end;
+        $project->active = $active;
+        
+        //dd($project);
+        
+        $project->save();
+        return redirect('/edit_project/' . $id);
     }
     
     

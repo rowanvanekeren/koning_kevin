@@ -10,7 +10,7 @@
                     <div class="panel-heading text-center"><strong>PROJECT BEWERKEN</strong></div>
                     <div class="panel-body">
                 
-                {{Form::open(array('url'=>'/edit_project','files' => true))}}
+                {{Form::open(array('url'=>'/edit_project/' . $project->id,'files' => true))}}
                 <div class="col-md-6">
 
                     <div class="form-group{{ $errors->has('name') ? 'has-error' : '' }}">
@@ -138,7 +138,7 @@
                     <div class="col-md-12">
                         <div class="form-group{{ $errors->has('image') ? 'has-error' : '' }}">
                             {{ Form::label('image', 'Selecteer andere foto', array('class' => 'control-label col-md-12'))}}
-                            {{Form::file('image',array('class' => 'form-control', 'required' => 'required'))}}
+                            {{Form::file('image',array('class' => 'form-control'))}}
                             @if ($errors->has('image'))
                                 <span class="help-block">
                                             <strong>{{ $errors->first('image') }}</strong>
