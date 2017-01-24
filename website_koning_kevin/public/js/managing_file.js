@@ -32,7 +32,6 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.open = false;
     $scope.oneAtATime = true;
     get_categories();
-    get_all_files_search();
 
     $scope.delete_document = function (document_id) {
         $http.post('./api/delete_file',
@@ -43,7 +42,6 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
                 console.log(data);
                 if (data.success) {
                     get_all_files();
-                    get_all_files_search();
                 }
                 $scope.message = data;
             })
@@ -72,12 +70,39 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     }
 
 
-    function get_all_files_search() {
-        $.getJSON("./api/get_all_files_search", function (data) {
-            $scope.search_files = data;
-            console.log('get_all_files_search', data);
-            $scope.$apply();
-        });
+    $scope.search_for_file = function (string, category, role) {
+        console.log(category);
+        if(category == '---Selecteer je category---'){
+            category ='';
+        }
+        if(role == '---Selecteer je rol---'){
+            rol ='';
+        }
+
+        $http.post('./api/get_all_files_by_search_query',
+            {
+                string: string,
+                category: category,
+                role: role
+            })
+            .success(function (data) {
+                $scope.search_files = data;
+                console.log('get_all_files_by_search_query', data);
+            })
+            .error(function (response) {
+                console.log(response);
+            });
+
+
+        // $.getJSON({
+        //     url:"./api/get_all_files_by_search_query",
+        //     method:'GET',
+        // }, function (data) {
+        //     // $scope.search_files = data;
+        //
+        //     console.log('get_all_files_search', data);
+        //     // $scope.$apply();
+        // });
     }
 
     function get_all_files_for_category($id) {
@@ -159,8 +184,8 @@ angular.module("myapp").controller("Add_file_to_project", function ($scope, $htt
     $scope.select_file = function (id) {
 
         console.log($scope.selected_file.indexOf(id));
-        var index =$scope.selected_file.indexOf(id);
-        if ( index == -1 ) {
+        var index = $scope.selected_file.indexOf(id);
+        if (index == -1) {
             console.log('add');
             $scope.selected_file.push(id)
             console.log($scope.selected_file);
