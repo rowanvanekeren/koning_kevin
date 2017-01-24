@@ -156,13 +156,13 @@
                             @foreach($project->documents as $document)
                             <div>
                                 {{$document->title}}
+                                <a href="{{url('edit_project/' . $project->id.'/delete/'.$document->id)}}"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                             </div>
                             @endforeach
                         </div>
-                        <button class="btn btn-primary">Bestanden toevoegen</button>
+
                     </div>
-                    
-                    
+                    @include('projects.add_files_to_project.add_file')
                 </div>
                 
 

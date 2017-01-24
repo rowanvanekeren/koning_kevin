@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <div class="container-fluid" ng-controller="Show_file">
+    <div class="container" ng-controller="Show_file">
         <div class="row">
 
 
