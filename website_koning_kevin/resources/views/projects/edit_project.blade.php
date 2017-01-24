@@ -7,7 +7,7 @@
             
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center"><strong>PROJECT BEWERKEN</strong></div>
+                    <div class="panel-heading text-center"><strong>Project bewerken</strong></div>
                     <div class="panel-body">
                 
                 {{Form::open(array('url'=>'/edit_project/' . $project->id,'files' => true))}}

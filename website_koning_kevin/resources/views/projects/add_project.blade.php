@@ -7,7 +7,7 @@
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center"><strong>INLOGGEN</strong></div>
+                    <div class="panel-heading text-center"><strong>Project aanmaken</strong></div>
                     <div class="panel-body">
 
                         {{Form::open(array('url'=>'/add_project','files' => true))}}
