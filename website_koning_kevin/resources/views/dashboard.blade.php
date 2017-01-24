@@ -26,8 +26,12 @@
     </style>
     <div class="container-fluid" ng-controller="toggleController">
         <div class="row">
-            <div class="col-md-12">
-                <h1>Dashboard</h1>
+            <div class="col-md-12 sub-page-banner">
+
+                    <h1>Dashboard</h1>
+          {{--      <img class="sub-header-img" src="{{asset('images/page_header/bestanden.png')}}">--}}
+
+
             </div>
         </div>
         @if(!Auth::user()->is_active)
@@ -43,7 +47,7 @@
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading" ng-click="togglePanel('yourFilesDashboard')">
-                            Bestanden volges jouw rol
+                            Bestanden volgens jouw rol
                         </div>
                         <div class="panel-body" ng-controller="Dashboard" ng-show="yourFilesDashb">
                             <uib-accordion close-others="oneAtATime">
@@ -88,7 +92,7 @@
                                                     <p>@{{ file_info.file.title }}</p>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <h5>Categorieen</h5>
+                                                    <h5>Categorieën</h5>
 
                                                     <p ng-repeat="category in file_info.categories">
                                                         @{{ category.type }}

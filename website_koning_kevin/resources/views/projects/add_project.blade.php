@@ -202,12 +202,12 @@
                                         @if ($errors->has('selected_file'))
                                             <span class="help-block">
                                         <strong>{{ $errors->first('selected_file') }}</strong>
-                    </span>
+                                            </span>
                                         @endif
                                         {{--<input type="text" name="selected_file[]" ng-moedel="selected">--}}
                                     </div>
                                     <!-- Trigger the modal with a button -->
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#myModal"
                                             ng-click="add_file()">Kies bestanden
                                     </button>
@@ -219,7 +219,7 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close"
                                                             data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Kiez bestanden</h4>
+                                                    <h4 class="modal-title">Kies bestanden</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row" ng-repeat="file in files">
@@ -232,7 +232,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
                                                         Selecteer
                                                     </button>
                                                 </div>
