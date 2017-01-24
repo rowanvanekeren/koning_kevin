@@ -27,6 +27,7 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.search_files;
     $scope.file_info;
     $scope.categories;
+    $scope.server_error;
     // $scope.query="";
     // $scope.data.singleSelect="";
     $scope.open = false;
@@ -86,7 +87,16 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
                 role: role
             })
             .success(function (data) {
-                $scope.search_files = data;
+                $scope.server_error="";
+                if(data.error){
+                    $scope.server_error =data.error;
+                    console.log('error');
+                }else{
+                    console.log('okey');
+                    $scope.search_files = data;
+                }
+
+
                 console.log('get_all_files_by_search_query', data);
             })
             .error(function (response) {
@@ -173,7 +183,6 @@ angular.module("myapp").controller("Project_files", function ($scope, $http) {
 
 
 angular.module("myapp").controller("Add_file_to_project", function ($scope, $http) {
-    console.log("hhhh");
     $scope.files = "";
     $scope.selected_file = new Array();
     $scope.add_file = function () {
@@ -196,7 +205,7 @@ angular.module("myapp").controller("Add_file_to_project", function ($scope, $htt
         // $scope.$apply();
     }
     function get_all_files_search() {
-        $.getJSON("./api/get_all_files_search", function (data) {
+        $.getJSON("/api/get_all_files_search", function (data) {
             $scope.files = data;
             console.log('get_all_files_search', data);
             $scope.$apply();

@@ -9,6 +9,7 @@ Use App\Role;
 Use App\Tag;
 use Auth;
 use PhpParser\Comment\Doc;
+use App\Project;
 
 
 class Api_file_Controller extends Controller
@@ -110,8 +111,9 @@ class Api_file_Controller extends Controller
         $description = $request->string;
         $category = $request->category;
         $role = $request->role;
-        $files =  array('error' => 'nieks gevonden');
-        if ($title == "" && $category == "" && $category == "") {
+
+        $files =  array('error' => 'Geen zoekopdracht ingevuld');
+        if ($title == "" && $category == "" && $role == "") {
             return $files;
         }
 
@@ -137,6 +139,7 @@ class Api_file_Controller extends Controller
             return $files->get();
         }
         if ($role != "") {
+
             $files = Document::with('categories', 'roles')->whereHas('roles', function ($q) use ($role) {
                 $q->where('type', $role);
             });
@@ -155,6 +158,7 @@ class Api_file_Controller extends Controller
     public function test()
     {
 
+//return Project::where('name','sdqf')->with('documents')->get();
 //        $files = Document::where('title', $title)->orWhere('description', $description)->whereHas('categories', function ($q) use ($category) {
 //            $q->where('type', $category);
 //        })->WhereHas('roles', function ($q) use ($role) {
