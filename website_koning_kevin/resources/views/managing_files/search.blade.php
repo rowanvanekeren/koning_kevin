@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-3">
                     <select name="singleSelect" id="singleSelect" ng-model="search_category" class="form-control">
-                        <option value="">---Selecteer je category---</option>
+                        <option value="">---Selecteer je categorie---</option>
                         @foreach($categories as $category)
                             <option value="{{$category}}">{{$category}}</option> <!-- interpolation -->
                         @endforeach
@@ -26,9 +26,8 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="button" class="btn btn-default col-md-1"
-                        ng-click="search_for_file(query,search_category,search_role)">
-                    Zoeken
+                <button type="button" class="btn btn-primary "
+                        ng-click="search_for_file(query,search_category,search_role)">Zoeken
                 </button>
             </div>
             <div class="col-md-12"><p class="alert-danger" ng-if="server_error">@{{ server_error }}</p></div>
