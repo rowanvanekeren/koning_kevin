@@ -118,7 +118,9 @@ class ProjectController extends Controller
         return redirect('/edit_project/' . $id);
     }
     
-    
+    public function delete_product($id) {
+        dd($id);
+    }
     
     
     
