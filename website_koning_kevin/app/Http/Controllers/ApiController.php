@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use App\Role;
 use App\RoleUser;
+use App\Project;
 
 class ApiController extends Controller
 {
@@ -58,10 +59,14 @@ class ApiController extends Controller
     
     
     public function accept_user_for_project(Request $request) {
-        //
-        //$project = Project::find($request->project_id);
-        //dd($project);
-        return response()->json(['status' => "success", 'user_id' => $request->project_id]);
+        
+        $project = Project::find($request->project_id);
+        $user = $project->users()->where('users.id', $request->user_id)->first();
+        $user->pivot->is_accepted = 1;
+        $user->pivot->role_id = $request->role_id;
+        $user->pivot->save();
+        
+        return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
     }
     
     

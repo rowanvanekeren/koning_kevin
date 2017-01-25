@@ -190,11 +190,11 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="status{{$volunteer->id}}" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}})">Accepteer</div>
+                                    <div class="status{{$volunteer->id}}" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}}, {{$project->id}})">Accepteer</div>
                                 </div
                             </div>
-                            @endforeach
                         </div>
+                        @endforeach
                     </div>
                     @endif
                     

@@ -18,7 +18,17 @@ class ProjectController extends Controller
     }
     
     public function test() {
-        dd("Deze functie kan ook opgeroepen worden door niet admins :)");
+        //dd("Deze functie kan ook opgeroepen worden door niet admins :)");
+        $project = Project::find(1);
+        //$project->users()->wherePivot('user_id', 5)->updateExistingPivot($roleId, $attributes)
+        
+        $project = Project::find(1);
+        $user = $project->users()->where('users.id',5)->first();
+        //$user->pivot->role_id = 5;
+        //$user->pivot->save();
+        
+        
+        dd($user->pivot->role_id);
     }
     
     
