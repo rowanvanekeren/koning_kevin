@@ -62,7 +62,6 @@ Route::get('/leesmij', function(){
 
 //get api
 Route::get('/test','Api_file_Controller@test');
-
 Route::get('/api/get_all_files','Api_file_Controller@get_all_files');
 Route::post('/api/delete_file','Api_file_Controller@delete_file');
 Route::get('/api/get_all_files_search','Api_file_Controller@get_all_files_search');
@@ -73,7 +72,7 @@ Route::get('/api/get_all_files_for_category/{id}','Api_file_Controller@get_all_f
 Route::get('/api/get_all_files_for_projects','Api_file_Controller@get_files_project');
 
 Route::get('/edit_project/{project_id}/delete/{document_id}','Managing_files@delete_file');
-
+Route::get('/edit_project/{project_id}/delete_extra_documents/{document_id}','Managing_files@delete_extra_file');
 //post
 Route::post('/api/get_all_files_by_search_query','Api_file_Controller@get_all_files_by_search_query');
 Route::post('/add_file','Managing_files@add_file');

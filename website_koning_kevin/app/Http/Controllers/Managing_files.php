@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Tag;
 use Response;
 use App\Project;
+use App\ProjectDocument;
 
 
 class Managing_files extends Controller
@@ -31,6 +32,11 @@ class Managing_files extends Controller
         $project = Project::find($project_id);
         $project->documents()->detach($file_id);
 
+        return redirect('/edit_project/'.$project_id);
+    }
+
+    public function delete_extra_file($project_id, $file_id){
+        ProjectDocument::find($file_id)->delete();
         return redirect('/edit_project/'.$project_id);
     }
 
@@ -78,7 +84,7 @@ class Managing_files extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'description' => 'required|max:1000',
-            'file' => 'required|max:1000|mimes:pdf',
+            'file' => 'required|max:8000|mimes:pdf',
             //'file' => 'required|mimes:application/pdf,application/msword,application/zip',
             'role' => 'required|max:6',
             'category' => 'required',
