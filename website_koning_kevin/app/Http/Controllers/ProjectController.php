@@ -29,7 +29,7 @@ class ProjectController extends Controller
     
     
     public function add_project(Request $request) {
-        
+
         if($request->active == "on") {
             $active = 1;
         }
@@ -70,6 +70,8 @@ class ProjectController extends Controller
         ]);
 
         $project->save();
+
+        $project->documents()->sync($request->selected_file);
         
         return redirect('/dashboard');
     }
@@ -115,6 +117,7 @@ class ProjectController extends Controller
         //dd($project);
         
         $project->save();
+        $project->documents()->sync($request->selected_file);
         return redirect('/edit_project/' . $id);
     }
     

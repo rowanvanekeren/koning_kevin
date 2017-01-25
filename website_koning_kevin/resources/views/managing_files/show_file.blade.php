@@ -5,15 +5,18 @@
 @section('content')
 
 
-    <div class="container-fluid" ng-controller="Show_file">
+    <div class="container" ng-controller="Show_file">
         <div class="row">
+
+
+            @include('managing_files.search')
             {{--   <h1 class="col-md-12">Documenten</h1>
                <h3 class="col-md-12">Bij het zoeken: getypte woord wordt gezocht op categorieen, tags, rollen, ook als
                    woord in beschrijving voorkomt: verwijder mij na het stylen (-:</h3>
                <h3 class="col-md-12">bij categorie: background worden weergegeven in bepalde kleur -> priority-> daar moet
                    nog iets op gevonden worden </h3>--}}
             @if(Auth::user()->is_admin)
-                <div class="col-md-6 ">
+                <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">Categorieen</div>
                         <div class="panel-body">
@@ -51,9 +54,11 @@
                                 <div uib-accordion-group class="panel-default" is-open="status.open"
                                      ng-repeat="category in categories">
                                     <uib-accordion-heading>
-                                        <span ng-click="get_file_for_category(category.id)">@{{category.type}}</span><i
-                                                class="pull-right glyphicon"
-                                                ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                        <div ng-click="get_file_for_category(category.id)">
+                                            <span>@{{category.type}}</span><i
+                                                    class="pull-right glyphicon"
+                                                    ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                        </div>
                                     </uib-accordion-heading>
                                     <div ng-repeat="file in files"
                                          class="row file_row_background@{{file.priority}}">
@@ -84,84 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 ">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Zoeken
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="input-group" ng-click="query=''">
-                                        {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"query"))}}
-                                        <span class="input-group-btn">
-                               <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
-                                   Uitgebreid zoeken
-                               </button>
-                            </span>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="row">
-                                {{--ng-click="query=''"--}}
-                                <div uib-collapse="isCollapsed">
-                                    <div class="col-md-6">
-                                        {{--{{Form::select('role', $roles, '0',array('class' => 'form-control','ng-model'=>"query"))}}--}}
-                                        <select name="singleSelect" id="singleSelect" ng-model="query" class="form-control">
-                                            <option value="">---Selecteer je category---</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{$category}}">{{$category}}</option> <!-- interpolation -->
-                                            @endforeach
-                                        </select>
-                                        {{--{{Form::text('category', old('category'),array('class'=>'form-control', 'placeholder'=>'Categorieen', 'ng-model'=>"query.categories.type"))}}--}}
-                                    </div>
-                                    <div class="col-md-6">
-                                        {{--{{Form::text('role', old('role'),array('class'=>'form-control', 'placeholder'=>'Rollen', 'ng-model'=>"query.roles.type"))}}--}}
-
-                                        <select name="singleSelect" id="singleSelect" ng-model="query" class="form-control">
-                                            <option value="">---Selecteer je category---</option>
-                                            @foreach($roles as $role)
-                                                <option value="{{$role}}">{{$role}}</option> <!-- interpolation -->
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    {{--<div class="col-md-4">--}}
-                                    {{--{{Form::text('tags', old('tags'),array('class'=>'form-control', 'placeholder'=>'tags', 'ng-model'=>"query.tags.type"))}}--}}
-                                    {{--</div>--}}
-
-                                </div>
-                            </div>
-
-
-                            {{--{{Form::select('category', array('$'=>'alles','title'=>'Titel','description'=>'Beschrijving','roles.type'=>'Rollen',--}}
-                            {{--'categories.type'=>'Categorieen','tags.type'=>'Tag'),--}}
-                            {{--'0',array('class' => 'form-control','ng-model'=>'queryBy','ng-click'=>'query=""'))}}--}}
-                            {{--er voord gelimiteerde antaal bestanden getond maar als je zoekt gaan andere getoond worden--}}
-                            <div class="row carr-document "
-                                 ng-repeat="file in search_files|filter:query ">
-
-                                {{--uib-popover="@{{file.description}}" popover-trigger="'mouseenter'"--}}
-                                {{--popover-placement="bottom-left"--}}
-                                <p class="col-md-9" ng-click="ang_modal(file.id)"
-                                   data-toggle="modal"
-                                   data-target="#myModal">@{{file.title}}</p>
-
-                                <div class="col-md-3 ">
-                                    <div class="carr-glyph ">
-                                        <a href="{{url('/')}}@{{ file.url}}"><span
-                                                    class=" glyphicon glyphicon-download-alt"></span>
-                                        </a>
-                                        <a href="#"><span
-                                                    class=" glyphicon glyphicon-pencil"></span></a>
-                                        <a href="#"><span ng-click="delete_document(file.id)"
-                                                          class="glyphicon glyphicon-trash"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             @else
                 <h1>Deze optie is momenteel alleen zichtbaar voor andmin->zie dat je admin bent!</h1>
             @endif

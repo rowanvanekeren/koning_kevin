@@ -9,6 +9,7 @@ Use App\Role;
 use Illuminate\Support\Facades\Session;
 use App\Tag;
 use Response;
+use App\Project;
 
 
 class Managing_files extends Controller
@@ -20,9 +21,19 @@ class Managing_files extends Controller
         $this->middleware('is_admin', ['except' => 'show_file']);
     }
 
-    public function add_unique_file(){
+    public function add_unique_file()
+    {
         return 'okey';
     }
+
+    public function delete_file($project_id, $file_id)
+    {
+        $project = Project::find($project_id);
+        $project->documents()->detach($file_id);
+
+        return redirect('/edit_project/'.$project_id);
+    }
+
     public function show_add_file()
     {
         $put_categories = [];
@@ -44,7 +55,7 @@ class Managing_files extends Controller
     {
 
 //        return Category::all()->pluck('type');
-        return view('managing_files/show_file')->with('roles',Role::all()->pluck('type'))->with('categories',Category::all()->pluck('type'));
+        return view('managing_files/show_file')->with('roles', Role::all()->pluck('type'))->with('categories', Category::all()->pluck('type'));
     }
 
     public function add_file(Request $request)

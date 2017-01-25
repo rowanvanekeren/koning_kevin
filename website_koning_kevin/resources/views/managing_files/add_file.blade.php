@@ -5,7 +5,7 @@
 @section('content')
     <div {{--style="margin-top: 80px;"--}} class="container" ng-controller="Managing_file">
         <div class="panel panel-default">
-            <div class="panel-heading text-center"><strong>@{{ title }}</strong></div>
+            <div class="panel-heading text-center"><strong>{{--@{{ title }}--}}Bestand toevoegen</strong></div>
 
             {{-- <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>--}}
 
@@ -18,7 +18,7 @@
                 <div class="col-md-12">
 
                     {{Form::open(array('url'=>'/add_file','files' => true))}}
-                    <div class="form-group{{ $errors->has('title') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-12 {{ $errors->has('title') ? 'has-error' : '' }}">
 
                         <div class="col-md-12">
                             <div class="sequencing">
@@ -34,7 +34,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('description') ? 'has-error' : '' }}">
+                    <div class="form-group col-lg-12{{ $errors->has('description') ? 'has-error' : '' }}">
                         <div class="col-md-12">
 
                             {{ Form::label('description', 'Beschrijving', array('class' => 'control-label col-md-12'))}}
@@ -48,12 +48,7 @@
                     </div>
 
                     <fieldset class="form-group col-md-12">
-                        <div class="sequencing">
-                            <div>2</div>
-                        </div>
-                        <div>
-                            <legend>Kies een bestand of voeg een link toe</legend>
-                        </div>
+
                         {{--<div class="col-md-6">--}}
                         {{--{{ Form::label('url', 'Google docs url', array('class' => 'control-label col-md-12'))}}--}}
                         {{--{{Form::text('url', old('url'),array('class'=>'form-control'))}}--}}
@@ -64,6 +59,14 @@
                         {{--@endif--}}
                         {{--</div>--}}
                         <div class="col-md-12">
+                            <div class="sequencing">
+                                <div>2</div>
+                            </div>
+
+                            <div>
+
+                                <legend>Kies een bestand of voeg een link toe</legend>
+                            </div>
                             {{ Form::label('file', 'Kies een bestand', array('class' => 'control-label col-md-12'))}}
                             {{Form::file('file',array('class' => 'form-control'))}}
                             @if ($errors->has('file'))
@@ -116,31 +119,31 @@
 
 
                         {{--<fieldset class="form-group col-md-6">--}}
-                            {{--<div class="sequencing">--}}
-                                {{--<div>4</div>--}}
-                            {{--</div>--}}
-                            {{--<div>--}}
-                                {{--<legend>Rollen</legend>--}}
-                            {{--</div>--}}
-                            {{--@if ($errors->has('roles'))--}}
-                                {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('roles') }}</strong>--}}
-                                    {{--</span>--}}
-                            {{--@endif--}}
-                            {{--@foreach($roles as $key=>$role)--}}
-                                {{--<div class="form-check col-md-12">--}}
-                                    {{--<label class="form-check-label">--}}
-                                        {{--($key == '0'? true:null)--}}
-                                        {{--{{ Form::checkbox('roles[]',$role->id,0, ['class' => 'field']) }}--}}
-                                        {{--{{$role->type}}--}}
-                                    {{--</label>--}}
-                                {{--</div>--}}
-                            {{--@endforeach--}}
+                        {{--<div class="sequencing">--}}
+                        {{--<div>4</div>--}}
+                        {{--</div>--}}
+                        {{--<div>--}}
+                        {{--<legend>Rollen</legend>--}}
+                        {{--</div>--}}
+                        {{--@if ($errors->has('roles'))--}}
+                        {{--<span class="help-block">--}}
+                        {{--<strong>{{ $errors->first('roles') }}</strong>--}}
+                        {{--</span>--}}
+                        {{--@endif--}}
+                        {{--@foreach($roles as $key=>$role)--}}
+                        {{--<div class="form-check col-md-12">--}}
+                        {{--<label class="form-check-label">--}}
+                        {{--($key == '0'? true:null)--}}
+                        {{--{{ Form::checkbox('roles[]',$role->id,0, ['class' => 'field']) }}--}}
+                        {{--{{$role->type}}--}}
+                        {{--</label>--}}
+                        {{--</div>--}}
+                        {{--@endforeach--}}
                         {{--</fieldset>--}}
 
                         <fieldset class="form-group col-md-12">
                             <div class="sequencing">
-                                <div>4</div>
+                                <div>3</div>
                             </div>
                             <div>
                                 <legend>Prioriteit</legend>
@@ -165,7 +168,9 @@
                             </div>
                         </fieldset>
                         <div class="col-md-6">
-
+                            <div class="sequencing">
+                                <div>4</div>
+                            </div>
                             {{--even aude validatie variabele doorgeven aan angularjs voord niet getoond in vieuw --}}
                             <?php echo "<div ng-init='init(" . '"' . old('tags') . '"' . ")'></div>";?>
 

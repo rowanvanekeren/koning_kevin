@@ -7,7 +7,7 @@
             
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center"><strong>PROJECT BEWERKEN</strong></div>
+                    <div class="panel-heading text-center"><strong>Project bewerken</strong></div>
                     <div class="panel-body">
                 
                 {{Form::open(array('url'=>'/edit_project/' . $project->id,'files' => true))}}
@@ -156,13 +156,13 @@
                             @foreach($project->documents as $document)
                             <div>
                                 {{$document->title}}
+                                <a href="{{url('edit_project/' . $project->id.'/delete/'.$document->id)}}"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                             </div>
                             @endforeach
                         </div>
-                        <button class="btn btn-primary">Bestanden toevoegen</button>
+
                     </div>
-                    
-                    
+                    @include('projects.add_files_to_project.add_file')
                 </div>
                 
 

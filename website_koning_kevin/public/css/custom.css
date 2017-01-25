@@ -27,11 +27,13 @@ input{
 .btn-primary{
     border-radius: 0 !important;
     background-color:#542657 ;
+    border:0;
 
 }
 
 .btn-primary:hover{
     background-color: #381a3b;
+    border:0;
 }
 
 .btn-link{
@@ -71,6 +73,9 @@ nav a{
 nav a:hover{
     background-color:#542657 !important;
 }
+.navbar-brand:hover{
+    background-color: transparent!important;
+}
 
 .custom-dropdown a{
     padding-right: 50px !important;
@@ -103,3 +108,6 @@ nav a:hover{
     float: right;
 }
 
+.costum-margin-tbl{
+    margin-top: 5px;
+}

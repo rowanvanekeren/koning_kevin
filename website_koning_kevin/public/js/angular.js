@@ -307,3 +307,24 @@ myApp.controller("addProjectDateTimeEnd", function ($scope, $http) {
 
 
 });
+
+myApp.controller("toggleController", function ($scope, $http) {
+    $scope.usrdashb = true;
+    $scope.yourFilesDashb = true;
+    $scope.projOvervDashb = true;
+$scope.togglePanel = function(element){
+    switch(element){
+        case 'usersDashboard':
+            $scope.usrdashb = !$scope.usrdashb;
+            break;
+        case 'yourFilesDashboard':
+            $scope.yourFilesDashb = !$scope.yourFilesDashb;
+            break;
+        case 'projectOverviewDashboard':
+            $scope.projOvervDashb = !$scope.projOvervDashb;
+            break;
+
+    }
+}
+
+});
