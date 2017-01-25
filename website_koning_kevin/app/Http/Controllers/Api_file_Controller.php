@@ -10,6 +10,7 @@ Use App\Tag;
 use Auth;
 use PhpParser\Comment\Doc;
 use App\Project;
+use App\ProjectDocument;
 
 
 class Api_file_Controller extends Controller
@@ -112,7 +113,7 @@ class Api_file_Controller extends Controller
         $category = $request->category;
         $role = $request->role;
 
-        $files =  array('error' => 'Geen zoekopdracht ingevuld');
+        $files = array('error' => 'Geen zoekopdracht ingevuld');
         if ($title == "" && $category == "" && $role == "") {
             return $files;
         }
@@ -157,7 +158,10 @@ class Api_file_Controller extends Controller
 
     public function test()
     {
-
+//        $document = new ProjectDocument;
+//        $document->title = 'hallo';
+//        $document->url = '/hllo';
+//        return Project::find(1)->extra_documents()->save($document);
 //return Project::where('name','sdqf')->with('documents')->get();
 //        $files = Document::where('title', $title)->orWhere('description', $description)->whereHas('categories', function ($q) use ($category) {
 //            $q->where('type', $category);
@@ -171,7 +175,7 @@ class Api_file_Controller extends Controller
 
 
 //        select * from documents d, category_document cd, categories c, document_role dr, roles r where (d.id = cd.document_id and c.id = cd.category_id and dr.document_id = d.id and r.id = dr.role_id) and (d.title = '%kjk%' or c.type = '4' or r.type = 'er')
-        
+
 
     }
 

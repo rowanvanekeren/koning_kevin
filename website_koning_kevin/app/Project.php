@@ -20,5 +20,7 @@ class Project extends Model
     {
         return $this->belongsToMany('App\User')->withPivot('is_accepted');
     }
-    
+    public function extra_documents(){
+        return $this->hasMany('App\ProjectDocument');
+    }
 }
