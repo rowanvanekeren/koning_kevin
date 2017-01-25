@@ -18,7 +18,7 @@ class Project extends Model
     
     public function users()
     {
-        return $this->belongsToMany('App\User')->withPivot('is_accepted');
+        return $this->belongsToMany('App\User')->withPivot('is_accepted', 'role_id');
     }
     public function extra_documents(){
         return $this->hasMany('App\ProjectDocument');

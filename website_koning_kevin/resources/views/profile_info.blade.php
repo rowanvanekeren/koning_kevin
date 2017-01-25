@@ -24,6 +24,13 @@ foreach($user->roles as $role) {
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><strong>Gebruikers informatie</strong></div>
                     <div class="panel-body">
+                       
+                        @if(session('success_message'))
+                        <div class="col-md-12 alert alert-success volunteered">
+                            {{ session('success_message') }}
+                        </div>
+                        @endif
+                       
                         <div class="col-md-12  ">
                             <div class="col-md-12">
                                 <img class="profile-info-image"
@@ -168,7 +175,7 @@ foreach($user->roles as $role) {
                             <div class="col-md-12">
                                 @foreach($roles as $role)
                                 <div>
-                                    <input type="checkbox" name="new_roles[]" id="new_role{{$role->id}}" value="{{$role->id}}">
+                                    <input type="checkbox" name="new_roles[]" id="new_role{{$role->id}}" value="{{$role->id}}" <?php if(in_array($role->id,$user->roles->pluck('id')->toArray())) {echo("checked");} ?> >
                                     <label for="new_role{{$role->id}}">{{$role->type}}</label>
                                 </div>
                                 @endforeach

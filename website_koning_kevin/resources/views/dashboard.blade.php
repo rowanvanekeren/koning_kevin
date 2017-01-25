@@ -109,13 +109,16 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             @foreach($projects as $project)
-                                                <div class="row-title">{{ $project->name }}
+                                                <div class="row-title">
+                                                    <a href="{{url('/project_info/' . $project->id)}}">{{ $project->name }}</a>
                                                     op {{ $project->start }}</div>
+                                                @if(Auth::user()->is_admin)
                                                 <div class="row-icons">
                                                     <a href="{{url('edit_project/'.$project->id)}}"><span
                                                                 class=" glyphicon glyphicon-pencil"></span></a>
                                                     <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                                                 </div>
+                                                @endif
 
                                             @endforeach
                                         </div>

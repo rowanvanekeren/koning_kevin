@@ -190,35 +190,63 @@
 
 
                 @if(!$project->users->isEmpty())
-                    <div class="panel panel-default">
-                        <div class="panel-heading text-center"><strong>VRIJWILLIGERS TOEVOEGEN</strong></div>
-                        <div class="panel-body">
-                            @foreach($project->users as $volunteer)
+                   <div class="col-md-6">
+                       <div class="panel panel-default">
+                            <div class="panel-heading text-center"><strong>REEDS TOEGEVOEGDE VRIJWILLIGERS</strong></div>
+                            <div class="panel-body">
                                 <div class="col-md-12">
-                                    <div class="col-md-6"><a
-                                                href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
+                                    <div class="col-md-6">
+                                        <strong>Naam</strong>
                                     </div>
-                                    <div class="col-md-2 role{{$volunteer->id}}">
-                                        <select name="role{{$volunteer->id}}">
-                                            @foreach($volunteer->roles as $role)
-                                                <option value="{{$role->id}}">{{$role->type}}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="col-md-6">
+                                        <strong>Toegekende rol</strong>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="status{{$volunteer->id}}"
-                                             status="{{$volunteer->pivot->is_accepted}}"
-                                             ng-click="add_remove_user_to_project($event, {{$volunteer->id}})">Accepteer
-                                        </div>
-                                    </div
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="status{{$volunteer->id}}" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}}, {{$project->id}})">Accepteer</div>
-                                </div
-                            </div>
+                                @foreach($project->users as $volunteer)
+                                    @if($volunteer->pivot->is_accepted)
+                                    <div class="col-md-12">
+                                        <div class="col-md-6"><a
+                                                    href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
+                                        </div>
+                                        <div class="col-md-6 role{{$volunteer->id}}">
+                                            @foreach($volunteer->roles as $role)
+                                                @if($volunteer->pivot->role_id == $role->id)
+                                                {{$role->type}}
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @endif
+                                @endforeach
                         </div>
-                        @endforeach
+                        </div>
                     </div>
+                   
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center"><strong>VRIJWILLIGERS TOEVOEGEN</strong></div>
+                            <div class="panel-body">
+                                @foreach($project->users as $volunteer)
+                                    @if(!$volunteer->pivot->is_accepted)
+                                    <div class="col-md-12">
+                                        <div class="col-md-5"><a
+                                                    href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
+                                        </div>
+                                        <div class="col-md-4 role{{$volunteer->id}}">
+                                            <select name="role{{$volunteer->id}}">
+                                                @foreach($volunteer->roles as $role)
+                                                    <option value="{{$role->id}}">{{$role->type}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="status{{$volunteer->id}}" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}}, {{$project->id}})">Accepteer</div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                @endforeach
+                        </div>
+                        </div>
                     </div>
                 @endif
 
