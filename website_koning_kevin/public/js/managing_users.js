@@ -19,13 +19,18 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         
     }
     
-    
+    $scope.pass_modal_info = function(user_id) {
+        console.log("user id " + user_id);
+        $scope.selected_user = user_id;
+    }
     
     $scope.accept_user = function ($event, user_id, selected) {
-        //console.log('user accepted ' + user_id);
+        console.log("test")
+        console.log('user accepted ' + user_id);
         //console.log($event.currentTarget.parentElement.parentElement);
         
-        console.log(selected);
+        //var roles = Object.keys(selected);
+        
         //get selected user
         var selected_user = $event.currentTarget.parentElement.parentElement;
         //turn element green
@@ -64,6 +69,8 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             console.log(response);
             }); 
         });
+        
+        $scope.get_inactive_users();
         
         /*var myElement = document.querySelector(".user");
         myElement.style.backgroundColor = "#D93600";*/

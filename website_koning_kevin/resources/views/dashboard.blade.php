@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{url('/css/dashboard.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('/css/accept_volunteer.css')}}">
 @stop
 @section('content')
     <style>
@@ -48,13 +49,13 @@
                 @endif
                 <div class="col-md-6">
                     @if(Auth::user()->is_admin)
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" ng-controller="Managing_users">
                             <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
                                <strong> Overzicht met nieuwe vrijwilligers</strong> <div  class="toggleCollapse glyphicon @{{usrdashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                             </div>
 
                             <div class="panel-body" ng-controller="Dashboard" ng-show="usrdashb">
-                                <div class="container col-md-12" ng-controller="Managing_users">
+                                <div class="container col-md-12" >
                                     <div class="row">
                                         <div class="col-md-12" ng-init="get_inactive_users()">
 
@@ -68,12 +69,13 @@
                                                         <a href="{{url('/profiel/')}}/@{{user.id}}">@{{user.first_name}} @{{user.last_name}}</a>
                                                     </div>
                                                     <div class="col-md-4 ">
-                                                        <a class="btn btn-primary " type="button" data-toggle="collapse"
-                                                           data-target="#add_roles@{{user.id}}">Accepteer</a>
+                                                        <a class="btn btn-primary " type="button" data-toggle="modal"
+                                               data-target="#new_volunteers_modal" ng-click="pass_modal_info(user.id)">Accepteer</a>
                                                         <a class="btn btn-primary " type="button" data-toggle="collapse"
                                                            data-target="#confirmation@{{user.id}}">Weiger</a>
                                                     </div>
                                                 </div>
+                                                <!--
                                                 <div id="add_roles@{{user.id}}" class="collapse">
                                                     <div class="col-md-12">
                                                         @foreach($roles as $role)
@@ -85,6 +87,7 @@
                                                         <a href="#" ng-click="accept_user($event, user.id, selected)">Toevoegen</a>
                                                     </div>
                                                 </div>
+                                                -->
                                                 <div id="confirmation@{{user.id}}" class="collapse">
                                                     <div class="col-md-12">
                                                         Zeker dat je deze vrijwilliger wil weigeren?
@@ -98,6 +101,38 @@
                                 </div>
                                 @endif
                             </div>
+                            
+                            
+                            <div class="modal fade" id="new_volunteers_modal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Vrijwilliger accepteren @{{selected_user}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Welke rollen wil je aan deze vrijwilliger toekennen?</p>
+                                            @foreach($roles as $role)
+                                                <div class="role">
+                                                <input id="role{{$role->id}}" type="checkbox" ng-model="selected[{{$role->id}}]" value="test">
+                                                <label for="role{{$role->id}}">{{$role->type}} <i class="fa fa-check" aria-hidden="true"></i></label>
+                                                </div>
+                                            @endforeach
+                                                    
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" ng-click="accept_user($event, selected_user, selected)" data-dismiss="modal">Accepteren</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            
+                            
                         </div>
 
                         @if(Auth::user()->is_active)

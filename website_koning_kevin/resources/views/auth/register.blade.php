@@ -59,8 +59,7 @@
                                 <label for="url" class="col-md-4 control-label">Profielfoto:</label>
 
                                 <div class="col-md-6">
-                                    <input id="url" type="file" class="form-control" name="url"
-                                           value="{{ old('url') }}">
+                                    <input id="url" type="file" class="form-control" name="url" value="{{ old('url') }}" accept=".jpg,.png">
 
                                     @if ($errors->has('url'))
                                         <span class="help-block">
@@ -99,10 +98,14 @@
                             </div>
                             <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                                 <label for="country" class="col-md-4 control-label">Land:</label>
-
+                                
                                 <div class="col-md-6">
-                                    <input id="country" type="text" class="form-control" name="country"
-                                           value="{{ old('country') }}" required>
+                                    <select id="country" class="form-control" name="country" required>
+                                        <option value="België" selected>België</option>
+                                        <option value="Nederland">Nederland</option>
+                                        <option value="Frankrijk">Frankrijk</option>
+                                        <option value="Duitsland">Duitsland</option>
+                                    </select>
                                     @if ($errors->has('country'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('country') }}</strong>
@@ -167,8 +170,8 @@
                                 <label for="gender" class="col-md-4 control-label">Geslacht</label>
 
                                 <div class="col-md-6">
-                                    <input id="gender" type="text" class="form-control" name="gender"
-                                           value="{{ old('gender') }}" required>
+                                    <input type="radio" name="gender" id="male" value="male"><label for="male">Man</label>
+                                    <input type="radio" name="gender" id="female" value="female"><label for="female">Vrouw</label>
                                     @if ($errors->has('gender'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('gender') }}</strong>
