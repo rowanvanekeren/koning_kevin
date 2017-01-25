@@ -1,7 +1,7 @@
 <div class="col-md-6">
     <div class="panel panel-default">
         <div class="panel-heading" ng-click="togglePanel('yourFilesDashboard')">
-            Bestanden volgens jouw rol
+            <strong>Bestanden volgens jouw rol</strong> <div  class="toggleCollapse glyphicon @{{yourFilesDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
         </div>
         <div class="panel-body" ng-controller="Dashboard" ng-show="yourFilesDashb">
             <uib-accordion close-others="oneAtATime">

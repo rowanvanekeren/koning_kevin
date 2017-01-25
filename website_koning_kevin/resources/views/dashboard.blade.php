@@ -50,8 +50,9 @@
                     @if(Auth::user()->is_admin)
                         <div class="panel panel-default">
                             <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
-                                Overzicht met nieuwe vrijwilligers
+                               <strong> Overzicht met nieuwe vrijwilligers</strong> <div  class="toggleCollapse glyphicon @{{usrdashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                             </div>
+
                             <div class="panel-body" ng-controller="Dashboard" ng-show="usrdashb">
                                 <div class="container col-md-12" ng-controller="Managing_users">
                                     <div class="row">
@@ -102,7 +103,7 @@
                         @if(Auth::user()->is_active)
                             <div class="panel panel-default">
                                 <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
-                                    Projectoverzicht
+                                 <strong>Projectoverzicht</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                                 </div>
 
                                 <div class="panel-body" ng-controller="Dashboard" ng-show="projOvervDashb">

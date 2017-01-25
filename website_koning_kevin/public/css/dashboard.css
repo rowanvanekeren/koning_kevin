@@ -17,7 +17,12 @@
 .tbl-cl {
     display: table-cell;
 }
+.toggleCollapse{
+    position: absolute;
+    right: 15px;
 
+    top: 35%;
+}
 .text-align-middle {
     padding-top: 7px;
 }
