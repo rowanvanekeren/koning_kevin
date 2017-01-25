@@ -162,6 +162,16 @@
                                                         class="glyphicon glyphicon-trash pull-right"></span></a>
                                         </div>
                                     @endforeach
+                                        @foreach($project->extra_documents as $document)
+                                            <div>
+                                                <a href="{{url('/')}}{{$document->url}}">
+                                                    {{$document->title}}
+                                                </a>
+                                                <a href="{{url('edit_project/' . $project->id.'/delete_extra_documents/'.$document->id)}}"><span
+                                                            class="glyphicon glyphicon-trash pull-right"></span></a>
+                                            </div>
+                                        @endforeach
+
                                 </div>
 
                             </div>
