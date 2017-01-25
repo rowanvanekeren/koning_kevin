@@ -43,9 +43,36 @@
                 </div>
             </div>
         @endif
-        @if(Auth::user()->is_active)
+        
             <div class="row">
+                @if(Auth::user()->is_active)
                 @include('dashboard.rol_files')
+                
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
+                         <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
+                        </div>
+
+                        <div class="panel-body" ng-controller="Dashboard" ng-show="projOvervDashb">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if(!$my_projects->isEmpty())
+                                    @foreach($my_projects as $my_project)
+                                        <div class="row-title">
+                                            <a href="{{url('/project_info/' . $my_project->id)}}">{{ $my_project->name }}</a>
+                                            op {{ $my_project->start }}</div>
+                                    @endforeach
+                                    @else
+                                    <div>Je hebt voorlopig geen projecten</div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
                 @endif
                 <div class="col-md-6">
                     @if(Auth::user()->is_admin)
@@ -140,7 +167,6 @@
                                 <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
                                  <strong>Projectoverzicht</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                                 </div>
-
                                 <div class="panel-body" ng-controller="Dashboard" ng-show="projOvervDashb">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -152,7 +178,7 @@
                                                 <div class="row-icons">
                                                     <a href="{{url('edit_project/'.$project->id)}}"><span
                                                                 class=" glyphicon glyphicon-pencil"></span></a>
-                                                    <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                                                    <a href="{{url('delete_project/'.$project->id)}}"><span class="glyphicon glyphicon-trash"></span></a>
                                                 </div>
                                                 @endif
 
@@ -160,7 +186,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         @endif
 

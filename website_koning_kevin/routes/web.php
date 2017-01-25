@@ -33,6 +33,7 @@ Route::get('/add_project', 'ProjectController@show_add_project');
 Route::post('/add_project','ProjectController@add_project');
 Route::get('/edit_project/{id}', 'ProjectController@show_edit_project');
 Route::post('/edit_project/{id}', 'ProjectController@edit_project');
+Route::get('/delete_project/{id}', 'ProjectController@delete_project');
 Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 Route::get('/testing', 'ProjectController@test');
 

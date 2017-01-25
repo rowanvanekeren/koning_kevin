@@ -157,13 +157,19 @@ class ProjectController extends Controller
 
         return redirect('/edit_project/' . $id);
     }
+    
+    public function delete_project($id) {
+        dd($id);
+        //soft_delete the project
+        $project = Project::find($id);
+        $project->delete();
+        //all related models should be deleted as well
+        //users
+        $project->users()->detach();
+        //documents
+        $project->documents()->detach();
+    }
 
 }
-
-
-
-
-
-
 
 
