@@ -125,7 +125,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title', $title);
+                $files->where('title','like', '%' .$title. '%');
             }
             return $files->get();
         }
@@ -135,7 +135,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $category);
             });
             if ($title != "") {
-                $files->where('title', $title);
+                $files->where('title','like', '%' .$title. '%');
             }
             return $files->get();
         }
@@ -145,12 +145,15 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title', $title);
+                $files->where('title','like', '%' .$title. '%');
             }
             return $files->get();
         }
         if ($title != "") {
-            $files = Document::with('categories', 'roles')->where('title', $title)->orWhere('description', $description);
+            $files = Document::with('categories', 'roles','tags')->where('title','like', '%' .$title. '%')
+                ->orWhere('description','like', '%' .$description. '%')->orWhereHas('tags', function($q) use ($title){
+                    $q->where('type', 'LIKE', '%' . $title. '%');
+                });
         }
 
         return $files->get();
@@ -158,6 +161,10 @@ class Api_file_Controller extends Controller
 
     public function test()
     {
+        $title ='l';
+        $description='l';
+
+        return $files->get();
 //        $document = new ProjectDocument;
 //        $document->title = 'hallo';
 //        $document->url = '/hllo';
