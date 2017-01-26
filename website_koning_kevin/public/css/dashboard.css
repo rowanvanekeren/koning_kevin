@@ -17,16 +17,19 @@
 .tbl-cl {
     display: table-cell;
 }
-.toggleCollapse{
+
+.toggleCollapse {
     position: absolute;
     right: 15px;
 
     top: 35%;
 }
+
 .text-align-middle {
     padding-top: 7px;
 }
-.sub-page-banner{
+
+.sub-page-banner {
     margin-top: -25px;
     margin-bottom: 20px;
     height: 350px;
@@ -37,16 +40,16 @@
     border: 0;
 
 }
-.sub-page-banner h1{
-    line-height: 300px;
-    color:white;
-}
 
+.sub-page-banner h1 {
+    line-height: 300px;
+    color: white;
+}
 
 .sub-header-img {
     -ms-transform: rotate(-10deg);
--webkit-transform: rotate(-10deg);
-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
     height: 300px;
     top: calc(50% - 150px);
     position: absolute;
@@ -71,6 +74,57 @@ width: 70px;
     /*   background-image: url('../images/page_header/touw.png');
        background-repeat: no-repeat;*/
     /*  background-color:white;*/
+}
+
+.dashb-bg-rope1 {
+    width: 400px;
+    position: absolute;
+    bottom: 2000px;
+    left: 250px;
+    z-index: 5;
+    /*    box-shadow: 4px 4px 20px #5a5a5a;*/
+    animation-name: rope1;
+    animation-duration: 3s ;
+    -webkit-animation-delay: 0.5s; /* Safari 4.0 - 8.0 */
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes rope1 {
+    0% {
+
+        bottom: 2000px;
+    }
+    60%{
+        bottom: 2000px;
+    }
+    80% {
+
+        bottom:  -100px;
+    }
+    90% {
+
+        bottom: 50px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+.dashb-bg-rope2 {
+    width: 400px;
+    position: absolute;
+    bottom:  2000px;
+    left: -20px;
+    z-index: 5;
+    /*    box-shadow: 4px 4px 20px #5a5a5a;*/
+    animation-name: rope1;
+    animation-duration: 3s ;
+    -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
 }
 
 @media only screen and (max-width: 768px) {

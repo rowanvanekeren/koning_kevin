@@ -6,7 +6,7 @@
         <div class="row">
 
             <div class="col-md-12" ng-controller="Managing_projects">
-                <div class="panel panel-default">
+                <div class="panel panel-default box-shadow-default">
                     <div class="panel-heading text-center"><strong>Project aanmaken</strong></div>
                     <div class="panel-body">
 
