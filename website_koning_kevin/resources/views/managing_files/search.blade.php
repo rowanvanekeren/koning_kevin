@@ -1,5 +1,5 @@
 <div class="col-md-12 ">
-    <div class="panel panel-default">
+    <div class="panel panel-default box-shadow-default">
         <div class="panel-heading">
             <strong>Zoeken</strong>
         </div>

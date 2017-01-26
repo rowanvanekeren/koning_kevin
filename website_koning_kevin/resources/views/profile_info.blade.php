@@ -21,7 +21,7 @@ foreach($user->roles as $role) {
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
+                <div class="panel panel-default box-shadow-default">
                     <div class="panel-heading text-center"><strong>Gebruikers informatie</strong></div>
                     <div class="panel-body">
                        
@@ -130,55 +130,63 @@ foreach($user->roles as $role) {
                         </div>
 
                         <div class="col-md-6">
-                            <legend> Administratieve gegevens</legend>
-                            <div class="col-md-12">
-                                {{ Form::label('text', 'Rekeningnummer', array('class' => 'control-label col-md-12'))}}
-                                {{Form::text('bank_account', $user->administrative_details->bank_account_number,array('placeholder'=>'00','class'=>'form-control', 'pattern'=>'[a-z]{1,15}'))}}
-                                @if ($errors->has('url'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-12">
-                                {{ Form::label('text', 'Rijksregisternummer (00.00.00-000.00)', array('class' => 'control-label col-md-12'))}}
-                                {{Form::text('national_insurance', $user->administrative_details->national_insurance_number,array('placeholder'=>'00.00.00-000.00', 'class'=>'form-control', 'pattern'=>'\\d{2}\.\\d{2}\\.\\d{2}-\\d{3}\\.\\d{2}'))}}
-                                @if ($errors->has('url'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-12">
-                                {{ Form::label('text', 'Identiteitskaartnummer (000-0000000-00)', array('class' => 'control-label col-md-12'))}}
-                                {{Form::text('identity', $user->administrative_details->identity_number,array('placeholder'=>'000-0000000-00','class'=>'form-control', 'pattern'=>'\\d{3}-\\d{7}-\\d{2}'))}}
-                                @if ($errors->has('url'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="row">
+                                <legend> Administratieve gegevens</legend>
+                                <div class="col-md-12">
+                                    {{ Form::label('text', 'Rekeningnummer', array('class' => 'control-label col-md-12'))}}
+                                    {{Form::text('bank_account', $user->administrative_details->bank_account_number,array('placeholder'=>'00','class'=>'form-control', 'pattern'=>'[a-z]{1,15}'))}}
+                                    @if ($errors->has('url'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('url') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-12">
+                                    {{ Form::label('text', 'Rijksregisternummer (00.00.00-000.00)', array('class' => 'control-label col-md-12'))}}
+                                    {{Form::text('national_insurance', $user->administrative_details->national_insurance_number,array('placeholder'=>'00.00.00-000.00', 'class'=>'form-control', 'pattern'=>'\\d{2}\.\\d{2}\\.\\d{2}-\\d{3}\\.\\d{2}'))}}
+                                    @if ($errors->has('url'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('url') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-12">
+                                    {{ Form::label('text', 'Identiteitskaartnummer (000-0000000-00)', array('class' => 'control-label col-md-12'))}}
+                                    {{Form::text('identity', $user->administrative_details->identity_number,array('placeholder'=>'000-0000000-00','class'=>'form-control', 'pattern'=>'\\d{3}-\\d{7}-\\d{2}'))}}
+                                    @if ($errors->has('url'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('url') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                             
-                            <legend>Rollen</legend>
-                            <div class="col-md-12">
-                                @if(!$user->roles->isEmpty())
-                                @foreach($user->roles as $role)
-                                <div>{{$role->type}}</div>
-                                @endforeach
-                                @else
-                                <div>Je hebt nog geen rollen toegewezen gekregen</div>
-                                @endif
+                            @if(!Auth::user()->is_admin)
+                            <div class="row">
+                                <legend>Jouw rollen</legend>
+                                <div class="col-md-12 my_roles">
+                                    @if(!$user->roles->isEmpty())
+                                    @foreach($user->roles as $role)
+                                    <div><i class="fa fa-check" aria-hidden="true"></i> {{$role->type}}</div>
+                                    @endforeach
+                                    @else
+                                    <div>Je hebt nog geen rollen toegewezen gekregen</div>
+                                    @endif
+                                </div>
                             </div>
+                            @endif
                             
                             @if(Auth::user()->is_admin)
-                            <legend>Rollen toevoegen aan deze persoon</legend>
-                            <div class="col-md-12">
-                                @foreach($roles as $role)
-                                <div>
-                                    <input type="checkbox" name="new_roles[]" id="new_role{{$role->id}}" value="{{$role->id}}" <?php if(in_array($role->id,$user->roles->pluck('id')->toArray())) {echo("checked");} ?> >
-                                    <label for="new_role{{$role->id}}">{{$role->type}}</label>
+                            <div class="row">
+                                <legend>Rollen toevoegen aan deze persoon</legend>
+                                <div class="col-md-12 add_roles">
+                                    @foreach($roles as $role)
+                                    <div>
+                                        <input type="checkbox" name="new_roles[]" id="new_role{{$role->id}}" value="{{$role->id}}" <?php if(in_array($role->id,$user->roles->pluck('id')->toArray())) {echo("checked");} ?> >
+                                        <label for="new_role{{$role->id}}">{{$role->type}}<i class="fa fa-check" aria-hidden="true"></i></label>
+                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
                             </div>
                             @endif
                             

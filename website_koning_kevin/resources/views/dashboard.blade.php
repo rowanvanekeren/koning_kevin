@@ -4,6 +4,9 @@
     <link rel="stylesheet" type="text/css" href="{{url('/css/accept_volunteer.css')}}">
 @stop
 @section('content')
+
+    <img class="dashb-bg-rope1" src="{{asset('images/home_bg/rope2-double.png')}}">
+    <img class="dashb-bg-rope2" src="{{asset('images/home_bg/rope1-single.png')}}">
     <style>
         .file_row_background0 {
             padding-top: 3%;
@@ -49,7 +52,7 @@
                 @include('dashboard.rol_files')
                 
                 <div class="col-md-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default box-shadow-default">
                         <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
                          <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                         </div>
@@ -76,7 +79,7 @@
                 @endif
                 <div class="col-md-6">
                     @if(Auth::user()->is_admin)
-                        <div class="panel panel-default" ng-controller="Managing_users">
+                        <div class="panel panel-default box-shadow-default" ng-controller="Managing_users">
                             <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
                                <strong> Overzicht met nieuwe vrijwilligers</strong> <div  class="toggleCollapse glyphicon @{{usrdashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                             </div>
@@ -130,10 +133,10 @@
                             </div>
                             
                             
-                            <div class="modal fade" id="new_volunteers_modal" role="dialog">
+                            <div class="modal fade " id="new_volunteers_modal" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
-                                    <div class="modal-content">
+                                    <div class="modal-content z-index-fix">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Vrijwilliger accepteren @{{selected_user}}</h4>
@@ -163,7 +166,7 @@
                         </div>
 
                         @if(Auth::user()->is_active)
-                            <div class="panel panel-default">
+                            <div class="panel panel-default box-shadow-default">
                                 <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
                                  <strong>Projectoverzicht</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                                 </div>

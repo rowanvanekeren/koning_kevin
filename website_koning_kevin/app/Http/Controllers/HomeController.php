@@ -118,4 +118,12 @@ class HomeController extends Controller
     }
     
     
+    public function volunteers_overview() {
+        $volunteers = User::where('is_active', 1)->orderBy('last_name')->get();
+        //dd($volunteers);
+        //dd($volunteers[2]->accepted_projects);
+        return view('volunteers_overview', ['volunteers' => $volunteers]);
+    }
+    
+    
 }
