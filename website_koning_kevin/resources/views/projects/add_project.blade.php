@@ -39,7 +39,7 @@
                             <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">
                                 <div class="col-md-12">
                                     {{ Form::label('address', 'Adres:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('address', old('address'),array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('address', old('address'),array('class'=>'form-control'))}}
                                     @if ($errors->has('address'))
                                         <span class="help-block">
                                     <strong>{{ $errors->first('address') }}</strong>
@@ -51,7 +51,7 @@
                             <div class="form-group{{ $errors->has('city') ? 'has-error' : '' }}">
                                 <div class="col-md-6">
                                     {{ Form::label('city', 'Stad:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('city', old('city'),array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('city', old('city'),array('class'=>'form-control'))}}
                                     @if ($errors->has('city'))
                                         <span class="help-block">
                                     <strong>{{ $errors->first('city') }}</strong>
@@ -136,7 +136,18 @@
                                         <input type="hidden" name="starttime" ng-value="startTime">
                                     </div>
                                 </div>
+                                @if ($errors->has('startdate'))
+                                    <div class="help-block col-md-12">
+                                        <strong>{{ str_replace('today', 'vandaag', $errors->first('startdate')) }}</strong>
+                                    </div>
+                                @endif
+                                @if ($errors->has('starttime'))
+                                    <div class="help-block col-md-12">
+                                        <strong>{{ $errors->first('starttime') }}</strong>
+                                    </div>
+                                @endif
                             </div>
+                            
 
 
                             <div class="col-md-6" ng-controller="addProjectDateTimeEnd">
@@ -161,6 +172,16 @@
                                         <input type="hidden" name="endtime" ng-value="endTime">
                                     </div>
                                 </div>
+                                @if ($errors->has('enddate'))
+                                    <div class="help-block col-md-12">
+                                        <strong>{{ $errors->first('enddate') }}</strong>
+                                    </div>
+                                @endif
+                                @if ($errors->has('enddate'))
+                                    <div class="help-block col-md-12">
+                                        <strong>{{ $errors->first('enddate') }}</strong>
+                                    </div>
+                                @endif
                             </div>
 
 
@@ -183,7 +204,7 @@
                             <div class="col-md-12">
                                 <div class="form-group{{ $errors->has('image') ? 'has-error' : '' }}">
                                     {{ Form::label('image', 'Selecteer foto', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::file('image',array('class' => 'form-control', 'required' => 'required'))}}
+                                    {{Form::file('image',array('class' => 'form-control'))}}
                                     @if ($errors->has('image'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('image') }}</strong>

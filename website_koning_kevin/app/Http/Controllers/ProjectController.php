@@ -42,10 +42,11 @@ class ProjectController extends Controller
 
     public function add_project(Request $request)
     {
-
+        
         if ($request->active == "on") {
             $active = 1;
-        } else {
+        } 
+        else {
             $active = 0;
         }
 
@@ -56,10 +57,10 @@ class ProjectController extends Controller
             'city' => 'required|max:255',
             'country' => 'required|max:255',
             'image' => 'required|max:1000|mimes:jpeg,bmp,png',
-            /*  'startdate' => 'required|date|after:today',
-              'enddate' => 'required|date|after:startdate',
-              'starttime' => 'required',
-              'endtime' => 'required',*/
+            'startdate' => 'required|date|after:today',
+            'enddate' => 'required|date|after:startdate',
+            'starttime' => 'required',
+            'endtime' => 'required',
         ]);
 
         $start = $request->startdate . " " . $request->starttime;
@@ -87,7 +88,7 @@ class ProjectController extends Controller
             $project->documents()->sync($request->selected_file);
         }
 
-        return redirect('/dashboard');
+        return redirect('/edit_project/' . $id)->with("success_message", 'Project werd succesvol aangemaakt!');
     }
 
 
@@ -102,6 +103,26 @@ class ProjectController extends Controller
     {
 
         $project = Project::find($id);
+        
+        if ($request->active == "on") {
+            $active = 1;
+        } 
+        else {
+            $active = 0;
+        }
+        
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'description' => 'required|max:500',
+            'address' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
+            'image' => 'required|max:1000|mimes:jpeg,bmp,png',
+            'startdate' => 'required|date|after:today',
+            'enddate' => 'required|date|after:startdate',
+            'starttime' => 'required',
+            'endtime' => 'required',
+        ]);
 
         if ($request->file || $request->file_title){
             $this->validate($request, [
@@ -126,18 +147,12 @@ class ProjectController extends Controller
 
                 //create new file name
                 $new_file_name = time() . $request->image->getClientOriginalName();
-                //$request->image->move(base_path() . '/public/images/project_pictures/', $new_file_name);
+                $request->image->move(base_path() . '/public/images/project_pictures/', $new_file_name);
                 $project->image = $new_file_name;
             }
         }
         $start = $request->startdate . " " . $request->starttime;
         $end = $request->enddate . " " . $request->endtime;
-
-        if ($request->active == "on") {
-            $active = 1;
-        } else {
-            $active = 0;
-        }
 
         $project->name = $request->name;
         $project->description = $request->description;
@@ -148,14 +163,12 @@ class ProjectController extends Controller
         $project->end = $end;
         $project->active = $active;
 
-        //dd($project);
-
         $project->save();
         if ($request->selected_file) {
             $project->documents()->sync($request->selected_file);
         }
 
-        return redirect('/edit_project/' . $id);
+        return redirect('/edit_project/' . $id)->with("success_message", 'Project werd succesvol geüpdatet!');;
     }
     
     public function delete_project($id) {

@@ -9,6 +9,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><strong>Project bewerken</strong></div>
                     <div class="panel-body">
+                        
+                        @if(session('success_message'))
+                        <div class="col-md-12 alert alert-success">
+                            {{ session('success_message') }}
+                        </div>
+                        @endif
+                        
 
                         {{Form::open(array('url'=>'/edit_project/' . $project->id,'files' => true))}}
                         <div class="col-md-6">
