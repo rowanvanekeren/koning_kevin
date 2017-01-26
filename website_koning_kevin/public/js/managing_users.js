@@ -25,7 +25,6 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     }
     
     $scope.accept_user = function ($event, user_id, selected) {
-        console.log("test")
         console.log('user accepted ' + user_id);
         //console.log($event.currentTarget.parentElement.parentElement);
         
@@ -101,6 +100,28 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             $scope.get_inactive_users(); 
         }, 500);
         */
+    }
+    
+    
+    $scope.pass_info_to_delete = function($event, user_id) {
+        $scope.volunteer_name = $($event.currentTarget).parent().parent().find('td:nth-child(2) a').text() + " " + $($event.currentTarget).parent().parent().find('td:nth-child(1) a').text();
+        $scope.selected_user = user_id;
+    }
+    
+    $scope.delete_volunteer = function($event, user_id) {
+        console.log(user_id);
+        
+        $http.post('./api/delete_user', 
+            {
+            id: user_id
+            })
+            .success(function(response) {
+                console.log(response.user_id);
+            })
+            .error(function(response) {
+            console.log(response);
+            }); 
+        
     }
     
     

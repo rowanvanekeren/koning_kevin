@@ -57,6 +57,15 @@ class ApiController extends Controller
         return response()->json(['status' => "success", 'user_id' => $user->id]);
     }
     
+    public function delete_user(Request $request) {
+        $user = User::find($request->id);
+        $user->delete();
+        $user->roles()->detach();
+        $user->projects()->detach();
+        //return response succesfull
+        return response()->json(['status' => "success", 'user_id' => $user->id]);
+    }
+    
     
     public function accept_user_for_project(Request $request) {
         

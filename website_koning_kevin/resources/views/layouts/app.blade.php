@@ -84,6 +84,9 @@
                             <li class="{{ Request::is('add_project') ? 'active' : '' }}">
                                 <a href="{{ url('/add_project') }}">Project aanmaken</a>
                             </li>
+                            <li class="{{ Request::is('add_project') ? 'active' : '' }}">
+                                <a href="{{ url('/vrijwilligersoverzicht') }}">Vrijwilligers</a>
+                            </li>
                         @endif
                         <li class="dropdown custom-dropdown">
 
@@ -124,15 +127,14 @@
             <div class="footer-content"><div class="footer-content-left"><p>Koning Kevin vzw is een landelijk georganiseerde <br>
                         jeugdwerkorganisatie, erkend door en met de <br>
                         steun van de Vlaamse Gemeenschap. <br>
-                        Alle inhoud &copy; 2017 Koning Kevin. <br></p></div></div>
+                        Alle inhoud &copy; {{ date("Y") }} Koning Kevin. <br></p></div></div>
             <div class="footer-border"></div>
             <div class="footer-content"><div class="footer-content-middle">
                     <h2>Koning Kevin vzw</h2>
                     <p>
                         Kapellekensweg 2 3010 Kessel-Lo<br>
                         T 016 350 550<br>
-                        F 016 254 334<br>
-                        info@koningkevin.be<br></p></div></div>
+                        <a href="mailto:info@koningkevin.be?Subject=Contact bericht">info@koningkevin.be</a><br></p></div></div>
 
             <div class="footer-content"><div class="footer-content-last"><img src="{{asset('/images/icons/vloverheid.png')}}"></div></div>
 

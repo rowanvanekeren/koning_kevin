@@ -28,6 +28,7 @@ Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel/{id?}', 'HomeController@profile_info');
 Route::post('/edit_profile', 'HomeController@edit_profile');
 Route::get('/vrijwilligersoverzicht', 'HomeController@volunteers_overview');
+Route::get('/search_volunteers', 'HomeController@search_volunteers');
 Route::get('/project_info/{id}', 'HomeController@project_info');
 Route::get('/volunteer/{id}', 'HomeController@volunteer');
 Route::get('/add_project', 'ProjectController@show_add_project');
@@ -35,7 +36,6 @@ Route::post('/add_project','ProjectController@add_project');
 Route::get('/edit_project/{id}', 'ProjectController@show_edit_project');
 Route::post('/edit_project/{id}', 'ProjectController@edit_project');
 Route::get('/delete_project/{id}', 'ProjectController@delete_project');
-Route::post('/api/upload_image', 'ApiController@upload_image');
 Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 Route::get('/testing', 'ProjectController@test');
 
@@ -43,6 +43,7 @@ Route::get('/testing', 'ProjectController@test');
 Route::post('/api/accept_user', 'ApiController@activate_user');
 Route::post('/api/add_role_to_user', 'ApiController@add_role_to_user');
 Route::post('/api/decline_user', 'ApiController@decline_user');
+Route::post('/api/delete_user', 'ApiController@delete_user');
 Route::post('/api/accept_user_for_project', 'ApiController@accept_user_for_project');
 
 

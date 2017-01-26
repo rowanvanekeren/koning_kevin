@@ -25,6 +25,7 @@
 .add_roles input:checked + label{
     background-color: #542657;
     color: #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .my_roles i {
@@ -35,8 +36,30 @@
 }
 
 /* dit hieronder hoort hier niet thuis !!! , moet naar app.css verplaatst worden uiteindelijk */
-
+/* profile_info */
 legend {
     margin-top: 25px;
+}
+
+/* vrijwilligersoverzicht */
+table.volunteers_overview {
+    margin-top: 20px;
+}
+
+table.volunteers_overview tbody tr:nth-child(odd) {
+    background-color: rgba(84, 38, 87, 0.25);
+}
+
+table.volunteers_overview tbody tr a {
+    color: #000;
+}
+
+table.volunteers_overview tbody tr:hover {
+    background-color: #542657;
+    color: #fff;
+}
+
+table.volunteers_overview tbody tr:hover a {
+    color: #fff;
 }
 
