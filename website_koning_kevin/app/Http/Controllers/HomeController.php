@@ -32,10 +32,20 @@ class HomeController extends Controller
 
     public function index()
     {
-        $projects = Project::where('active', 1)->get();
+        date_default_timezone_set('Europe/Brussels');
+        
+        $today = date('Y-m-d H:i:s');
+        //get all active projects where the startdate is after the current date
+        $projects = Project::where('active', 1)->where('start', '>=', $today)->orderBy('start')->get();
+        //get all the projects which the currently logged in user has been accepted for
+        $my_projects = Project::where('active', 1)->where('start', '>=', $today)->orderBy('start')->whereHas('users', function ($query) {
+            $query->where('users.id', Auth::user()->id);
+            $query->where('is_accepted', 1);
+        })->get();
+        //dd($my_projects);
         $inactive_users = User::where('is_active', 0)->get();
         $roles = Role::all();
-        return view('dashboard', ['projects' => $projects, 'inactive_users' => $inactive_users, 'roles' => $roles]);
+        return view('dashboard', ['projects' => $projects, 'my_projects' => $my_projects, 'inactive_users' => $inactive_users, 'roles' => $roles]);
     }
 
     public function profile_info($id = null)
@@ -44,7 +54,6 @@ class HomeController extends Controller
             $id = Auth::user()->id;
         }
         $user = User::find($id);
-        
         $roles = Role::all();
         
         return view('profile_info', ['user' => $user, 'roles' => $roles]);
@@ -71,19 +80,41 @@ class HomeController extends Controller
         $user->save();
         $user->administrative_details->save();
         
-        return redirect('/dashboard');
+        if($request->new_roles) {
+            $user->roles()->detach();
+            foreach($request->new_roles as $role) {
+                $user->roles()->attach($role);
+            }
+        }
+        
+        
+        return redirect('/profiel/' .$request->user_id)->with('success_message', 'Profiel werd succesvol aangepast');
     }
     
     
     public function project_info($id) {
         $project = Project::where('id', $id)->first();
-        return view('project_info', ['project' => $project]);
+        $user = $project->users()->where('users.id', Auth::user()->id)->first();
+        $volunteered = false;
+        $role = false;
+        if($user) {
+            $volunteered = true;
+            //if the user already signed up for the project, check if he she is accepted and with which role
+            if($user->pivot->is_accepted) {
+                $role = Role::where('id', $user->pivot->role_id)->pluck('type')->first();
+                //dd("this user was accepted with the role: " . $role);
+            }
+        }
+        else {
+            //dd("no user found");
+        }
+        return view('project_info', ['project' => $project, 'volunteered' => $volunteered, 'role' => $role]);
     }
     
     public function volunteer($id) {
         $user = Auth::user();
         $user->projects()->attach($id);
-        return redirect('/dashboard');
+        return redirect('/project_info/'.$id)->with('success_message', 'Bedankt om je aan te melden ! Zodra een administrator je geaccepteerd heeft, komt dit project bij jouw persoonlijke overzicht.');;
     }
     
     

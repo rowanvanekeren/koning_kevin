@@ -18,6 +18,12 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
                     <div class="panel-heading text-center"><strong>{{$project->name}}</strong></div>
                     <div class="panel-body">
                     
+                    @if(session('success_message'))
+                    <div class="col-md-12 alert alert-success volunteered">
+                        {{ session('success_message') }}
+                    </div>
+                    @endif
+                    
                     <div class="col-md-6">
                         <img src="{{url('/images/project_pictures/' . $project->image)}}" alt="{{$project->name}}" width="100%">
                     </div>
@@ -51,7 +57,13 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
                     </div>
                     
                     <div class="col-md-12">
+                        @if(!$volunteered)
                         <a href="{{url('volunteer/' . $project->id)}}" class="btn btn-success">Ik wil me aanmelden voor dit project</a>
+                        @elseif($volunteered && $role)
+                        <p>Je hebt je aangemeld voor dit project en werd geaccepteerd met de rol {{ $role }}.</p>
+                        @else
+                        <p>Je hebt je reeds aangemeld voor dit project, maar werd nog niet geaccepteerd.</p>
+                        @endif
                     </div>
    
                     </div>

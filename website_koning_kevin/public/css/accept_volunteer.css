@@ -1,0 +1,24 @@
+
+#new_volunteers_modal input[type="checkbox"] {
+    display: none;
+}
+
+#new_volunteers_modal label {
+    width: 100%;
+    padding: 2% 10px;
+    border-bottom: 1px solid #542657;
+    margin: 0;
+    cursor: pointer;
+}
+
+#new_volunteers_modal label i {
+    float: right;
+    color: #fff;
+}
+
+#new_volunteers_modal label:hover, 
+#new_volunteers_modal input:checked + label {
+    background-color: #542657;
+    color: #fff;
+}
+
