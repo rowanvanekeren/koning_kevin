@@ -4,7 +4,7 @@
 @stop
 @section('content')
     <div {{--style="margin-top: 80px;"--}} class="container" ng-controller="Managing_file">
-        <div class="panel panel-default">
+        <div class="panel panel-default box-shadow-default">
             <div class="panel-heading text-center"><strong>{{--@{{ title }}--}}Bestand toevoegen</strong></div>
 
             {{-- <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>--}}

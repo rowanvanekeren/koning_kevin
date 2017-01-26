@@ -74,6 +74,7 @@ Route::get('/api/get_categories','Api_file_Controller@get_categories');
 Route::get('/api/get_all_files_for_category/{id}','Api_file_Controller@get_all_files_for_category');
 Route::get('/api/get_all_files_for_projects','Api_file_Controller@get_files_project');
 
+Route::get('/edit_file/{document_id}','Managing_files@show_edit_file');
 Route::get('/edit_project/{project_id}/delete/{document_id}','Managing_files@delete_file');
 Route::get('/edit_project/{project_id}/delete_extra_documents/{document_id}','Managing_files@delete_extra_file');
 //post

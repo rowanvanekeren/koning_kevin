@@ -14,7 +14,7 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
         <div class="row">
             
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-default box-shadow-default">
                     <div class="panel-heading text-center"><strong>{{$project->name}}</strong></div>
                     <div class="panel-body">
                     

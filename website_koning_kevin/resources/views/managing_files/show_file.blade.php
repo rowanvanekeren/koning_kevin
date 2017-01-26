@@ -17,7 +17,7 @@
                    nog iets op gevonden worden </h3>--}}
             @if(Auth::user()->is_admin)
                 <div class="col-md-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default box-shadow-default">
                         <div class="panel-heading">Categorieen</div>
                         <div class="panel-body">
                             {{--Rowan -> om een prioriteid toe te voegen gebruik volgede code file_row_background@{{file.priority}}
@@ -76,7 +76,7 @@
                                                 <a href="{{url('/')}}@{{ file.url}}"><span
                                                             class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                                 </a>
-                                                <a href="#"><span
+                                                <a href="{{url('/edit_file/')}}/@{{ file.id}}"><span
                                                             class="col-md-1 glyphicon glyphicon-pencil"></span></a>
                                                 <a href="#"><span ng-click="delete_document(file.id)"
                                                                   class="col-md-1 glyphicon glyphicon-trash"></span></a>
