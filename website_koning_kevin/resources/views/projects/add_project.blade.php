@@ -5,7 +5,7 @@
 
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-12" ng-controller="Managing_projects">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><strong>Project aanmaken</strong></div>
                     <div class="panel-body">
@@ -16,10 +16,10 @@
                             <div class="form-group{{ $errors->has('name') ? 'has-error' : '' }}">
                                 <div class="col-md-12">
                                     {{ Form::label('name', 'Projectnaam:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('name', old('name'),array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('name', old('name'),array('class'=>'form-control'))}}
                                     @if ($errors->has('name'))
                                         <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <strong>* {{ $errors->first('name') }}</strong>
                                 </span>
                                     @endif
                                 </div>
@@ -27,10 +27,10 @@
                             <div class="form-group{{ $errors->has('description') ? 'has-error' : '' }}">
                                 <div class="col-md-12">
                                     {{ Form::label('description', 'Beschrijving:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::textarea('description', old('description'),array('class'=>'form-control','size' => '30x5', 'required' => 'required'))}}
+                                    {{Form::textarea('description', old('description'),array('class'=>'form-control','size' => '30x5'))}}
                                     @if ($errors->has('description'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('description') }}</strong>
+                                            <strong>* {{ $errors->first('description') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -39,10 +39,10 @@
                             <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">
                                 <div class="col-md-12">
                                     {{ Form::label('address', 'Adres:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('address', old('address'),array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('address', old('address'),array('class'=>'form-control'))}}
                                     @if ($errors->has('address'))
                                         <span class="help-block">
-                                    <strong>{{ $errors->first('address') }}</strong>
+                                    <strong>* {{ $errors->first('address') }}</strong>
                                 </span>
                                     @endif
                                 </div>
@@ -51,10 +51,10 @@
                             <div class="form-group{{ $errors->has('city') ? 'has-error' : '' }}">
                                 <div class="col-md-6">
                                     {{ Form::label('city', 'Stad:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('city', old('city'),array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('city', old('city'),array('class'=>'form-control'))}}
                                     @if ($errors->has('city'))
                                         <span class="help-block">
-                                    <strong>{{ $errors->first('city') }}</strong>
+                                    <strong>* {{ $errors->first('city') }}</strong>
                                 </span>
                                     @endif
                                 </div>
@@ -72,7 +72,7 @@
                                                                 'Zweden' => 'Zweden'], 'België',array('class'=>'form-control', 'required' => 'required'), old('country'))}}
                                     @if ($errors->has('country'))
                                         <span class="help-block">
-                                    <strong>{{ $errors->first('country') }}</strong>
+                                    <strong>* {{ $errors->first('country') }}</strong>
                                 </span>
                                     @endif
                                 </div>
@@ -136,7 +136,18 @@
                                         <input type="hidden" name="starttime" ng-value="startTime">
                                     </div>
                                 </div>
+                                @if ($errors->has('startdate'))
+                                    <div class="help-block col-md-12">
+                                        <strong>* {{ str_replace('today', 'vandaag', $errors->first('startdate')) }}</strong>
+                                    </div>
+                                @endif
+                                @if ($errors->has('starttime'))
+                                    <div class="help-block col-md-12">
+                                        <strong>* {{ $errors->first('starttime') }}</strong>
+                                    </div>
+                                @endif
                             </div>
+                            
 
 
                             <div class="col-md-6" ng-controller="addProjectDateTimeEnd">
@@ -161,6 +172,16 @@
                                         <input type="hidden" name="endtime" ng-value="endTime">
                                     </div>
                                 </div>
+                                @if ($errors->has('enddate'))
+                                    <div class="help-block col-md-12">
+                                        <strong>* {{ $errors->first('enddate') }}</strong>
+                                    </div>
+                                @endif
+                                @if ($errors->has('enddate'))
+                                    <div class="help-block col-md-12">
+                                        <strong>* {{ $errors->first('enddate') }}</strong>
+                                    </div>
+                                @endif
                             </div>
 
 
@@ -183,10 +204,10 @@
                             <div class="col-md-12">
                                 <div class="form-group{{ $errors->has('image') ? 'has-error' : '' }}">
                                     {{ Form::label('image', 'Selecteer foto', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::file('image',array('class' => 'form-control', 'required' => 'required'))}}
+                                    {{Form::file('image',array('class' => 'form-control', 'id' => 'project_image'))}}
                                     @if ($errors->has('image'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('image') }}</strong>
+                                            <strong>* {{ $errors->first('image') }}</strong>
                                         </span>
                                     @endif
                                 </div>

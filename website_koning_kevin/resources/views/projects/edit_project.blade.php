@@ -9,6 +9,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><strong>Project bewerken</strong></div>
                     <div class="panel-body">
+                        
+                        @if(session('success_message'))
+                        <div class="col-md-12 alert alert-success">
+                            {{ session('success_message') }}
+                        </div>
+                        @endif
+                        
 
                         {{Form::open(array('url'=>'/edit_project/' . $project->id,'files' => true))}}
                         <div class="col-md-6">
@@ -16,7 +23,7 @@
                             <div class="form-group{{ $errors->has('name') ? 'has-error' : '' }}">
                                 <div class="col-md-12">
                                     {{ Form::label('name', 'Projectnaam:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('name', $project->name, array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('name', $project->name, array('class'=>'form-control'))}}
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -27,7 +34,7 @@
                             <div class="form-group{{ $errors->has('description') ? 'has-error' : '' }}">
                                 <div class="col-md-12">
                                     {{ Form::label('description', 'Beschrijving:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::textarea('description', $project->description, array('class'=>'form-control','size' => '30x5', 'required' => 'required'))}}
+                                    {{Form::textarea('description', $project->description, array('class'=>'form-control','size' => '30x5'))}}
                                     @if ($errors->has('description'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -39,7 +46,7 @@
                             <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">
                                 <div class="col-md-12">
                                     {{ Form::label('address', 'Adres:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('address', $project->address, array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('address', $project->address, array('class'=>'form-control'))}}
                                     @if ($errors->has('address'))
                                         <span class="help-block">
                                     <strong>{{ $errors->first('address') }}</strong>
@@ -51,7 +58,7 @@
                             <div class="form-group{{ $errors->has('city') ? 'has-error' : '' }}">
                                 <div class="col-md-6">
                                     {{ Form::label('city', 'Stad:', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('city', $project->city, array('class'=>'form-control', 'required' => 'required'))}}
+                                    {{Form::text('city', $project->city, array('class'=>'form-control'))}}
                                     @if ($errors->has('city'))
                                         <span class="help-block">
                                     <strong>{{ $errors->first('city') }}</strong>
