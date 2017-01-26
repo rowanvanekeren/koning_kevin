@@ -88,7 +88,7 @@ class ProjectController extends Controller
             $project->documents()->sync($request->selected_file);
         }
 
-        return redirect('/edit_project/' . $$project->id)->with("success_message", 'Project werd succesvol aangemaakt!');
+        return redirect('/edit_project/' . $project->id)->with("success_message", 'Project werd succesvol aangemaakt!');
     }
 
 
