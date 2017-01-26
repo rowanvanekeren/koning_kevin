@@ -16,6 +16,7 @@
 
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{url('/css/custom.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('/css/accept_volunteer.css')}}">
     @yield('styles')
     <script src="{{url('/js/app.js')}}"></script>
 
