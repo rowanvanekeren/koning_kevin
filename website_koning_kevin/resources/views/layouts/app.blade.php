@@ -84,7 +84,7 @@
                             <li class="{{ Request::is('add_project') ? 'active' : '' }}">
                                 <a href="{{ url('/add_project') }}">Project aanmaken</a>
                             </li>
-                            <li class="{{ Request::is('add_project') ? 'active' : '' }}">
+                            <li class="{{ Request::is('vrijwilligersoverzicht') ? 'active' : '' }}">
                                 <a href="{{ url('/vrijwilligersoverzicht') }}">Vrijwilligers</a>
                             </li>
                         @endif

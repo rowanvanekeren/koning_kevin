@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Role;
+
 
 class User extends Authenticatable
 {
@@ -14,10 +16,7 @@ class User extends Authenticatable
     
     protected $dates = ['deleted_at'];
 
-    public function roles()
-    {
-        return $this->belongsToMany('App\Role');
-    }
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -40,6 +39,15 @@ class User extends Authenticatable
     ];
     
     
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+    
+    public function current_role($role_id)
+    {
+        return Role::where('id', $role_id)->first();
+    }
     
     public function administrative_details() {
         return $this->hasOne('App\AdministrativeDetail');
