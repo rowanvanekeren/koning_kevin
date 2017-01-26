@@ -30,7 +30,9 @@
 .my_roles i {
     color: #542657;
 }
-
+#myModel{
+    z-index: 10000;
+}
 
 /* dit hieronder hoort hier niet thuis !!! , moet naar app.css verplaatst worden uiteindelijk */
 

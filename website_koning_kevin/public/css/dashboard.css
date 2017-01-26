@@ -81,7 +81,7 @@ width: 70px;
     position: absolute;
     bottom: 2000px;
     left: 250px;
-    z-index: 5;
+    z-index: 3;
     /*    box-shadow: 4px 4px 20px #5a5a5a;*/
     animation-name: rope1;
     animation-duration: 3s ;
@@ -118,7 +118,7 @@ width: 70px;
     position: absolute;
     bottom:  2000px;
     left: -20px;
-    z-index: 5;
+    z-index: 3;
     /*    box-shadow: 4px 4px 20px #5a5a5a;*/
     animation-name: rope1;
     animation-duration: 3s ;
@@ -134,7 +134,12 @@ width: 70px;
         font-size: 1.5em;
         text-align: center;
     }
-
+    .dashb-bg-rope1{
+        display:none;
+    }
+    .dashb-bg-rope2{
+        display:none;
+    }
     .row-icons {
         margin-top: 15px;
         width: 100%;

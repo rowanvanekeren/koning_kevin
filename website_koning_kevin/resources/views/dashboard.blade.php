@@ -47,12 +47,12 @@
             </div>
         @endif
         
-            <div class="row">
+            <div class="row" ng-controller="Managing_users">
                 @if(Auth::user()->is_active)
                 @include('dashboard.rol_files')
                 
                 <div class="col-md-6">
-                    <div class="panel panel-default box-shadow-default">
+                    <div class="panel panel-default box-shadow-default z-index-fix">
                         <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
                          <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                         </div>
@@ -79,7 +79,7 @@
                 @endif
                 <div class="col-md-6">
                     @if(Auth::user()->is_admin)
-                        <div class="panel panel-default box-shadow-default" ng-controller="Managing_users">
+                        <div class="panel panel-default box-shadow-default z-index-fix " >
                             <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
                                <strong> Overzicht met nieuwe vrijwilligers</strong> <div  class="toggleCollapse glyphicon @{{usrdashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                             </div>
@@ -133,40 +133,40 @@
                             </div>
                             
                             
-                            <div class="modal fade " id="new_volunteers_modal" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content z-index-fix">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Vrijwilliger accepteren @{{selected_user}}</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Welke rollen wil je aan deze vrijwilliger toekennen?</p>
-                                            @foreach($roles as $role)
-                                                <div class="role">
-                                                <input id="role{{$role->id}}" type="checkbox" ng-model="selected[{{$role->id}}]" value="test">
-                                                <label for="role{{$role->id}}">{{$role->type}} <i class="fa fa-check" aria-hidden="true"></i></label>
-                                                </div>
-                                            @endforeach
-                                                    
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" ng-click="accept_user($event, selected_user, selected)" data-dismiss="modal">Accepteren</button>
-                                        </div>
-                                    </div>
 
-                                </div>
-                            </div>
                             
                             
                             
                             
                             
                         </div>
+                        <div class="modal fade " id="new_volunteers_modal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content z-index-fix">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Vrijwilliger accepteren @{{selected_user}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Welke rollen wil je aan deze vrijwilliger toekennen?</p>
+                                        @foreach($roles as $role)
+                                            <div class="role">
+                                                <input id="role{{$role->id}}" type="checkbox" ng-model="selected[{{$role->id}}]" value="test">
+                                                <label for="role{{$role->id}}">{{$role->type}} <i class="fa fa-check" aria-hidden="true"></i></label>
+                                            </div>
+                                        @endforeach
 
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" ng-click="accept_user($event, selected_user, selected)" data-dismiss="modal">Accepteren</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                         @if(Auth::user()->is_active)
-                            <div class="panel panel-default box-shadow-default">
+                            <div class="panel panel-default box-shadow-default z-index-fix">
                                 <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
                                  <strong>Projectoverzicht</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                                 </div>
