@@ -26,15 +26,15 @@
         }
     </style>
     <div class="container-fluid" ng-controller="toggleController">
-        <div class="row">
+      {{--  <div class="row">
             <div class="col-md-12 sub-page-banner">
 
                     <h1>Dashboard</h1>
-          {{--      <img class="sub-header-img" src="{{asset('images/page_header/bestanden.png')}}">--}}
+          --}}{{--      <img class="sub-header-img" src="{{asset('images/page_header/bestanden.png')}}">--}}{{--
 
 
             </div>
-        </div>
+        </div>--}}
         @if(!Auth::user()->is_active)
             <div class="row">
                 <div class="col-md-12 col-md-offset-2">
