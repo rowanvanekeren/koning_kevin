@@ -71,3 +71,13 @@ body{
        display:none;
     }
 }
+
+
+
+
+.z-index-fix {
+
+    z-index: 50 !important;
+}
+
+

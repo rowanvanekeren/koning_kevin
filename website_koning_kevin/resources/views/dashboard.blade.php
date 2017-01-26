@@ -133,10 +133,10 @@
                             </div>
                             
                             
-                            <div class="modal fade" id="new_volunteers_modal" role="dialog">
+                            <div class="modal fade " id="new_volunteers_modal" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
-                                    <div class="modal-content">
+                                    <div class="modal-content z-index-fix">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Vrijwilliger accepteren @{{selected_user}}</h4>
