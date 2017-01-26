@@ -65,9 +65,84 @@ class Managing_files extends Controller
         return view('managing_files/show_file')->with('roles', Role::all()->pluck('type'))->with('categories', Category::all()->pluck('type'));
     }
 
+    public function edit_file(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'description' => 'required|max:1000',
+            'file' => 'max:60000|mimes:pdf',
+            'role' => 'required',
+            'category' => 'required',
+            'priority' => 'required',
+            'tags' => 'max:255',
+        ]);
+
+        $document = Document::find($id);
+
+
+
+        if ($request->file) {
+            $new_file_name = time() . $request->file->getClientOriginalName();
+            $destinationPath = base_path() . '/public/files'; // upload path
+            $request->file->move($destinationPath, $new_file_name); // uploading file to given path
+            $request->url = '/download/' . $new_file_name;
+
+        } else {
+
+            $request->url = $document->url;
+        }
+
+
+        $request->tags = explode(',', $request->tags);
+
+        $indexs_of_tags = [];
+        foreach ($request->tags as $tag) {
+
+            if (sizeof(Tag::where('type', $tag)->get())) {
+                array_push($indexs_of_tags, Tag::where('type', $tag)->first()->id);
+            } else {
+                $tag_row = new Tag;
+                $tag_row->type = $tag;
+                $tag_row->save();
+                array_push($indexs_of_tags, $tag_row->id);
+            }
+        }
+
+
+        $document->title = $request->title;
+        $document->description = $request->description;
+        $document->url = $request->url;
+        $document->priority = $request->priority;
+
+     
+        $document->save();
+//        $document->update([
+//            'title' => $request->title,
+//            'description' => $request->description,
+//            'url' => $request->url,
+//            'priority' => $request->$request->priority
+//        ]);
+
+
+        $request->category= Category::where('type',$request->category)->first()->id;
+
+        $request->role=Role::where('type',$request->role)->first()->id;
+        $document->categories()->sync([$request->category]);
+        $document->roles()->sync([$request->role]);
+        $document->tags()->sync($indexs_of_tags);
+
+        //ton dat bestand is goed opgeload!
+        Session::flash('success', 'Server bestand is bijgewerkt!');
+        //keer terug naar file add pagina om nieuw bestand te laden
+
+
+        return redirect('/edit_file/' . $id);
+    }
+
     public function show_edit_file($id)
     {
-        $document = Document::with('categories', 'roles','tags')->where('id', $id)->first();
+        $document = Document::with('categories', 'roles', 'tags')->where('id', $id)->first();
         $all_categorys = Category::all();
         foreach ($all_categorys as $key => $category) {
             $put_categories[$category->type] = $category->type;
@@ -77,39 +152,27 @@ class Managing_files extends Controller
         foreach ($all_roles as $key => $role) {
             $put_roles[$role->type] = $role->type;
         }
-        $tags="";
-        foreach ($document->tags as $key=>$tag){
-            if($key != count($document->tags)-1){
-                $tags= $tags.$tag->type.', ';
+        $tags = "";
+        foreach ($document->tags as $key => $tag) {
+            if ($key != count($document->tags) - 1) {
+                $tags = $tags . $tag->type . ', ';
             }
 
         }
 
         return view('managing_files/edit/edit_file', ['file' => $document,
-            'roles' => $put_roles, 'categories' => $put_categories,'tags'=>$tags]);
+            'roles' => $put_roles, 'categories' => $put_categories, 'tags' => $tags]);
     }
 
     public function add_file(Request $request)
     {
-        //controlle op url of file upload
-//        if (isset($request->url) && strlen($request->url) != "") {
-//            $this->validate($request, [
-//                'title' => 'required|max:255',
-//                'description' => 'required|max:255',
-//                'url' => 'required|max:1000',
-//                'roles' => 'required|max:6',
-//                'tags' => 'max:255',
-//                'categories' => 'required|max:6',
-//                'priority' => 'required|max:1',
-//            ]);
-//
-//        } else {
+
         $this->validate($request, [
             'title' => 'required|max:255',
             'description' => 'required|max:1000',
             'file' => 'required|max:8000|mimes:pdf',
             //'file' => 'required|mimes:application/pdf,application/msword,application/zip',
-            'role' => 'required|max:6',
+            'role' => 'required',
             'category' => 'required',
             'priority' => 'required',
             'tags' => 'max:255',
