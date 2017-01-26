@@ -24,6 +24,7 @@
     <script src="{{url('/js/angular.js')}}"></script>
     <script src="{{url('/js/managing_file.js')}}"></script>
     <script src="{{url('/js/managing_users.js')}}"></script>
+    <script src="{{url('/js/managing_projects.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -112,13 +113,35 @@
             </div>
         </div>
     </nav>
-    <div ng-controller="PrimeController">
+    <div class="main-content" ng-controller="PrimeController">
 
         @yield('content')
+
+
+    </div>
+    <div class="row ">  <div class="col-md-12 footer-main">
+            <div class="footer-content"><div class="footer-content-left"><p>Koning Kevin vzw is een landelijk georganiseerde <br>
+                        jeugdwerkorganisatie, erkend door en met de <br>
+                        steun van de Vlaamse Gemeenschap. <br>
+                        Alle inhoud &copy; 2014 Koning Kevin. <br></p></div></div>
+            <div class="footer-border"></div>
+            <div class="footer-content"><div class="footer-content-middle">
+                    <h2>Koning Kevin vzw</h2>
+                    <p>
+                        Kapellekensweg 2 3010 Kessel-Lo<br>
+                        T 016 350 550<br>
+                        F 016 254 334<br>
+                        info@koningkevin.be<br></p></div></div>
+            <div class="footer-border"></div>
+            <div class="footer-content"><div class="footer-content-last"><img src="{{asset('/images/icons/vloverheid.png')}}"></div></div>
+
+
+        </div>
     </div>
 </div>
 
 @yield('custom_js')
+
 
 </body>
 </html>

@@ -76,7 +76,7 @@
                                                 <a href="{{url('/')}}@{{ file.url}}"><span
                                                             class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                                 </a>
-                                                <a href="#"><span
+                                                <a href="{{url('/edit_file/')}}/@{{ file.id}}"><span
                                                             class="col-md-1 glyphicon glyphicon-pencil"></span></a>
                                                 <a href="#"><span ng-click="delete_document(file.id)"
                                                                   class="col-md-1 glyphicon glyphicon-trash"></span></a>

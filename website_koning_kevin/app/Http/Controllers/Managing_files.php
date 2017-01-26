@@ -32,12 +32,14 @@ class Managing_files extends Controller
         $project = Project::find($project_id);
         $project->documents()->detach($file_id);
 
-        return redirect('/edit_project/'.$project_id);
+        return redirect('/edit_project/' . $project_id);
     }
 
-    public function delete_extra_file($project_id, $file_id){
+    public function delete_extra_file($project_id, $file_id)
+    {
         ProjectDocument::find($file_id)->delete();
-        return redirect('/edit_project/'.$project_id);
+
+        return redirect('/edit_project/' . $project_id);
     }
 
     public function show_add_file()
@@ -51,7 +53,6 @@ class Managing_files extends Controller
         $all_roles = Role::all();
         foreach ($all_roles as $key => $role) {
             $put_roles[$role->id] = $role->type;
-
         }
         return view('managing_files/add_file', ['roles' => $put_roles, 'categories' => $put_categories]);
     }
@@ -64,10 +65,32 @@ class Managing_files extends Controller
         return view('managing_files/show_file')->with('roles', Role::all()->pluck('type'))->with('categories', Category::all()->pluck('type'));
     }
 
+    public function show_edit_file($id)
+    {
+        $document = Document::with('categories', 'roles','tags')->where('id', $id)->first();
+        $all_categorys = Category::all();
+        foreach ($all_categorys as $key => $category) {
+            $put_categories[$category->type] = $category->type;
+        }
+        $put_roles = [];
+        $all_roles = Role::all();
+        foreach ($all_roles as $key => $role) {
+            $put_roles[$role->type] = $role->type;
+        }
+        $tags="";
+        foreach ($document->tags as $key=>$tag){
+            if($key != count($document->tags)-1){
+                $tags= $tags.$tag->type.', ';
+            }
+
+        }
+
+        return view('managing_files/edit/edit_file', ['file' => $document,
+            'roles' => $put_roles, 'categories' => $put_categories,'tags'=>$tags]);
+    }
+
     public function add_file(Request $request)
     {
-
-
         //controlle op url of file upload
 //        if (isset($request->url) && strlen($request->url) != "") {
 //            $this->validate($request, [
