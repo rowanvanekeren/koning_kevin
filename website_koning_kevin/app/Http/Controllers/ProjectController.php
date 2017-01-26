@@ -117,7 +117,7 @@ class ProjectController extends Controller
             'address' => 'required|max:255',
             'city' => 'required|max:255',
             'country' => 'required|max:255',
-            'image' => 'required|max:1000|mimes:jpeg,bmp,png',
+            'image' => 'max:1000|mimes:jpeg,bmp,png',
             'startdate' => 'required|date|after:today',
             'enddate' => 'required|date|after:startdate',
             'starttime' => 'required',

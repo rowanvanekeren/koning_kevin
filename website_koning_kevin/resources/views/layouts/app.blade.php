@@ -24,6 +24,7 @@
     <script src="{{url('/js/angular.js')}}"></script>
     <script src="{{url('/js/managing_file.js')}}"></script>
     <script src="{{url('/js/managing_users.js')}}"></script>
+    <script src="{{url('/js/managing_projects.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
