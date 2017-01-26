@@ -1,3 +1,4 @@
+
 <div class="col-md-6">
     <div class="panel panel-default box-shadow-default z-index-fix">
         <div class="panel-heading" ng-click="togglePanel('yourFilesDashboard')">
