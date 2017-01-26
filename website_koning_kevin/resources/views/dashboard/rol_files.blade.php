@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-6 ">
     <div class="panel panel-default">
         <div class="panel-heading" ng-click="togglePanel('yourFilesDashboard')">
             <strong>Bestanden volgens jouw rol</strong> <div  class="toggleCollapse glyphicon @{{yourFilesDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
