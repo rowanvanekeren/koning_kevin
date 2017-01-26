@@ -5,7 +5,7 @@
 
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-12" ng-controller="Managing_projects">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><strong>Project bewerken</strong></div>
                     <div class="panel-body">
@@ -139,13 +139,13 @@
                         <div class="col-md-6">
 
                             <div class="col-md-12">
-                                <img src="{{url('/images/project_pictures/'.$project->image)}}" width="100%;">
+                                <img id="project_img" src="{{url('/images/project_pictures/'.$project->image)}}" width="100%;">
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group{{ $errors->has('image') ? 'has-error' : '' }}">
                                     {{ Form::label('image', 'Selecteer andere foto', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::file('image',array('class' => 'form-control'))}}
+                                    {{Form::file('image',array('class' => 'form-control', 'id' => 'project_image'))}}
                                     @if ($errors->has('image'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('image') }}</strong>

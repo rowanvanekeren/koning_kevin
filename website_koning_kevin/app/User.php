@@ -48,6 +48,9 @@ class User extends Authenticatable
     public function projects() {
         return $this->belongsToMany('App\Project')->withPivot('is_accepted', 'role_id');
     }
+    public function accepted_projects() {
+        return $this->belongsToMany('App\Project')->withPivot('is_accepted', 'role_id')->wherePivot('is_accepted', 1);;
+    }
     
 }
 

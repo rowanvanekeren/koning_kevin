@@ -201,9 +201,15 @@
 
 
                         <div class="col-md-6">
+                           
+                            <div class="col-md-12">
+                                <div class="img_placeholder" style="width: 100%; height: 150px; background-color: #dcd3e3;"></div>
+                                <img id="project_img" class="new" src="" width="100%;">
+                            </div>
+                            
                             <div class="col-md-12">
                                 <div class="form-group{{ $errors->has('image') ? 'has-error' : '' }}">
-                                    {{ Form::label('image', 'Selecteer foto', array('class' => 'control-label col-md-12'))}}
+                                    {{ Form::label('project_image', 'Selecteer foto', array('class' => 'control-label col-md-12'))}}
                                     {{Form::file('image',array('class' => 'form-control', 'id' => 'project_image'))}}
                                     @if ($errors->has('image'))
                                         <span class="help-block">

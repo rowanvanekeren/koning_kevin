@@ -27,6 +27,7 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/profiel/{id?}', 'HomeController@profile_info');
 Route::post('/edit_profile', 'HomeController@edit_profile');
+Route::get('/vrijwilligersoverzicht', 'HomeController@volunteers_overview');
 Route::get('/project_info/{id}', 'HomeController@project_info');
 Route::get('/volunteer/{id}', 'HomeController@volunteer');
 Route::get('/add_project', 'ProjectController@show_add_project');
@@ -34,6 +35,7 @@ Route::post('/add_project','ProjectController@add_project');
 Route::get('/edit_project/{id}', 'ProjectController@show_edit_project');
 Route::post('/edit_project/{id}', 'ProjectController@edit_project');
 Route::get('/delete_project/{id}', 'ProjectController@delete_project');
+Route::post('/api/upload_image', 'ApiController@upload_image');
 Route::get('/api/get_inactive_users', 'ApiController@get_inactive_users');
 Route::get('/testing', 'ProjectController@test');
 

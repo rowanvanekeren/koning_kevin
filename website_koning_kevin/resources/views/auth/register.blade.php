@@ -170,8 +170,8 @@
                                 <label for="gender" class="col-md-4 control-label">Geslacht</label>
 
                                 <div class="col-md-6">
-                                    <input type="radio" name="gender" id="male" value="male"><label for="male">Man</label>
-                                    <input type="radio" name="gender" id="female" value="female"><label for="female">Vrouw</label>
+                                    <input type="radio" name="gender" id="male" value="M"><label for="male">Man</label>
+                                    <input type="radio" name="gender" id="female" value="V"><label for="female">Vrouw</label>
                                     @if ($errors->has('gender'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('gender') }}</strong>

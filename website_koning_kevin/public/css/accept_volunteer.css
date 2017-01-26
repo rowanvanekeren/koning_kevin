@@ -1,9 +1,11 @@
 
-#new_volunteers_modal input[type="checkbox"] {
+#new_volunteers_modal input[type="checkbox"],
+.add_roles input[type="checkbox"] {
     display: none;
 }
 
-#new_volunteers_modal label {
+#new_volunteers_modal label,
+.add_roles label {
     width: 100%;
     padding: 2% 10px;
     border-bottom: 1px solid #542657;
@@ -11,14 +13,28 @@
     cursor: pointer;
 }
 
-#new_volunteers_modal label i {
+#new_volunteers_modal label i, 
+.add_roles label i {
     float: right;
     color: #fff;
 }
 
 #new_volunteers_modal label:hover, 
-#new_volunteers_modal input:checked + label {
+#new_volunteers_modal input:checked + label,
+.add_roles label:hover,
+.add_roles input:checked + label{
     background-color: #542657;
     color: #fff;
+}
+
+.my_roles i {
+    color: #542657;
+}
+
+
+/* dit hieronder hoort hier niet thuis !!! , moet naar app.css verplaatst worden uiteindelijk */
+
+legend {
+    margin-top: 25px;
 }
 
