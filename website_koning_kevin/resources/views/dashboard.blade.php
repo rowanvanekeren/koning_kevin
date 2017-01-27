@@ -53,11 +53,11 @@
                 
                 <div class="col-md-6">
                     <div class="panel panel-default box-shadow-default z-index-fix">
-                        <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
+                        <div class="panel-heading" ng-click="togglePanel('myProjectsDashboard')">
                          <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                         </div>
 
-                        <div class="panel-body" ng-controller="Dashboard" ng-show="projOvervDashb">
+                        <div class="panel-body" ng-controller="Dashboard" ng-show="myProjDashb">
                             <div class="row">
                                 <div class="col-md-12">
                                     @if(!$my_projects->isEmpty())

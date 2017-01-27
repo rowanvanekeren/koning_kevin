@@ -312,6 +312,7 @@ myApp.controller("toggleController", function ($scope, $http) {
     $scope.usrdashb = true;
     $scope.yourFilesDashb = true;
     $scope.projOvervDashb = true;
+    $scope.myProjDashb = true;
 $scope.togglePanel = function(element){
     switch(element){
         case 'usersDashboard':
@@ -323,7 +324,9 @@ $scope.togglePanel = function(element){
         case 'projectOverviewDashboard':
             $scope.projOvervDashb = !$scope.projOvervDashb;
             break;
-
+        case 'myProjectsDashboard' :
+            $scope.myProjDashb = !$scope.myProjDashb;
+            break;
     }
 }
 
