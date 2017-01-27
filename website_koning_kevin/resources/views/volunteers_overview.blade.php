@@ -14,7 +14,7 @@
                             <div class="col-md-12">
                                 <form action="{{url('/search_volunteers')}}" method="get">
                                     <div class="col-md-10"><input type="text" name="search" id="search" class="form-control" placeholder="Zoek vrijwilligers"></div>
-                                    <div class="col-md-2"><button type="submit" class="btn btn-primary">Zoeken</button></div>
+                                    <div class="col-md-2"><button type="submit" class="btn btn-primary vol-search-btn">Zoeken</button></div>
                                 </form>
                             </div>
                         </div>
@@ -24,9 +24,9 @@
                                 <tr>
                                     <th>Achternaam</th>
                                     <th>Voornaam</th>
-                                    <th>Geboortedatum</th>
-                                    <th>Geslacht</th>
-                                    <th>Aantal projecten</th>
+                                    <th class="td-small-hide">Geboortedatum</th>
+                                    <th class="td-small-hide">Geslacht</th>
+                                    <th class="td-small-hide">Aantal projecten</th>
                                     <th>Admin</th>
                                     <th>Delete</th>
                                 </tr>
@@ -36,9 +36,9 @@
                                 <tr>
                                     <td><a href="{{url('/profiel/' . $volunteer->id)}}">{{$volunteer->last_name}}</a></td>
                                     <td><a href="{{url('/profiel/' . $volunteer->id)}}">{{$volunteer->first_name}}</a></td>
-                                    <td>{{date("d-m-Y", strtotime($volunteer->birth_date))}}</td>
-                                    <td>{{$volunteer->gender}}</td>
-                                    <td>{{count($volunteer->accepted_projects)}}</td>
+                                    <td class="td-small-hide">{{date("d-m-Y", strtotime($volunteer->birth_date))}}</td>
+                                    <td class="td-small-hide">{{$volunteer->gender}}</td>
+                                    <td class="td-small-hide"> {{count($volunteer->accepted_projects)}}</td>
                                     <td>{{$volunteer->is_admin}}</td>
                                     <td><span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#delete_volunteer" ng-click="pass_info_to_delete($event, <?php echo($volunteer->id)?>)"></span></td>
                                 </tr>

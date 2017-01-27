@@ -43,6 +43,7 @@ foreach($user->roles as $role) {
                         {{Form::open(array('url'=>'/edit_profile','files' => true))}}
                         <div class="col-md-6">
                             <legend> Basis informatie</legend>
+
                             <div class="col-md-12">
                                 <input type="hidden" name="user_id" value="{{$user->id}}">
                                 <div class="col-md-12">

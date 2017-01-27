@@ -40,9 +40,15 @@
         </div>--}}
         @if(!Auth::user()->is_active)
             <div class="row">
-                <div class="col-md-12 col-md-offset-2">
-                    Dankjewel voor je registratie!<br>
-                    Vanaf dat de administrator je geaccepteerd heeft, krijg je een bevestigingsmailtje.
+                <div class="col-md-8 col-md-offset-2 ">
+                    <div class="panel box-shadow-default not-accepted">
+                        <div class="panel-heading">
+                    <h1>Dankjewel voor je registratie!</h1>
+                            </div>
+                        <div class="panel-body">
+                   <h2> Vanaf dat de administrator je geaccepteerd heeft, krijg je een bevestigingsmailtje.</h2>
+                        </div>
+                        </div>
                 </div>
             </div>
         @endif
@@ -174,6 +180,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             @foreach($projects as $project)
+                                                <div class="col-md-12">
                                                 <div class="row-title">
                                                     <a href="{{url('/project_info/' . $project->id)}}">{{ $project->name }}</a>
                                                     op {{ $project->start }}</div>
@@ -183,8 +190,10 @@
                                                                 class=" glyphicon glyphicon-pencil"></span></a>
                                                     <a href="{{url('delete_project/'.$project->id)}}"><span class="glyphicon glyphicon-trash"></span></a>
                                                 </div>
+                                                </div>
+                                                @else
+                                                </div>
                                                 @endif
-
                                             @endforeach
                                         </div>
                                     </div>
