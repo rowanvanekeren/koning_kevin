@@ -155,8 +155,20 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         
         
     }
-    
-    
+
+    $(".volunteers").hide();
+    $scope.show_volunteers_list = function() {
+        console.log("test");
+        //get all volunteers
+        $.getJSON( "../api/get_all_volunteers", function( data ) {
+            console.log(data);
+            $scope.volunteers = data.volunteers;
+            $scope.$apply();
+            //console.log($scope.volunteers[0].roles[0].type);
+        });
+
+        $(".volunteers").show();
+    }
     
     
 

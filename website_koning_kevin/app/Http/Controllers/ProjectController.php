@@ -43,13 +43,17 @@ class ProjectController extends Controller
 
     public function add_project(Request $request)
     {
-        
         if ($request->active == "on") {
             $active = 1;
         } 
         else {
             $active = 0;
         }
+
+        //get day before startdate, in order to check whether the enddate is equal to or after startdate
+        $startdate = strtotime($request->startdate);
+        $day_before_start = strtotime("yesterday", $startdate);
+        $formatted_day_before = date('Y-m-d', $day_before_start);
 
         $this->validate($request, [
             'name' => 'required|max:255',
@@ -59,7 +63,7 @@ class ProjectController extends Controller
             'country' => 'required|max:255',
             'image' => 'required|max:1000|mimes:jpeg,bmp,png',
             'startdate' => 'required|date|after:today',
-            'enddate' => 'required|date|after:startdate',
+            'enddate' => 'required|date|after:'.$formatted_day_before,
             'starttime' => 'required',
             'endtime' => 'required',
         ]);
@@ -76,19 +80,19 @@ class ProjectController extends Controller
 
         $dimension = getimagesize($destinationPath);
 
-        $max_with = "200";
+        $max_width = "200";
         $max_height = "200";
-        if ($dimension[0] > $max_with) {
-            $save_percent = round(100/$dimension[0]*$max_with)/100;
+        if ($dimension[0] > $max_width) {
+            $save_percent = round(100/$dimension[0]*$max_width)/100;
             $max_height =round($save_percent*$dimension[1]);
             Image::make($destinationPath)
-                ->resize($max_with, $max_height)->save($destinationPath);
+                ->resize($max_width, $max_height)->save($destinationPath);
         }
         if($dimension[1] > $max_height){
             $save_percent = round(100/$dimension[1]*$max_height)/100;
-            $max_with =round($save_percent*$dimension[0]);
+            $max_width =round($save_percent*$dimension[0]);
             Image::make($destinationPath)
-                ->resize($max_with, $max_height)->save($destinationPath);
+                ->resize($max_width, $max_height)->save($destinationPath);
         }
 
 
@@ -173,6 +177,26 @@ class ProjectController extends Controller
                 $project->image = $new_file_name;
             }
         }
+
+        $destinationPath = base_path() .'/public/images/project_pictures/'. $new_file_name;
+        $dimension = getimagesize($destinationPath);
+
+        $max_width = "200";
+        $max_height = "200";
+        if ($dimension[0] > $max_width) {
+            $save_percent = round(100/$dimension[0]*$max_width)/100;
+            $max_height =round($save_percent*$dimension[1]);
+            Image::make($destinationPath)
+                ->resize($max_width, $max_height)->save($destinationPath);
+        }
+        if($dimension[1] > $max_height){
+            $save_percent = round(100/$dimension[1]*$max_height)/100;
+            $max_width =round($save_percent*$dimension[0]);
+            Image::make($destinationPath)
+                ->resize($max_width, $max_height)->save($destinationPath);
+        }
+
+
         $start = $request->startdate . " " . $request->starttime;
         $end = $request->enddate . " " . $request->endtime;
 

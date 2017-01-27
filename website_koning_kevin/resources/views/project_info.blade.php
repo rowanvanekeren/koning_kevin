@@ -16,7 +16,7 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
             <div class="col-md-12">
                 <div class="panel panel-default box-shadow-default">
                     <div class="panel-heading text-center"><strong>{{$project->name}}</strong></div>
-                    <div class="panel-body">
+                    <div class="panel-body project_info">
                     
                     @if(session('success_message'))
                     <div class="col-md-12 alert alert-success volunteered">
@@ -80,7 +80,12 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
                             @endif
                         </div>
                     </div>
-   
+
+                        @if(Auth::user()->is_admin)
+                        <div class="admin_edit_button">
+                            <a href="{{url('edit_project/' . $project->id)}}" class="btn btn-info"><span class=" glyphicon glyphicon-pencil"></span><span>Bewerken</span></a>
+                        </div>
+                        @endif
                     </div>
                 </div>
 

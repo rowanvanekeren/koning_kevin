@@ -93,5 +93,40 @@ table.volunteers_overview tbody tr:hover a {
     color: #b891ba;
 }
 
+.project_info {
+    position: relative;
+}
+
+.project_info .admin_edit_button {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.project_info .admin_edit_button span:first-child {
+    margin-right: 10px;
+}
+
+
+/* edit project blade */
+.add_volunteers div a {
+    display: block;
+    padding: 6px 0px;
+}
+
+.add_volunteers div select {
+    padding: 6px 12px;
+    border: 1px solid #542657;
+    height: 32px;
+    width: 100%;
+    outline: none;
+}
+
+.available_volunteers > div {
+    margin-bottom: 10px;
+}
+
+
+
 
 

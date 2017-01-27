@@ -177,9 +177,9 @@
                                         <strong>* {{ $errors->first('enddate') }}</strong>
                                     </div>
                                 @endif
-                                @if ($errors->has('enddate'))
+                                @if ($errors->has('endtime'))
                                     <div class="help-block col-md-12">
-                                        <strong>* {{ $errors->first('enddate') }}</strong>
+                                        <strong>* {{ $errors->first('endtime') }}</strong>
                                     </div>
                                 @endif
                             </div>
