@@ -91,7 +91,7 @@
                 </div>
 
             @else
-                <h1>Deze optie is momenteel alleen zichtbaar voor andmin->zie dat je admin bent!</h1>
+                @include('managing_files.show_files_for_volunteers')
             @endif
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">

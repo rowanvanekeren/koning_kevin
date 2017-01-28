@@ -19,7 +19,7 @@ class Managing_files extends Controller
     {
         $this->middleware('auth');
         $this->middleware('is_active');
-        $this->middleware('is_admin', ['except' => 'show_file']);
+        $this->middleware('is_admin', ['except' => ['show_file','download']]);
     }
 
     public function add_unique_file()
