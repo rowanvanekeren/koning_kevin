@@ -12,7 +12,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          crossorigin="anonymous">
 
     <link href="{{url('/css/app_new.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{url('/css/custom_new.css')}}">
@@ -70,9 +71,6 @@
                             <a href="{{ url('/dashboard') }}">Dashboard</a>
                         </li>
                         @if(Auth::user()->is_active)
-                            <li class="{{ Request::is('profiel') ? 'active' : '' }}">
-                                <a href="{{ url('/profiel') }}">Profiel</a>
-                            </li>
                             <li class="{{ Request::is('bestanden') ? 'active' : '' }}">
                                 <a href="{{ url('/bestanden') }}">Bestanden</a>
                             </li>
@@ -93,11 +91,17 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
                                 {{ Auth::user()->first_name }}
-                                <img id="nav-profile-picture" src="{{asset('images/profile_pictures/' . Auth::user()->url ) }}">
+                                <img id="nav-profile-picture"
+                                     src="{{asset('images/profile_pictures/' . Auth::user()->url ) }}">
                                 <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu custom-dropdown-menu" role="menu">
+                                @if(Auth::user()->is_active)
+                                    <li class="{{ Request::is('profiel') ? 'active' : '' }}">
+                                        <a href="{{ url('/profiel') }}">Profiel</a>
+                                    </li>
+                                @endif
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
@@ -125,19 +129,26 @@
     </div>
     <div class="row footer">
         <div class="col-md-12 footer-main">
-            <div class="footer-content"><div class="footer-content-left"><p>Koning Kevin vzw is een landelijk georganiseerde <br>
+            <div class="footer-content">
+                <div class="footer-content-left"><p>Koning Kevin vzw is een landelijk georganiseerde <br>
                         jeugdwerkorganisatie, erkend door en met de <br>
                         steun van de Vlaamse Gemeenschap. <br>
-                        Alle inhoud &copy; {{ date("Y") }} Koning Kevin. <br></p></div></div>
+                        Alle inhoud &copy; {{ date("Y") }} Koning Kevin. <br></p></div>
+            </div>
             <div class="footer-border"></div>
-            <div class="footer-content"><div class="footer-content-middle">
+            <div class="footer-content">
+                <div class="footer-content-middle">
                     <h2>Koning Kevin vzw</h2>
                     <p>
                         Kapellekensweg 2 3010 Kessel-Lo<br>
                         T 016 350 550<br>
-                        <a href="mailto:info@koningkevin.be?Subject=Contact bericht">info@koningkevin.be</a><br></p></div></div>
+                        <a href="mailto:info@koningkevin.be?Subject=Contact bericht">info@koningkevin.be</a><br></p>
+                </div>
+            </div>
 
-            <div class="footer-content"><div class="footer-content-last"><img src="{{asset('/images/icons/vloverheid.png')}}"></div></div>
+            <div class="footer-content">
+                <div class="footer-content-last"><img src="{{asset('/images/icons/vloverheid.png')}}"></div>
+            </div>
 
 
         </div>
