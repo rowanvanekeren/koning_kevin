@@ -57,7 +57,7 @@
                 </div>
                 
                 @endif
-                <div class="col-md-6 right_blocks">
+                <div class="col-md-6 right_blocks" ng-controller="Managing_projects">
                     @if(Auth::user()->is_admin)
                         <div class="panel panel-default box-shadow-default z-index-fix " >
                             <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
@@ -81,28 +81,8 @@
                                                     <div class="col-md-4 ">
                                                         <a class="btn btn-primary " type="button" data-toggle="modal"
                                                data-target="#new_volunteers_modal" ng-click="pass_modal_info(user.id)">Accepteer</a>
-                                                        <a class="btn btn-primary " type="button" data-toggle="collapse"
-                                                           data-target="#confirmation@{{user.id}}">Weiger</a>
-                                                    </div>
-                                                </div>
-                                                <!--
-                                                <div id="add_roles@{{user.id}}" class="collapse">
-                                                    <div class="col-md-12">
-                                                        @foreach($roles as $role)
-                                                            <input id="role{{$role->id}}" type="checkbox"
-                                                                   ng-model="selected[{{$role->id}}]"
-                                                                   value="test"><label
-                                                                    for="role{{$role->id}}">{{$role->type}}</label>
-                                                        @endforeach
-                                                        <a href="#" ng-click="accept_user($event, user.id, selected)">Toevoegen</a>
-                                                    </div>
-                                                </div>
-                                                -->
-                                                <div id="confirmation@{{user.id}}" class="collapse">
-                                                    <div class="col-md-12">
-                                                        Zeker dat je deze vrijwilliger wil weigeren?
-                                                        <a href="#" ng-click="decline_user($event, user.id)">Ja,
-                                                            weiger</a>
+                                                        <a class="btn btn-primary " type="button" data-toggle="modal"
+                                                           data-target="#decline_volunteer_modal" ng-click="pass_info_to_decline_user($event, user.id, user.first_name, user.last_name)">Weiger</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,12 +91,7 @@
                                 </div>
                                 @endif
                             </div>
-                            
-                            
 
-                            
-                            
-                            
                             
                             
                         </div>
@@ -145,30 +120,24 @@
 
                             </div>
                         </div>
-
-
-
-                        <div class="modal fade " id="eModal" role="dialog">
+                        <div class="modal fade " id="decline_volunteer_modal" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->
                                 <div class="modal-content z-index-fix">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">blabla</h4>
+                                        <h4 class="modal-title">Vrijwilliger weigeren @{{selected_user}}</h4>
                                     </div>
                                     <div class="modal-body">
-                                        blablabla
-
+                                        <p>Ben je zeker dat je <strong>"@{{ user_name }}"</strong> wil weigeren?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        jdnfjkqd
+                                        <button type="button" class="btn btn-default" ng-click="decline_user($event, user_id)" data-dismiss="modal">Ja, weiger</button>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-
-
 
 
                         @if(Auth::user()->is_active)
@@ -188,7 +157,7 @@
                                                 <div class="row-icons">
                                                     <a href="{{url('edit_project/'.$project->id)}}"><span
                                                                 class=" glyphicon glyphicon-pencil"></span></a>
-                                                    <a href="{{url('delete_project/'.$project->id)}}"><span class="glyphicon glyphicon-trash"></span></a>
+                                                    <a href="" data-toggle="modal" data-target="#delete_project_modal" ng-click="pass_info_to_delete_project($event, {{$project->id}}, '{{$project->name}}')"><span class="glyphicon glyphicon-trash"></span></a>
                                                 </div>
                                                 </div>
                                                 @else
@@ -196,6 +165,24 @@
                                                 @endif
                                             @endforeach
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade " id="delete_project_modal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Project verwijderen</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Zeker dat je het project <strong>"@{{ project_name }}"</strong>wil verwijderen?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" ng-click="delete_project($event, project_id)" data-dismiss="modal">Ja, verwijderen</button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

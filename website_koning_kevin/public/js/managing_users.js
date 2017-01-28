@@ -46,12 +46,14 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             .error(function(response) {
             console.log(response);
             }); 
-        
+
+        /*
         //after 0.5 second, remove user from inactive list
         setTimeout(function(){ 
             $scope.get_inactive_users(); 
         }, 500);
-        
+        */
+
         //connect each selected role to volunteer
         
         angular.forEach(selected, function(value, key) {
@@ -74,32 +76,29 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         /*var myElement = document.querySelector(".user");
         myElement.style.backgroundColor = "#D93600";*/
     }
-    
+
+    $scope.pass_info_to_decline_user = function ($event, user_id, user_first_name, user_last_name) {
+        //console.log(user_first_name);
+        $scope.user_id = user_id;
+        $scope.user_name = user_first_name + " " + user_last_name;
+    }
     
     $scope.decline_user = function ($event, user_id) {
-        
-        var selected_user = $event.currentTarget;
-        console.log(selected_user);
-        //turn element red
-        selected_user.style.backgroundColor = "#dda399";
-        /*
+
         $http.post('./api/decline_user', 
             {
             id: user_id,
             active: 1
             })
             .success(function(response) {
-                console.log(response.user_id);
+                //console.log(response.user_id);
+                $scope.get_inactive_users();
             })
             .error(function(response) {
             console.log(response);
             }); 
-        
-        //after 0.5 second, remove user from inactive list
-        setTimeout(function(){ 
-            $scope.get_inactive_users(); 
-        }, 500);
-        */
+
+
     }
     
     

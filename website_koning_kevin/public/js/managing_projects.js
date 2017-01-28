@@ -22,8 +22,25 @@ angular.module("myapp").controller("Managing_projects", function ($scope, $http)
     
     
     //delete project
-    $scope.delete_project = function ($event, project_id, project_name) {
+    $scope.pass_info_to_delete_project = function ($event, project_id, project_name) {
+        $scope.project_id = project_id;
+        $scope.project_name = project_name;
+    }
+    
+    $scope.delete_project = function ($event, project_id) {
         //
+        console.log(project_id);
+        $http.post('./delete_project',
+            {
+                id: project_id
+            })
+            .success(function(response) {
+                console.log(response.project_id);
+            })
+            .error(function(response) {
+                console.log(response);
+            });
+        location.reload();
     }
     
     

@@ -39,7 +39,11 @@
                                     <td class="td-small-hide">{{date("d-m-Y", strtotime($volunteer->birth_date))}}</td>
                                     <td class="td-small-hide">{{$volunteer->gender}}</td>
                                     <td class="td-small-hide"> {{count($volunteer->accepted_projects)}}</td>
-                                    <td>{{$volunteer->is_admin}}</td>
+                                    <td>
+                                        @if($volunteer->is_admin)
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        @endif
+                                    </td>
                                     <td><span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#delete_volunteer" ng-click="pass_info_to_delete($event, <?php echo($volunteer->id)?>)"></span></td>
                                 </tr>
                                 @endforeach

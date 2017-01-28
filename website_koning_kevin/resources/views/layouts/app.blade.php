@@ -123,7 +123,8 @@
 
 
     </div>
-    <div class="row ">  <div class="col-md-12 footer-main">
+    <div class="row footer">
+        <div class="col-md-12 footer-main">
             <div class="footer-content"><div class="footer-content-left"><p>Koning Kevin vzw is een landelijk georganiseerde <br>
                         jeugdwerkorganisatie, erkend door en met de <br>
                         steun van de Vlaamse Gemeenschap. <br>

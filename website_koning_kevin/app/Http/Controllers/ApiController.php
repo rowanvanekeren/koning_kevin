@@ -51,6 +51,7 @@ class ApiController extends Controller
     
     public function decline_user(Request $request) {
         $user = User::find($request->id);
+        //set user is_active to 2 which means declined
         $user->is_active = 2;
         $user->save();
         //return response succesfull

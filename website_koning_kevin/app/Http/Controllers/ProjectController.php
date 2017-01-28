@@ -217,8 +217,10 @@ class ProjectController extends Controller
         return redirect('/edit_project/' . $id)->with("success_message", 'Project werd succesvol geüpdatet!');;
     }
     
-    public function delete_project($id) {
-        dd($id);
+    public function delete_project(Request $request) {
+        //dd($id);
+        return response()->json(['status' => "success", 'project_id' => $request->id]);
+        
         //soft_delete the project
         $project = Project::find($id);
         $project->delete();
@@ -227,6 +229,8 @@ class ProjectController extends Controller
         $project->users()->detach();
         //documents
         $project->documents()->detach();
+
+        return response()->json(['status' => "success", 'project_id' => $request->id]);
     }
 
 }
