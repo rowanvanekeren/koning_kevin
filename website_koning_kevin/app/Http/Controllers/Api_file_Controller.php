@@ -11,7 +11,8 @@ use Auth;
 use PhpParser\Comment\Doc;
 use App\Project;
 use App\ProjectDocument;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class Api_file_Controller extends Controller
@@ -126,7 +127,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title','like', '%' .$title. '%');
+                $files->where('title', 'like', '%' . $title . '%');
             }
             return $files->get();
         }
@@ -136,7 +137,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $category);
             });
             if ($title != "") {
-                $files->where('title','like', '%' .$title. '%');
+                $files->where('title', 'like', '%' . $title . '%');
             }
             return $files->get();
         }
@@ -146,14 +147,14 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title','like', '%' .$title. '%');
+                $files->where('title', 'like', '%' . $title . '%');
             }
             return $files->get();
         }
         if ($title != "") {
-            $files = Document::with('categories', 'roles','tags')->where('title','like', '%' .$title. '%')
-                ->orWhere('description','like', '%' .$description. '%')->orWhereHas('tags', function($q) use ($title){
-                    $q->where('type', 'LIKE', '%' . $title. '%');
+            $files = Document::with('categories', 'roles', 'tags')->where('title', 'like', '%' . $title . '%')
+                ->orWhere('description', 'like', '%' . $description . '%')->orWhereHas('tags', function ($q) use ($title) {
+                    $q->where('type', 'LIKE', '%' . $title . '%');
                 });
         }
 
@@ -162,8 +163,7 @@ class Api_file_Controller extends Controller
 
     public function test()
     {
-        
-        
+        return $projects =Project::with('users')->whereHas('users_accepted')->where('created_at', '>=', Carbon::today()->toDateString())->get();
     }
 
 }
