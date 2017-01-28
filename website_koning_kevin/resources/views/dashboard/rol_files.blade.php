@@ -1,6 +1,6 @@
 
 <div class="col-md-6">
-    <div class="panel panel-default box-shadow-default">
+    <div class="panel panel-default box-shadow-default z-index-fix">
         <div class="panel-heading" ng-click="togglePanel('yourFilesDashboard')">
             <strong>Bestanden volgens jouw rol</strong> <div  class="toggleCollapse glyphicon @{{yourFilesDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
         </div>
@@ -31,10 +31,10 @@
                 </div>
             </uib-accordion>
             <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal fade z-index-fix" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content" ng-if="file_info">
+                    <div class="modal-content z-index-fix" ng-if="file_info">
                         <div class="modal-header" ng-if="file_info">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">@{{ file_info.file.title }}</h4>

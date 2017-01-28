@@ -51,12 +51,24 @@ class ApiController extends Controller
     
     public function decline_user(Request $request) {
         $user = User::find($request->id);
+        //set user is_active to 2 which means declined
         $user->is_active = 2;
         $user->save();
         //return response succesfull
         return response()->json(['status' => "success", 'user_id' => $user->id]);
     }
     
+    public function delete_user(Request $request) {
+        $user = User::find($request->id);
+        $user->delete();
+        $user->roles()->detach();
+        $user->projects()->detach();
+        //return response succesfull
+        return response()->json(['status' => "success", 'user_id' => $user->id]);
+    }
+
+
+    //edit_project
     
     public function accept_user_for_project(Request $request) {
         
@@ -69,6 +81,11 @@ class ApiController extends Controller
         return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
     }
     
-    
+    //get_all_users for manual adding
+    public function get_all_volunteers() {
+        $volunteers = User::where('is_active', 1)->orderBy('last_name')->with('roles')->get();
+        //dd($volunteers[0]->roles);
+        return response()->json(['status' => "success", 'volunteers' => $volunteers]);
+    }
     
 }

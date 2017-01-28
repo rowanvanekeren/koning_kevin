@@ -25,7 +25,6 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     }
     
     $scope.accept_user = function ($event, user_id, selected) {
-        console.log("test")
         console.log('user accepted ' + user_id);
         //console.log($event.currentTarget.parentElement.parentElement);
         
@@ -47,12 +46,14 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             .error(function(response) {
             console.log(response);
             }); 
-        
+
+        /*
         //after 0.5 second, remove user from inactive list
         setTimeout(function(){ 
             $scope.get_inactive_users(); 
         }, 500);
-        
+        */
+
         //connect each selected role to volunteer
         
         angular.forEach(selected, function(value, key) {
@@ -75,19 +76,43 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         /*var myElement = document.querySelector(".user");
         myElement.style.backgroundColor = "#D93600";*/
     }
-    
+
+    $scope.pass_info_to_decline_user = function ($event, user_id, user_first_name, user_last_name) {
+        //console.log(user_first_name);
+        $scope.user_id = user_id;
+        $scope.user_name = user_first_name + " " + user_last_name;
+    }
     
     $scope.decline_user = function ($event, user_id) {
-        
-        var selected_user = $event.currentTarget;
-        console.log(selected_user);
-        //turn element red
-        selected_user.style.backgroundColor = "#dda399";
-        /*
+
         $http.post('./api/decline_user', 
             {
             id: user_id,
             active: 1
+            })
+            .success(function(response) {
+                //console.log(response.user_id);
+                $scope.get_inactive_users();
+            })
+            .error(function(response) {
+            console.log(response);
+            }); 
+
+
+    }
+    
+    
+    $scope.pass_info_to_delete = function($event, user_id) {
+        $scope.volunteer_name = $($event.currentTarget).parent().parent().find('td:nth-child(2) a').text() + " " + $($event.currentTarget).parent().parent().find('td:nth-child(1) a').text();
+        $scope.selected_user = user_id;
+    }
+    
+    $scope.delete_volunteer = function($event, user_id) {
+        console.log(user_id);
+        
+        $http.post('./api/delete_user', 
+            {
+            id: user_id
             })
             .success(function(response) {
                 console.log(response.user_id);
@@ -96,11 +121,6 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             console.log(response);
             }); 
         
-        //after 0.5 second, remove user from inactive list
-        setTimeout(function(){ 
-            $scope.get_inactive_users(); 
-        }, 500);
-        */
     }
     
     
@@ -134,8 +154,20 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
         
         
     }
-    
-    
+
+    $(".volunteers").hide();
+    $scope.show_volunteers_list = function() {
+        console.log("test");
+        //get all volunteers
+        $.getJSON( "../api/get_all_volunteers", function( data ) {
+            console.log(data);
+            $scope.volunteers = data.volunteers;
+            $scope.$apply();
+            //console.log($scope.volunteers[0].roles[0].type);
+        });
+
+        $(".volunteers").show();
+    }
     
     
 

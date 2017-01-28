@@ -6,7 +6,7 @@
         <div class="row">
 
             <div class="col-md-12" ng-controller="Managing_projects">
-                <div class="panel panel-default box-shadow-default">
+                <div class="panel panel-default">
                     <div class="panel-heading text-center"><strong>Project bewerken</strong></div>
                     <div class="panel-body">
                         
@@ -232,12 +232,11 @@
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading text-center"><strong>VRIJWILLIGERS TOEVOEGEN</strong></div>
-                            <div class="panel-body">
+                            <div class="panel-body add_volunteers">
                                 @foreach($project->users as $volunteer)
                                     @if(!$volunteer->pivot->is_accepted)
-                                    <div class="col-md-12">
-                                        <div class="col-md-5"><a
-                                                    href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
+                                    <div class="row">
+                                        <div class="col-md-4"><a href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
                                         </div>
                                         <div class="col-md-4 role{{$volunteer->id}}">
                                             <select name="role{{$volunteer->id}}">
@@ -246,12 +245,47 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="status{{$volunteer->id}}" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}}, {{$project->id}})">Accepteer</div>
+                                        <div class="col-md-2">
+                                            <div class="status{{$volunteer->id}} btn btn-success" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}}, {{$project->id}})"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="status{{$volunteer->id}} btn btn-danger" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, 'x', 'x')"><i class="fa fa-times" aria-hidden="true"></i></div>
                                         </div>
                                     </div>
                                     @endif
                                 @endforeach
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-info" ng-click="show_volunteers_list()">Manueel vrijwilligers toevoegen</button>
+                                    </div>
+                                </div>
+
+                                <div class="row volunteers">
+                                    <div class="col-md-12">
+                                        ** Hier moet nog een zoekfunctie komen, voorlopig krijg je alle vrijwilligers **<br>
+                                        (ook diegenen die al geregistreerd zijn voor het project...)
+                                    </div>
+                                    <div class="col-md-12 available_volunteers">
+                                        <div class="row" ng-repeat="volunteer in volunteers">
+                                            <div class="col-md-4">
+                                                @{{volunteer.first_name}} @{{ volunteer.last_name }}
+                                            </div>
+                                            <div class="col-md-4 role@{{volunteer.id}}">
+                                                <select name="role@{{volunteer.id}}">
+                                                    <option ng-repeat="role in volunteer.roles" value="@{{role.id}}">@{{role.type}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="status@{{volunteer.id}} btn btn-success" ng-click="add_remove_user_to_project($event, volunteer.id, project.id)"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="status@{{volunteer.id}} btn btn-danger" ng-click="add_remove_user_to_project($event, 'x', 'x')"><i class="fa fa-times" aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                         </div>
                         </div>
                     </div>

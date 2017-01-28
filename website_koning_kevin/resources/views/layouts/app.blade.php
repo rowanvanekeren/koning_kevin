@@ -14,8 +14,8 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
 
-    <link href="{{url('/css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{url('/css/custom.css')}}">
+    <link href="{{url('/css/app_new.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url('/css/custom_new.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('/css/accept_volunteer.css')}}">
     @yield('styles')
     <script src="{{url('/js/app.js')}}"></script>
@@ -84,6 +84,9 @@
                             <li class="{{ Request::is('add_project') ? 'active' : '' }}">
                                 <a href="{{ url('/add_project') }}">Project aanmaken</a>
                             </li>
+                            <li class="{{ Request::is('vrijwilligersoverzicht') ? 'active' : '' }}">
+                                <a href="{{ url('/vrijwilligersoverzicht') }}">Vrijwilligers</a>
+                            </li>
                         @endif
                         <li class="dropdown custom-dropdown">
 
@@ -120,20 +123,20 @@
 
 
     </div>
-    <div class="row ">  <div class="col-md-12 footer-main">
+    <div class="row footer">
+        <div class="col-md-12 footer-main">
             <div class="footer-content"><div class="footer-content-left"><p>Koning Kevin vzw is een landelijk georganiseerde <br>
                         jeugdwerkorganisatie, erkend door en met de <br>
                         steun van de Vlaamse Gemeenschap. <br>
-                        Alle inhoud &copy; 2014 Koning Kevin. <br></p></div></div>
+                        Alle inhoud &copy; {{ date("Y") }} Koning Kevin. <br></p></div></div>
             <div class="footer-border"></div>
             <div class="footer-content"><div class="footer-content-middle">
                     <h2>Koning Kevin vzw</h2>
                     <p>
                         Kapellekensweg 2 3010 Kessel-Lo<br>
                         T 016 350 550<br>
-                        F 016 254 334<br>
-                        info@koningkevin.be<br></p></div></div>
-            <div class="footer-border"></div>
+                        <a href="mailto:info@koningkevin.be?Subject=Contact bericht">info@koningkevin.be</a><br></p></div></div>
+
             <div class="footer-content"><div class="footer-content-last"><img src="{{asset('/images/icons/vloverheid.png')}}"></div></div>
 
 

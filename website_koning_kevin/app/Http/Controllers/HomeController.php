@@ -114,14 +114,23 @@ class HomeController extends Controller
     public function volunteer($id) {
         $user = Auth::user();
         $user->projects()->attach($id);
-        return redirect('/project_info/'.$id)->with('success_message', 'Bedankt om je aan te melden ! Zodra een administrator je geaccepteerd heeft, komt dit project bij jouw persoonlijke overzicht.');;
+        return redirect('/project_info/'.$id)->with('success_message', 'Bedankt om je aan te melden ! Zodra een administrator je geaccepteerd heeft, komt dit project bij jouw persoonlijke overzicht.');
     }
     
     
     public function volunteers_overview() {
-        $volunteers = User::where('is_active', 1)->orderBy('last_name')->get();
+        $volunteers = User::where('is_active', 1)->orderBy('last_name')->paginate(25);
         //dd($volunteers);
         //dd($volunteers[2]->accepted_projects);
+        return view('volunteers_overview', ['volunteers' => $volunteers]);
+    }
+    
+    public function search_volunteers(Request $request) {
+        $search = strtolower($request->search);
+        $volunteers = User::where('is_active', 1)
+            ->where( strtolower('first_name'), 'like', '%' . $search . '%')
+            ->orWhere( strtolower('last_name'), 'like', '%' . $search . '%')
+            ->orderBy('last_name')->paginate(25)->appends(['search' => $request->search]);
         return view('volunteers_overview', ['volunteers' => $volunteers]);
     }
     

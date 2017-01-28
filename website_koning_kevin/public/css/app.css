@@ -52,6 +52,14 @@ body{
 .box-shadow-default{
     box-shadow:   -20px 20px 70px #5a5a5a;
 }
+#singleSelect{
+  border-radius: 0;
+}
+.not-accepted{
+
+    text-align: center;
+}
+
 @media only screen and (max-width: 767px) {
 
     .footer-content{
@@ -74,14 +82,46 @@ body{
     .footer-content-left{
        display:none;
     }
+    .btn-search{
+        text-align: center !important;
+        display: inline-block;
+        float: right;
+        margin-right: 15px;
+        width: 30%;
+    }
+    .btn-search{
+        margin-top: 15px;
+    }
+    .vol-search-btn{
+        margin-top: 15px;
+        width: 100%;
+    }
+    #singleSelect{
+        margin-top: 15px;
+    }
+    .td-small-hide{
+        display:none;
+    }
 }
 
 
 
 
 .z-index-fix {
+    z-index: 3 !important;
+}
+/*
+.modal-backdrop {
 
-    z-index: 50 !important;
+    z-index: 8 !important;
+}
+*/
+
+.modal-backdrop {
+    z-index: 0;
 }
 
-
+.my_projects,
+.right_blocks {
+    z-index: 3;
+}

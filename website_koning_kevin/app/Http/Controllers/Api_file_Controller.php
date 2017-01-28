@@ -125,7 +125,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title', $title);
+                $files->where('title','like', '%' .$title. '%');
             }
             return $files->get();
         }
@@ -135,7 +135,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $category);
             });
             if ($title != "") {
-                $files->where('title', $title);
+                $files->where('title','like', '%' .$title. '%');
             }
             return $files->get();
         }
@@ -145,12 +145,15 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title', $title);
+                $files->where('title','like', '%' .$title. '%');
             }
             return $files->get();
         }
         if ($title != "") {
-            $files = Document::with('categories', 'roles')->where('title', $title)->orWhere('description', $description);
+            $files = Document::with('categories', 'roles','tags')->where('title','like', '%' .$title. '%')
+                ->orWhere('description','like', '%' .$description. '%')->orWhereHas('tags', function($q) use ($title){
+                    $q->where('type', 'LIKE', '%' . $title. '%');
+                });
         }
 
         return $files->get();
@@ -158,25 +161,8 @@ class Api_file_Controller extends Controller
 
     public function test()
     {
-//        $document = new ProjectDocument;
-//        $document->title = 'hallo';
-//        $document->url = '/hllo';
-//        return Project::find(1)->extra_documents()->save($document);
-//return Project::where('name','sdqf')->with('documents')->get();
-//        $files = Document::where('title', $title)->orWhere('description', $description)->whereHas('categories', function ($q) use ($category) {
-//            $q->where('type', $category);
-//        })->WhereHas('roles', function ($q) use ($role) {
-//            $q->where('type', $role);
-//        })->get();
-//        $files = Document::with(array('categories' => function($query)
-//        {
-//            $query->where('type','BELEIDSINFO');
-//        }))->get();
 
-
-//        select * from documents d, category_document cd, categories c, document_role dr, roles r where (d.id = cd.document_id and c.id = cd.category_id and dr.document_id = d.id and r.id = dr.role_id) and (d.title = '%kjk%' or c.type = '4' or r.type = 'er')
-
-
+        
     }
 
 }

@@ -1,7 +1,9 @@
 nav{
     display: none;
 }
-
+.footer-main{
+    display: none;
+}
 .home-margin-content{
     margin-top: 100px;
 }

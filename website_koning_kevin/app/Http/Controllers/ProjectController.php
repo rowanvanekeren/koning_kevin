@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\Document;
 use App\ProjectDocument;
+use Image;
 
 
 class ProjectController extends Controller
@@ -42,13 +43,17 @@ class ProjectController extends Controller
 
     public function add_project(Request $request)
     {
-        
         if ($request->active == "on") {
             $active = 1;
         } 
         else {
             $active = 0;
         }
+
+        //get day before startdate, in order to check whether the enddate is equal to or after startdate
+        $startdate = strtotime($request->startdate);
+        $day_before_start = strtotime("yesterday", $startdate);
+        $formatted_day_before = date('Y-m-d', $day_before_start);
 
         $this->validate($request, [
             'name' => 'required|max:255',
@@ -58,7 +63,7 @@ class ProjectController extends Controller
             'country' => 'required|max:255',
             'image' => 'required|max:1000|mimes:jpeg,bmp,png',
             'startdate' => 'required|date|after:today',
-            'enddate' => 'required|date|after:startdate',
+            'enddate' => 'required|date|after:'.$formatted_day_before,
             'starttime' => 'required',
             'endtime' => 'required',
         ]);
@@ -68,6 +73,27 @@ class ProjectController extends Controller
 
         $new_file_name = time() . $request->image->getClientOriginalName();
         $request->image->move(base_path() . '/public/images/project_pictures/', $new_file_name);
+
+
+        $destinationPath = base_path() .'/public/images/project_pictures/'. $new_file_name;
+
+
+        $dimension = getimagesize($destinationPath);
+
+        $max_width = "200";
+        $max_height = "200";
+        if ($dimension[0] > $max_width) {
+            $save_percent = round(100/$dimension[0]*$max_width)/100;
+            $max_height =round($save_percent*$dimension[1]);
+            Image::make($destinationPath)
+                ->resize($max_width, $max_height)->save($destinationPath);
+        }
+        if($dimension[1] > $max_height){
+            $save_percent = round(100/$dimension[1]*$max_height)/100;
+            $max_width =round($save_percent*$dimension[0]);
+            Image::make($destinationPath)
+                ->resize($max_width, $max_height)->save($destinationPath);
+        }
 
 
         $project = new Project([
@@ -151,6 +177,26 @@ class ProjectController extends Controller
                 $project->image = $new_file_name;
             }
         }
+
+        $destinationPath = base_path() .'/public/images/project_pictures/'. $new_file_name;
+        $dimension = getimagesize($destinationPath);
+
+        $max_width = "200";
+        $max_height = "200";
+        if ($dimension[0] > $max_width) {
+            $save_percent = round(100/$dimension[0]*$max_width)/100;
+            $max_height =round($save_percent*$dimension[1]);
+            Image::make($destinationPath)
+                ->resize($max_width, $max_height)->save($destinationPath);
+        }
+        if($dimension[1] > $max_height){
+            $save_percent = round(100/$dimension[1]*$max_height)/100;
+            $max_width =round($save_percent*$dimension[0]);
+            Image::make($destinationPath)
+                ->resize($max_width, $max_height)->save($destinationPath);
+        }
+
+
         $start = $request->startdate . " " . $request->starttime;
         $end = $request->enddate . " " . $request->endtime;
 
@@ -171,8 +217,10 @@ class ProjectController extends Controller
         return redirect('/edit_project/' . $id)->with("success_message", 'Project werd succesvol geüpdatet!');;
     }
     
-    public function delete_project($id) {
-        dd($id);
+    public function delete_project(Request $request) {
+        //dd($id);
+        return response()->json(['status' => "success", 'project_id' => $request->id]);
+        
         //soft_delete the project
         $project = Project::find($id);
         $project->delete();
@@ -181,6 +229,8 @@ class ProjectController extends Controller
         $project->users()->detach();
         //documents
         $project->documents()->detach();
+
+        return response()->json(['status' => "success", 'project_id' => $request->id]);
     }
 
 }

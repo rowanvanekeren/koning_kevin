@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div  class="col-md-12 " >
     {{--@include('managing_files.add_unic_file_to_project')--}}
     <div ng-controller="Add_file_to_project">
         <div ng-if="selected_file.length > 0">
@@ -18,10 +18,10 @@
                 ng-click="add_file()">Kies bestanden
         </button>
         <!--Modal show all files-->
-        <div class="modal fade" id="myModal" role="dialog">
+        <div  class="modal fade " id="myModal" role="dialog">
             <div class="modal-dialog modal-lg">
                 <!-- Modal content-->
-                <div class="modal-content">
+                <div class="modal-content ">
                     <div class="modal-header">
                         <button type="button" class="close"
                                 data-dismiss="modal">&times;</button>

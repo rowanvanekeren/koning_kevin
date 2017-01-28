@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,//custom voor forms van laravel te kunnen gebruiken
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,//custom forms
         'Html' => Collective\Html\HtmlFacade::class,//custom forms
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

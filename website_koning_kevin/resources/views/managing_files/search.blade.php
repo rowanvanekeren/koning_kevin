@@ -5,6 +5,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
+                <div class="col-md-12">
                 <div class="col-md-5">
                     <div class="form-group">
                         {{Form::text('title', old('title'),array('class'=>'form-control', 'placeholder'=>'Zoek over alle bestanden', 'ng-model'=>"query"))}}
@@ -26,9 +27,10 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="button" class="btn btn-primary "
+                <button type="button" class="btn btn-primary btn-search"
                         ng-click="search_for_file(query,search_category,search_role)">Zoeken
                 </button>
+                </div>
             </div>
             <div class="col-md-12"><p class="alert-danger" ng-if="server_error">@{{ server_error }}</p></div>
             <div class="col-md-12"><p class="alert-danger" ng-if="search_files ==''">Geen zoekresultaten gevonden</p></div>
