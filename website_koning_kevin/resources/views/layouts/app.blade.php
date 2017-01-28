@@ -14,8 +14,8 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
 
-    <link href="{{url('/css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{url('/css/custom.css')}}">
+    <link href="{{url('/css/app_new.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url('/css/custom_new.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('/css/accept_volunteer.css')}}">
     @yield('styles')
     <script src="{{url('/js/app.js')}}"></script>

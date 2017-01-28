@@ -3,7 +3,7 @@
     float: left;
 }
 
-.row-icons, {
+.row-icons {
     width: 40%;
     float: right;
 }
@@ -81,7 +81,6 @@ width: 70px;
     position: absolute;
     bottom: 2000px;
     left: 250px;
-    z-index: 1;
     /*    box-shadow: 4px 4px 20px #5a5a5a;*/
     animation-name: rope1;
     animation-duration: 3s ;
@@ -118,7 +117,6 @@ width: 70px;
     position: absolute;
     bottom:  2000px;
     left: -20px;
-    z-index: 1;
     /*    box-shadow: 4px 4px 20px #5a5a5a;*/
     animation-name: rope1;
     animation-duration: 3s ;

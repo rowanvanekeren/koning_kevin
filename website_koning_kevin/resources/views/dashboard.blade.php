@@ -5,39 +5,13 @@
 @stop
 @section('content')
 
-    <img class="dashb-bg-rope1" src="{{asset('images/home_bg/rope2-double.png')}}">
-    <img class="dashb-bg-rope2" src="{{asset('images/home_bg/rope1-single.png')}}">
-    <style>
-        .file_row_background0 {
-            padding-top: 3%;
-            background-color: #fff;
-        }
+    <div class="img_anims">
+        <img class="dashb-bg-rope1" src="{{asset('images/home_bg/rope2-double.png')}}">
+        <img class="dashb-bg-rope2" src="{{asset('images/home_bg/rope1-single.png')}}">
+    </div>
 
-        .file_row_background1 {
-            padding-top: 3%;
-            background-color: lightcyan;
-        }
-
-        .file_row_background2 {
-            padding-top: 3%;
-            background-color: lightsalmon;
-        }
-
-        .btn-primary {
-            border-radius: 0;
-            text-align: left;
-        }
-    </style>
     <div class="container-fluid" ng-controller="toggleController">
-      {{--  <div class="row">
-            <div class="col-md-12 sub-page-banner">
 
-                    <h1>Dashboard</h1>
-          --}}{{--      <img class="sub-header-img" src="{{asset('images/page_header/bestanden.png')}}">--}}{{--
-
-
-            </div>
-        </div>--}}
         @if(!Auth::user()->is_active)
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 ">
@@ -57,7 +31,7 @@
                 @if(Auth::user()->is_active)
                 @include('dashboard.rol_files')
                 
-                <div class="col-md-6">
+                <div class="col-md-6 my_projects">
                     <div class="panel panel-default box-shadow-default z-index-fix">
                         <div class="panel-heading" ng-click="togglePanel('myProjectsDashboard')">
                          <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
@@ -83,7 +57,7 @@
                 </div>
                 
                 @endif
-                <div class="col-md-6">
+                <div class="col-md-6 right_blocks">
                     @if(Auth::user()->is_admin)
                         <div class="panel panel-default box-shadow-default z-index-fix " >
                             <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
@@ -171,6 +145,32 @@
 
                             </div>
                         </div>
+
+
+
+                        <div class="modal fade " id="eModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content z-index-fix">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">blabla</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        blablabla
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        jdnfjkqd
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
                         @if(Auth::user()->is_active)
                             <div class="panel panel-default box-shadow-default z-index-fix">
                                 <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">

@@ -7,6 +7,12 @@ body{
     min-height: 600px;
 
 }
+
+.btn-primary {
+    border-radius: 0;
+    text-align: left;
+}
+
 .footer-main{
     height: 250px;
     background-color: #303030;
@@ -15,9 +21,6 @@ body{
     color:#c2c2c2;
 }
 
-.z-index-fix{
-    z-index: 50;
-}
 .footer-content{
     width: 33.33%;
     float:left;
@@ -53,7 +56,7 @@ body{
     box-shadow:   -20px 20px 70px #5a5a5a;
 }
 #singleSelect{
-  border-radius: 0;
+    border-radius: 0;
 }
 .not-accepted{
 
@@ -80,7 +83,7 @@ body{
         width: 60%;
     }
     .footer-content-left{
-       display:none;
+        display:none;
     }
     .btn-search{
         text-align: center !important;
@@ -105,23 +108,3 @@ body{
 }
 
 
-
-
-.z-index-fix {
-    z-index: 3 !important;
-}
-/*
-.modal-backdrop {
-
-    z-index: 8 !important;
-}
-*/
-
-.modal-backdrop {
-    z-index: 0;
-}
-
-.my_projects,
-.right_blocks {
-    z-index: 3;
-}
