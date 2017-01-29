@@ -54,7 +54,14 @@ nav .active a{
     background-color:#542657 !important;
     color:white !important;
 }
-
+nav a:active{
+    background-color:#542657 !important;
+    color:white !important;
+}
+nav a:focus{
+    background-color:#542657 !important;
+    color:white !important;
+}
 nav a{
     color:white !important;
 }
