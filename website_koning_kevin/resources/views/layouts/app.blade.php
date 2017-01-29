@@ -76,9 +76,28 @@
                             </li>
                         @endif
                         @if(Auth::user()->is_admin)
-                            <li class="{{ Request::is('add_file') ? 'active' : '' }}">
-                                <a href="{{ url('/add_file') }}">Bestand toevoegen</a>
+                            {{--<li class="{{ Request::is('add_file') ? 'active' : '' }}">--}}
+                                {{--<a href="{{ url('/add_file') }}">Bestand toevoegen</a>--}}
+                            {{--</li>--}}
+                            <li class=" dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
+                                    Bestand toevoegen<span class="caret"></span>
+                                </a>
+                                    <ul class="dropdown-menu custom-dropdown-menu">
+                                        <li class="{{ Request::is('add_file') ? 'active' : '' }}">
+                                            <a href="{{ url('/add_file') }}">Nieuw Bestand</a>
+                                        </li>
+                                        <li class="{{ Request::is('registratiebestand') ? 'active' : '' }}">
+                                            <a href="{{ url('/registratiebestand') }}">Registratiebestand</a>
+                                        </li>
+                                    </ul>
                             </li>
+
+
+
+
+
+
                             <li class="{{ Request::is('add_project') ? 'active' : '' }}">
                                 <a href="{{ url('/add_project') }}">Project aanmaken</a>
                             </li>

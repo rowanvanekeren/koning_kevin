@@ -21,7 +21,6 @@
 
                     {{Form::open(array('url'=>'/add_file','files' => true))}}
                     <div class="form-group col-md-12 {{ $errors->has('title') ? 'has-error' : '' }}">
-
                         <div class="col-md-12">
                             <div class="sequencing">
                                 <div>1</div>
@@ -67,7 +66,7 @@
 
                             <div>
 
-                                <legend>Kies een bestand of voeg een link toe</legend>
+                                <legend>Kies een bestand</legend>
                             </div>
                             {{ Form::label('file', 'Kies een bestand', array('class' => 'control-label col-md-12'))}}
                             {{Form::file('file',array('class' => 'form-control'))}}

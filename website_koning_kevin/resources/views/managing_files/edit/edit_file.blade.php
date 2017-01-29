@@ -17,6 +17,13 @@
             <div class="row">
                 <div class="col-md-12">
 
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <legend class="">Oude bestand</legend>
+                            <a href="{{url('/').$file->url}}"><h3>{{$file->title}}<span
+                                            class="pull-right glyphicon glyphicon-download-alt"></span></h3></a>
+                        </div>
+                    </div>
                     {{Form::open(array('url'=>'/edit_file/'.$file->id ,'files' => true))}}
                     <div class="form-group col-md-12 {{ $errors->has('title') ? 'has-error' : '' }}">
 
@@ -47,15 +54,17 @@
                         </div>
                     </div>
 
+
+
+
                     <fieldset class="form-group col-md-12">
                         <div class="col-md-12">
                             <div class="sequencing">
                                 <div>2</div>
                             </div>
                             <div>
-                                <legend>Kies een bestand of voeg een link toe</legend>
+                                <legend>Kies nieuw bestand</legend>
                             </div>
-                            <a href="{{url('/').$file->url}}"><h3 class="col-md-12">{{$file->title}}<span class="pull-right glyphicon glyphicon-download-alt"></span></h3></a>
                             {{ Form::label('file', 'Kies een aandere bestand ', array('class' => 'control-label col-md-12'))}}
                             {{Form::file('file',array('class' => 'form-control'))}}
                             @if ($errors->has('file'))

@@ -11,6 +11,7 @@ use App\Tag;
 use Response;
 use App\Project;
 use App\ProjectDocument;
+use App\Readme;
 
 
 class Managing_files extends Controller
@@ -227,5 +228,14 @@ class Managing_files extends Controller
 //        $base_path = base_path();
 //        $full_patch_and_name = $base_path.'/public/files/'.$file_name;
 //        return response()->download($full_patch_and_name);
+    }
+    public function show_registration_file(){
+        
+        return view('managing_files/registrationFile');
+    }
+    public function add_registration_file(Request $request){
+        $this->validate($request,[
+            'file'=>'required|max:8000|mimes:pdf',
+        ]);
     }
 }

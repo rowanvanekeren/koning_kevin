@@ -82,8 +82,10 @@ Route::get('/api/get_all_files_for_projects','Api_file_Controller@get_files_proj
 Route::get('/edit_file/{document_id}','Managing_files@show_edit_file');
 Route::get('/edit_project/{project_id}/delete/{document_id}','Managing_files@delete_file');
 Route::get('/edit_project/{project_id}/delete_extra_documents/{document_id}','Managing_files@delete_extra_file');
+Route::get('/registratiebestand','Managing_files@show_registration_file');
 //post
 
+Route::post('//registratiebestand','Managing_files@add_registration_file');
 Route::post('/edit_file/{document_id}','Managing_files@edit_file');
 Route::post('/api/get_all_files_by_search_query','Api_file_Controller@get_all_files_by_search_query');
 Route::post('/add_file','Managing_files@add_file');
