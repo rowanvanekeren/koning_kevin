@@ -127,6 +127,7 @@ font-size: 3em;
     .footer-content{
         width: 100%;
         float:left;
+        border: 0 solid black;
     }
     .footer-main{
         height: 250px;
@@ -134,12 +135,18 @@ font-size: 3em;
         position: relative;
         bottom: 0;
         color:#c2c2c2;
+        border: 0 solid black;
     }
     .footer-content-last{
         display:none;
+        border: 0 solid black;
+    }
+    .footer-content-middle{
+        border:0;
     }
     .footer-content-last img{
         width: 60%;
+        border: 0 solid black;
     }
     .footer-content-left{
         display:none;
