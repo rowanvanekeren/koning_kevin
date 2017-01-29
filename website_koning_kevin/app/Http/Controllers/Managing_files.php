@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 Use App\Document;
 Use App\Role;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App\Tag;
 use Response;
@@ -171,7 +172,7 @@ class Managing_files extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'description' => 'required|max:1000',
-            'file' => 'required|max:8000|mimes:pdf',
+            'file' => 'required|max:60000|mimes:pdf',
             //'file' => 'required|mimes:application/pdf,application/msword,application/zip',
             'role' => 'required',
             'category' => 'required',
@@ -234,8 +235,20 @@ class Managing_files extends Controller
         return view('managing_files/registrationFile');
     }
     public function add_registration_file(Request $request){
+
         $this->validate($request,[
-            'file'=>'required|max:8000|mimes:pdf',
+            'file'=>'required|max:60000|mimes:pdf',
         ]);
+
+        $new_file_name = time() . $request->file->getClientOriginalName();
+        $destinationPath = base_path() . '/public/files/readme'; // upload path
+        $request->file->move($destinationPath, $new_file_name); // uploading file to given path
+
+
+        $file = new Readme;
+        $file->url =$new_file_name;
+        $file->save();
+        Session::flash('success', 'Server bestand is bijgewerkt!');
+        return redirect('/registratiebestand');
     }
 }

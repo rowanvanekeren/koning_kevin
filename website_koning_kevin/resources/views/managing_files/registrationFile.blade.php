@@ -6,10 +6,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+
                 <div class="panel panel-default box-shadow-default">
                     <div class="panel-heading">Registratiebestand</div>
                     <div class="panel-body">
                         <div class="row">
+                            @if(Session::has('success'))
+                                <div class="col-md-12 alert alert-success">
+                                    {{ Session::get('success')}}
+                                </div>
+                            @endif
                             {{Form::open(array('url'=>'/registratiebestand','files' => true))}}
                             <div class="form-group col-md-12 {{ $errors->has('title') ? 'has-error' : '' }}">
 
