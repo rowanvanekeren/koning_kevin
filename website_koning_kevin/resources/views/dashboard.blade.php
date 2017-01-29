@@ -29,36 +29,13 @@
         
             <div class="row" ng-controller="Managing_users">
                 @if(Auth::user()->is_active)
-               <div class="col-md-6">
+               <div class="col-md-12">
+               <!-- left side -> role files -->
                 @include('dashboard.rol_files')
                 
-                <div class="my_projects">
-                    <div class="panel panel-default box-shadow-default z-index-fix">
-                        <div class="panel-heading" ng-click="togglePanel('myProjectsDashboard')">
-                         <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
-                        </div>
-
-                        <div class="panel-body" ng-controller="Dashboard" ng-show="myProjDashb">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    @if(!$my_projects->isEmpty())
-                                    @foreach($my_projects as $my_project)
-                                        <div class="row-title">
-                                            <a href="{{url('/project_info/' . $my_project->id)}}">{{ $my_project->name }}</a>
-                                            op {{ $my_project->start }}</div>
-                                    @endforeach
-                                    @else
-                                    <div>Je hebt voorlopig geen projecten</div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                   </div>
-                @endif
-                <div class="col-md-6 right_blocks" ng-controller="Managing_projects">
+                <!-- right side -->
+                <div class="my_projects col-md-6" ng-controller="Managing_projects">   
+                   
                     @if(Auth::user()->is_admin)
                         <div class="panel panel-default box-shadow-default z-index-fix " >
                             <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
@@ -90,12 +67,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endif
+                                
                             </div>
 
                             
                             
                         </div>
+                        @endif
                         <div class="modal fade " id="new_volunteers_modal" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->
@@ -139,10 +117,32 @@
 
                             </div>
                         </div>
+                                                   
+                    <div class="panel panel-default box-shadow-default z-index-fix">
+                        <div class="panel-heading" ng-click="togglePanel('myProjectsDashboard')">
+                         <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{myProjDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
+                        </div>
 
+                        <div class="panel-body" ng-controller="Dashboard" ng-show="myProjDashb">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if(!$my_projects->isEmpty())
+                                    @foreach($my_projects as $my_project)
+                                        <div class="row-title">
+                                            <a href="{{url('/project_info/' . $my_project->id)}}">{{ $my_project->name }}</a>
+                                            op {{ $my_project->start }}</div>
+                                    @endforeach
+                                    @else
+                                    <div>Je hebt voorlopig geen projecten</div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
 
-                        @if(Auth::user()->is_active)
-                            <div class="panel panel-default box-shadow-default z-index-fix">
+                    </div>
+                    
+                    
+                    <div class="panel panel-default box-shadow-default z-index-fix">
                                 <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
                                  <strong>Projectoverzicht</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                                 </div>
@@ -186,8 +186,12 @@
 
                                     </div>
                                 </div>
-                            </div>
-                        @endif
+                    
+                    
+                </div>
+                   </div>
+                @endif
+                
 
                 </div></div>
     </div>

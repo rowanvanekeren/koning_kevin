@@ -28,19 +28,19 @@ angular.module("myapp").controller("Managing_projects", function ($scope, $http)
     }
     
     $scope.delete_project = function ($event, project_id) {
-        //
-        console.log(project_id);
+        
         $http.post('./delete_project',
             {
                 id: project_id
             })
             .success(function(response) {
                 console.log(response.project_id);
+                location.reload();
             })
             .error(function(response) {
                 console.log(response);
             });
-        location.reload();
+        
     }
     
     

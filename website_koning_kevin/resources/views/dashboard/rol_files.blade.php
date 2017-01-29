@@ -1,5 +1,5 @@
 
-<div class="">
+<div class="col-md-6">
     <div class="panel panel-default box-shadow-default z-index-fix">
         <div class="panel-heading" ng-click="togglePanel('yourFilesDashboard')">
             <strong>Bestanden volgens jouw rol</strong> <div  class="toggleCollapse glyphicon @{{yourFilesDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
@@ -13,7 +13,7 @@
                                                 ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                     </uib-accordion-heading>
                     <div ng-repeat="file in rol.files"
-                         class="row file_row_background@{{file.priority}}">
+                         class="row file_row file_row_background@{{file.priority}}">
                         <p uib-popover="@{{file.description}}"
                            popover-trigger="'mouseenter'"
                            popover-placement="bottom-left" class="col-md-9" data-toggle="modal"
@@ -21,7 +21,7 @@
                             @{{file.title}}
                         </p>
                         <a href="{{url('/')}}@{{file.url}}"><span
-                                    class="col-md-1 glyphicon glyphicon-download-alt"></span>
+                                    class="col-md-1 glyphicon glyphicon-download-alt single-glyph-dashb"></span>
                         </a>
                         {{--        <a href="#"><span
                                             class="col-md-1 glyphicon glyphicon-pencil"></span></a>
@@ -77,9 +77,9 @@
                     <div class="modal-content" ng-if="!file_info">
                         <div class="modal-header" ng-if="file_info">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Er ging iets mis, maak een printscreen van deze
+                            <div class="help-block">Er ging iets mis, maak een printscreen van deze
                                 pagina
-                                en stuur door aan de moderator.</h4>
+                                en stuur door aan de moderator.</div>
                         </div>
                     </div>
                 </div>

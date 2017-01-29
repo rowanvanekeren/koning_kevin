@@ -24,7 +24,7 @@
                                         binnen het ng-repeat functie van angularjs 0->laag1 1->Gemiddelde 2->Hoog
                                         --}}
                             <style>
-                                .file_row_background0 {
+                 /*               .file_row_background0 {
 
                                     background-color: #fff;
                                 }
@@ -42,7 +42,7 @@
                                 .btn-primary {
                                     border-radius: 0;
                                     text-align: left;
-                                }
+                                }*/
                             </style>
                             <div class="row">
                                 <div class="col-md-12">
@@ -61,7 +61,7 @@
                                         </div>
                                     </uib-accordion-heading>
                                     <div ng-repeat="file in files"
-                                         class="row file_row_background@{{file.priority}}">
+                                         class="row file_row file_row_background@{{file.priority}}">
 
                                         {{--uib-popover="@{{file.description}}"--}}
                                         {{--popover-trigger="'mouseenter'"--}}

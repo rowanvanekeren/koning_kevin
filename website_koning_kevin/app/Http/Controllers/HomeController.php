@@ -128,8 +128,10 @@ class HomeController extends Controller
     public function search_volunteers(Request $request) {
         $search = strtolower($request->search);
         $volunteers = User::where('is_active', 1)
-            ->where( strtolower('first_name'), 'like', '%' . $search . '%')
-            ->orWhere( strtolower('last_name'), 'like', '%' . $search . '%')
+            ->where(function($q) use ($search) {
+                $q->where('first_name', 'like', '%' . $search . '%')
+                    ->orWhere('last_name', 'like', '%' . $search . '%');
+            })
             ->orderBy('last_name')->paginate(25)->appends(['search' => $request->search]);
         return view('volunteers_overview', ['volunteers' => $volunteers]);
     }

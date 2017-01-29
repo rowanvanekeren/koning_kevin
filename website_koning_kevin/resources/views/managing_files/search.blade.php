@@ -32,8 +32,10 @@
                 </button>
                 </div>
             </div>
-            <div class="col-md-12"><div class="col-md-12 alert alert-danger" ng-if="server_error">@{{ server_error }}</div></div>
-            <div class="col-md-12"><div class="col-md-12 alert alert-danger" ng-if="search_files ==''">Geen zoekresultaten gevonden</div></div>
+
+            <div class="col-md-12"><div class="help-block" ng-if="server_error">@{{ server_error }}</div></div>
+            <div class="col-md-12"><div class="help-block" ng-if="search_files ==''">Geen zoekresultaten gevonden</div></div>
+
             <div ng-if="search_files" ng-repeat="file in search_files ">
                 <a href="{{url('/')}}@{{ file.url}}">
                     <div class="row carr-document ">
