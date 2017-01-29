@@ -72,18 +72,18 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
                     <div class="row volunteer_interaction">
                         <div class="col-md-12">
                             @if(!$volunteered)
-                            <a href="{{url('volunteer/' . $project->id)}}" class="btn btn-success">Ik wil me aanmelden voor dit project !</a>
+                            <a href="{{url('volunteer/' . $project->id)}}" class="btn btn-success">Ik wil mij aanmelden voor dit project !</a>
                             @elseif($volunteered && $role)
-                            <p>Je hebt je aangemeld voor dit project en werd geaccepteerd met de rol {{ $role }}.</p>
+                            <p>Je hebt je aangemeld voor dit project en bent geaccepteerd met de volgende rol: {{ $role }}.</p>
                             @else
-                            <p>Je hebt je reeds aangemeld voor dit project, maar werd nog niet geaccepteerd.</p>
+                            <p>Je hebt je reeds aangemeld voor dit project, je aanvraag moet nog geaccepteerd worden</p>
                             @endif
                         </div>
                     </div>
 
                         @if(Auth::user()->is_admin)
                         <div class="admin_edit_button">
-                            <a href="{{url('edit_project/' . $project->id)}}" class="btn btn-info"><span class=" glyphicon glyphicon-pencil"></span><span>Bewerken</span></a>
+                            <a href="{{url('edit_project/' . $project->id)}}" class="btn btn-primary"><span class=" glyphicon glyphicon-pencil"></span><span>Bewerken</span></a>
                         </div>
                         @endif
                     </div>

@@ -128,8 +128,6 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     $scope.add_remove_user_to_project = function ($event, $id, $project_id) {
         $clicked = $($event.currentTarget);
         $class = $clicked.attr('class');
-        console.log($id);
-        
         //check which role was selected
         console.log($(".role" + $id + " select option:selected").val());
         $role_id = $(".role" + $id + " select option:selected").val();
@@ -151,22 +149,83 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             .error(function(response) {
             console.log("error");
             });
-        
-        
     }
 
+    $scope.manually_add_remove_user_to_project = function ($event, $id, $project_id) {
+        $clicked = $($event.currentTarget);
+        $class = $clicked.attr('class');
+        //check which role was selected
+        console.log($(".role" + $id + " select option:selected").val());
+        console.log('user is ' + $id + " en project is " + $project_id);
+        $role_id = $(".role" + $id + " select option:selected").val();
+        //accept volunteer with the selected role (send project_id, role_id and user_id to api)
+        $http.post('../api/add_user_to_project',
+            {
+                project_id: $project_id,
+                user_id: $id,
+                role_id: $role_id
+            })
+            .success(function(response) {
+                console.log(response.user_id);
+                console.log(response.project_id);
+                console.log(response.role_id);
+                if(response.status == "success") {
+                    console.log("succesvol geaccepteerd");
+                    location.reload();
+                }
+            })
+            .error(function(response) {
+                console.log("error");
+            });
+    }
+    
+    
+    
+
+    $scope.show_search = false;
     $(".volunteers").hide();
     $scope.show_volunteers_list = function() {
-        console.log("test");
         //get all volunteers
+        //no volunteers will be shown from the beginning (because this list will be very long), so a search is required
+        /*
         $.getJSON( "../api/get_all_volunteers", function( data ) {
             console.log(data);
             $scope.volunteers = data.volunteers;
             $scope.$apply();
             //console.log($scope.volunteers[0].roles[0].type);
         });
+        */
 
-        $(".volunteers").show();
+        if($scope.show_search) {
+            $(".volunteers").hide();
+        }
+        else {
+            $(".volunteers").show();
+        }
+        $scope.show_search = !$scope.show_search;
+    }
+
+    $scope.search_volunteers = function () {
+        var searchterm = $('#search_volunteers').val();
+
+        if(searchterm.length > 1) {
+            //console.log('perform post request');
+
+            $http.post('../api/search_volunteers',
+                {
+                    searchword: searchterm
+                })
+                .success(function(response) {
+                    //console.log(response);
+                    $scope.volunteers = response.volunteers;
+                    //$scope.$apply();
+                })
+                .error(function(response) {
+                    console.log("error");
+                });
+
+        }
+
     }
     
     

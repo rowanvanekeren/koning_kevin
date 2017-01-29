@@ -2,9 +2,10 @@ body{
     background-color: lightgray;
     background-image: url('../images/home_bg/sub-bg.png');
     background-size: cover;
+
 }
 .main-content{
-    min-height: 600px;
+    min-height: 1000px;
 
 }
 .footer-main{

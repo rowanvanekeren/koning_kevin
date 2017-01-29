@@ -255,17 +255,15 @@
                                     @endif
                                 @endforeach
 
-                                <div class="row">
+                                <div class="row button">
                                     <div class="col-md-12">
                                         <button type="button" class="btn btn-info" ng-click="show_volunteers_list()">Manueel vrijwilligers toevoegen</button>
                                     </div>
                                 </div>
 
                                 <div class="row volunteers">
-                                    <div class="col-md-12">
-                                        ** Hier moet nog een zoekfunctie komen, voorlopig krijg je alle vrijwilligers **<br>
-                                        (ook diegenen die al geregistreerd zijn voor het project...)
-                                    </div>
+                                    <div class="col-md-11"><input type="text" name="search" id="search_volunteers" class="form-control" placeholder="Zoek vrijwilligers" ng-keyup="search_volunteers()"></div>
+
                                     <div class="col-md-12 available_volunteers">
                                         <div class="row" ng-repeat="volunteer in volunteers">
                                             <div class="col-md-4">
@@ -277,7 +275,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <div class="status@{{volunteer.id}} btn btn-success" ng-click="add_remove_user_to_project($event, volunteer.id, project.id)"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                                <div class="status@{{volunteer.id}} btn btn-success" ng-click="manually_add_remove_user_to_project($event, volunteer.id, {{$project->id}})"><i class="fa fa-check" aria-hidden="true"></i></div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="status@{{volunteer.id}} btn btn-danger" ng-click="add_remove_user_to_project($event, 'x', 'x')"><i class="fa fa-times" aria-hidden="true"></i></div>

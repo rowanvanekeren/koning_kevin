@@ -11,7 +11,9 @@ use Auth;
 use PhpParser\Comment\Doc;
 use App\Project;
 use App\ProjectDocument;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\User;
 
 
 class Api_file_Controller extends Controller
@@ -126,7 +128,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title','like', '%' .$title. '%');
+                $files->where('title', 'like', '%' . $title . '%');
             }
             return $files->get();
         }
@@ -136,7 +138,7 @@ class Api_file_Controller extends Controller
                 $q->where('type', $category);
             });
             if ($title != "") {
-                $files->where('title','like', '%' .$title. '%');
+                $files->where('title', 'like', '%' . $title . '%');
             }
             return $files->get();
         }
@@ -146,24 +148,51 @@ class Api_file_Controller extends Controller
                 $q->where('type', $role);
             });
             if ($title != "") {
-                $files->where('title','like', '%' .$title. '%');
+                $files->where('title', 'like', '%' . $title . '%');
             }
             return $files->get();
         }
         if ($title != "") {
-            $files = Document::with('categories', 'roles','tags')->where('title','like', '%' .$title. '%')
-                ->orWhere('description','like', '%' .$description. '%')->orWhereHas('tags', function($q) use ($title){
-                    $q->where('type', 'LIKE', '%' . $title. '%');
+            $files = Document::with('categories', 'roles', 'tags')->where('title', 'like', '%' . $title . '%')
+                ->orWhere('description', 'like', '%' . $description . '%')->orWhereHas('tags', function ($q) use ($title) {
+                    $q->where('type', 'LIKE', '%' . $title . '%');
                 });
         }
 
         return $files->get();
     }
 
-    public function test()
+    public function test(Request $request)
     {
-        
-        
+//        return $projects =Project::with('users')->whereHas('users_accepted')->where('created_at', '>=', Carbon::today()->toDateString())->get();
+
+        if (isset($request->mail) && $request->mail==1 ){
+        $users = User::where('is_active', 0)->where('created_at', '>=', Carbon::today()->toDateString())->get();
+        if (count($users)) {
+            return view('email.inactive_users_notification', ['users' => $users]);
+        }
+        }
+        if (isset($request->mail) && $request->mail==2){
+
+            $projects =Project::with('users')->whereHas('accepting_users')->where('created_at', '>=', Carbon::today()->toDateString())->get();
+            if (count($projects)) {
+                return view('email.Mail_Subscriber_Notification', ['projects' => $projects]);
+            }
+        }
+
+        if (isset($request->mail) && $request->mail==3){
+
+            $projects_user =Project::with('users')->whereHas('users_accepted')->where('created_at', '>=', Carbon::today()->toDateString())->get();
+            foreach ($projects_user as $project_user){
+                foreach ($project_user->users as $user){
+                   
+                    return view('email.User_accepted_for_project', ['project' => $project_user->name,'user'=>$user]);
+                }
+//
+            }
+        }
+
+        return 'er is geen test data maak gebreukets aan voor dat ze geaccepteerd zijn ook meld je aan voor projecten';
     }
 
 }

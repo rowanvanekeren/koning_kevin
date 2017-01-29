@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\MailNotification::class,
+        Commands\MailSubscriberNotification::class,
     ];
 
     /**
@@ -24,15 +25,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('mail:inactiveUsersNotification')->dailyAt('16:00');
+        $schedule->command('mail:subscriberNotification')->dailyAt('16:00');
     }
 
-    /**
-     * Register the Closure based commands for the application.
-     *
-     * @return void
-     */
     protected function commands()
     {
         require base_path('routes/console.php');

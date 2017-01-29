@@ -29,9 +29,10 @@
         
             <div class="row" ng-controller="Managing_users">
                 @if(Auth::user()->is_active)
+               <div class="col-md-6">
                 @include('dashboard.rol_files')
                 
-                <div class="col-md-6 my_projects">
+                <div class="my_projects">
                     <div class="panel panel-default box-shadow-default z-index-fix">
                         <div class="panel-heading" ng-click="togglePanel('myProjectsDashboard')">
                          <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
@@ -55,7 +56,7 @@
 
                     </div>
                 </div>
-                
+                   </div>
                 @endif
                 <div class="col-md-6 right_blocks" ng-controller="Managing_projects">
                     @if(Auth::user()->is_admin)
@@ -188,8 +189,7 @@
                             </div>
                         @endif
 
-                </div>
-            </div>
+                </div></div>
     </div>
 
 @endsection

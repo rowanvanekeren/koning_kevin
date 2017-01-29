@@ -6,7 +6,7 @@
 <body>
 
 
-<h1 class="float-right">Nieuwe vrijwilegers</h1>
+<h1 class="float-right">Nieuwe vrijwilligers</h1>
 <table width="1200" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #ccc;">
     @foreach($users as $key=>$user)
 

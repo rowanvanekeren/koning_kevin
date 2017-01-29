@@ -45,7 +45,9 @@ Route::post('/api/add_role_to_user', 'ApiController@add_role_to_user');
 Route::post('/api/decline_user', 'ApiController@decline_user');
 Route::post('/api/delete_user', 'ApiController@delete_user');
 Route::post('/api/accept_user_for_project', 'ApiController@accept_user_for_project');
+Route::post('/api/add_user_to_project', 'ApiController@add_user_to_project');
 Route::get('/api/get_all_volunteers', 'ApiController@get_all_volunteers');
+Route::post('/api/search_volunteers', 'ApiController@get_searched_volunteers');
 
 
 
@@ -80,8 +82,10 @@ Route::get('/api/get_all_files_for_projects','Api_file_Controller@get_files_proj
 Route::get('/edit_file/{document_id}','Managing_files@show_edit_file');
 Route::get('/edit_project/{project_id}/delete/{document_id}','Managing_files@delete_file');
 Route::get('/edit_project/{project_id}/delete_extra_documents/{document_id}','Managing_files@delete_extra_file');
+Route::get('/registratiebestand','Managing_files@show_registration_file');
 //post
 
+Route::post('//registratiebestand','Managing_files@add_registration_file');
 Route::post('/edit_file/{document_id}','Managing_files@edit_file');
 Route::post('/api/get_all_files_by_search_query','Api_file_Controller@get_all_files_by_search_query');
 Route::post('/add_file','Managing_files@add_file');

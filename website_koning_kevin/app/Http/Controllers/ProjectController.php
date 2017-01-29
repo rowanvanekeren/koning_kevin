@@ -219,10 +219,10 @@ class ProjectController extends Controller
     
     public function delete_project(Request $request) {
         //dd($id);
-        return response()->json(['status' => "success", 'project_id' => $request->id]);
-        
+        //return response()->json(['status' => "success", 'project_id' => $request->id]);
+
         //soft_delete the project
-        $project = Project::find($id);
+        $project = Project::find($request->id);
         $project->delete();
         //all related models should be deleted as well
         //users

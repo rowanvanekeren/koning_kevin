@@ -15,7 +15,7 @@ class MailNotification extends Command
      *
      * @var string
      */
-    protected $signature = 'mail:notification';
+    protected $signature = 'mail:inactiveUsersNotification';
 
     /**
      * The console command description.
@@ -41,13 +41,9 @@ class MailNotification extends Command
      */
     public function handle()
     {
-        echo 'Hallo i am notification shedular';
         $users = User::where('is_active', 0)->where('created_at', '>=', Carbon::today()->toDateString())->get();
-echo $users;
         if(count($users)){
             Mail::to('info@koningkevin.be')->send(new InactiveUsersNotification($users));
         }
-
-
     }
 }
