@@ -6,141 +6,148 @@
     <div {{--style="margin-top: 80px;"--}} class="container" ng-controller="Managing_file">
         <div class="panel panel-default">
             <div class="panel-heading text-center"><strong>{{--@{{ title }}--}}Bestand toevoegen</strong></div>
+            <div class="panel-body">
+                {{-- <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>--}}
 
-            {{-- <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>--}}
 
-            @if(Session::has('success'))
-                <h1>
-                    {{ Session::get('success')}}
-                </h1>
-            @endif
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    @if(Session::has('success'))
+                        <div class="col-md-12 alert alert-success">
 
-                    <div class="col-md-12">
-                        <div class="col-md-12">
-                            <legend class="">Oude bestand</legend>
-                            <a href="{{url('/').$file->url}}"><h3>{{$file->title}}<span
-                                            class="pull-right glyphicon glyphicon-download-alt"></span></h3></a>
+                            {{ Session::get('success')}}
+
                         </div>
-                    </div>
-                    {{Form::open(array('url'=>'/edit_file/'.$file->id ,'files' => true))}}
-                    <div class="form-group col-md-12 {{ $errors->has('title') ? 'has-error' : '' }}">
+                    @endif
+                    <div class="col-md-12">
 
                         <div class="col-md-12">
-                            <div class="sequencing">
-                                <div>1</div>
+                            <div class="col-md-12">
+                                <legend class="">Oude bestand</legend>
+                                <a href="{{url('/').$file->url}}"><h3>{{$file->title}}<span
+                                                class="pull-right glyphicon glyphicon-download-alt"></span></h3></a>
                             </div>
-                            <legend>Bestands info</legend>
-                            {{ Form::label('title', 'Titel van het bestand', array('class' => 'control-label col-md-12'))}}
-                            {{Form::text('title', $file->title,array('class'=>'form-control'))}}
-                            @if ($errors->has('title'))
-                                <span class="help-block">
+                        </div>
+                        {{Form::open(array('url'=>'/edit_file/'.$file->id ,'files' => true))}}
+                        <div class="form-group col-md-12 {{ $errors->has('title') ? 'has-error' : '' }}">
+
+                            <div class="col-md-12">
+                                <div class="sequencing">
+                                    <div>1</div>
+                                </div>
+                                <legend>Bestands info</legend>
+                                {{ Form::label('title', 'Titel van het bestand', array('class' => 'control-label col-md-12'))}}
+                                {{Form::text('title', $file->title,array('class'=>'form-control'))}}
+                                @if ($errors->has('title'))
+                                    <span class="help-block">
                                 <strong>{{ $errors->first('title') }}</strong>
                             </span>
-                            @endif
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group col-lg-12{{ $errors->has('description') ? 'has-error' : '' }}">
-                        <div class="col-md-12">
+                        <div class="form-group col-lg-12{{ $errors->has('description') ? 'has-error' : '' }}">
+                            <div class="col-md-12">
 
-                            {{ Form::label('description', 'Beschrijving', array('class' => 'control-label col-md-12'))}}
-                            {{Form::textarea('description', $file->description,array('class'=>'form-control','size' => '30x5'))}}
-                            @if ($errors->has('description'))
-                                <span class="help-block">
+                                {{ Form::label('description', 'Beschrijving', array('class' => 'control-label col-md-12'))}}
+                                {{Form::textarea('description', $file->description,array('class'=>'form-control','size' => '30x5'))}}
+                                @if ($errors->has('description'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
                                     </span>
-                            @endif
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
 
-
-
-                    <fieldset class="form-group col-md-12">
-                        <div class="col-md-12">
-                            <div class="sequencing">
-                                <div>2</div>
-                            </div>
-                            <div>
-                                <legend>Kies nieuw bestand</legend>
-                            </div>
-                            {{ Form::label('file', 'Kies een aandere bestand ', array('class' => 'control-label col-md-12'))}}
-                            {{Form::file('file',array('class' => 'form-control'))}}
-                            @if ($errors->has('file'))
-                                <span class="help-block">
+                        <fieldset class="form-group col-md-12">
+                            <div class="col-md-12">
+                                <div class="sequencing">
+                                    <div>2</div>
+                                </div>
+                                <div>
+                                    <legend>Kies nieuw bestand</legend>
+                                </div>
+                                {{ Form::label('file', 'Kies een aandere bestand ', array('class' => 'control-label col-md-12'))}}
+                                {{Form::file('file',array('class' => 'form-control'))}}
+                                @if ($errors->has('file'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('file') }}</strong>
                                     </span>
-                            @endif
-                        </div>
-                        {{--<div>{{$document->categories->first()->type}}</div>--}}
-                        <div class="col-md-6">
-                            {{ Form::label('category', 'Kies een categorie', array('class' => 'control-label col-md-12'))}}
-                            {{Form::select('category', $categories, $file->categories[0]->type,array('class' => 'form-control'))}}
-                            @if ($errors->has('category'))
-                                <span class="help-block">
+                                @endif
+                            </div>
+                            {{--<div>{{$document->categories->first()->type}}</div>--}}
+                            <div class="col-md-6">
+                                {{ Form::label('category', 'Kies een categorie', array('class' => 'control-label col-md-12'))}}
+                                {{Form::select('category', $categories, $file->categories[0]->type,array('class' => 'form-control'))}}
+                                @if ($errors->has('category'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('category') }}</strong>
                                     </span>
-                            @endif
-                        </div>
-                        <div class="col-md-6">
-                            {{ Form::label('role', 'Kies een rol', array('class' => 'control-label col-md-12'))}}
-                            {{Form::select('role', $roles, $file->roles[0]->type,array('class' => 'form-control'))}}
-                            @if ($errors->has('role'))
-                                <span class="help-block">
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                {{ Form::label('role', 'Kies een rol', array('class' => 'control-label col-md-12'))}}
+                                {{Form::select('role', $roles, $file->roles[0]->type,array('class' => 'form-control'))}}
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('role') }}</strong>
                                     </span>
-                            @endif
-                        </div>
-                    </fieldset>
-                    <fieldset class="form-group col-md-12">
-                        <div class="sequencing">
-                            <div>3</div>
-                        </div>
-                        <div>
-                            <legend>Prioriteit</legend>
-                        </div>
-                        <div class="form-check col-md-4">
+                                @endif
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-12">
+                            <div class="col-md-12">
+                                <div class="sequencing">
+                                    <div>3</div>
+                                </div>
+                                <div>
+                                    <legend>Prioriteit</legend>
+                                </div>
+                                <div class="form-check col-md-4">
 
-                            <label class="form-check-label">
-                                {{Form::radio('priority', 0,($file->priority==0?'true':''),array('class'=>'form-check-input'))}}
-                                Laag
-                            </label>
-                        </div>
-                        <div class="form-check col-md-4">
-                            <label class="form-check-label">
-                                {{Form::radio('priority', 1,($file->priority==1?'true':''),null,array('class'=>'form-check-input'))}}
-                                Gemiddeld
-                            </label>
-                        </div>
-                        <div class="form-check col-md-4">
-                            <label class="form-check-label">
-                                {{Form::radio('priority', 2,($file->priority==2?'true':''),null,array('class'=>'form-check-input'))}}
-                                Hoog
-                            </label>
-                        </div>
-                    </fieldset>
-                    <div class="col-md-6">
-                        <div class="sequencing">
-                            <div>4</div>
-                        </div>
-                        {{--even aude validatie variabele doorgeven aan angularjs voord niet getoond in vieuw --}}
-                        <?php echo "<div ng-init='init(" . '"' . $tags . '"' . ")'></div>";?>
+                                    <label class="form-check-label">
+                                        {{Form::radio('priority', 0,($file->priority==0?'true':''),array('class'=>'form-check-input'))}}
+                                        Laag
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <label class="form-check-label">
+                                        {{Form::radio('priority', 1,($file->priority==1?'true':''),null,array('class'=>'form-check-input'))}}
+                                        Gemiddeld
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <label class="form-check-label">
+                                        {{Form::radio('priority', 2,($file->priority==2?'true':''),null,array('class'=>'form-check-input'))}}
+                                        Hoog
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-12">
+                            <div class="col-md-6">
+                                <div class="sequencing">
+                                    <div>4</div>
+                                </div>
+                                {{--even aude validatie variabele doorgeven aan angularjs voord niet getoond in vieuw --}}
+                                <?php echo "<div ng-init='init(" . '"' . $tags . '"' . ")'></div>";?>
 
-                        {{ Form::label('tags', 'Voeg hiet enkele tags', array('class' => 'control-label col-md-12'))}}
-                        {{Form::text('tags', old('tags'),array('class'=>'form-control','ng-model'=>'tags','ng-keypress'=>'(($event.keyCode === 32)?tags_enter(tags):"0")'))}}
-                        @if ($errors->has('tags'))
-                            <span class="help-block">
+                                {{ Form::label('tags', 'Voeg hiet enkele tags', array('class' => 'control-label col-md-12'))}}
+                                {{Form::text('tags', old('tags'),array('class'=>'form-control','ng-model'=>'tags','ng-keypress'=>'(($event.keyCode === 32)?tags_enter(tags):"0")'))}}
+                                @if ($errors->has('tags'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('tags') }}</strong>
                     </span>
-                        @endif
-                    </div>
+                                @endif
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-12">
+                            <div class="col-md-12">
+                                {{Form::submit('Bestand toevoegen',array('class'=>'btn btn-primary btn-margin-custom') )}}
+                            </div>
+                        </fieldset>
 
-                    <div class="col-md-12">
-                        {{Form::submit('Bestand toevoegen',array('class'=>'btn btn-primary btn-margin-custom') )}}
+                        {{Form::close()}}
                     </div>
-
-                    {{Form::close()}}
                 </div>
             </div>
         </div>
