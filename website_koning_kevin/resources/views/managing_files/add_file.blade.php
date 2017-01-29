@@ -10,9 +10,11 @@
             {{-- <p>Voor deze pagina moet je geregistreerd + active gebruiker + admin zijn</p>--}}
 
             @if(Session::has('success'))
-                <h1>
+               <div class="succes-message">
+
                     {{ Session::get('success')}}
-                </h1>
+
+               </div>
             @endif
             <div class="row">
                 <div class="col-md-12">

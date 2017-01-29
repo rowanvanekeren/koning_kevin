@@ -109,3 +109,12 @@ nav a:hover{
     color:white;
     background-color: #D42E12;
 }
+
+.help-block{
+    width: 100%;
+    background-color: #c83b3a;
+    color:white;
+    padding: 3px;
+    border-radius: 5px;
+
+}

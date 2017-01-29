@@ -4,7 +4,7 @@ body{
     background-size: cover;
 }
 .main-content{
-    min-height: 600px;
+    min-height:1080px;
 
 }
 
@@ -48,7 +48,7 @@ body{
 
 }
 .footer-content-last img{
-    width: 80%;
+    width: 60%;
 }
 .footer-content-middle{
     padding-left: 15px;
