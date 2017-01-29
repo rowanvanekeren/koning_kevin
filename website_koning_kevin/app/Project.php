@@ -3,18 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Project extends Model
 {
 
+    use SoftDeletes;
+    
+    protected $dates = ['deleted_at'];
+    
     protected $fillable = ['name', 'description', 'address', 'city', 'country', 'start', 'end', 'image', 'active', 'created_at', 'updated_at'];
     
     public function documents()
     {
         return $this->belongsToMany('App\Document');
     }
-
     
     public function users()
     {
