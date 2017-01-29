@@ -80,8 +80,8 @@ class ProjectController extends Controller
 
         $dimension = getimagesize($destinationPath);
 
-        $max_width = "200";
-        $max_height = "200";
+        $max_width = "500";
+        $max_height = "500";
         if ($dimension[0] > $max_width) {
             $save_percent = round(100/$dimension[0]*$max_width)/100;
             $max_height =round($save_percent*$dimension[1]);
@@ -181,8 +181,8 @@ class ProjectController extends Controller
         $destinationPath = base_path() .'/public/images/project_pictures/'. $new_file_name;
         $dimension = getimagesize($destinationPath);
 
-        $max_width = "200";
-        $max_height = "200";
+        $max_width = "500";
+        $max_height = "500";
         if ($dimension[0] > $max_width) {
             $save_percent = round(100/$dimension[0]*$max_width)/100;
             $max_height =round($save_percent*$dimension[1]);
