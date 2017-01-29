@@ -11,7 +11,7 @@
 
         <div class="row  ">
             <div class="col-md-12 home-margin-header home-header-gradient">
-                <img class="img-responsive center-block" src="{{url('/images/kk/logo.png')}}">
+                <img class="home-logo img-responsive center-block" src="{{url('/images/kk/logo_kk_home.svg')}}">
             </div>
         </div>
         {{--        <div id="home-login" class="container">

@@ -9,13 +9,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><strong>Project bewerken</strong></div>
                     <div class="panel-body">
-                        
+
                         @if(session('success_message'))
-                        <div class="col-md-12 alert alert-success">
-                            {{ session('success_message') }}
-                        </div>
+                            <div class="col-md-12 alert alert-success">
+                                {{ session('success_message') }}
+                            </div>
                         @endif
-                        
+
 
                         {{Form::open(array('url'=>'/edit_project/' . $project->id,'files' => true))}}
                         <div class="col-md-6">
@@ -139,7 +139,8 @@
                         <div class="col-md-6">
 
                             <div class="col-md-12">
-                                <img id="project_img" src="{{url('/images/project_pictures/'.$project->image)}}" width="100%;">
+                                <img id="project_img" src="{{url('/images/project_pictures/'.$project->image)}}"
+                                     width="100%;">
                             </div>
 
                             <div class="col-md-12">
@@ -169,15 +170,15 @@
                                                         class="glyphicon glyphicon-trash pull-right"></span></a>
                                         </div>
                                     @endforeach
-                                        @foreach($project->extra_documents as $document)
-                                            <div>
-                                                <a href="{{url('/')}}{{$document->url}}">
-                                                    {{$document->title}}
-                                                </a>
-                                                <a href="{{url('edit_project/' . $project->id.'/delete_extra_documents/'.$document->id)}}"><span
-                                                            class="glyphicon glyphicon-trash pull-right"></span></a>
-                                            </div>
-                                        @endforeach
+                                    @foreach($project->extra_documents as $document)
+                                        <div>
+                                            <a href="{{url('/')}}{{$document->url}}">
+                                                {{$document->title}}
+                                            </a>
+                                            <a href="{{url('edit_project/' . $project->id.'/delete_extra_documents/'.$document->id)}}"><span
+                                                        class="glyphicon glyphicon-trash pull-right"></span></a>
+                                        </div>
+                                    @endforeach
 
                                 </div>
 
@@ -197,72 +198,91 @@
 
 
                 @if(!$project->users->isEmpty())
-                   <div class="col-md-6">
-                       <div class="panel panel-default">
-                            <div class="panel-heading text-center"><strong>REEDS TOEGEVOEGDE VRIJWILLIGERS</strong></div>
-                            <div class="panel-body">
-                                <div class="col-md-12">
-                                    <div class="col-md-6">
-                                        <strong>Naam</strong>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <strong>Toegekende rol</strong>
-                                    </div>
-                                </div>
-                                @foreach($project->users as $volunteer)
-                                    @if($volunteer->pivot->is_accepted)
-                                    <div class="col-md-12">
-                                        <div class="col-md-6"><a
-                                                    href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
-                                        </div>
-                                        <div class="col-md-6 role{{$volunteer->id}}">
-                                            @foreach($volunteer->roles as $role)
-                                                @if($volunteer->pivot->role_id == $role->id)
-                                                {{$role->type}}
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    @endif
-                                @endforeach
-                        </div>
-                        </div>
-                    </div>
-                   
                     <div class="col-md-6">
                         <div class="panel panel-default">
-                            <div class="panel-heading text-center"><strong>VRIJWILLIGERS TOEVOEGEN</strong></div>
+                            <div class="panel-heading text-center"><strong>Reeds toegevoegde vrijwilligers</strong>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <table class="table volunteers_overview"">
+
+                                        <tr>
+                                            <th>
+                                                <strong>Naam</strong>
+                                            </th>
+                                            <th>
+                                                <strong>Toegekende rol</strong>
+                                            </th>
+                                        </tr>
+
+
+
+                                @foreach($project->users as $volunteer)
+                                    @if($volunteer->pivot->is_accepted)
+                                        <tr>
+                                              <td>  <a href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a></td>
+                                            <td>
+                                                @foreach($volunteer->roles as $role)
+                                                    @if($volunteer->pivot->role_id == $role->id)
+                                                        {{$role->type}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        @endif
+
+                                        @endforeach
+                                        </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center"><strong>Vrijwilligers toevoegen</strong></div>
                             <div class="panel-body add_volunteers">
                                 @foreach($project->users as $volunteer)
                                     @if(!$volunteer->pivot->is_accepted)
-                                    <div class="row">
-                                        <div class="col-md-4"><a href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
+                                        <div class="row vol-add-proj">
+                                            <div class="col-md-4 vol-add-proj"><a
+                                                        href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a>
+                                            </div>
+                                            <div class="col-md-4 role{{$volunteer->id}}">
+                                                <select name="role{{$volunteer->id}}">
+                                                    @foreach($volunteer->roles as $role)
+                                                        <option value="{{$role->id}}">{{$role->type}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 confirm-marks">
+                                                <div class="status{{$volunteer->id}} btn exit-mark"
+                                                     status="{{$volunteer->pivot->is_accepted}}"
+                                                     ng-click="add_remove_user_to_project($event, 'x', 'x')"><i
+                                                            class="fa fa-times" aria-hidden="true"></i></div>
+                                                <div class="status{{$volunteer->id}} btn check-mark"
+                                                     status="{{$volunteer->pivot->is_accepted}}"
+                                                     ng-click="add_remove_user_to_project($event, {{$volunteer->id}}, {{$project->id}})">
+                                                    <i class="fa fa-check" aria-hidden="true"></i></div>
+
+
+                                            </div>
                                         </div>
-                                        <div class="col-md-4 role{{$volunteer->id}}">
-                                            <select name="role{{$volunteer->id}}">
-                                                @foreach($volunteer->roles as $role)
-                                                    <option value="{{$role->id}}">{{$role->type}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="status{{$volunteer->id}} btn btn-success" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, {{$volunteer->id}}, {{$project->id}})"><i class="fa fa-check" aria-hidden="true"></i></div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="status{{$volunteer->id}} btn btn-danger" status="{{$volunteer->pivot->is_accepted}}" ng-click="add_remove_user_to_project($event, 'x', 'x')"><i class="fa fa-times" aria-hidden="true"></i></div>
-                                        </div>
-                                    </div>
                                     @endif
                                 @endforeach
 
                                 <div class="row button">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-info" ng-click="show_volunteers_list()">Manueel vrijwilligers toevoegen</button>
+                                        <button type="button" class="btn btn-primary" ng-click="show_volunteers_list()">
+                                            Manueel vrijwilligers toevoegen
+                                        </button>
                                     </div>
                                 </div>
 
                                 <div class="row volunteers">
-                                    <div class="col-md-11"><input type="text" name="search" id="search_volunteers" class="form-control" placeholder="Zoek vrijwilligers" ng-keyup="search_volunteers()"></div>
+                                    <div class="col-md-11"><input type="text" name="search" id="search_volunteers"
+                                                                  class="form-control" placeholder="Zoek vrijwilligers"
+                                                                  ng-keyup="search_volunteers()"></div>
 
                                     <div class="col-md-12 available_volunteers">
                                         <div class="row" ng-repeat="volunteer in volunteers">
@@ -271,29 +291,33 @@
                                             </div>
                                             <div class="col-md-4 role@{{volunteer.id}}">
                                                 <select name="role@{{volunteer.id}}">
-                                                    <option ng-repeat="role in volunteer.roles" value="@{{role.id}}">@{{role.type}}</option>
+                                                    <option ng-repeat="role in volunteer.roles"
+                                                            value="@{{role.id}}">@{{role.type}}</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <div class="status@{{volunteer.id}} btn btn-success" ng-click="manually_add_remove_user_to_project($event, volunteer.id, {{$project->id}})"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                                <div class="status@{{volunteer.id}} btn btn-success"
+                                                     ng-click="manually_add_remove_user_to_project($event, volunteer.id, {{$project->id}})">
+                                                    <i class="fa fa-check" aria-hidden="true"></i></div>
                                             </div>
                                             <div class="col-md-2">
-                                                <div class="status@{{volunteer.id}} btn btn-danger" ng-click="add_remove_user_to_project($event, 'x', 'x')"><i class="fa fa-times" aria-hidden="true"></i></div>
+                                                <div class="status@{{volunteer.id}} btn btn-danger"
+                                                     ng-click="add_remove_user_to_project($event, 'x', 'x')"><i
+                                                            class="fa fa-times" aria-hidden="true"></i></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                        </div>
+                            </div>
                         </div>
                     </div>
                 @endif
 
 
+            </div>
 
         </div>
-
-    </div>
 
     </div>
 @endsection

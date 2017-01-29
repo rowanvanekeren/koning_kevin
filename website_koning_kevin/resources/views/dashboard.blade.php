@@ -35,7 +35,7 @@
                 <div class="my_projects">
                     <div class="panel panel-default box-shadow-default z-index-fix">
                         <div class="panel-heading" ng-click="togglePanel('myProjectsDashboard')">
-                         <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{projOvervDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
+                         <strong>Mijn projecten</strong> <div  class="toggleCollapse glyphicon @{{myProjDashb ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}}"></div>
                         </div>
 
                         <div class="panel-body" ng-controller="Dashboard" ng-show="myProjDashb">
