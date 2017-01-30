@@ -175,25 +175,27 @@ class ProjectController extends Controller
                 $new_file_name = time() . $request->image->getClientOriginalName();
                 $request->image->move(base_path() . '/public/images/project_pictures/', $new_file_name);
                 $project->image = $new_file_name;
+
+
+                $destinationPath = base_path() .'/public/images/project_pictures/'. $new_file_name;
+                $dimension = getimagesize($destinationPath);
+
+                $max_width = "500";
+                $max_height = "500";
+                if ($dimension[0] > $max_width) {
+                    $save_percent = round(100/$dimension[0]*$max_width)/100;
+                    $max_height =round($save_percent*$dimension[1]);
+                    Image::make($destinationPath)
+                        ->resize($max_width, $max_height)->save($destinationPath);
+                }
+                if($dimension[1] > $max_height){
+                    $save_percent = round(100/$dimension[1]*$max_height)/100;
+                    $max_width =round($save_percent*$dimension[0]);
+                    Image::make($destinationPath)
+                        ->resize($max_width, $max_height)->save($destinationPath);
+                }
+
             }
-        }
-
-        $destinationPath = base_path() .'/public/images/project_pictures/'. $new_file_name;
-        $dimension = getimagesize($destinationPath);
-
-        $max_width = "500";
-        $max_height = "500";
-        if ($dimension[0] > $max_width) {
-            $save_percent = round(100/$dimension[0]*$max_width)/100;
-            $max_height =round($save_percent*$dimension[1]);
-            Image::make($destinationPath)
-                ->resize($max_width, $max_height)->save($destinationPath);
-        }
-        if($dimension[1] > $max_height){
-            $save_percent = round(100/$dimension[1]*$max_height)/100;
-            $max_width =round($save_percent*$dimension[0]);
-            Image::make($destinationPath)
-                ->resize($max_width, $max_height)->save($destinationPath);
         }
 
 
