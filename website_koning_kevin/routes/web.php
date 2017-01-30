@@ -54,6 +54,7 @@ Route::post('/api/search_volunteers', 'ApiController@get_searched_volunteers');
 
 //Anton Routes
 //get
+Route::get('/contact','HomeController@contact');
 Route::get('/add_file', 'Managing_files@show_add_file');
 Route::get('/bestanden','Managing_files@show_file');
 Route::get('/download/{path}','Managing_files@download');
@@ -85,6 +86,7 @@ Route::get('/edit_project/{project_id}/delete_extra_documents/{document_id}','Ma
 Route::get('/registratiebestand','Managing_files@show_registration_file');
 //post
 
+Route::post('/contact','HomeController@send_contact');
 Route::post('//registratiebestand','Managing_files@add_registration_file');
 Route::post('/edit_file/{document_id}','Managing_files@edit_file');
 Route::post('/api/get_all_files_by_search_query','Api_file_Controller@get_all_files_by_search_query');
