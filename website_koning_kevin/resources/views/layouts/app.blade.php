@@ -105,6 +105,11 @@
                                 <a href="{{ url('/vrijwilligersoverzicht') }}">Vrijwilligers</a>
                             </li>
                         @endif
+                        @if(Auth::user()->is_active)
+                            <li class="{{ Request::is('contact') ? 'active' : '' }}">
+                                <a href="{{ url('/contact') }}">Contact</a>
+                            </li>
+                        @endif
                         <li class="dropdown custom-dropdown">
 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
