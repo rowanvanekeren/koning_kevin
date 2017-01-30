@@ -20,7 +20,7 @@
                         {{Form::open(array('url'=>'/contact','files' => true))}}
                         <div class="form-group col-lg-12{{ $errors->has('title') ? 'has-error' : '' }}">
                             <div class="col-md-12">
-                                {{ Form::label('title', 'Bericht', array('class' => 'control-label col-md-12'))}}
+                                {{ Form::label('title', 'Titel van bericht', array('class' => 'control-label col-md-12'))}}
                                 {{Form::text('title', old('title'),array('class'=>'form-control'))}}                                @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('title') }}</strong>
