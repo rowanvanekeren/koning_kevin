@@ -134,8 +134,8 @@ foreach($user->roles as $role) {
                             <div class="row">
                                 <legend> Administratieve gegevens</legend>
                                 <div class="col-md-12">
-                                    {{ Form::label('text', 'Rekeningnummer', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('bank_account', $user->administrative_details->bank_account_number,array('placeholder'=>'00','class'=>'form-control', 'pattern'=>'[a-z]{1,15}'))}}
+                                    {{ Form::label('text', 'Rekeningnummer (BE00 0000 0000 0000)', array('class' => 'control-label col-md-12'))}}
+                                    {{Form::text('bank_account', $user->administrative_details->bank_account_number,array('placeholder'=>'BE00 0000 0000 0000','class'=>'form-control', 'pattern'=>'BE[0-9]{2}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}'))}}
                                     @if ($errors->has('url'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('url') }}</strong>
