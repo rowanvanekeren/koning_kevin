@@ -78,7 +78,7 @@
                                                 </a>
                                                 <a href="{{url('/edit_file/')}}/@{{ file.id}}" target="_blank"><span
                                                             class="col-md-1 glyphicon glyphicon-pencil"></span></a>
-                                                <a href="#"><span ng-click="delete_document(file.id)"
+                                                <a href="#"><span ng-click="delete_document(file.id,file.pivot.category_id)"
                                                                   class="col-md-1 glyphicon glyphicon-trash"></span></a>
                                             </div>
                                         </div>
