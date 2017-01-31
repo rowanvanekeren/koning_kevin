@@ -204,7 +204,10 @@
                             </div>
                             <div class="panel-body">
                                 <div class="col-md-12">
-                                    <table class="table volunteers_overview"">
+                                    <div class="col-md-12 alert alert-success" ng-show="show_accept_message">
+                                        De vrijwilliger werd succesvol aanvaard!
+                                    </div>
+                                    <table class="table volunteers_overview">
 
                                         <tr>
                                             <th>

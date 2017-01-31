@@ -125,12 +125,17 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     
     
     /* edit project */
+    
+    $scope.show_accept_message = false;
+    
     $scope.add_remove_user_to_project = function ($event, $id, $project_id) {
         $clicked = $($event.currentTarget);
         $class = $clicked.attr('class');
         //check which role was selected
         console.log($(".role" + $id + " select option:selected").val());
         $role_id = $(".role" + $id + " select option:selected").val();
+        //$scope.show_accept_message = true;
+
         //accept volunteer with the selected role (send project_id, role_id and user_id to api)
         $http.post('../api/accept_user_for_project', 
             {
@@ -144,6 +149,7 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
                 console.log(response.role_id);
                 if(response.status == "success") {
                     console.log("succesvol geaccepteerd");
+                    $scope.show_accept_message = true;
                 }
             })
             .error(function(response) {
