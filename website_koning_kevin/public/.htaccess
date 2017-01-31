@@ -18,3 +18,8 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^localhost$ [NC]
+RewriteCond %{HTTPS} on
+RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [L,R]
+

@@ -67,7 +67,7 @@ class Api_file_Controller extends Controller
     public function delete_file(Request $request)
     {
         if (Document::find($request->id)->delete()) {
-            return array('success' => "Document gewist");
+            return array('success' => "Document gewist",'id'=>$request->category_id);
         };
         return array('error' => "Er ging iets fout, probeer later nog eens");
     }

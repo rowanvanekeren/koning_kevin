@@ -98,7 +98,7 @@
                                                 Login
                                             </button>
                                             <p class="home-or">of</p>
-                                            <a class="btn btn-link" href="{{ url('/register') }}">Registeer</a>
+                                            <a class="btn btn-link" href="{{ url('/register') }}">Registrer</a>
                                             <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                                 Wachtwoord vergeten?
                                             </a>

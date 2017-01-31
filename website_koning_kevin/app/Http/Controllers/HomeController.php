@@ -8,6 +8,9 @@ use App\User;
 use App\AdministrativeDetail;
 use App\Project;
 use App\Role;
+use Illuminate\Support\Facades\Session;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class HomeController extends Controller
@@ -30,6 +33,18 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public  function contact(){
+        return view('contact.contact');
+    }
+    public  function send_contact(Request $request){
+        $this->validate($request,[
+            'title'=>"required|max:255",
+            'bericht'=>"required|max:1000"
+        ]);
+        Mail::to('info@koningkevin.be')->send(new ContactMail(Auth::user()->first_name,$request->title,$request->bericht));
+        Session::flash('success', 'E-mail is verzonden');
+        return redirect('/contact');
+    }
     public function index()
     {
         date_default_timezone_set('Europe/Brussels');
