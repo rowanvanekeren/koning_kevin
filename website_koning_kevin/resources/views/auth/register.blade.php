@@ -187,7 +187,7 @@
                                 <div class="col-md-6">
 
                                     <input id="readme" type="checkbox" name="readme" {{ old('readme')?'checked':""}} value="1"
-                                           required><p><a href="{{url('/leesmij')}}">Lezen van de voorwaarde</a></p>
+                                           required><p><a href="{{url('/leesmij')}}" target="_blank">Lezen van de voorwaarde</a></p>
                                     @if ($errors->has('readme'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('readme')}}</strong>

@@ -20,7 +20,7 @@ foreach($user->roles as $role) {
 
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12">
                 <div class="panel panel-default box-shadow-default">
                     <div class="panel-heading text-center"><strong>Gebruikers informatie</strong></div>
                     <div class="panel-body">

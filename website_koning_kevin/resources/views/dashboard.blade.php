@@ -10,23 +10,23 @@
         <img class="dashb-bg-rope2" src="{{asset('images/home_bg/rope1-single.png')}}">
     </div>
 
-    <div class="container-fluid" ng-controller="toggleController">
+    <div class="container" ng-controller="toggleController">
 
         @if(!Auth::user()->is_active)
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 ">
+                <div class="col-md-12 ">
                     <div class="panel box-shadow-default not-accepted">
                         <div class="panel-heading">
                             <h1>Dankjewel voor je registratie!</h1>
                         </div>
                         <div class="panel-body">
 
-<style>
-    .inleiding-text{
-        text-align: left;
-        font-size: 18px;
-    }
-</style>
+                            <style>
+                                .inleiding-text {
+                                    text-align: left;
+                                    font-size: 18px;
+                                }
+                            </style>
                             <div class="inleiding-text">
                                 <h1>Proficiat!</h1>
                                 <p>Je hebt de weg gevonden naar het vrijwilligersplatform. We hebben je aanmelding goed
@@ -68,7 +68,6 @@
 
         <div class="row" ng-controller="Managing_users">
             @if(Auth::user()->is_active)
-                <div class="col-md-12">
                     <!-- left side -> role files -->
                     @include('dashboard.rol_files')
 
@@ -248,7 +247,7 @@
 
 
                     </div>
-                </div>
+
             @endif
 
 
