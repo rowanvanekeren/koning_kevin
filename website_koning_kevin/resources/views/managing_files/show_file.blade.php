@@ -73,10 +73,10 @@
                                                 @{{file.title}}
                                             </p>
                                             <div class="carr-glyph glyph-desktop">
-                                                <a href="{{url('/')}}@{{ file.url}}"><span
+                                                <a href="{{url('/')}}@{{ file.url}}" target="_blank"><span
                                                             class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                                 </a>
-                                                <a href="{{url('/edit_file/')}}/@{{ file.id}}"><span
+                                                <a href="{{url('/edit_file/')}}/@{{ file.id}}" target="_blank"><span
                                                             class="col-md-1 glyphicon glyphicon-pencil"></span></a>
                                                 <a href="#"><span ng-click="delete_document(file.id)"
                                                                   class="col-md-1 glyphicon glyphicon-trash"></span></a>
