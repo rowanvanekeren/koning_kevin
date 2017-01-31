@@ -78,6 +78,15 @@ class HomeController extends Controller
         //dd($request);
         $user = User::find($request->user_id);
         
+        $this->validate($request, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:1000',
+            'email'     => 'required|email',
+            'address' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
+        ]);
+        
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;

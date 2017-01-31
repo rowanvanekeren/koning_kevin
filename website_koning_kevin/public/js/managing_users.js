@@ -126,6 +126,24 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     
     /* edit project */
     
+    $scope.get_volunteers = function() {
+        //
+        //get all the volunteers who have been accepted already
+        $.getJSON( "../api/get_accepted_and_applied_volunteers", function( data ) {
+            //console.log(data);
+            $scope.accepted_volunteers = data.accepted_volunteers;
+            $scope.applied_volunteers = data.applied_volunteers;
+            //console.log($scope.applied_volunteers);
+            $scope.$apply();
+            //console.log($scope.volunteers[0].roles[0].type);
+        });
+        
+        //get all the volunteers who applied but were not accepted yet
+        
+    }
+    
+    //$scope.get_volunteers();
+    
     $scope.show_accept_message = false;
     
     $scope.add_remove_user_to_project = function ($event, $id, $project_id) {
@@ -150,6 +168,7 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
                 if(response.status == "success") {
                     console.log("succesvol geaccepteerd");
                     $scope.show_accept_message = true;
+                    $scope.get_volunteers();
                 }
             })
             .error(function(response) {

@@ -9,6 +9,12 @@
                 <div class="panel panel-default box-shadow-default z-index-fix">
                     <div class="panel-heading text-center"><strong>Project aanmaken</strong></div>
                     <div class="panel-body">
+                        
+                        @if (count($errors) > 0)
+                            <div class="col-md-12 alert alert-danger">
+                                Niet alle gegevens werden correct ingevuld ! 
+                            </div>
+                        @endif
 
                         {{Form::open(array('url'=>'/add_project','files' => true))}}
                         <div class="col-md-6">

@@ -34,11 +34,11 @@ class Project extends Model
     }
     public function accepting_users()
     {
-        return $this->belongsToMany('App\User')->withPivot('is_accepted')->wherePivot('is_accepted', 0);;
+        return $this->belongsToMany('App\User')->withPivot('is_accepted', 'role_id')->wherePivot('is_accepted', 0);;
     }
     public function users_accepted()
     {
-        return $this->belongsToMany('App\User')->withPivot('is_accepted')->wherePivot('is_accepted', 1);;
+        return $this->belongsToMany('App\User')->withPivot('is_accepted', 'role_id')->wherePivot('is_accepted', 1);;
     }
 
 }

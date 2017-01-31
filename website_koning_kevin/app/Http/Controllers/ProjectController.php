@@ -57,7 +57,7 @@ class ProjectController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:255',
-            'description' => 'required|max:500',
+            'description' => 'required|max:1000',
             'address' => 'required|max:255',
             'city' => 'required|max:255',
             'country' => 'required|max:255',
@@ -137,15 +137,20 @@ class ProjectController extends Controller
             $active = 0;
         }
         
+        //get day before startdate, in order to check whether the enddate is equal to or after startdate
+        $startdate = strtotime($request->startdate);
+        $day_before_start = strtotime("yesterday", $startdate);
+        $formatted_day_before = date('Y-m-d', $day_before_start);
+        
         $this->validate($request, [
             'name' => 'required|max:255',
-            'description' => 'required|max:500',
+            'description' => 'required|max:1000',
             'address' => 'required|max:255',
             'city' => 'required|max:255',
             'country' => 'required|max:255',
             'image' => 'max:1000|mimes:jpeg,bmp,png',
             'startdate' => 'required|date|after:today',
-            'enddate' => 'required|date|after:startdate',
+            'enddate' => 'required|date|after:'.$formatted_day_before,
             'starttime' => 'required',
             'endtime' => 'required',
         ]);

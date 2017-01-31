@@ -49,78 +49,69 @@ foreach($user->roles as $role) {
                                 <div class="col-md-12">
                                     {{ Form::label('text', 'Voornaam', array('class' => 'control-label col-md-12'))}}
                                     {{Form::text('first_name', $user->first_name,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
+                                    @if ($errors->has('first_name'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('first_name') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                                 <div class="col-md-12">
                                     {{ Form::label('text', 'Achternaam', array('class' => 'control-label col-md-12'))}}
                                     {{Form::text('last_name', $user->last_name,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
+                                    @if ($errors->has('last_name'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('last_name') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                                 <div class="col-md-12">
                                     {{ Form::label('text', 'E-mail', array('class' => 'control-label col-md-12'))}}
                                     {{Form::text('email', $user->email,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
+                                    @if ($errors->has('email'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                                 <div class="col-md-12">
                                     {{ Form::label('text', 'Adres', array('class' => 'control-label col-md-12'))}}
                                     {{Form::text('address', $user->address,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
+                                    @if ($errors->has('address'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-12">
+                                    {{ Form::label('text', 'Stad', array('class' => 'control-label col-md-12'))}}
+                                    {{Form::text('city', $user->city,array('required' => 'required', 'class'=>'form-control'))}}
+                                    @if ($errors->has('city'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                                 <div class="col-md-12">
                                     {{ Form::label('text', 'Land', array('class' => 'control-label col-md-12'))}}
                                     {{Form::text('country', $user->country,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
+                                    @if ($errors->has('country'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('country') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                                 <div class="col-md-12">
                                     {{ Form::label('text', 'Geboortedatum', array('class' => 'control-label col-md-12'))}}
                                     {{Form::text('birth_date', $user->birth_date,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
+                                    @if ($errors->has('birthdate'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('birthdate') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                                 <div class="col-md-12">
                                     {{ Form::label('geboorteplaats', 'Geboorteplaats', array('class' => 'control-label col-md-12'))}}
                                     {{Form::text('birth_place', $user->birth_place,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                                <div class="col-md-12">
-                                    {{ Form::label('text', 'Job', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('job', $user->job,array('class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                                <div class="col-md-12">
-                                    {{ Form::label('text', 'Job beschrijving', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('job_function', $user->job_function,array('class'=>'form-control'))}}
                                     @if ($errors->has('url'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('url') }}</strong>

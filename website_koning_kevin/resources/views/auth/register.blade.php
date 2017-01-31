@@ -140,38 +140,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('job') ? ' has-error' : '' }}">
-                                <label for="job" class="col-md-4 control-label">Werk</label>
-
-                                <div class="col-md-6">
-                                    <input id="job" type="text" class="form-control" name="job"
-                                           value="{{ old('job') }}">
-                                    @if ($errors->has('job'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('job') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('job_function') ? ' has-error' : '' }}">
-                                <label for="job_function" class="col-md-4 control-label">Werk functie</label>
-
-                                <div class="col-md-6">
-                                    <input id="job_function" type="text" class="form-control" name="job_function"
-                                           value="{{ old('job_function') }}">
-                                    @if ($errors->has('job_function'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('job_function') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
                             <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                                 <label for="gender" class="col-md-4 control-label">Geslacht</label>
 
                                 <div class="col-md-6">
                                     <input type="radio" name="gender" id="male" value="M"><label for="male">Man</label>
                                     <input type="radio" name="gender" id="female" value="V"><label for="female">Vrouw</label>
+                                    <input type="radio" name="gender" id="not_specified" value="X"><label for="not_specified">Anders</label>
                                     @if ($errors->has('gender'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('gender') }}</strong>
