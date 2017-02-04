@@ -134,7 +134,38 @@ table.volunteers_overview tbody tr:hover a {
     margin: 10px 0;
 }
 
+/* register */
+.gender_input {
+    padding-top: 6px;
+}
+
+.gender_input input {
+    margin-right: 5px;
+}
+
+.gender_input label {
+    margin-right: 25px;
+}
+
+.readme_input {
+    padding-top: 10px;
+}
+
+.readme_input input {
+    margin-right: 15px;
+}
 
 
+/* dashboard */
+.row-title [class^="col-md"] {
+    padding: 0px;
+}
 
+.project_date {
+    margin-right: 15px;
+}
 
+.new_volunteers {
+    color: #D42E12;
+    font-weight: bold;
+}

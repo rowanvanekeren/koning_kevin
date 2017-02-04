@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'birth_date'=>'required|date',
             'birth_place'=>'required|max:255',
             'readme'=>'required',
-            //'url'=>'image | mimes:jpeg,jpg,png | max:1000',
+            'url'   => 'required|image|mimes:jpeg,jpg,png|max:1000',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);

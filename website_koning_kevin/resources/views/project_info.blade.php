@@ -53,6 +53,17 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
                                         Eind: {{$enddate}} om {{$end_hour}}
                                     </div>
                                 </div>
+
+                                @if(!$project->documents->isEmpty() && $volunteered && $role))
+                                <div>
+                                    <h3>Bijhorende documenten</h3>
+                                    <div>
+                                        @foreach($project->documents as $document)
+                                            <div><a href="{{url('/')}}{{$document->url}}" target="_blank">{{$document->title}}</a></div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                @endif
                                 
                                 @if(!$project->accepted_users->isEmpty())
                                 <div>

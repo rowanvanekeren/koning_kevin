@@ -204,7 +204,7 @@
 
 
                 @if(!$project->users->isEmpty())
-                    <div class="col-md-6" ng-init="get_volunteers()">
+                    <div class="col-md-6" ng-init="get_volunteers({{$project->id}})">
                         <div class="panel panel-default">
                             <div class="panel-heading text-center"><strong>Reeds toegevoegde vrijwilligers</strong>
                             </div>
@@ -255,6 +255,7 @@
                             </div>
                         </div>
                     </div>
+                @endif
 
                     <div class="col-md-6">
                         <div class="panel panel-default">
@@ -357,7 +358,6 @@
                             </div>
                         </div>
                     </div>
-                @endif
 
 
             </div>

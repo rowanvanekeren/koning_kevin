@@ -48,7 +48,7 @@ Route::post('/api/accept_user_for_project', 'ApiController@accept_user_for_proje
 Route::post('/api/add_user_to_project', 'ApiController@add_user_to_project');
 Route::get('/api/get_all_volunteers', 'ApiController@get_all_volunteers');
 Route::post('/api/search_volunteers', 'ApiController@get_searched_volunteers');
-Route::get('/api/get_accepted_and_applied_volunteers', 'ApiController@get_accepted_and_applied_volunteers');
+Route::post('/api/get_accepted_and_applied_volunteers', 'ApiController@get_accepted_and_applied_volunteers');
 
 
 

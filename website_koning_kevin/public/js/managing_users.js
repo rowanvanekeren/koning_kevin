@@ -126,9 +126,10 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
     
     /* edit project */
     
-    $scope.get_volunteers = function() {
-        //
+    $scope.get_volunteers = function($project) {
+        console.log('wordt ik geïnitieerd?');
         //get all the volunteers who have been accepted already
+        /*
         $.getJSON( "../api/get_accepted_and_applied_volunteers", function( data ) {
             //console.log(data);
             $scope.accepted_volunteers = data.accepted_volunteers;
@@ -136,7 +137,21 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             //console.log($scope.applied_volunteers);
             $scope.$apply();
             //console.log($scope.volunteers[0].roles[0].type);
-        });
+        });*/
+
+        $http.post('../api/get_accepted_and_applied_volunteers',
+            {
+                project_id: $project
+            })
+            .success(function(response) {
+                //console.log(response);
+                $scope.accepted_volunteers = response.accepted_volunteers;
+                $scope.applied_volunteers = response.applied_volunteers;
+                //$scope.$apply();
+            })
+            .error(function(response) {
+                console.log("error");
+            });
         
         //get all the volunteers who applied but were not accepted yet
         
@@ -168,7 +183,7 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
                 if(response.status == "success") {
                     console.log("succesvol geaccepteerd");
                     $scope.show_accept_message = true;
-                    $scope.get_volunteers();
+                    $scope.get_volunteers($project_id);
                 }
             })
             .error(function(response) {

@@ -52,6 +52,7 @@ class HomeController extends Controller
         $today = date('Y-m-d H:i:s');
         //get all active projects where the startdate is after the current date
         $projects = Project::where('active', 1)->where('start', '>=', $today)->orderBy('start')->get();
+        //dd($projects[0]->accepting_users);
         //get all the projects which the currently logged in user has been accepted for
         $my_projects = Project::where('active', 1)->where('start', '>=', $today)->orderBy('start')->whereHas('users', function ($query) {
             $query->where('users.id', Auth::user()->id);
@@ -119,6 +120,7 @@ class HomeController extends Controller
     public function project_info($id) {
         $project = Project::where('id', $id)->first();
         $user = $project->users()->where('users.id', Auth::user()->id)->first();
+        //dd($project->documents);
         $volunteered = false;
         $role = false;
         if($user) {

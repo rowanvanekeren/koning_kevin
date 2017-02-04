@@ -178,9 +178,12 @@
                                     <div class="col-md-12">
                                         @if(!$my_projects->isEmpty())
                                             @foreach($my_projects as $my_project)
-                                                <div class="row-title">
-                                                    <a href="{{url('/project_info/' . $my_project->id)}}">{{ $my_project->name }}</a>
-                                                    op {{ $my_project->start }}</div>
+                                                <div class="row">
+                                                    <div class="row-title col-md-10">
+                                                        <span class="col-md-2 project_date"> {{ date_format(date_create($my_project->start), 'd/m') }}</span>
+                                                        <a class="col-md-6 project_name" href="{{url('/project_info/' . $my_project->id)}}">{{ $my_project->name }}</a>
+                                                    </div>
+                                                </div>
                                             @endforeach
                                         @else
                                             <div>Je hebt voorlopig geen projecten</div>
@@ -201,12 +204,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         @foreach($projects as $project)
-                                            <div class="col-md-12">
-                                                <div class="row-title">
-                                                    <a href="{{url('/project_info/' . $project->id)}}">{{ $project->name }}</a>
-                                                    op {{ $project->start }}</div>
+                                            <div class="row">
+                                                <div class="row-title col-md-10">
+                                                    <span class="col-md-2 project_date"> {{ date_format(date_create($project->start), 'd/m') }}</span>
+                                                    <a class="col-md-6 project_name" href="{{url('/project_info/' . $project->id)}}">{{ $project->name }}</a>
+                                                    @if(Auth::user()->is_admin && count($project->accepting_users) > 0)
+                                                        <a href="{{url('edit_project/'.$project->id)}}"><span class="col-md-2 new_volunteers">({{count($project->accepting_users)}})</span></a>
+                                                    @endif
+                                                </div>
                                                 @if(Auth::user()->is_admin)
-                                                    <div class="row-icons">
+                                                    <div class="row-icons col-md-2">
                                                         <a href="{{url('edit_project/'.$project->id)}}"><span
                                                                     class=" glyphicon glyphicon-pencil"></span></a>
                                                         <a href="" data-toggle="modal"

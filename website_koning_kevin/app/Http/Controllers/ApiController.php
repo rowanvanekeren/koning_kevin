@@ -69,10 +69,10 @@ class ApiController extends Controller
 
 
     //edit_project
-    public function get_accepted_and_applied_volunteers() {
+    public function get_accepted_and_applied_volunteers(Request $request) {
         //
-        $id = 1;
-        $project = Project::find($id);
+        //$id = 1;
+        $project = Project::find($request->project_id);
         $accepted_volunteers = $project->users_accepted()->with('roles')->get();
         $applied_volunteers = $project->accepting_users()->with('roles')->get();
         //dd($accepted_volunteers, $applied_volunteers);
