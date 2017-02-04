@@ -45,6 +45,8 @@ Route::post('/api/add_role_to_user', 'ApiController@add_role_to_user');
 Route::post('/api/decline_user', 'ApiController@decline_user');
 Route::post('/api/delete_user', 'ApiController@delete_user');
 Route::post('/api/accept_user_for_project', 'ApiController@accept_user_for_project');
+Route::post('/api/decline_user_for_project', 'ApiController@decline_user_for_project');
+Route::post('/api/reset_user', 'ApiController@reset_user');
 Route::post('/api/add_user_to_project', 'ApiController@add_user_to_project');
 Route::get('/api/get_all_volunteers', 'ApiController@get_all_volunteers');
 Route::post('/api/search_volunteers', 'ApiController@get_searched_volunteers');

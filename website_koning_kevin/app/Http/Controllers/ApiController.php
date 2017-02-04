@@ -60,9 +60,9 @@ class ApiController extends Controller
     
     public function delete_user(Request $request) {
         $user = User::find($request->id);
-        $user->delete();
-        $user->roles()->detach();
-        $user->projects()->detach();
+        //$user->roles()->detach();
+        //$user->projects()->detach();
+        //$user->delete();
         //return response succesfull
         return response()->json(['status' => "success", 'user_id' => $user->id]);
     }
@@ -83,13 +83,32 @@ class ApiController extends Controller
     
     public function accept_user_for_project(Request $request) {
 
+    $project = Project::find($request->project_id);
+    $user = $project->users()->where('users.id', $request->user_id)->first();
+    $user->pivot->is_accepted = 1;
+    $user->pivot->role_id = $request->role_id;
+    $user->pivot->save();
+
+    return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
+    }
+
+    public function decline_user_for_project(Request $request) {
+
+        $project = Project::find($request->project_id);
+        $project->users()->detach([$request->user_id]);
+
+        return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id]);
+    }
+
+    public function reset_user(Request $request) {
+
         $project = Project::find($request->project_id);
         $user = $project->users()->where('users.id', $request->user_id)->first();
-        $user->pivot->is_accepted = 1;
-        $user->pivot->role_id = $request->role_id;
+        $user->pivot->is_accepted = 0;
+        $user->pivot->role_id = null;
         $user->pivot->save();
-        
-        return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
+
+        return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id]);
     }
 
     public function add_user_to_project(Request $request) {

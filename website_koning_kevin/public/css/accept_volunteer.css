@@ -134,6 +134,14 @@ table.volunteers_overview tbody tr:hover a {
     margin: 10px 0;
 }
 
+.volunteers_overview.accepted td i {
+    color: #4373ff;
+    cursor: pointer;
+}
+.volunteers_overview.accepted td i:hover {
+    color: #fff;
+}
+
 /* register */
 .gender_input {
     padding-top: 6px;

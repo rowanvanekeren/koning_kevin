@@ -213,7 +213,7 @@
                                     <div class="col-md-12 alert alert-success" ng-show="show_accept_message">
                                         De vrijwilliger werd succesvol aanvaard!
                                     </div>
-                                    <table class="table volunteers_overview">
+                                    <table class="table volunteers_overview accepted">
 
                                         <tr>
                                             <th>
@@ -221,6 +221,9 @@
                                             </th>
                                             <th>
                                                 <strong>Toegekende rol</strong>
+                                            </th>
+                                            <th>
+                                                <strong><i class="fa fa-times" aria-hidden="true"></i></strong>
                                             </th>
                                         </tr>
 
@@ -230,6 +233,9 @@
                                             </td>
                                             <td ng-repeat="role in ok_volunt.roles" ng-show="role.id == ok_volunt.pivot.role_id">
                                                 @{{role.type}}
+                                            </td>
+                                            <td ng-click="reset_user(ok_volunt.id, {{$project->id}})">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
                                             </td>
                                         </tr>
 
@@ -275,7 +281,7 @@
                                     <div class="col-md-4 confirm-marks">
                                         <div class="status@{{appl_volunt.id}} btn exit-mark"
                                              status="@{{appl_volunt.pivot.is_accepted}}"
-                                             ng-click="add_remove_user_to_project($event, 'x', 'x')"><i
+                                             ng-click="decline_user_for_project($event, appl_volunt.id, {{$project->id}})"><i
                                                     class="fa fa-times" aria-hidden="true"></i></div>
                                         <div class="status@{{appl_volunt.id}} btn check-mark"
                                              status="@{{appl_volunt.pivot.is_accepted}}"
@@ -341,15 +347,17 @@
                                                             value="@{{role.id}}">@{{role.type}}</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="status@{{volunteer.id}} btn btn-success"
+                                            <div class="col-md-4 confirm-marks">
+                                                {{--<div class="status@{{volunteer.id}} btn exit-mark"
+                                                     status="@{{appl_volunt.pivot.is_accepted}}"
+                                                     ng-click="decline_user_for_project($event, volunteer.id, {{$project->id}})"><i
+                                                            class="fa fa-times" aria-hidden="true"></i></div>--}}
+                                                <div class="status@{{volunteer.id}} btn check-mark"
+                                                     status="@{{appl_volunt.pivot.is_accepted}}"
                                                      ng-click="manually_add_remove_user_to_project($event, volunteer.id, {{$project->id}})">
                                                     <i class="fa fa-check" aria-hidden="true"></i></div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="status@{{volunteer.id}} btn btn-danger"
-                                                     ng-click="add_remove_user_to_project($event, 'x', 'x')"><i
-                                                            class="fa fa-times" aria-hidden="true"></i></div>
+
+
                                             </div>
                                         </div>
                                     </div>

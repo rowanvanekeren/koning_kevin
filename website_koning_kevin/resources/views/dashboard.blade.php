@@ -83,6 +83,13 @@
 
                                 <div class="panel-body" ng-controller="Dashboard" ng-show="usrdashb">
                                     <div class="container col-md-12">
+
+                                        <div class="row">
+                                            <div class="col-md-12 alert alert-success" ng-show="show_accept_message">
+                                                De vrijwilliger werd succesvol geaccepteerd!
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-md-12" ng-init="get_inactive_users()">
 
@@ -122,7 +129,7 @@
                                 <div class="modal-content z-index-fix">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Vrijwilliger accepteren @{{selected_user}}</h4>
+                                        <h4 class="modal-title">Vrijwilliger accepteren <!-- @{{selected_user}}--></h4>
                                     </div>
                                     <div class="modal-body">
                                         <p>Welke rollen wil je aan deze vrijwilliger toekennen?</p>
@@ -152,7 +159,7 @@
                                 <div class="modal-content z-index-fix">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Vrijwilliger weigeren @{{selected_user}}</h4>
+                                        <h4 class="modal-title">Vrijwilliger weigeren</h4>
                                     </div>
                                     <div class="modal-body">
                                         <p>Ben je zeker dat je <strong>"@{{ user_name }}"</strong> wil weigeren?</p>

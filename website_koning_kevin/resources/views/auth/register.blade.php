@@ -7,6 +7,17 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Registreren</div>
                     <div class="panel-body">
+
+                        @if (count($errors) > 0)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger">
+                                        <strong>Het registratieformulier werd niet correct ingevuld!</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}"
                               enctype="multipart/form-data">
                             {{ csrf_field() }}
