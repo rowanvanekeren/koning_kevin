@@ -60,9 +60,9 @@ class ApiController extends Controller
     
     public function delete_user(Request $request) {
         $user = User::find($request->id);
-        //$user->roles()->detach();
-        //$user->projects()->detach();
-        //$user->delete();
+        $user->roles()->detach();
+        $user->projects()->detach();
+        $user->delete();
         //return response succesfull
         return response()->json(['status' => "success", 'user_id' => $user->id]);
     }

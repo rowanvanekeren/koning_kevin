@@ -99,6 +99,7 @@ angular.module("myapp").controller("Managing_users", function ($scope, $http) {
             })
             .success(function(response) {
                 console.log(response.user_id);
+                location.reload();
             })
             .error(function(response) {
             console.log(response);

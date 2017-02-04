@@ -177,3 +177,8 @@ table.volunteers_overview tbody tr:hover a {
     color: #D42E12;
     font-weight: bold;
 }
+
+/* volunteers overview */
+.glyphicon-trash {
+    cursor: pointer;
+}
