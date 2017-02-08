@@ -218,7 +218,7 @@ class ProjectController extends Controller
 
         $project->save();
         if ($request->selected_file) {
-            $project->documents()->sync($request->selected_file);
+            $project->documents()->attach($request->selected_file);
         }
 
         return redirect('/edit_project/' . $id)->with("success_message", 'Project werd succesvol geüpdatet!');;

@@ -27,5 +27,7 @@ class Document extends Model
         return $this->belongsToMany('App\Project');
     }
 
+    
+
     protected $dates = ['deleted_at'];
 }
