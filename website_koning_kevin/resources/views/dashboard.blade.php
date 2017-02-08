@@ -68,12 +68,8 @@
 
         <div class="row" ng-controller="Managing_users">
             @if(Auth::user()->is_active)
-                    <!-- left side -> role files -->
                     @include('dashboard.rol_files')
-
-                            <!-- right side -->
                     <div class="my_projects col-md-6" ng-controller="Managing_projects">
-
                         @if(Auth::user()->is_admin)
                             <div class="panel panel-default box-shadow-default z-index-fix ">
                                 <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
