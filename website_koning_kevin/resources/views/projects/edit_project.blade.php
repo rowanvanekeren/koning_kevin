@@ -229,7 +229,7 @@
 
                                         <tr ng-repeat="ok_volunt in accepted_volunteers">
                                             <td>
-                                                 <a href="#">@{{ok_volunt.first_name}} @{{ok_volunt.last_name}}</a>
+                                                 <a href="{{url('/profiel/')}}/@{{ ok_volunt.id}}">@{{ok_volunt.first_name}} @{{ok_volunt.last_name}}</a>
                                             </td>
                                             <td ng-repeat="role in ok_volunt.roles" ng-show="role.id == ok_volunt.pivot.role_id">
                                                 @{{role.type}}
@@ -271,7 +271,7 @@
                                
                                 <div class="row vol-add-proj" ng-repeat="appl_volunt in applied_volunteers">
                                     <div class="col-md-4 vol-add-proj"><a
-                                                href="#">@{{appl_volunt.first_name}} @{{appl_volunt.last_name}}</a>
+                                                href="{{url('/profiel/')}}/@{{ appl_volunt.id}}">@{{appl_volunt.first_name}} @{{appl_volunt.last_name}}</a>
                                     </div>
                                     <div class="col-md-4 role@{{appl_volunt.id}}">
                                         <select name="role@{{appl_volunt.id}}">

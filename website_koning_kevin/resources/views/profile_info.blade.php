@@ -110,14 +110,24 @@ foreach($user->roles as $role) {
                                     @endif
                                 </div>
                                 <div class="col-md-12">
-                                    {{ Form::label('geboorteplaats', 'Geboorteplaats', array('class' => 'control-label col-md-12'))}}
-                                    {{Form::text('birth_place', $user->birth_place,array('required' => 'required', 'class'=>'form-control'))}}
-                                    @if ($errors->has('url'))
+                                    {{ Form::label('birth_place', 'Geboorteplaats', array('class' => 'control-label col-md-12'))}}
+                                    {{Form::text('birth_place', $user->birth_place,array('class'=>'form-control'))}}
+                                    @if ($errors->has('birth_place'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $errors->first('birth_place') }}</strong>
                                     </span>
                                     @endif
                                 </div>
+                                <div class="col-md-12">
+                                    {{ Form::label('image', 'Nieuwe profielfoto', array('class' => 'control-label col-md-12'))}}
+                                    {{Form::file('image',array('class'=>'form-control'))}}
+                                    @if ($errors->has('image'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
                             </div>
                         </div>
 

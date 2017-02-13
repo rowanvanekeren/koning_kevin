@@ -86,7 +86,26 @@ class HomeController extends Controller
             'address' => 'required|max:255',
             'city' => 'required|max:255',
             'country' => 'required|max:255',
+            'image' => 'image|mimes:jpeg,jpg,png|max:1000',
         ]);
+
+        $allowed_extensions = ["jpeg", "png"];
+
+        if (isset($request->image)) {
+
+            //check whether file extension is valid
+            if (in_array($request->image->guessClientExtension(), $allowed_extensions)) {
+
+                //create new file name
+                $new_file_name = time() . $request->first_name."_".$request->last_name . "." . $request->image->guessClientExtension();
+                $request->image->move(base_path() . '/public/images/profile_pictures/', $new_file_name);
+                $user->url = $new_file_name;
+            }
+            else {
+
+                // not ok return to add project view with error
+            }
+        }
         
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -95,8 +114,10 @@ class HomeController extends Controller
         $user->country = $request->country;
         $user->birth_date = $request->birth_date;
         $user->birth_place = $request->birth_place;
+        /*
         $user->job = $request->job;
         $user->job_function = $request->job_function;
+        */
         
         $user->administrative_details->bank_account_number = $request->bank_account;
         $user->administrative_details->national_insurance_number = $request->national_insurance;
