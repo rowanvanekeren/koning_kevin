@@ -18,9 +18,12 @@ input{
     border-radius: 0 !important;
     background-color:#542657 ;
     border:0;
+    text-align: center;
 
 }
-
+.help-block{
+    color:white !important;
+}
 .btn-primary:hover{
     background-color: #381a3b;
     border:0;
