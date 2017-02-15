@@ -73,12 +73,12 @@
                                                 @{{file.title}}
                                             </p>
                                             <div class="carr-glyph glyph-desktop">
-                                                <a href="{{url('/')}}@{{ file.url}}"><span
+                                                <a href="{{url('/')}}@{{ file.url}}" target="_blank"><span
                                                             class="col-md-1 glyphicon glyphicon-download-alt"></span>
                                                 </a>
-                                                <a href="{{url('/edit_file/')}}/@{{ file.id}}"><span
+                                                <a href="{{url('/edit_file/')}}/@{{ file.id}}" target="_blank"><span
                                                             class="col-md-1 glyphicon glyphicon-pencil"></span></a>
-                                                <a href="#"><span ng-click="delete_document(file.id)"
+                                                <a href="#"><span ng-click="delete_document(file.id,file.pivot.category_id)"
                                                                   class="col-md-1 glyphicon glyphicon-trash"></span></a>
                                             </div>
                                         </div>
@@ -108,7 +108,7 @@
                                     <p>@{{ file_info.file.description }}</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <h5>Categorieen</h5>
+                                    <h5>Categorie&euml;n</h5>
                                     <p ng-repeat="category in file_info.categories">
                                         @{{ category.type }}
                                     </p>

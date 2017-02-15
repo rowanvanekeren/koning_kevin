@@ -68,7 +68,7 @@
                         <p>Weet je zeker dat je <strong>"@{{volunteer_name}}"</strong> wil verwijderen?</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default" ng-click="delete_volunteer($event, selected_user)" data-dismiss="modal">Accepteren</button>
+                        <button type="button" class="btn btn-default" ng-click="delete_volunteer($event, selected_user)" data-dismiss="modal">Verwijderen</button>
                       </div>
                     </div>
                </div>

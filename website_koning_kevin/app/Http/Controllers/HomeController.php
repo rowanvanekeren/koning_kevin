@@ -11,6 +11,7 @@ use App\Role;
 use Illuminate\Support\Facades\Session;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\MailSubscriberNotification as sendmail;
 
 
 class HomeController extends Controller
@@ -52,6 +53,7 @@ class HomeController extends Controller
         $today = date('Y-m-d H:i:s');
         //get all active projects where the startdate is after the current date
         $projects = Project::where('active', 1)->where('start', '>=', $today)->orderBy('start')->get();
+        //dd($projects[0]->accepting_users);
         //get all the projects which the currently logged in user has been accepted for
         $my_projects = Project::where('active', 1)->where('start', '>=', $today)->orderBy('start')->whereHas('users', function ($query) {
             $query->where('users.id', Auth::user()->id);
@@ -78,6 +80,34 @@ class HomeController extends Controller
         //dd($request);
         $user = User::find($request->user_id);
         
+        $this->validate($request, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:1000',
+            'email'     => 'required|email',
+            'address' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
+            'image' => 'image|mimes:jpeg,jpg,png|max:1000',
+        ]);
+
+        $allowed_extensions = ["jpeg", "png"];
+
+        if (isset($request->image)) {
+
+            //check whether file extension is valid
+            if (in_array($request->image->guessClientExtension(), $allowed_extensions)) {
+
+                //create new file name
+                $new_file_name = time() . $request->first_name."_".$request->last_name . "." . $request->image->guessClientExtension();
+                $request->image->move(base_path() . '/public/images/profile_pictures/', $new_file_name);
+                $user->url = $new_file_name;
+            }
+            else {
+
+                // not ok return to add project view with error
+            }
+        }
+        
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
@@ -85,8 +115,10 @@ class HomeController extends Controller
         $user->country = $request->country;
         $user->birth_date = $request->birth_date;
         $user->birth_place = $request->birth_place;
+        /*
         $user->job = $request->job;
         $user->job_function = $request->job_function;
+        */
         
         $user->administrative_details->bank_account_number = $request->bank_account;
         $user->administrative_details->national_insurance_number = $request->national_insurance;
@@ -110,6 +142,7 @@ class HomeController extends Controller
     public function project_info($id) {
         $project = Project::where('id', $id)->first();
         $user = $project->users()->where('users.id', Auth::user()->id)->first();
+        //dd($project->documents);
         $volunteered = false;
         $role = false;
         if($user) {
@@ -129,6 +162,9 @@ class HomeController extends Controller
     public function volunteer($id) {
         $user = Auth::user();
         $user->projects()->attach($id);
+        $project = Project::find($id);
+        
+        Mail::to('info@koningkevin.be')->send(new sendmail($project,$user));
         return redirect('/project_info/'.$id)->with('success_message', 'Bedankt om je aan te melden ! Zodra een administrator je geaccepteerd heeft, komt dit project bij jouw persoonlijke overzicht.');
     }
     

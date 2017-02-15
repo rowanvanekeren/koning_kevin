@@ -10,23 +10,23 @@
         <img class="dashb-bg-rope2" src="{{asset('images/home_bg/rope1-single.png')}}">
     </div>
 
-    <div class="container-fluid" ng-controller="toggleController">
+    <div class="container" ng-controller="toggleController">
 
         @if(!Auth::user()->is_active)
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 ">
+                <div class="col-md-12 ">
                     <div class="panel box-shadow-default not-accepted">
                         <div class="panel-heading">
                             <h1>Dankjewel voor je registratie!</h1>
                         </div>
                         <div class="panel-body">
 
-<style>
-    .inleiding-text{
-        text-align: left;
-        font-size: 18px;
-    }
-</style>
+                            <style>
+                                .inleiding-text {
+                                    text-align: left;
+                                    font-size: 18px;
+                                }
+                            </style>
                             <div class="inleiding-text">
                                 <h1>Proficiat!</h1>
                                 <p>Je hebt de weg gevonden naar het vrijwilligersplatform. We hebben je aanmelding goed
@@ -68,13 +68,8 @@
 
         <div class="row" ng-controller="Managing_users">
             @if(Auth::user()->is_active)
-                <div class="col-md-12">
-                    <!-- left side -> role files -->
                     @include('dashboard.rol_files')
-
-                            <!-- right side -->
                     <div class="my_projects col-md-6" ng-controller="Managing_projects">
-
                         @if(Auth::user()->is_admin)
                             <div class="panel panel-default box-shadow-default z-index-fix ">
                                 <div class="panel-heading" ng-click="togglePanel('usersDashboard')">
@@ -84,6 +79,13 @@
 
                                 <div class="panel-body" ng-controller="Dashboard" ng-show="usrdashb">
                                     <div class="container col-md-12">
+
+                                        <div class="row">
+                                            <div class="col-md-12 alert alert-success" ng-show="show_accept_message">
+                                                De vrijwilliger werd succesvol geaccepteerd!
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-md-12" ng-init="get_inactive_users()">
 
@@ -123,7 +125,7 @@
                                 <div class="modal-content z-index-fix">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Vrijwilliger accepteren @{{selected_user}}</h4>
+                                        <h4 class="modal-title">Vrijwilliger accepteren <!-- @{{selected_user}}--></h4>
                                     </div>
                                     <div class="modal-body">
                                         <p>Welke rollen wil je aan deze vrijwilliger toekennen?</p>
@@ -153,7 +155,7 @@
                                 <div class="modal-content z-index-fix">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Vrijwilliger weigeren @{{selected_user}}</h4>
+                                        <h4 class="modal-title">Vrijwilliger weigeren</h4>
                                     </div>
                                     <div class="modal-body">
                                         <p>Ben je zeker dat je <strong>"@{{ user_name }}"</strong> wil weigeren?</p>
@@ -179,9 +181,12 @@
                                     <div class="col-md-12">
                                         @if(!$my_projects->isEmpty())
                                             @foreach($my_projects as $my_project)
-                                                <div class="row-title">
-                                                    <a href="{{url('/project_info/' . $my_project->id)}}">{{ $my_project->name }}</a>
-                                                    op {{ $my_project->start }}</div>
+                                                <div class="row">
+                                                    <div class="row-title col-md-10">
+                                                        <span class="col-md-2 project_date"> {{ date_format(date_create($my_project->start), 'd/m') }}</span>
+                                                        <a class="col-md-6 project_name" href="{{url('/project_info/' . $my_project->id)}}">{{ $my_project->name }}</a>
+                                                    </div>
+                                                </div>
                                             @endforeach
                                         @else
                                             <div>Je hebt voorlopig geen projecten</div>
@@ -202,12 +207,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         @foreach($projects as $project)
-                                            <div class="col-md-12">
-                                                <div class="row-title">
-                                                    <a href="{{url('/project_info/' . $project->id)}}">{{ $project->name }}</a>
-                                                    op {{ $project->start }}</div>
+                                            <div class="row">
+                                                <div class="row-title col-md-10">
+                                                    <span class="col-md-2 project_date"> {{ date_format(date_create($project->start), 'd/m') }}</span>
+                                                    <a class="col-md-6 project_name" href="{{url('/project_info/' . $project->id)}}">{{ $project->name }}</a>
+                                                    @if(Auth::user()->is_admin && count($project->accepting_users) > 0)
+                                                        <a href="{{url('edit_project/'.$project->id)}}"><span class="col-md-2 new_volunteers">({{count($project->accepting_users)}})</span></a>
+                                                    @endif
+                                                </div>
                                                 @if(Auth::user()->is_admin)
-                                                    <div class="row-icons">
+                                                    <div class="row-icons col-md-2">
                                                         <a href="{{url('edit_project/'.$project->id)}}"><span
                                                                     class=" glyphicon glyphicon-pencil"></span></a>
                                                         <a href="" data-toggle="modal"
@@ -248,7 +257,7 @@
 
 
                     </div>
-                </div>
+
             @endif
 
 

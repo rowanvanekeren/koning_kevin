@@ -13,10 +13,10 @@ class InactiveUsersNotification extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $users;
+    public $user;
     public function __construct($users)
     {
-        $this->users =$users;
+        $this->user =$users;
     }
 
     /**

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="be">
+<html lang="nl">
 <head>
     <meta charset="utf-8">
 
@@ -71,9 +71,9 @@
                             <a href="{{ url('/dashboard') }}">Dashboard</a>
                         </li>
                         @if(Auth::user()->is_active)
-                            <li class="{{ Request::is('bestanden') ? 'active' : '' }}">
+                       {{--     <li class="{{ Request::is('bestanden') ? 'active' : '' }}">
                                 <a href="{{ url('/bestanden') }}">Bestanden</a>
-                            </li>
+                            </li>--}}
                         @endif
                         @if(Auth::user()->is_admin)
                             {{--<li class="{{ Request::is('add_file') ? 'active' : '' }}">--}}
@@ -81,9 +81,12 @@
                             {{--</li>--}}
                             <li class=" dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
-                                    Bestand toevoegen<span class="caret"></span>
+                                    Bestanden<span class="caret"></span>
                                 </a>
                                     <ul class="dropdown-menu custom-dropdown-menu">
+                                        <li class="{{ Request::is('bestanden') ? 'active' : '' }}">
+                                            <a href="{{ url('/bestanden') }}">Overzicht</a>
+                                        </li>
                                         <li class="{{ Request::is('add_file') ? 'active' : '' }}">
                                             <a href="{{ url('/add_file') }}">Nieuw Bestand</a>
                                         </li>

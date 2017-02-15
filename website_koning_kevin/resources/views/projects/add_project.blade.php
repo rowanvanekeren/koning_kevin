@@ -9,6 +9,12 @@
                 <div class="panel panel-default box-shadow-default z-index-fix">
                     <div class="panel-heading text-center"><strong>Project aanmaken</strong></div>
                     <div class="panel-body">
+                        
+                        @if (count($errors) > 0)
+                            <div class="col-md-12 alert alert-danger">
+                                Niet alle gegevens werden correct ingevuld ! 
+                            </div>
+                        @endif
 
                         {{Form::open(array('url'=>'/add_project','files' => true))}}
                         <div class="col-md-6">
@@ -116,7 +122,7 @@
 
                             <div class="col-md-6" ng-controller="addProjectDateTimeStart">
                                 <div class="form-group">
-                                    <label for="startdate" class="control-label col-md-12">Start datum:</label>
+                                    <label for="startdate" class="control-label col-md-12">Startdatum:</label>
                                     <p class="input-group">
 
                                         <input type="text" name="startdate" id="startdate" class="form-control"
@@ -153,7 +159,7 @@
                             <div class="col-md-6" ng-controller="addProjectDateTimeEnd">
 
                                 <div class="form-group">
-                                    <label for="enddate" class="control-label col-md-12">Eind datum:</label>
+                                    <label for="enddate" class="control-label col-md-12">Einddatum:</label>
                                     <p class="input-group">
                                         <input type="text" name="enddate" id="enddate" class="form-control"
                                                uib-datepicker-popup="@{{format}}" ng-model="dt" is-open="popup1.opened"
@@ -203,7 +209,7 @@
                         <div class="col-md-6">
                            
                             <div class="col-md-12">
-                                <div class="img_placeholder" style="width: 100%; height: 150px; background-color: #dcd3e3;"></div>
+                                <div class="img_placeholder" style="width: 100%; height: 300px; background-color: #dcd3e3;"></div>
                                 <img id="project_img" class="new" src="" width="100%;">
                             </div>
                             

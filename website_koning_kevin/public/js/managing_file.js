@@ -34,15 +34,18 @@ angular.module("myapp").controller("Show_file", function ($scope, $http) {
     $scope.oneAtATime = true;
     get_categories();
 
-    $scope.delete_document = function (document_id) {
+    $scope.delete_document = function (document_id,category_id) {
         $http.post('./api/delete_file',
             {
                 id: document_id,
+                category_id:category_id,
             })
             .success(function (data) {
                 console.log(data);
                 if (data.success) {
-                    get_all_files();
+                    console.log(data);
+                    get_all_files_for_category(data.id)
+                    // get_all_files();
                 }
                 $scope.message = data;
             })

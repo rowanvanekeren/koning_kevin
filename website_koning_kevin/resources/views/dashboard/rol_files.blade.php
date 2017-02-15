@@ -20,7 +20,7 @@
                            data-target="#myModal" ng-click="ang_modal(file.id)">
                             @{{file.title}}
                         </p>
-                        <a href="{{url('/')}}@{{file.url}}"><span
+                        <a href="{{url('/')}}@{{file.url}}" target="_blank"><span
                                     class="col-md-1 glyphicon glyphicon-download-alt single-glyph-dashb"></span>
                         </a>
                         {{--        <a href="#"><span
@@ -47,7 +47,7 @@
                                     <p>@{{ file_info.file.title }}</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <h5>Categorie�n</h5>
+                                    <h5>Categorie&euml;n</h5>
 
                                     <p ng-repeat="category in file_info.categories">
                                         @{{ category.type }}

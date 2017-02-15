@@ -26,6 +26,11 @@ class Api_file_Controller extends Controller
 //        ['except' => 'get_all_files']
     }
 
+    public function delete_file_from_project($file_id,$project_id){
+
+        return 'delete';
+    }
+
     public function get_all_files()
     {
         $file = [];
@@ -67,7 +72,7 @@ class Api_file_Controller extends Controller
     public function delete_file(Request $request)
     {
         if (Document::find($request->id)->delete()) {
-            return array('success' => "Document gewist");
+            return array('success' => "Document gewist",'id'=>$request->category_id);
         };
         return array('error' => "Er ging iets fout, probeer later nog eens");
     }
@@ -159,12 +164,113 @@ class Api_file_Controller extends Controller
                 });
         }
 
+
         return $files->get();
     }
 
     public function test(Request $request)
     {
 //        return $projects =Project::with('users')->whereHas('users_accepted')->where('created_at', '>=', Carbon::today()->toDateString())->get();
+
+
+
+
+        return Auth::user()->roles()->get();
+
+        $file = [];
+        $get_all_categories = Category::all();
+        foreach ($get_all_categories as $key => $category) {
+            $files = $category->documents()->get();
+            if (count($files)) {
+                array_push($file, $category);
+            }
+        }
+
+        return $file;
+
+
+
+
+
+
+
+        $title = 'a';
+        $description = '';
+        $category = '';
+        $role = '';
+
+        $files = array('error' => 'Geen zoekopdracht ingevuld');
+        if ($title == "" && $category == "" && $role == "") {
+            return $files;
+        }
+
+        if ($category != "" && $role != "") {
+            $files = Document::with('categories', 'roles')->whereHas('categories', function ($q) use ($category) {
+                $q->where('type', $category);
+            })->whereHas('roles', function ($q) use ($role) {
+                $q->where('type', $role);
+            });
+            if ($title != "") {
+                $files->where('title', 'like', '%' . $title . '%');
+            }
+            return $files->get();
+        }
+
+        if ($category != "") {
+            $files = Document::with('categories', 'roles')->whereHas('categories', function ($q) use ($category) {
+                $q->where('type', $category);
+            });
+            if ($title != "") {
+                $files->where('title', 'like', '%' . $title . '%');
+            }
+            return $files->get();
+        }
+        if ($role != "") {
+
+            $files = Document::with('categories', 'roles')->whereHas('roles', function ($q) use ($role) {
+                $q->where('type', $role);
+            });
+            if ($title != "") {
+                $files->where('title', 'like', '%' . $title . '%');
+            }
+            return $files->get();
+        }
+        if ($title != "") {
+            $files = Document::with('categories', 'roles', 'tags')->where('title', 'like', '%' . $title . '%')
+                ->orWhere('description', 'like', '%' . $description . '%')->orWhereHas('tags', function ($q) use ($title) {
+                    $q->where('type', 'LIKE', '%' . $title . '%');
+                });
+        }
+
+
+        return $files->get();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         if (isset($request->mail) && $request->mail==1 ){
         $users = User::where('is_active', 0)->where('created_at', '>=', Carbon::today()->toDateString())->get();

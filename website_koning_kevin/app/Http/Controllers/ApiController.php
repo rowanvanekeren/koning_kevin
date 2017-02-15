@@ -8,6 +8,8 @@ use App\User;
 use App\Role;
 use App\RoleUser;
 use App\Project;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserAcceptedForProject;
 
 class ApiController extends Controller
 {
@@ -60,24 +62,56 @@ class ApiController extends Controller
     
     public function delete_user(Request $request) {
         $user = User::find($request->id);
-        $user->delete();
         $user->roles()->detach();
         $user->projects()->detach();
+        $user->delete();
         //return response succesfull
         return response()->json(['status' => "success", 'user_id' => $user->id]);
     }
 
 
     //edit_project
+    public function get_accepted_and_applied_volunteers(Request $request) {
+        //
+        //$id = 1;
+        $project = Project::find($request->project_id);
+        $accepted_volunteers = $project->users_accepted()->with('roles')->get();
+        $applied_volunteers = $project->accepting_users()->with('roles')->get();
+        //dd($accepted_volunteers, $applied_volunteers);
+        
+        return response()->json(['status' => "success", 'accepted_volunteers' => $accepted_volunteers, 'applied_volunteers' => $applied_volunteers]);
+    }
+    
+    
     public function accept_user_for_project(Request $request) {
+
+    $project = Project::find($request->project_id);
+    $user = $project->users()->where('users.id', $request->user_id)->first();
+    $user->pivot->is_accepted = 1;
+    $user->pivot->role_id = $request->role_id;
+    $user->pivot->save();
+
+        Mail::to($user->email)->send(new UserAcceptedForProject($project->name,$user));
+    return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
+    }
+
+    public function decline_user_for_project(Request $request) {
+
+        $project = Project::find($request->project_id);
+        $project->users()->detach([$request->user_id]);
+
+        return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id]);
+    }
+
+    public function reset_user(Request $request) {
 
         $project = Project::find($request->project_id);
         $user = $project->users()->where('users.id', $request->user_id)->first();
-        $user->pivot->is_accepted = 1;
-        $user->pivot->role_id = $request->role_id;
+        $user->pivot->is_accepted = 0;
+        $user->pivot->role_id = null;
         $user->pivot->save();
-        
-        return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
+
+        return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id]);
     }
 
     public function add_user_to_project(Request $request) {
@@ -90,6 +124,7 @@ class ApiController extends Controller
         $user_with_pivot->pivot->is_accepted = 1;
         $user_with_pivot->pivot->role_id = $request->role_id;
         $user_with_pivot->pivot->save();
+        Mail::to($user->email)->send(new UserAcceptedForProject($project->name,$user));
         return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
     }
     

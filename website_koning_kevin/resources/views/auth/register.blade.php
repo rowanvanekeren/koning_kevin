@@ -5,8 +5,19 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
+                    <div class="panel-heading">Registreren</div>
                     <div class="panel-body">
+
+                        @if (count($errors) > 0)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger">
+                                        <strong>Het registratieformulier werd niet correct ingevuld!</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}"
                               enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -15,7 +26,7 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="name"
-                                           value="{{ old('name') }}" required autofocus>
+                                           value="{{ old('name') }}" autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -30,7 +41,7 @@
 
                                 <div class="col-md-6">
                                     <input id="last_name" type="text" class="form-control" name="last_name"
-                                           value="{{ old('last_name') }}" required>
+                                           value="{{ old('last_name') }}">
 
                                     @if ($errors->has('last_name'))
                                         <span class="help-block">
@@ -41,11 +52,11 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail:</label>
+                                <label for="email" class="col-md-4 control-label">E-mail:</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ old('email') }}" required>
+                                           value="{{ old('email') }}">
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -73,7 +84,7 @@
 
                                 <div class="col-md-6">
                                     <input id="last_name" type="text" class="form-control" name="address"
-                                           value="{{ old('address') }}" required>
+                                           value="{{ old('address') }}">
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">
@@ -87,7 +98,7 @@
 
                                 <div class="col-md-6">
                                     <input id="city" type="text" class="form-control" name="city"
-                                           value="{{ old('city') }}" required>
+                                           value="{{ old('city') }}">
 
                                     @if ($errors->has('city'))
                                         <span class="help-block">
@@ -114,11 +125,11 @@
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('birth_place') ? ' has-error' : '' }}">
-                                <label for="birth_place" class="col-md-4 control-label">Geboorte plaats:</label>
+                                <label for="birth_place" class="col-md-4 control-label">Geboorteplaats:</label>
 
                                 <div class="col-md-6">
                                     <input id="birth_place" type="text" class="form-control" name="birth_place"
-                                           value="{{ old('birth_place') }}" required>
+                                           value="{{ old('birth_place') }}">
                                     @if ($errors->has('birth_place'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('birth_place') }}</strong>
@@ -128,7 +139,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('birth_date') ? ' has-error' : '' }}">
-                                <label for="birth_date" class="col-md-4 control-label">Geboorte datum:</label>
+                                <label for="birth_date" class="col-md-4 control-label">Geboortedatum:</label>
 
                                 <div class="col-md-6">
                                     {{Form::date('birth_date', old('birth_date'),array('class'=>'form-control'))}}
@@ -140,38 +151,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('job') ? ' has-error' : '' }}">
-                                <label for="job" class="col-md-4 control-label">Werk</label>
-
-                                <div class="col-md-6">
-                                    <input id="job" type="text" class="form-control" name="job"
-                                           value="{{ old('job') }}">
-                                    @if ($errors->has('job'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('job') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('job_function') ? ' has-error' : '' }}">
-                                <label for="job_function" class="col-md-4 control-label">Werk functie</label>
-
-                                <div class="col-md-6">
-                                    <input id="job_function" type="text" class="form-control" name="job_function"
-                                           value="{{ old('job_function') }}">
-                                    @if ($errors->has('job_function'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('job_function') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
                             <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                                 <label for="gender" class="col-md-4 control-label">Geslacht</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 gender_input">
                                     <input type="radio" name="gender" id="male" value="M"><label for="male">Man</label>
                                     <input type="radio" name="gender" id="female" value="V"><label for="female">Vrouw</label>
+                                    <input type="radio" name="gender" id="not_specified" value="X"><label for="not_specified">Anders</label>
                                     @if ($errors->has('gender'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('gender') }}</strong>
@@ -179,15 +165,14 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('readme') ? ' has-error' : '' }}">
 
 
-                                <label for="readme" class="col-md-4 control-label">Voorwaarden gelezen en goed
-                                    gekeurd</label>
-                                <div class="col-md-6">
+                                <label for="readme" class="col-md-4 control-label">Voorwaarden gelezen en goedgekeurd</label>
+                                <div class="col-md-6 readme_input">
 
                                     <input id="readme" type="checkbox" name="readme" {{ old('readme')?'checked':""}} value="1"
-                                           required><p><a href="{{url('/leesmij')}}">Lezen van de voorwaarde</a></p>
+                                           required><span>(<a href="{{url('/leesmij')}}" target="_blank">Bekijk voorwaarden</a>)</span>
                                     @if ($errors->has('readme'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('readme')}}</strong>
@@ -201,7 +186,7 @@
                                 <label for="password" class="col-md-4 control-label">Paswoord</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input id="password" type="password" class="form-control" name="password">
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -212,12 +197,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password_confirmation" class="col-md-4 control-label">Bevestig
-                                    Paswoord</label>
+                                <label for="password_confirmation" class="col-md-4 control-label">Bevestig paswoord</label>
 
                                 <div class="col-md-6">
                                     <input id="password_confirmation" type="password" class="form-control"
-                                           name="password_confirmation" required>
+                                           name="password_confirmation">
                                 </div>
                             </div>
 

@@ -15,6 +15,12 @@
                                 {{ session('success_message') }}
                             </div>
                         @endif
+                        
+                        @if (count($errors) > 0)
+                            <div class="col-md-12 alert alert-danger">
+                                Niet alle gegevens werden correct ingevuld ! 
+                            </div>
+                        @endif
 
 
                         {{Form::open(array('url'=>'/edit_project/' . $project->id,'files' => true))}}
@@ -198,13 +204,16 @@
 
 
                 @if(!$project->users->isEmpty())
-                    <div class="col-md-6">
+                    <div class="col-md-6" ng-init="get_volunteers({{$project->id}})">
                         <div class="panel panel-default">
                             <div class="panel-heading text-center"><strong>Reeds toegevoegde vrijwilligers</strong>
                             </div>
                             <div class="panel-body">
                                 <div class="col-md-12">
-                                    <table class="table volunteers_overview"">
+                                    <div class="col-md-12 alert alert-success" ng-show="show_accept_message">
+                                        De vrijwilliger werd succesvol aanvaard!
+                                    </div>
+                                    <table class="table volunteers_overview accepted">
 
                                         <tr>
                                             <th>
@@ -213,12 +222,26 @@
                                             <th>
                                                 <strong>Toegekende rol</strong>
                                             </th>
+                                            <th>
+                                                <strong><i class="fa fa-times" aria-hidden="true"></i></strong>
+                                            </th>
                                         </tr>
 
+                                        <tr ng-repeat="ok_volunt in accepted_volunteers">
+                                            <td>
+                                                 <a href="{{url('/profiel/')}}/@{{ ok_volunt.id}}">@{{ok_volunt.first_name}} @{{ok_volunt.last_name}}</a>
+                                            </td>
+                                            <td ng-repeat="role in ok_volunt.roles" ng-show="role.id == ok_volunt.pivot.role_id">
+                                                @{{role.type}}
+                                            </td>
+                                            <td ng-click="reset_user(ok_volunt.id, {{$project->id}})">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
 
-
-                                @foreach($project->users as $volunteer)
-                                    @if($volunteer->pivot->is_accepted)
+                                        {{--
+                                        @foreach($project->users as $volunteer)
+                                            @if($volunteer->pivot->is_accepted)
                                         <tr>
                                               <td>  <a href="{{url('/profiel/'. $volunteer->id)}}">{{$volunteer->first_name}} {{$volunteer->last_name}}</a></td>
                                             <td>
@@ -232,16 +255,44 @@
                                         @endif
 
                                         @endforeach
+                                        --}}
                                         </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                @endif
 
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading text-center"><strong>Vrijwilligers toevoegen</strong></div>
                             <div class="panel-body add_volunteers">
+                               
+                               
+                                <div class="row vol-add-proj" ng-repeat="appl_volunt in applied_volunteers">
+                                    <div class="col-md-4 vol-add-proj"><a
+                                                href="{{url('/profiel/')}}/@{{ appl_volunt.id}}">@{{appl_volunt.first_name}} @{{appl_volunt.last_name}}</a>
+                                    </div>
+                                    <div class="col-md-4 role@{{appl_volunt.id}}">
+                                        <select name="role@{{appl_volunt.id}}">
+                                            <option ng-repeat="role in appl_volunt.roles" value="@{{role.id}}">@{{role.type}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 confirm-marks">
+                                        <div class="status@{{appl_volunt.id}} btn exit-mark"
+                                             status="@{{appl_volunt.pivot.is_accepted}}"
+                                             ng-click="decline_user_for_project($event, appl_volunt.id, {{$project->id}})"><i
+                                                    class="fa fa-times" aria-hidden="true"></i></div>
+                                        <div class="status@{{appl_volunt.id}} btn check-mark"
+                                             status="@{{appl_volunt.pivot.is_accepted}}"
+                                             ng-click="add_remove_user_to_project($event, appl_volunt.id, {{$project->id}})">
+                                            <i class="fa fa-check" aria-hidden="true"></i></div>
+
+
+                                    </div>
+                                </div>
+                               
+                                {{--
                                 @foreach($project->users as $volunteer)
                                     @if(!$volunteer->pivot->is_accepted)
                                         <div class="row vol-add-proj">
@@ -270,6 +321,7 @@
                                         </div>
                                     @endif
                                 @endforeach
+                                --}}
 
                                 <div class="row button">
                                     <div class="col-md-12">
@@ -295,15 +347,17 @@
                                                             value="@{{role.id}}">@{{role.type}}</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="status@{{volunteer.id}} btn btn-success"
+                                            <div class="col-md-4 confirm-marks">
+                                                {{--<div class="status@{{volunteer.id}} btn exit-mark"
+                                                     status="@{{appl_volunt.pivot.is_accepted}}"
+                                                     ng-click="decline_user_for_project($event, volunteer.id, {{$project->id}})"><i
+                                                            class="fa fa-times" aria-hidden="true"></i></div>--}}
+                                                <div class="status@{{volunteer.id}} btn check-mark"
+                                                     status="@{{appl_volunt.pivot.is_accepted}}"
                                                      ng-click="manually_add_remove_user_to_project($event, volunteer.id, {{$project->id}})">
                                                     <i class="fa fa-check" aria-hidden="true"></i></div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="status@{{volunteer.id}} btn btn-danger"
-                                                     ng-click="add_remove_user_to_project($event, 'x', 'x')"><i
-                                                            class="fa fa-times" aria-hidden="true"></i></div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -312,7 +366,6 @@
                             </div>
                         </div>
                     </div>
-                @endif
 
 
             </div>

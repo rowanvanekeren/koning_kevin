@@ -11,11 +11,12 @@ class MailSubscriberNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $projects;
-
-    public function __construct($projects)
+    public $project;
+    public $user;
+    public function __construct($project,$user)
     {
-        $this->projects = $projects;
+        $this->project = $project;
+        $this->user = $user;
     }
 
     /**

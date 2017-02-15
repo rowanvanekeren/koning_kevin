@@ -7,6 +7,8 @@ use App\AdministrativeDetail;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InactiveUsersNotification;
 
 class RegisterController extends Controller
 {
@@ -58,7 +60,7 @@ class RegisterController extends Controller
             'birth_date'=>'required|date',
             'birth_place'=>'required|max:255',
             'readme'=>'required',
-            //'url'=>'image | mimes:jpeg,jpg,png | max:1000',
+            'url'   => 'required|image|mimes:jpeg,jpg,png|max:1000',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -105,8 +107,6 @@ class RegisterController extends Controller
             'address'=>$data['address'],
             'city'=>$data['city'],
             'country'=>$data['country'],
-            'job'=>$data['job'],
-            'job_function'=>$data['job_function'],
             'gender'=>$data['gender'],
             'birth_date'=>$data['birth_date'],
             'birth_place'=>$data['birth_place'],
@@ -114,7 +114,7 @@ class RegisterController extends Controller
         ]);
         
         $user->save();
-        
+        Mail::to('info@koningkevin.be')->send(new InactiveUsersNotification($user));
         $administrative_details = new AdministrativeDetail([
             'bank_account_number' => null,
             'national_insurance_number' => null,
@@ -123,7 +123,7 @@ class RegisterController extends Controller
         ]);
         
         $administrative_details->save();
-        
+
         //return redirect('/home');
         
         /*
