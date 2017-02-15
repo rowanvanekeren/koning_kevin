@@ -7,6 +7,8 @@ use App\AdministrativeDetail;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InactiveUsersNotification;
 
 class RegisterController extends Controller
 {
@@ -112,7 +114,7 @@ class RegisterController extends Controller
         ]);
         
         $user->save();
-        
+        Mail::to('info@koningkevin.be')->send(new InactiveUsersNotification($user));
         $administrative_details = new AdministrativeDetail([
             'bank_account_number' => null,
             'national_insurance_number' => null,
@@ -121,7 +123,7 @@ class RegisterController extends Controller
         ]);
         
         $administrative_details->save();
-        
+
         //return redirect('/home');
         
         /*

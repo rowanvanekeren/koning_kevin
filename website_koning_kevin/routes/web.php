@@ -57,6 +57,7 @@ Route::post('/api/get_accepted_and_applied_volunteers', 'ApiController@get_accep
 
 //Anton Routes
 //get
+
 Route::get('/contact','HomeController@contact');
 Route::get('/add_file', 'Managing_files@show_add_file');
 Route::get('/bestanden','Managing_files@show_file');

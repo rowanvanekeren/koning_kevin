@@ -26,6 +26,11 @@ class Api_file_Controller extends Controller
 //        ['except' => 'get_all_files']
     }
 
+    public function delete_file_from_project($file_id,$project_id){
+
+        return 'delete';
+    }
+
     public function get_all_files()
     {
         $file = [];

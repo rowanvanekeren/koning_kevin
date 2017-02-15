@@ -11,6 +11,7 @@ use App\Role;
 use Illuminate\Support\Facades\Session;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\MailSubscriberNotification as sendmail;
 
 
 class HomeController extends Controller
@@ -161,6 +162,9 @@ class HomeController extends Controller
     public function volunteer($id) {
         $user = Auth::user();
         $user->projects()->attach($id);
+        $project = Project::find($id);
+        
+        Mail::to('info@koningkevin.be')->send(new sendmail($project,$user));
         return redirect('/project_info/'.$id)->with('success_message', 'Bedankt om je aan te melden ! Zodra een administrator je geaccepteerd heeft, komt dit project bij jouw persoonlijke overzicht.');
     }
     

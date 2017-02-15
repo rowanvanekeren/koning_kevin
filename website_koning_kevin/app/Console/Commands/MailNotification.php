@@ -41,7 +41,7 @@ class MailNotification extends Command
      */
     public function handle()
     {
-        $users = User::where('is_active', 0)->where('created_at', '>=', Carbon::today()->toDateString())->get();
+        $users = User::where('is_active', 0)->where('created_at', '==', Carbon::today()->toDateString())->get();
         if(count($users)){
             Mail::to('info@koningkevin.be')->send(new InactiveUsersNotification($users));
         }

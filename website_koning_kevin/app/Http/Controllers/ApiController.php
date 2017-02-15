@@ -8,6 +8,8 @@ use App\User;
 use App\Role;
 use App\RoleUser;
 use App\Project;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserAcceptedForProject;
 
 class ApiController extends Controller
 {
@@ -89,6 +91,7 @@ class ApiController extends Controller
     $user->pivot->role_id = $request->role_id;
     $user->pivot->save();
 
+        Mail::to($user->email)->send(new UserAcceptedForProject($project->name,$user));
     return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
     }
 
@@ -121,6 +124,7 @@ class ApiController extends Controller
         $user_with_pivot->pivot->is_accepted = 1;
         $user_with_pivot->pivot->role_id = $request->role_id;
         $user_with_pivot->pivot->save();
+        Mail::to($user->email)->send(new UserAcceptedForProject($project->name,$user));
         return response()->json(['status' => "success", 'user_id' => $request->user_id, 'project_id' => $request->project_id, 'role_id' => $request->role_id]);
     }
     
