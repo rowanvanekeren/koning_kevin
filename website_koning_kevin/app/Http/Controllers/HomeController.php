@@ -43,7 +43,7 @@ class HomeController extends Controller
             'bericht'=>"required|max:1000"
         ]);
         Mail::to('info@koningkevin.be')->send(new ContactMail(Auth::user()->first_name,$request->title,$request->bericht));
-        Session::flash('success', 'E-mail is verzonden');
+        Session::flash('success', 'Je bericht is goed aangekomen bij Koning Kevin. Binnen de week mag je een antwoord verwachten.');
         return redirect('/contact');
     }
     public function index()
