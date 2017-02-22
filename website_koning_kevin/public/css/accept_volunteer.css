@@ -41,6 +41,7 @@ legend {
     margin-top: 25px;
 }
 
+
 /* vrijwilligersoverzicht */
 table.volunteers_overview {
     margin-top: 20px;
@@ -177,6 +178,7 @@ table.volunteers_overview tbody tr:hover a {
     color: #D42E12;
     font-weight: bold;
 }
+
 
 /* volunteers overview */
 .glyphicon-trash {

@@ -142,7 +142,7 @@
                                 <label for="birth_date" class="col-md-4 control-label">Geboortedatum:</label>
 
                                 <div class="col-md-6">
-                                    {{Form::date('birth_date', old('birth_date'),array('class'=>'form-control'))}}
+                                    {{Form::date('birth_date', old('birth_date'),array('class'=>'form-control', 'placeholder'=>'jjjj-mm-dd'))}}
                                     @if ($errors->has('birth_date'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('birth_date') }}</strong>
@@ -155,9 +155,9 @@
                                 <label for="gender" class="col-md-4 control-label">Geslacht</label>
 
                                 <div class="col-md-6 gender_input">
-                                    <input type="radio" name="gender" id="male" value="M"><label for="male">Man</label>
-                                    <input type="radio" name="gender" id="female" value="V"><label for="female">Vrouw</label>
-                                    <input type="radio" name="gender" id="not_specified" value="X"><label for="not_specified">Anders</label>
+                                    <input type="radio" name="gender" id="male" value="M" <?php if(old('gender')){if(old('gender') == "M") {echo('checked');}} ?>><label for="male">Man</label>
+                                    <input type="radio" name="gender" id="female" value="V" <?php if(old('gender')){if(old('gender') == "V") {echo('checked');}} ?>><label for="female">Vrouw</label>
+                                    <input type="radio" name="gender" id="not_specified" value="X" <?php if(old('gender')){if(old('gender') == "X") {echo('checked');}} ?>><label for="not_specified">Anders</label>
                                     @if ($errors->has('gender'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('gender') }}</strong>

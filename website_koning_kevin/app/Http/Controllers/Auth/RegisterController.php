@@ -57,10 +57,10 @@ class RegisterController extends Controller
             'city'=>'required|max:255',
             'country'=>'required|max:255',
             'gender'=>'required|max:255',
-            'birth_date'=>'required|date',
+            'birth_date'=>'required|date|date_format:Y-m-d',
             'birth_place'=>'required|max:255',
             'readme'=>'required',
-            'url'   => 'required|image|mimes:jpeg,jpg,png|max:1000',
+            'url'   => 'image|mimes:jpeg,jpg,png|max:1000',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -76,7 +76,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
+
         $new_file_name = 'profielfoto.jpeg';
         
         //allowed extensions
@@ -95,6 +95,9 @@ class RegisterController extends Controller
 
                 // not ok return to add project view with error
             }
+        }
+        else {
+            $new_file_name = "default_project_img.jpg";
         }
         
         

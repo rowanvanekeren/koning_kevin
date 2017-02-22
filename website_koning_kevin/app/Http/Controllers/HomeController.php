@@ -65,6 +65,12 @@ class HomeController extends Controller
         return view('dashboard', ['projects' => $projects, 'my_projects' => $my_projects, 'inactive_users' => $inactive_users, 'roles' => $roles]);
     }
 
+    public function project_overview() {
+        $today = date('Y-m-d H:i:s');
+        $projects = Project::where('active', 1)->where('start', '>=', $today)->orderBy('start')->get();
+        return view('projects_overview', ['projects' => $projects]);
+    }
+
     public function profile_info($id = null)
     {
         if (!$id) {

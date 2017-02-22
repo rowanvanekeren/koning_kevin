@@ -29,6 +29,7 @@ Route::get('/profiel/{id?}', 'HomeController@profile_info');
 Route::post('/edit_profile', 'HomeController@edit_profile');
 Route::get('/vrijwilligersoverzicht', 'HomeController@volunteers_overview');
 Route::get('/search_volunteers', 'HomeController@search_volunteers');
+Route::get('/projectoverzicht', 'HomeController@project_overview');
 Route::get('/project_info/{id}', 'HomeController@project_info');
 Route::get('/volunteer/{id}', 'HomeController@volunteer');
 Route::get('/add_project', 'ProjectController@show_add_project');

@@ -197,7 +197,7 @@
 
                         </div>
 
-
+                        <!--
                         <div class="panel panel-default box-shadow-default z-index-fix">
                             <div class="panel-heading" ng-click="togglePanel('projectOverviewDashboard')">
                                 <strong>Projectoverzicht</strong>
@@ -234,7 +234,7 @@
                         </div>
                         <div class="modal fade " id="delete_project_modal" role="dialog">
                             <div class="modal-dialog">
-                                <!-- Modal content-->
+                                <!-- Modal content--><!--
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -254,7 +254,7 @@
 
                             </div>
                         </div>
-
+-->
 
                     </div>
 

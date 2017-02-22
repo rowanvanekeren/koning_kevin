@@ -71,6 +71,9 @@
                             <a href="{{ url('/dashboard') }}">Dashboard</a>
                         </li>
                         @if(Auth::user()->is_active)
+                            <li class="{{ Request::is('projectoverzicht') ? 'active' : '' }}">
+                                <a href="{{ url('/projectoverzicht') }}">Projectoverzicht</a>
+                            </li>
                        {{--     <li class="{{ Request::is('bestanden') ? 'active' : '' }}">
                                 <a href="{{ url('/bestanden') }}">Bestanden</a>
                             </li>--}}
