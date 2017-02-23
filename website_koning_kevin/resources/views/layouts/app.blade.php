@@ -110,7 +110,11 @@
                             <li class="{{ Request::is('vrijwilligersoverzicht') ? 'active' : '' }}">
                                 <a href="{{ url('/vrijwilligersoverzicht') }}">Vrijwilligers</a>
                             </li>
-                        @endif
+                        @else
+                                    <li class="{{ Request::is('bestanden') ? 'active' : '' }}">
+                                        <a href="{{ url('/bestanden') }}">Bestanden</a>
+                                    </li>
+                            @endif
                         @if(Auth::user()->is_active)
                             <li class="{{ Request::is('contact') ? 'active' : '' }}">
                                 <a href="{{ url('/contact') }}">Contact</a>
