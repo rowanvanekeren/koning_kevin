@@ -1,5 +1,8 @@
 @extends('layouts.app')
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{url('/css/project-overview.css')}}">
 
+@stop
 @section('content')
 
     <div class="container" ng-controller="toggleController">
@@ -17,14 +20,14 @@
                                 @foreach($projects as $project)
                                     <div class="row">
                                         <div class="row-title col-md-10">
-                                            <span class="col-md-2 project_date"> {{ date_format(date_create($project->start), 'd/m/Y') }}</span>
-                                            <a class="col-md-6 project_name" href="{{url('/project_info/' . $project->id)}}">{{ $project->name }}</a>
+                                            <a class="col-md-2 project_date" href="{{url('/project_info/' . $project->id)}}"> {{ date_format(date_create($project->start), 'd/m/Y') }} <span> {{ $project->name }}</span></a>
+
                                             @if(Auth::user()->is_admin && count($project->accepting_users) > 0)
                                                 <a href="{{url('edit_project/'.$project->id)}}"><span class="col-md-2 new_volunteers">({{count($project->accepting_users)}})</span></a>
                                             @endif
                                         </div>
                                         @if(Auth::user()->is_admin)
-                                            <div class="row-icons col-md-2">
+                                            <div class="row-icons col-md-2 project-icons">
                                                 <a href="{{url('edit_project/'.$project->id)}}"><span
                                                             class=" glyphicon glyphicon-pencil"></span></a>
                                                 <a href="" data-toggle="modal"

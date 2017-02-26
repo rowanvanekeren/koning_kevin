@@ -6,14 +6,19 @@
         </div>
         <div class="panel-body" ng-controller="Dashboard" ng-show="yourFilesDashb">
             <uib-accordion close-others="oneAtATime">
+
                 <div uib-accordion-group class="panel-default" is-open="status.open"
-                     ng-repeat="rol in rol_files">
+                     ng-repeat="rol in rol_files" ng-click="status.isopen=!status.isopen">
+
                     <uib-accordion-heading>
+
                         @{{ rol.role.type }} <i class="pull-right glyphicon"
                                                 ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+
                     </uib-accordion-heading>
+
                     <div ng-repeat="file in rol.files"
-                         class="row file_row file_row_background@{{file.priority}}">
+                         class="row file_row file_row_background@{{file.priority}}" >
                         <p uib-popover="@{{file.description}}"
                            popover-trigger="'mouseenter'"
                            popover-placement="bottom-left" class="col-md-9" data-toggle="modal"
@@ -29,6 +34,7 @@
                                                   class="col-md-1 glyphicon glyphicon-trash"></span></a>--}}
                     </div>
                 </div>
+
             </uib-accordion>
             <!-- Modal -->
             <div class="modal fade z-index-fix" id="myModal" role="dialog">

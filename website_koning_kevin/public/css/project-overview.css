@@ -1,0 +1,34 @@
+.row-title{
+    float:left;
+}
+.row-title span{
+    color:black;
+    padding-left:15px;
+    font-size: 1.3em;
+}
+.row-icons{
+    display:inline-block;
+    float:right;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    .row-title{
+        width: 100%;
+        text-align: center;
+        font-size: 1.5em;
+        padding: 15px;
+    }
+    .row-icons{
+        float:none;
+        width: 100%;
+        text-align: center;
+    }
+.row-icons a{
+font-size: 2em;
+    width: 50%;
+    padding: 15px;
+
+}
+}

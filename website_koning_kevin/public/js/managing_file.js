@@ -150,6 +150,8 @@ angular.module("myapp").controller("Dashboard", function ($scope, $http) {
     $scope.oneAtATime = true;
     $scope.rol_files;
     $scope.file_info;
+
+
     $.getJSON("./api/get_files_belongs_to_user", function (data) {
         $scope.rol_files = data;
         $scope.$apply();
