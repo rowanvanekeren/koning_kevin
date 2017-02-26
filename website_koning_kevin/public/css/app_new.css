@@ -68,23 +68,47 @@ body{
     text-align: center;
 }
 .file_row_background0{
-    background-color: rgba(6, 167, 255, 0.62);
+    background-color: rgba(60, 49, 50, 0.27);
     border-radius: 5px;
 }
-.file_row_background1{
-    background-color: rgba(255, 122, 44, 0.62);
+.file_row_background1 {
+    background-color: rgba(255, 92, 15, 0.53);
     border-radius: 5px;
+
 }
 .file_row_background2{
     background-color: rgba(255, 7, 0, 0.62);
+    padding-left: 30px;
+    background-image: url(https://cdn2.iconfinder.com/data/icons/freecns-cumulus/32/519791-101_Warning-128.png);
+    background-position: 10px 50%;
+    background-size: 20px, 20px;
+    background-repeat: no-repeat;
     border-radius: 5px;
+
 }
 
 .file_row{
-    padding: 5px;
+
+
+   padding-left: 30px;
+    padding-top: 10px;
     margin-top: 5px;
 
+
 }
+/*.file_row p {
+    display: table-cell;
+    vertical-align: middle;
+    margin:0;
+    padding: 15px;
+    /!*padding: 0;*!/
+
+}
+.file_row span{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+}*/
 .single-glyph-dashb{
     float:right;
    line-height: 30px;
@@ -101,10 +125,13 @@ body{
 }
 @media only screen and (max-width: 767px) {
     .file_row{
+        display:block;
         padding: 5px;
         text-align: center;
+        ;
 
     }
+
     .vol-add-proj a {
         text-align: center;
         font-size: 1.58em;
