@@ -129,6 +129,7 @@
                                                uib-datepicker-popup="@{{format}}" ng-model="dt" is-open="popup1.opened"
                                                datepicker-options="dateOptions" ng-required="true" close-text="Close"
                                                alt-input-formats="altInputFormats"/>
+                                        <input type="hidden" class="startDate" value="{{ old('startdate') }}"/>
                                  <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="open1()"><i
                                                 class="glyphicon glyphicon-calendar"></i></button>
@@ -137,9 +138,12 @@
 
 
                                     <div class="col-md-6 col-md-offset-2">
+
                                         <div uib-timepicker ng-model="startTime" ng-change="changed(startTime)"
-                                             hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                                             hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" ng-value="startTime"></div>
                                         <input type="hidden" name="starttime" ng-value="startTime">
+                                        <input type="hidden" class="oldStartTimeBeginning" value="{{ old('starttime') }}">
+
                                     </div>
                                 </div>
                                 @if ($errors->has('startdate'))
@@ -165,6 +169,7 @@
                                                uib-datepicker-popup="@{{format}}" ng-model="dt" is-open="popup1.opened"
                                                datepicker-options="dateOptions" ng-required="true" close-text="Close"
                                                alt-input-formats="altInputFormats"/>
+                                        <input type="hidden" class="endDate" value="{{ old('enddate') }}"/>
                                  <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="open1()"><i
                                                 class="glyphicon glyphicon-calendar"></i></button>
@@ -176,6 +181,7 @@
                                         <div uib-timepicker ng-model="endTime" ng-change="changed(endTime)"
                                              hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
                                         <input type="hidden" name="endtime" ng-value="endTime">
+                                        <input type="hidden" class="oldEndTimeBeginning" value="{{ old('endtime') }}">
                                     </div>
                                 </div>
                                 @if ($errors->has('enddate'))
