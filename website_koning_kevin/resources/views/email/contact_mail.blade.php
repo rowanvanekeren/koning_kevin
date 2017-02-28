@@ -6,11 +6,11 @@
 <body>
 
 
-<h1 class="float-right">Bericht van {{$name}}</h1>
+<p class="float-right">Bericht van {{$name}}</p>
 
-<h4>{{$title}}</h4>
+<p>{{$title}}</p>
 
-<h5>{{$bericht}}</h5>
+<p>{{$bericht}}</p>
 
 
 </body>

@@ -5,8 +5,8 @@
 </head>
 <body>
 
-<h1>Geachte,</h1><br>
-<h1 class="float-right">Er is een nieuwe aanmelding voor <a href="{{url('/').'/project_info/'.$project->id}}">{{$project->name}}</a> project!</h1>
+<p>Geachte,</p><br>
+<p class="float-right">Er is een nieuwe aanmelding voor <a href="{{url('/').'/project_info/'.$project->id}}">{{$project->name}}</a> project!</p>
 <p><a href="{{url('/').'/profiel/'.$user->id}}">{{$user->first_name}} {{$user->last_name}} heeft zich aangemeld.</a></p>
 <p>MVG</p>
 <p>Admin</p>
