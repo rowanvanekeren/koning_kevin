@@ -20,7 +20,7 @@
                                 @foreach($projects as $project)
                                     <div class="row">
                                         <div class="row-title col-md-10">
-                                            <a class="col-md-2 project_date" href="{{url('/project_info/' . $project->id)}}"> {{ date_format(date_create($project->start), 'd/m/Y') }} <span> {{ $project->name }}</span></a>
+                                            <a class="col-md-12 project_date" href="{{url('/project_info/' . $project->id)}}"> {{ date_format(date_create($project->start), 'd/m/Y') }} <span> {{ $project->name }}</span></a>
 
                                             @if(Auth::user()->is_admin && count($project->accepting_users) > 0)
                                                 <a href="{{url('edit_project/'.$project->id)}}"><span class="col-md-2 new_volunteers">({{count($project->accepting_users)}})</span></a>
