@@ -26,7 +26,33 @@ $end_hour = substr(explode(" ", $project->end)[1], 0, 5);
                     
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="{{url('/images/project_pictures/' . $project->image)}}" alt="{{$project->name}}" width="100%">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="{{url('/images/project_pictures/' . $project->image)}}" alt="{{$project->name}}" width="100%">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>Toegevoegde bestanden</h1>
+                                </div>
+                                <div class="col-md-12">
+                                    @foreach($project->documents as $document)
+                                        <div>
+                                            <a href="{{url('/')}}{{$document->url}}">
+                                                {{$document->title}}
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                    @foreach($project->extra_documents as $document)
+                                        <div>
+                                            <a href="{{url('/')}}{{$document->url}}">
+                                                {{$document->title}}
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="col-md-6">
