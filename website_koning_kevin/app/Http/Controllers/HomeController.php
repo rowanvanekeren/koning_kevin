@@ -73,11 +73,13 @@ class HomeController extends Controller
 
     public function profile_info($id = null)
     {
+
         if (!$id) {
             $id = Auth::user()->id;
         }
         $user = User::find($id);
         $roles = Role::all();
+
         
         return view('profile_info', ['user' => $user, 'roles' => $roles]);
     }

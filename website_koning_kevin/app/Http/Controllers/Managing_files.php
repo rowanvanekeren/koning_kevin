@@ -73,7 +73,7 @@ class Managing_files extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'description' => 'required|max:1000',
-            'file' => 'required|max:6000|mimes:pdf',
+            'file' => 'required|max:60000|mimes:pdf',
             'role' => 'required',
             'category' => 'required',
             'priority' => 'required',
@@ -172,7 +172,7 @@ class Managing_files extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'description' => 'required|max:1000',
-            'file' => 'required|max:6000|mimes:pdf',
+            'file' => 'required|max:60000|mimes:pdf',
             //'file' => 'required|mimes:application/pdf,application/msword,application/zip',
             'role' => 'required',
             'category' => 'required',

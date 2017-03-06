@@ -117,7 +117,6 @@ class RegisterController extends Controller
         ]);
         
         $user->save();
-        Mail::to('info@koningkevin.be')->send(new InactiveUsersNotification($user));
         $administrative_details = new AdministrativeDetail([
             'bank_account_number' => null,
             'national_insurance_number' => null,
@@ -126,6 +125,7 @@ class RegisterController extends Controller
         ]);
         
         $administrative_details->save();
+        Mail::to('info@koningkevin.be')->send(new InactiveUsersNotification($user));
 
         //return redirect('/home');
         

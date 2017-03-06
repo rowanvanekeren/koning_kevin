@@ -24,13 +24,13 @@ foreach($user->roles as $role) {
                 <div class="panel panel-default box-shadow-default">
                     <div class="panel-heading text-center"><strong>Gebruikers informatie</strong></div>
                     <div class="panel-body">
-                       
+
                         @if(session('success_message'))
                         <div class="col-md-12 alert alert-success volunteered">
                             {{ session('success_message') }}
                         </div>
                         @endif
-                       
+
                         <div class="col-md-12  ">
                             <div class="col-md-12">
                                 <img class="profile-info-image"
@@ -162,7 +162,7 @@ foreach($user->roles as $role) {
                                     @endif
                                 </div>
                             </div>
-                            
+
                             @if(!Auth::user()->is_admin)
                             <div class="row">
                                 <legend>Jouw rollen</legend>
@@ -177,7 +177,7 @@ foreach($user->roles as $role) {
                                 </div>
                             </div>
                             @endif
-                            
+
                             @if(Auth::user()->is_admin)
                             <div class="row">
                                 <legend>Rollen toevoegen aan deze persoon</legend>
@@ -191,7 +191,7 @@ foreach($user->roles as $role) {
                                 </div>
                             </div>
                             @endif
-                            
+
                         </div>
                         <div class="col-md-12">
                             {{Form::submit('Aanpassen',array('class'=>'btn btn-primary btn-margin-custom') )}}
